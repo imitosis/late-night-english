@@ -121,6 +121,17 @@ label{display:block;font-weight:600;margin:14px 0 6px}
    <button class="pri big" id="own" style="margin-top:10px">Show mit diesem Thema starten</button>
   </div>
  </div>
+ <div id="brief" hidden>
+  <div class="sec"><button id="briefBack">← Zurück</button><small id="briefNo"></small></div>
+  <div class="card">
+   <h2 id="briefTitle" style="margin-bottom:10px"></h2>
+   <p id="briefText" style="font-size:18px;line-height:1.6;margin:0 0 14px"></p>
+   <div id="briefWords"></div>
+   <div class="row" style="margin-top:14px"><button id="briefRead" style="flex:1">▶ Vorlesen</button></div>
+  </div>
+  <button class="pri big" id="briefGo">Mit Jimmy darüber reden</button>
+  <p class="hint">Tipp: Lies es einmal, dann erzähl es Jimmy in deinen eigenen Worten.</p>
+ </div>
  <div id="talk" hidden>
   <div class="sec"><small id="talkTopic"></small><button id="end">Show beenden</button></div>
   <div class="chat" id="chat" aria-live="polite"></div>
@@ -255,7 +266,7 @@ function outText(j){return(j.output||[]).filter(o=>o.type==='message').flatMap(o
 async function ai(prompt,{search=false}={}){
  if(inClaude())return C.sample.json(prompt,{cache:false,modelTier:'quick'});
  if(!cfg.kO)throw{code:'no_key'};
- const body={model:MODEL,input:prompt+'\nReturn JSON only, no markdown.',reasoning:{effort:search?'low':'none'},max_output_tokens:1500};
+ const body={model:MODEL,input:prompt+'\nReturn JSON only, no markdown.',reasoning:{effort:search?'low':'none'},max_output_tokens:search?4000:1500};
  if(search){body.tools=[{type:'web_search'}];body.max_tool_calls=3}
  const r=await fetch(OA+'responses',{method:'POST',headers:oaHead(),body:JSON.stringify(body)});
  if(!r.ok)throw httpErr(r);
@@ -418,24 +429,42 @@ document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
 /* ---------- news ---------- */
 let NEWS=[];
 const NEWS_PROMPT=()=>`Search the web for today's news (${new Date().toDateString()}). Pick 5 stories a US late-night host would talk about: 2 US politics, 1 world, 1 Europe or Austria, 1 lighter or funny story. Be factually careful and neutral.
-For each: "title" (max 8 words, plain English), "gist" (2 short sentences in simple English, B1 level, what happened), "opener" (a casual question the host asks the guest about it).
-Format: {"items":[{"title":"","gist":"","opener":""}]}`;
+For each:
+"title" (max 8 words, plain English),
+"gist" (1 short teaser sentence),
+"summary" (5-6 short sentences in clear, simple English, B1 level: what happened, who is involved, why it matters, and what different sides say; neutral, no opinion),
+"words" (3 useful words or phrases from the story, each {"en":"","de":"German translation"}),
+"opener" (a casual question the host asks the guest about it).
+Format: {"items":[{"title":"","gist":"","summary":"","words":[{"en":"","de":""}],"opener":""}]}`;
 async function loadNews(){
  const d=today();let got=null;
- const cached=LS.get('lne_news',null);
+ const cached=LS.get('lne_news2',null);
  if(cached&&cached.date===d)got=cached;
  else if(inClaude()&&DB){try{const s=await DB.doc('news/today').get();const v=s&&(typeof s.data==='function'?s.data():(s.data??s));if(v&&v.items)got=v}catch(e){}}
- else if(!inClaude()&&cfg.kO){try{const r=await ai(NEWS_PROMPT(),{search:true});if(r.items&&r.items.length){got={date:d,items:r.items};LS.set('lne_news',got)}}catch(e){}}
+ else if(!inClaude()&&cfg.kO){try{const r=await ai(NEWS_PROMPT(),{search:true});if(r.items&&r.items.length){got={date:d,items:r.items};LS.set('lne_news2',got)}}catch(e){}}
  NEWS=got?got.items:FALLBACK;
  $('#newsDate').textContent=got?(got.date===d?'heute':'vom '+new Date(got.date).toLocaleDateString('de-AT')):'Beispielthemen';
  $('#news').innerHTML=NEWS.map((n,i)=>`<button class="story" data-n="${i}"><div class="k">Story ${i+1}</div><h3>${esc(n.title)}</h3><p>${esc(n.gist)}</p><div class="go">Darüber reden →</div></button>`).join('')+(got?'':`<p class="hint">${!inClaude()&&!cfg.kO?'Trag unter „Ich“ den OpenAI-Schlüssel ein, dann kommen hier jeden Morgen die echten Nachrichten.':'Aktuelle Nachrichten sind gerade nicht erreichbar.'}</p>`);
 }
-$('#news').onclick=e=>{const b=e.target.closest('[data-n]');if(b){const n=NEWS[+b.dataset.n];startShow(n.title,n.gist,n.opener)}};
+let briefN=null;
+$('#news').onclick=e=>{const b=e.target.closest('[data-n]');if(b)showBrief(+b.dataset.n)};
+function showBrief(i){
+ const n=NEWS[i];briefN=n;
+ $('#briefNo').textContent='Story '+(i+1)+' von '+NEWS.length;
+ $('#briefTitle').textContent=n.title;
+ $('#briefText').textContent=n.summary||n.gist;
+ $('#briefWords').innerHTML=(n.words||[]).length?'<h3 style="margin-bottom:6px">Wörter dazu</h3>'+n.words.map(w=>`<div class="ph"><div class="en">${esc(w.en)}</div><div class="acts"><button data-say="${esc(w.en)}" aria-label="Anhören">▶</button></div><div class="de">${esc(w.de)}</div></div>`).join(''):'';
+ $('#briefWords').querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>speak(b.dataset.say));
+ document.body.classList.add('talking');$('#home').hidden=true;$('#brief').hidden=false;scrollTo(0,0);
+}
+$('#briefBack').onclick=()=>{Voice.stop();document.body.classList.remove('talking');$('#brief').hidden=true;$('#home').hidden=false};
+$('#briefRead').onclick=()=>speak($('#briefText').textContent);
+$('#briefGo').onclick=()=>{Voice.stop();$('#brief').hidden=true;const n=briefN;startShow(n.title,n.summary||n.gist,n.opener)};
 $('#own').onclick=()=>{const t=$('#topic').value.trim();if(t)startShow(t,'','')};
 
 /* ---------- show ---------- */
 let hist=[],topic='',gist='',busy=false;
-const RULES=()=>`You are "Jimmy", the warm, quick-witted host of a fictional US late-night talk show (an invented character, not any real TV host; never claim to be one). Your guest is an Austrian professional practising everyday spoken English (B1-B2). Tonight's topic: "${topic}".${gist?` Background: ${gist}`:' You may not know the details; let the guest explain and never invent facts.'}
+const RULES=()=>`You are "Jimmy", the warm, quick-witted host of a fictional US late-night talk show (an invented character, not any real TV host; never claim to be one). Your guest is an Austrian professional practising everyday spoken English (B1-B2). Tonight's topic: "${topic}".${gist?` The guest just read this news summary: ${gist} Use these facts; do not add facts that are not in it.`:' You may not know the details; let the guest explain and never invent facts.'}
 Keep it light and fair to all political sides. Use a useful idiom now and then.
 YOU ARE ALSO HIS ENGLISH COACH. Check the guest's LAST answer: grammar, word choice, German-sounding phrasing (false friends, word order, tenses, missing articles, "I am here since..." type errors).
 The guest's text comes from speech recognition: ignore punctuation and capitals. But if a word looks like a mispronounced word that got misheard (e.g. "sink" for "think", "wery" for "very", "vine" for "wine"), treat it as a pronunciation slip and tease him about the sound.
@@ -553,7 +582,7 @@ function diag(){$('#diag').textContent='Modus: '+(inClaude()?'Test über Claude'
 function rateLbl(){$('#rateV').textContent=Math.round($('#rate').value*100)+' %'}
 $('#rate').oninput=()=>{rateLbl();cfg.rate=+$('#rate').value};
 function fillSettings(){$('#rate').value=cfg.rate||1.15;rateLbl();$('#kO').value=cfg.kO;$('#vSel').value=cfg.voice;$('#rem').value=cfg.rem;$('#auto').checked=cfg.auto!==false}
-$('#saveSet').onclick=()=>{cfg={kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',auto:$('#auto').checked,rate:+$('#rate').value||1.15};LS.set('lne_cfg2',cfg);toast(cfg.kO?'Gespeichert ✓ Schlüssel ist eingetragen':'Gespeichert ✓');const sb=$('#saveSet');sb.textContent='Gespeichert ✓';sb.classList.add('done');setTimeout(()=>{sb.textContent='Speichern';sb.classList.remove('done')},2500);try{localStorage.removeItem('lne_news')}catch(e){}diag();loadNews()};
+$('#saveSet').onclick=()=>{cfg={kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',auto:$('#auto').checked,rate:+$('#rate').value||1.15};LS.set('lne_cfg2',cfg);toast(cfg.kO?'Gespeichert ✓ Schlüssel ist eingetragen':'Gespeichert ✓');const sb=$('#saveSet');sb.textContent='Gespeichert ✓';sb.classList.add('done');setTimeout(()=>{sb.textContent='Speichern';sb.classList.remove('done')},2500);try{localStorage.removeItem('lne_news2')}catch(e){}diag();loadNews()};
 $('#testVoice').onclick=()=>{cfg.voice=$('#vSel').value;cfg.kO=$('#kO').value.trim();speak("Hey, welcome to the show! This is how I sound tonight.")};
 $('#remBtn').onclick=()=>{
  const [H,M]=($('#rem').value||'07:30').split(':');const d=today().replace(/-/g,'');
