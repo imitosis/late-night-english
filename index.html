@@ -82,6 +82,7 @@ button:focus-visible,textarea:focus-visible,input:focus-visible,.story:focus-vis
 label{display:block;font-weight:600;margin:14px 0 6px}
 .mis{font-size:20px;line-height:1.4;margin:8px 0 16px}
 .talking .hero svg,.talking .hero p,.talking .stats{display:none}.talking .hero{padding-bottom:14px}.talking h1{font-size:28px}
+#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#10131f;color:#fff;padding:12px 18px;border-radius:999px;font-weight:600;opacity:0;transition:.2s;z-index:9;pointer-events:none;white-space:nowrap}#toast.on{opacity:1;transform:translate(-50%,0)}
 .skel{height:86px;border-radius:20px;background:var(--line);margin:10px 0;opacity:.5}
 </style>
 </head>
@@ -500,9 +501,10 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'Noch keine Übung – heute ist ein guter Tag für die erste Show.':gap===0?'Heute schon geübt. Stark!':gap===1?'Gestern geübt – halt die Serie heute am Leben.':`Seit ${gap} Tagen nicht geübt. Eine kurze Show reicht schon.`)+` Insgesamt ${st.days.length} Übungstage, ${Object.keys(st.missions).length} Missionen.`;
 }
+function toast(t){let d=$('#toast');if(!d){d=document.createElement('div');d.id='toast';d.setAttribute('role','status');document.body.append(d)}d.textContent=t;d.classList.add('on');clearTimeout(d._t);d._t=setTimeout(()=>d.classList.remove('on'),2600)}
 function diag(){$('#diag').textContent='Modus: '+(inClaude()?'Test über Claude':'eigenständig')+' · App-Mikro: '+(Mic.ok()?'verfügbar':'nicht verfügbar')+' · Stimme: '+(C.tts?'Claude':Voice.useOA()?'OpenAI':'Android')+(!inClaude()?' · Schlüssel: '+(cfg.kO?'eingetragen':'fehlt'):'')}
 function fillSettings(){$('#kO').value=cfg.kO;$('#vSel').value=cfg.voice;$('#rem').value=cfg.rem;$('#auto').checked=cfg.auto!==false}
-$('#saveSet').onclick=()=>{cfg={kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',auto:$('#auto').checked};LS.set('lne_cfg2',cfg);$('#setMsg').textContent='Gespeichert.';try{localStorage.removeItem('lne_news')}catch(e){}diag();loadNews()};
+$('#saveSet').onclick=()=>{cfg={kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',auto:$('#auto').checked};LS.set('lne_cfg2',cfg);toast(cfg.kO?'Gespeichert ✓ Schlüssel ist eingetragen':'Gespeichert ✓');const sb=$('#saveSet');sb.textContent='Gespeichert ✓';sb.classList.add('done');setTimeout(()=>{sb.textContent='Speichern';sb.classList.remove('done')},2500);try{localStorage.removeItem('lne_news')}catch(e){}diag();loadNews()};
 $('#testVoice').onclick=()=>{cfg.voice=$('#vSel').value;cfg.kO=$('#kO').value.trim();speak("Hey, welcome to the show! This is how I sound tonight.")};
 $('#remBtn').onclick=()=>{
  const [H,M]=($('#rem').value||'07:30').split(':');const d=today().replace(/-/g,'');
