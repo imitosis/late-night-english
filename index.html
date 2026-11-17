@@ -55,14 +55,19 @@ button:focus-visible,textarea:focus-visible,input:focus-visible,.story:focus-vis
 .who button{min-height:30px;padding:2px 10px;font-size:13px;border-radius:999px}
 .tip{align-self:stretch;background:var(--soft);border-radius:16px;padding:12px 15px;font-size:15px}
 .tip s{color:var(--mute)}.tip b{font-weight:700}
-.dock{position:sticky;bottom:calc(76px + env(safe-area-inset-bottom));background:var(--bg);padding:12px 0;border-top:1px solid var(--line)}
-.mic{width:68px;height:68px;border-radius:50%;background:var(--blue);border:0;flex:none;display:grid;place-items:center;padding:0;box-shadow:0 6px 18px rgba(47,76,245,.35)}
+.dock{position:fixed;left:0;right:0;bottom:calc(66px + env(safe-area-inset-bottom));z-index:4;background:var(--bg);padding:8px max(18px,calc((100% - 644px)/2)) 10px;border-top:1px solid var(--line);box-shadow:0 -8px 20px rgba(16,19,31,.06)}
+.drow{display:flex;gap:10px;align-items:flex-end}
+.drow textarea{flex:1;min-height:52px;max-height:132px;resize:none;border-radius:26px;padding:14px 16px}
+.sendb{width:52px;height:52px;min-height:52px;border-radius:50%;padding:0;display:grid;place-items:center;background:var(--blue);border:0;color:#fff;flex:none}.sendb svg{width:22px;height:22px}
+.sendb:disabled{opacity:.35}
+.msg,.tip{scroll-margin-bottom:calc(var(--dockh,170px) + 80px)}
+.mic{width:52px;height:52px;border-radius:50%;background:var(--blue);border:0;flex:none;display:grid;place-items:center;padding:0;box-shadow:0 6px 18px rgba(47,76,245,.35)}
 .mic.on{background:var(--lime);animation:pulse 1.1s infinite}
 .mic.on svg *{stroke:#10131f;fill:#10131f}
 @keyframes pulse{50%{transform:scale(1.08)}}
 @media(prefers-reduced-motion:reduce){.mic.on{animation:none}.story{transition:none}}
-.mic svg{width:28px;height:28px}
-.live{flex:1;color:var(--mute);font-style:italic;min-height:24px}
+.mic svg{width:24px;height:24px}
+.live{color:var(--mute);font-style:italic;font-size:14px;min-height:20px;margin:0 4px 6px}
 .ph{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
 .ph:last-child{border-bottom:0}
 .ph .en{font-weight:600;grid-column:1/-1;font-size:17px;line-height:1.4}.ph .de{color:var(--mute);font-size:14px}
@@ -144,14 +149,14 @@ label{display:block;font-weight:600;margin:14px 0 6px}
  <div id="talk" hidden>
   <div class="sec"><small id="talkTopic"></small><button id="end">Show beenden</button></div>
   <div class="chat" id="chat" aria-live="polite"></div>
-  <div class="dock">
-   <div class="row">
+  <div class="dock" id="dock">
+   <div class="live" id="live">Mikro antippen und auf Englisch antworten.</div>
+   <div class="drow">
     <button class="mic" id="mic" aria-label="Sprechen"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="#fff"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M8 21h8" stroke="#fff" stroke-width="2" fill="none"/></svg></button>
-    <div class="live" id="live">Mikro antippen und auf Englisch antworten.</div>
+    <textarea id="answer" rows="1" placeholder="Deine Antwort"></textarea>
+    <button class="sendb" id="send" aria-label="Senden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
    </div>
-   <textarea id="answer" rows="2" placeholder="Deine Antwort" style="margin-top:10px"></textarea>
-   <button class="pri big" id="send" style="margin-top:10px">Senden</button>
-   <p class="hint" id="micHint" hidden>Das App-Mikro ist hier nicht verfügbar. Tipp ins Antwortfeld und dann auf das Mikro-Symbol deiner Tastatur – so sprichst du trotzdem. Wichtig: Tastatursprache auf Englisch stellen.</p>
+   <p class="hint" id="micHint" hidden>Das App-Mikro ist hier nicht verfügbar. Tipp ins Antwortfeld und dann auf das Mikro-Symbol deiner Tastatur. Tastatursprache auf Englisch stellen.</p>
   </div>
  </div>
  <div id="summary" hidden></div>
@@ -514,9 +519,10 @@ If there is such a mistake (only the most useful one): open your reply by pointi
 Conversation style: react to what the guest said like a real talk-show host: first share your own short take, a funny thought or a quick joke about the story (keep it original, never repeat jokes from real shows), then ask ONE question. Vary your questions: his opinion ("What's your take?"), his feelings ("Does that annoy you?"), surprise ("Did you see that coming?"), Austria ("How does that play in Vienna?"), a follow-up on something he said. Do NOT ask "What would you do?" or other hypothetical questions.
 Reply: 2-4 short spoken sentences of natural American conversational English, ending with that ONE question. Plain text only, no emojis, no stage directions.
 After the reply write a new line with exactly ###TIP### and then JSON for the same mistake: {"said":"wrong part as said","better":"correct version","why":"max 15 words in simple German, du"} or the word null if there was no mistake.`;
+let tbT=0;function toBottom(force){const now=Date.now();if(!force&&now-tbT<250)return;tbT=now;requestAnimationFrame(()=>scrollTo({top:document.documentElement.scrollHeight,behavior:'smooth'}))}
 const transcript=()=>hist.map(h=>(h.r==='host'?'HOST: ':'GUEST: ')+h.t).join('\n');
-function hostBubble(t){const d=document.createElement('div');d.className='msg host';d.innerHTML=`<div class="who">Jimmy <button class="ib" aria-label="Nochmal anhören">${IC.spk}</button></div><span class="tx"></span>`;d.querySelector('.tx').textContent=t;d.querySelector('button').onclick=()=>speak(d.querySelector('.tx').textContent);$('#chat').append(d);d.scrollIntoView({behavior:'smooth',block:'end'});return d}
-function addMe(t){const d=document.createElement('div');d.className='msg me';d.innerHTML=`<div class="who">Du</div>`;d.append(t);$('#chat').append(d);d.scrollIntoView({behavior:'smooth',block:'end'})}
+function hostBubble(t){const d=document.createElement('div');d.className='msg host';d.innerHTML=`<div class="who">Jimmy <button class="ib" aria-label="Nochmal anhören">${IC.spk}</button></div><span class="tx"></span>`;d.querySelector('.tx').textContent=t;d.querySelector('button').onclick=()=>speak(d.querySelector('.tx').textContent);$('#chat').append(d);toBottom(true);return d}
+function addMe(t){const d=document.createElement('div');d.className='msg me';d.innerHTML=`<div class="who">Du</div>`;d.append(t);$('#chat').append(d);toBottom(true)}
 function addTip(t){if(!t||!t.better)return;const d=document.createElement('div');d.className='tip';d.innerHTML=`<s>${esc(t.said)}</s> → <b>${esc(t.better)}</b><br><span class="hint">${esc(t.why)}</span><div class="row" style="margin-top:8px"><button class="ib" aria-label="Anhören">${IC.spk}</button><button style="min-height:40px;padding:6px 14px">Merken</button></div>`;const [p,k]=d.querySelectorAll('button');p.onclick=()=>speak(t.better);k.onclick=()=>{keep(t.better,t.why);k.textContent='Gemerkt';k.disabled=true};$('#chat').append(d)}
 function keep(en,de){if(!st.saved.some(p=>p.en===en)){st.saved.unshift({en,de:de||''});save();renderMine();renderStats()}}
 function errLine(e){const c=e&&e.code;return c==='no_key'?'Ohne OpenAI-Schlüssel kann Jimmy nicht antworten. Trag ihn unter „Profil“ ein.':c==='bad_key'?'Der Schlüssel stimmt nicht. Bitte unter „Profil“ prüfen.':c==='no_credit'?'Das Guthaben bei OpenAI ist aufgebraucht oder noch nicht aufgeladen.':c==='rate_limited'?'Kurze Werbepause – bitte gleich nochmal versuchen.':'Verbindung hat nicht geklappt. Nochmal senden?'}
@@ -525,7 +531,7 @@ async function hostTurn(extra){
  const b=hostBubble('…'),tx=b.querySelector('.tx');let spoken=0,full='';
  const onText=t=>{
   full=t;const reply=t.split('###TIP###')[0];
-  tx.textContent=reply.trim()||'…';
+  tx.textContent=reply.trim()||'…';toBottom();
   const done=reply.slice(spoken).match(/^[\s\S]*?[.!?…]["')\]]*(?=\s)/);
   if(done&&!t.includes('###TIP###')){Voice.add(done[0]);spoken+=done[0].length}
  };
@@ -536,7 +542,7 @@ async function hostTurn(extra){
  const r=(reply||'').trim();tx.textContent=r;
  if(r)hist.push({r:'host',t:r});
  let tip=null;try{if(tipRaw&&tipRaw.trim()!=='null')tip=pickJSON(tipRaw)}catch(e){}
- addTip(tip);busy=false;
+ addTip(tip);busy=false;toBottom(true);
 }
 function startShow(t,g,opener){
  topic=t;gist=g;hist=[];$('#chat').innerHTML='';
@@ -551,6 +557,9 @@ async function send(){
  await hostTurn("Write your next line, then ###TIP### and the tip for the guest's last answer.");
 }
 $('#send').onclick=send;
+{const dk=$('#dock'),tk=$('#talk');new ResizeObserver(()=>{const hgt=dk.offsetHeight;document.documentElement.style.setProperty('--dockh',hgt+'px');tk.style.paddingBottom=(hgt+16)+'px'}).observe(dk)}
+const ans=$('#answer');const grow=()=>{ans.style.height='auto';ans.style.height=Math.min(132,ans.scrollHeight)+'px';$('#send').disabled=!ans.value.trim()};
+ans.addEventListener("input",grow);setInterval(()=>{if(document.activeElement!==ans)grow()},400);grow();
 function micFallback(){$('#micHint').hidden=false;$('#live').textContent='Nutz das Mikro-Symbol deiner Tastatur.';$('#answer').focus()}
 document.addEventListener('micfail',micFallback);
 $('#mic').onclick=()=>{
