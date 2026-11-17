@@ -63,11 +63,15 @@ button:focus-visible,textarea:focus-visible,input:focus-visible,.story:focus-vis
 @media(prefers-reduced-motion:reduce){.mic.on{animation:none}.story{transition:none}}
 .mic svg{width:28px;height:28px}
 .live{flex:1;color:var(--mute);font-style:italic;min-height:24px}
-.ph{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.ph{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
 .ph:last-child{border-bottom:0}
-.ph .en{font-weight:600}.ph .de{color:var(--mute);font-size:14px}
-.ph .acts{grid-row:span 2;display:flex;gap:6px;align-items:center}
-.ph .acts button{min-width:44px;padding:8px 12px}
+.ph .en{font-weight:600;grid-column:1/-1;font-size:17px;line-height:1.4}.ph .de{color:var(--mute);font-size:14px}
+.ph .acts{display:flex;gap:6px;align-items:center}
+.ib{width:40px;height:40px;min-height:40px;padding:0;border-radius:50%;display:inline-grid;place-items:center;background:var(--soft);border:0;color:var(--blue);flex:none}
+:root[data-theme=dark] .ib{color:#9fb0ff}@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .ib{color:#9fb0ff}}
+.ib svg{width:19px;height:19px}.ib.rec{background:var(--blue);color:#fff}
+.tb{display:inline-flex;align-items:center;gap:8px}.tb svg{width:18px;height:18px}
+.who .ib{width:30px;height:30px;min-height:30px}.who .ib svg{width:15px;height:15px}
 .score{grid-column:1/-1;font-size:14px}
 .good{color:#0a8a4a;font-weight:700}.meh{color:#c2410c;font-weight:700}
 .tabs{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:5}
@@ -128,7 +132,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
    <h2 id="briefTitle" style="margin-bottom:10px"></h2>
    <p id="briefText" style="font-size:18px;line-height:1.6;margin:0 0 14px"></p>
    <div id="briefWords"></div>
-   <div class="row" style="margin-top:14px"><button id="briefRead" style="flex:1">▶ Vorlesen</button></div>
+   <div class="row" style="margin-top:14px"><button id="briefRead" class="tb" style="flex:1;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg> Vorlesen</button></div>
   </div>
   <button class="pri big" id="briefGo">Mit Jimmy darüber reden</button>
   <p class="hint">Tipp: Lies es einmal, dann erzähl es Jimmy in deinen eigenen Worten.</p>
@@ -172,7 +176,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
    <input id="kO" type="password" autocomplete="off" placeholder="sk-…">
    <p class="hint">Bleibt nur auf diesem Handy gespeichert.</p>
    <label for="vSel">Stimme von Jimmy</label>
-   <div class="row"><select id="vSel" style="flex:1"><option value="openai">OpenAI (natürlich, ca. 2 $/Monat)</option><option value="free">Android (gratis, klingt wie ein Navi)</option></select><button id="testVoice">▶ Probe</button></div>
+   <div class="row"><select id="vSel" style="flex:1"><option value="openai">OpenAI (natürlich, ca. 2 $/Monat)</option><option value="free">Android (gratis, klingt wie ein Navi)</option></select><button id="testVoice" class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg> Probe</button></div>
    <label for="rate">Sprechtempo von Jimmy: <span id="rateV"></span></label>
    <input id="rate" type="range" min="0.9" max="1.4" step="0.05" style="padding:0;accent-color:var(--blue)">
    <label style="display:flex;gap:10px;align-items:center;font-weight:500"><input id="auto" type="checkbox" style="width:22px;height:22px"> Automatisch senden, wenn ich aufhöre zu sprechen</label>
@@ -195,6 +199,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 <script>
 {
 const $=s=>document.querySelector(s);
+const IC={spk:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>',mic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg>',stop:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor"/></svg>'};
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const today=()=>new Date().toLocaleDateString('sv-SE');
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
@@ -473,7 +478,7 @@ function showBrief(i){
  $('#briefNo').textContent='Story '+(i+1)+' von '+NEWS.length;
  $('#briefTitle').textContent=n.title;
  $('#briefText').textContent=n.summary||n.gist;
- $('#briefWords').innerHTML=(n.words||[]).length?'<h3 style="margin-bottom:6px">Wörter dazu</h3>'+n.words.map(w=>`<div class="ph"><div class="en">${esc(w.en)}</div><div class="acts"><button data-say="${esc(w.en)}" aria-label="Anhören">▶</button></div><div class="de">${esc(w.de)}</div></div>`).join(''):'';
+ $('#briefWords').innerHTML=(n.words||[]).length?'<h3 style="margin-bottom:6px">Wörter dazu</h3>'+n.words.map(w=>`<div class="ph"><div class="en">${esc(w.en)}</div><div class="de">${esc(w.de)}</div><div class="acts"><button class="ib" data-say="${esc(w.en)}" aria-label="Anhören">${IC.spk}</button></div></div>`).join(''):'';
  $('#briefWords').querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>speak(b.dataset.say));
  document.body.classList.add('talking');$('#home').hidden=true;$('#brief').hidden=false;scrollTo(0,0);
 }
@@ -492,9 +497,9 @@ If there is a real mistake (only the most useful one): open your reply by pointi
 Reply: 2-4 short spoken sentences of natural American conversational English, ending with ONE question. Plain text only, no emojis, no stage directions.
 After the reply write a new line with exactly ###TIP### and then JSON for the same mistake: {"said":"wrong part as said","better":"correct version","why":"max 15 words in simple German, du"} or the word null if there was no mistake.`;
 const transcript=()=>hist.map(h=>(h.r==='host'?'HOST: ':'GUEST: ')+h.t).join('\n');
-function hostBubble(t){const d=document.createElement('div');d.className='msg host';d.innerHTML=`<div class="who">Jimmy <button aria-label="Nochmal anhören">▶ nochmal</button></div><span class="tx"></span>`;d.querySelector('.tx').textContent=t;d.querySelector('button').onclick=()=>speak(d.querySelector('.tx').textContent);$('#chat').append(d);d.scrollIntoView({behavior:'smooth',block:'end'});return d}
+function hostBubble(t){const d=document.createElement('div');d.className='msg host';d.innerHTML=`<div class="who">Jimmy <button class="ib" aria-label="Nochmal anhören">${IC.spk}</button></div><span class="tx"></span>`;d.querySelector('.tx').textContent=t;d.querySelector('button').onclick=()=>speak(d.querySelector('.tx').textContent);$('#chat').append(d);d.scrollIntoView({behavior:'smooth',block:'end'});return d}
 function addMe(t){const d=document.createElement('div');d.className='msg me';d.innerHTML=`<div class="who">Du</div>`;d.append(t);$('#chat').append(d);d.scrollIntoView({behavior:'smooth',block:'end'})}
-function addTip(t){if(!t||!t.better)return;const d=document.createElement('div');d.className='tip';d.innerHTML=`<s>${esc(t.said)}</s> → <b>${esc(t.better)}</b><br><span class="hint">${esc(t.why)}</span><div class="row" style="margin-top:8px"><button>▶</button><button>Merken</button></div>`;const [p,k]=d.querySelectorAll('button');p.onclick=()=>speak(t.better);k.onclick=()=>{keep(t.better,t.why);k.textContent='Gemerkt';k.disabled=true};$('#chat').append(d)}
+function addTip(t){if(!t||!t.better)return;const d=document.createElement('div');d.className='tip';d.innerHTML=`<s>${esc(t.said)}</s> → <b>${esc(t.better)}</b><br><span class="hint">${esc(t.why)}</span><div class="row" style="margin-top:8px"><button class="ib" aria-label="Anhören">${IC.spk}</button><button style="min-height:40px;padding:6px 14px">Merken</button></div>`;const [p,k]=d.querySelectorAll('button');p.onclick=()=>speak(t.better);k.onclick=()=>{keep(t.better,t.why);k.textContent='Gemerkt';k.disabled=true};$('#chat').append(d)}
 function keep(en,de){if(!st.saved.some(p=>p.en===en)){st.saved.unshift({en,de:de||''});save();renderMine();renderStats()}}
 function errLine(e){const c=e&&e.code;return c==='no_key'?'Ohne OpenAI-Schlüssel kann Jimmy nicht antworten. Trag ihn unter „Ich“ ein.':c==='bad_key'?'Der Schlüssel stimmt nicht. Bitte unter „Ich“ prüfen.':c==='no_credit'?'Das Guthaben bei OpenAI ist aufgebraucht oder noch nicht aufgeladen.':c==='rate_limited'?'Kurze Werbepause – bitte gleich nochmal versuchen.':'Verbindung hat nicht geklappt. Nochmal senden?'}
 async function hostTurn(extra){
@@ -543,7 +548,7 @@ $('#end').onclick=async()=>{
  busy=false;$('#end').textContent='Show beenden';st.shows++;mark();
  document.body.classList.remove('talking');$('#talk').hidden=true;const s=$('#summary');s.hidden=false;
  const ps=(r&&r.phrases)||[];ps.forEach(p=>keep(p.en,p.de));
- s.innerHTML=`<div class="sec"><h2>That's a wrap!</h2></div><div class="card"><p style="margin-top:0">${esc((r&&r.praise)||'Gut gemacht – jede Show zählt.')}</p>${ps.length?'<h3>Deine 3 Phrasen von heute</h3>':''}${ps.map(p=>`<div class="ph"><div class="en">${esc(p.en)}</div><div class="acts"><button data-say="${esc(p.en)}" aria-label="Anhören">▶</button></div><div class="de">${esc(p.de)}</div></div>`).join('')}${r&&r.next?`<p><span class="badge">Bonus-Mission</span> ${esc(r.next)}</p>`:''}</div><button class="pri big" id="again">Nächste Story</button>`;
+ s.innerHTML=`<div class="sec"><h2>That's a wrap!</h2></div><div class="card"><p style="margin-top:0">${esc((r&&r.praise)||'Gut gemacht – jede Show zählt.')}</p>${ps.length?'<h3>Deine 3 Phrasen von heute</h3>':''}${ps.map(p=>`<div class="ph"><div class="en">${esc(p.en)}</div><div class="de">${esc(p.de)}</div><div class="acts"><button class="ib" data-say="${esc(p.en)}" aria-label="Anhören">${IC.spk}</button></div></div>`).join('')}${r&&r.next?`<p><span class="badge">Bonus-Mission</span> ${esc(r.next)}</p>`:''}</div><button class="pri big" id="again">Nächste Story</button>`;
  s.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>speak(b.dataset.say));
  $('#again').onclick=()=>{s.hidden=true;$('#home').hidden=false;$('#topic').value=''};
 };
@@ -551,7 +556,7 @@ $('#end').onclick=async()=>{
 /* ---------- phrase gym ---------- */
 const words=s=>s.toLowerCase().replace(/[^a-z' ]/g,' ').split(/\s+/).filter(Boolean);
 function compare(a,b){const A=words(a),B=words(b);const miss=A.filter(w=>!B.includes(w));return{p:Math.round((A.length-miss.length)/A.length*100),miss}}
-const phRow=(en,de,id)=>`<div class="ph" data-i="${id}"><div class="en">${esc(en)}</div><div class="acts"><button data-a="say" aria-label="Anhören">▶</button><button data-a="rep">Nachsprechen</button></div><div class="de">${esc(de)}</div><div class="score"></div></div>`;
+const phRow=(en,de,id)=>`<div class="ph" data-i="${id}"><div class="en">${esc(en)}</div><div class="de">${esc(de)}</div><div class="acts"><button class="ib" data-a="say" aria-label="Anhören">${IC.spk}</button><button class="ib" data-a="rep" aria-label="Nachsprechen und Aussprache prüfen">${IC.mic}</button></div><div class="score"></div></div>`;
 function renderGym(){const cats=[...new Set(PHRASES.map(p=>p[0]))];$('#phr').innerHTML=cats.map(c=>`<div class="card"><h3>${c}</h3>${PHRASES.map((p,i)=>p[0]===c?phRow(p[1],p[2],'p'+i):'').join('')}</div>`).join('')}
 function renderMine(){$('#mine').innerHTML=st.saved.length?`<div class="card"><h3>Deine Sammlung</h3>${st.saved.slice(0,30).map((p,i)=>phRow(p.en,p.de,'m'+i)).join('')}</div>`:''}
 const phText=id=>id[0]==='p'?PHRASES[+id.slice(1)][1]:st.saved[+id.slice(1)].en;
@@ -562,13 +567,13 @@ $('#v-gym').addEventListener('click',async e=>{
  if(b.dataset.a==='say'){speak(en);return}
  /* real pronunciation check: record audio, Jimmy listens */
  if(Rec.ok()){
-  if(recBtn===b){recBtn=null;b.textContent='Nachsprechen';b.classList.remove('pri');out.textContent='Jimmy hört sich das an …';
+  if(recBtn===b){recBtn=null;b.innerHTML=IC.mic;b.classList.remove('rec');out.textContent='Jimmy hört sich das an …';
    try{const blob=await Rec.stop();const r=await pronCheck(en,await toWav16k(blob));
     out.innerHTML=`<span class="${r.score>=80?'good':'meh'}">${esc(r.score)}/100</span> · <i>${esc(r.joke)}</i>${(r.fixes||[]).map(f=>`<br><b>${esc(f.word)}</b>: ${esc(f.tip)}`).join('')}${r.praise?`<br><span class="hint">${esc(r.praise)}</span>`:''}`;
     if(r.joke)speak(r.joke);if(r.score>=60)mark()}catch(err){out.textContent=err&&err.name==='NotAllowedError'?'Mikro nicht erlaubt – in den Browser-Einstellungen für diese Seite das Mikrofon erlauben (iPhone: Einstellungen › Safari › Mikrofon).':errLine(err)}
    return}
   if(recBtn)return;
-  try{Voice.stop();await Rec.start();recBtn=b;b.textContent='Stopp';b.classList.add('pri');out.textContent='Aufnahme läuft … sprich den Satz und tipp dann auf Stopp.'}
+  try{Voice.stop();await Rec.start();recBtn=b;b.innerHTML=IC.stop;b.classList.add('rec');out.textContent='Aufnahme läuft … sprich den Satz und tipp dann auf ■.'}
   catch(err){out.textContent='Mikro nicht erlaubt – in den Browser-Einstellungen für diese Seite das Mikrofon erlauben (iPhone: Einstellungen › Safari › Mikrofon).'}
   return;
  }
