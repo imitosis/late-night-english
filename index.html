@@ -159,8 +159,10 @@ label{display:block;font-weight:600;margin:14px 0 6px}
    <label for="kO">OpenAI API-Schlüssel</label>
    <input id="kO" type="password" autocomplete="off" placeholder="sk-…">
    <p class="hint">Bleibt nur auf diesem Handy gespeichert.</p>
-   <label for="vSel">Stimme von Danny</label>
+   <label for="vSel">Stimme von Jimmy</label>
    <div class="row"><select id="vSel" style="flex:1"><option value="openai">OpenAI (natürlich, ca. 2 $/Monat)</option><option value="free">Android (gratis, klingt wie ein Navi)</option></select><button id="testVoice">▶ Probe</button></div>
+   <label for="rate">Sprechtempo von Jimmy: <span id="rateV"></span></label>
+   <input id="rate" type="range" min="0.9" max="1.4" step="0.05" style="padding:0;accent-color:var(--blue)">
    <label style="display:flex;gap:10px;align-items:center;font-weight:500"><input id="auto" type="checkbox" style="width:22px;height:22px"> Automatisch senden, wenn ich aufhöre zu sprechen</label>
    <label for="rem">Tägliche Erinnerung um</label>
    <div class="row"><input id="rem" type="time" value="07:30" style="flex:1"><button id="remBtn">Zum Kalender</button></div>
@@ -232,7 +234,7 @@ const FALLBACK=[
 ];
 
 /* ---------- state ---------- */
-let cfg=Object.assign({kO:'',voice:'openai',rem:'07:30'},LS.get('lne_cfg2',{}));
+let cfg=Object.assign({kO:'',voice:'openai',rem:'07:30',rate:1.15},LS.get('lne_cfg2',{}));
 let st=LS.get('lne',{days:[],saved:[],missions:{},shows:0});
 let dbRef=null,DB=null;
 function save(){LS.set('lne',st);if(dbRef)dbRef.set(st).catch(()=>{})}
@@ -292,10 +294,10 @@ const Voice={q:[],playing:null,gen:0,
   if(C.tts){C.tts.add([{text,language:'en'}]).catch(()=>{});return}
   if(this.useOA()){
    const g=this.gen;
-   const p=fetch(OA+'audio/speech',{method:'POST',headers:oaHead(),body:JSON.stringify({model:'gpt-4o-mini-tts',voice:'ash',input:text,response_format:'mp3',instructions:'Warm, upbeat American late-night talk show host chatting with a guest. Natural, lively emphasis, a smile in the voice, clear for a language learner.'})}).then(r=>r.ok?r.blob():null).catch(()=>null);
+   const p=fetch(OA+'audio/speech',{method:'POST',headers:oaHead(),body:JSON.stringify({model:'gpt-4o-mini-tts',voice:'ash',input:text,response_format:'mp3',instructions:'Energetic American late-night talk show host bantering with a guest. Brisk, punchy pace like on TV, lively emphasis, a smile in the voice. Do not drag words or pause too long.'})}).then(r=>r.ok?r.blob():null).catch(()=>null);
    this.q.push({p,text,g});this.pump();return;
   }
-  try{const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=.95;const v=bestVoice();if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}
+  try{const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=Math.min(1.5,(cfg.rate||1.15)*.95);const v=bestVoice();if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}
  },
  async pump(){
   if(this.playing||!this.q.length)return;
@@ -303,7 +305,7 @@ const Voice={q:[],playing:null,gen:0,
   const b=await it.p;
   if(it.g!==this.gen){this.playing=null;return this.pump()}
   if(!b){this.playing=null;cfgFallback(it.text);return this.pump()}
-  const a=player;it.a=a;if(a._u)URL.revokeObjectURL(a._u);a._u=URL.createObjectURL(b);a.src=a._u;
+  const a=player;it.a=a;if(a._u)URL.revokeObjectURL(a._u);a._u=URL.createObjectURL(b);a.src=a._u;a.playbackRate=cfg.rate||1.15;a.preservesPitch=true;
   a.onended=a.onerror=()=>{this.playing=null;this.pump()};
   a.play().catch(()=>{this.playing=null;cfgFallback(it.text);this.pump()});
  },
@@ -398,7 +400,7 @@ async function toWav16k(blob){
 }
 async function pronCheck(target,b64){
  const r=await fetch(OA+'chat/completions',{method:'POST',headers:oaHead(),body:JSON.stringify({model:'gpt-audio-mini',modalities:['text'],messages:[{role:'user',content:[
-  {type:'text',text:`You are Danny, a warm, funny American late-night host coaching an Austrian (German speaker) on English pronunciation. Listen to the recording. Target sentence: "${target}".
+  {type:'text',text:`You are Jimmy, a warm, funny American late-night host coaching an Austrian (German speaker) on English pronunciation. Listen to the recording. Target sentence: "${target}".
 Judge pronunciation only (not voice quality). Look for typical German-speaker issues: th (as s/d/z), w (as v), v, final consonants devoiced, r, vowel length, word stress, sentence melody.
 Reply JSON only: {"score":0-100,"joke":"one short playful English line reacting to how it sounded","fixes":[{"word":"","tip":"max 15 words in simple German (du), how to say it right"}] (0-2 items, most important first),"praise":"short German praise for what was good"}`},
   {type:'input_audio',input_audio:{data:b64,format:'wav'}}]}]})});
@@ -433,7 +435,7 @@ $('#own').onclick=()=>{const t=$('#topic').value.trim();if(t)startShow(t,'','')}
 
 /* ---------- show ---------- */
 let hist=[],topic='',gist='',busy=false;
-const RULES=()=>`You are "Danny", the warm, quick-witted host of a fictional US late-night talk show. Your guest is an Austrian professional practising everyday spoken English (B1-B2). Tonight's topic: "${topic}".${gist?` Background: ${gist}`:' You may not know the details; let the guest explain and never invent facts.'}
+const RULES=()=>`You are "Jimmy", the warm, quick-witted host of a fictional US late-night talk show (an invented character, not any real TV host; never claim to be one). Your guest is an Austrian professional practising everyday spoken English (B1-B2). Tonight's topic: "${topic}".${gist?` Background: ${gist}`:' You may not know the details; let the guest explain and never invent facts.'}
 Keep it light and fair to all political sides. Use a useful idiom now and then.
 YOU ARE ALSO HIS ENGLISH COACH. Check the guest's LAST answer: grammar, word choice, German-sounding phrasing (false friends, word order, tenses, missing articles, "I am here since..." type errors).
 The guest's text comes from speech recognition: ignore punctuation and capitals. But if a word looks like a mispronounced word that got misheard (e.g. "sink" for "think", "wery" for "very", "vine" for "wine"), treat it as a pronunciation slip and tease him about the sound.
@@ -441,11 +443,11 @@ If there is a real mistake (only the most useful one): open your reply by pointi
 Reply: 2-4 short spoken sentences of natural American conversational English, ending with ONE question. Plain text only, no emojis, no stage directions.
 After the reply write a new line with exactly ###TIP### and then JSON for the same mistake: {"said":"wrong part as said","better":"correct version","why":"max 15 words in simple German, du"} or the word null if there was no mistake.`;
 const transcript=()=>hist.map(h=>(h.r==='host'?'HOST: ':'GUEST: ')+h.t).join('\n');
-function hostBubble(t){const d=document.createElement('div');d.className='msg host';d.innerHTML=`<div class="who">Danny <button aria-label="Nochmal anhören">▶ nochmal</button></div><span class="tx"></span>`;d.querySelector('.tx').textContent=t;d.querySelector('button').onclick=()=>speak(d.querySelector('.tx').textContent);$('#chat').append(d);d.scrollIntoView({behavior:'smooth',block:'end'});return d}
+function hostBubble(t){const d=document.createElement('div');d.className='msg host';d.innerHTML=`<div class="who">Jimmy <button aria-label="Nochmal anhören">▶ nochmal</button></div><span class="tx"></span>`;d.querySelector('.tx').textContent=t;d.querySelector('button').onclick=()=>speak(d.querySelector('.tx').textContent);$('#chat').append(d);d.scrollIntoView({behavior:'smooth',block:'end'});return d}
 function addMe(t){const d=document.createElement('div');d.className='msg me';d.innerHTML=`<div class="who">Du</div>`;d.append(t);$('#chat').append(d);d.scrollIntoView({behavior:'smooth',block:'end'})}
 function addTip(t){if(!t||!t.better)return;const d=document.createElement('div');d.className='tip';d.innerHTML=`<s>${esc(t.said)}</s> → <b>${esc(t.better)}</b><br><span class="hint">${esc(t.why)}</span><div class="row" style="margin-top:8px"><button>▶</button><button>Merken</button></div>`;const [p,k]=d.querySelectorAll('button');p.onclick=()=>speak(t.better);k.onclick=()=>{keep(t.better,t.why);k.textContent='Gemerkt';k.disabled=true};$('#chat').append(d)}
 function keep(en,de){if(!st.saved.some(p=>p.en===en)){st.saved.unshift({en,de:de||''});save();renderMine();renderStats()}}
-function errLine(e){const c=e&&e.code;return c==='no_key'?'Ohne OpenAI-Schlüssel kann Danny nicht antworten. Trag ihn unter „Ich“ ein.':c==='bad_key'?'Der Schlüssel stimmt nicht. Bitte unter „Ich“ prüfen.':c==='no_credit'?'Das Guthaben bei OpenAI ist aufgebraucht oder noch nicht aufgeladen.':c==='rate_limited'?'Kurze Werbepause – bitte gleich nochmal versuchen.':'Verbindung hat nicht geklappt. Nochmal senden?'}
+function errLine(e){const c=e&&e.code;return c==='no_key'?'Ohne OpenAI-Schlüssel kann Jimmy nicht antworten. Trag ihn unter „Ich“ ein.':c==='bad_key'?'Der Schlüssel stimmt nicht. Bitte unter „Ich“ prüfen.':c==='no_credit'?'Das Guthaben bei OpenAI ist aufgebraucht oder noch nicht aufgeladen.':c==='rate_limited'?'Kurze Werbepause – bitte gleich nochmal versuchen.':'Verbindung hat nicht geklappt. Nochmal senden?'}
 async function hostTurn(extra){
  busy=true;Voice.stop();
  const b=hostBubble('…'),tx=b.querySelector('.tx');let spoken=0,full='';
@@ -509,9 +511,9 @@ $('#v-gym').addEventListener('click',async e=>{
  const b=e.target.closest('[data-a]');if(!b)return;
  const row=b.closest('.ph'),en=phText(row.dataset.i),out=row.querySelector('.score');
  if(b.dataset.a==='say'){speak(en);return}
- /* real pronunciation check: record audio, Danny listens */
+ /* real pronunciation check: record audio, Jimmy listens */
  if(Rec.ok()){
-  if(recBtn===b){recBtn=null;b.textContent='Nachsprechen';b.classList.remove('pri');out.textContent='Danny hört sich das an …';
+  if(recBtn===b){recBtn=null;b.textContent='Nachsprechen';b.classList.remove('pri');out.textContent='Jimmy hört sich das an …';
    try{const blob=await Rec.stop();const r=await pronCheck(en,await toWav16k(blob));
     out.innerHTML=`<span class="${r.score>=80?'good':'meh'}">${esc(r.score)}/100</span> · <i>${esc(r.joke)}</i>${(r.fixes||[]).map(f=>`<br><b>${esc(f.word)}</b>: ${esc(f.tip)}`).join('')}${r.praise?`<br><span class="hint">${esc(r.praise)}</span>`:''}`;
     if(r.joke)speak(r.joke);if(r.score>=60)mark()}catch(err){out.textContent=err&&err.name==='NotAllowedError'?'Mikro nicht erlaubt – in den Browser-Einstellungen für diese Seite das Mikrofon erlauben (iPhone: Einstellungen › Safari › Mikrofon).':errLine(err)}
@@ -548,12 +550,14 @@ function renderStats(){
 }
 function toast(t){let d=$('#toast');if(!d){d=document.createElement('div');d.id='toast';d.setAttribute('role','status');document.body.append(d)}d.textContent=t;d.classList.add('on');clearTimeout(d._t);d._t=setTimeout(()=>d.classList.remove('on'),2600)}
 function diag(){$('#diag').textContent='Modus: '+(inClaude()?'Test über Claude':'eigenständig')+' · App-Mikro: '+(Mic.ok()?(Mic.useCloud()?'iPhone-Aufnahme':'verfügbar'):'nicht verfügbar')+' · Stimme: '+(C.tts?'Claude':Voice.useOA()?'OpenAI':'Android')+(!inClaude()?' · Schlüssel: '+(cfg.kO?'eingetragen':'fehlt'):'')}
-function fillSettings(){$('#kO').value=cfg.kO;$('#vSel').value=cfg.voice;$('#rem').value=cfg.rem;$('#auto').checked=cfg.auto!==false}
-$('#saveSet').onclick=()=>{cfg={kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',auto:$('#auto').checked};LS.set('lne_cfg2',cfg);toast(cfg.kO?'Gespeichert ✓ Schlüssel ist eingetragen':'Gespeichert ✓');const sb=$('#saveSet');sb.textContent='Gespeichert ✓';sb.classList.add('done');setTimeout(()=>{sb.textContent='Speichern';sb.classList.remove('done')},2500);try{localStorage.removeItem('lne_news')}catch(e){}diag();loadNews()};
+function rateLbl(){$('#rateV').textContent=Math.round($('#rate').value*100)+' %'}
+$('#rate').oninput=()=>{rateLbl();cfg.rate=+$('#rate').value};
+function fillSettings(){$('#rate').value=cfg.rate||1.15;rateLbl();$('#kO').value=cfg.kO;$('#vSel').value=cfg.voice;$('#rem').value=cfg.rem;$('#auto').checked=cfg.auto!==false}
+$('#saveSet').onclick=()=>{cfg={kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',auto:$('#auto').checked,rate:+$('#rate').value||1.15};LS.set('lne_cfg2',cfg);toast(cfg.kO?'Gespeichert ✓ Schlüssel ist eingetragen':'Gespeichert ✓');const sb=$('#saveSet');sb.textContent='Gespeichert ✓';sb.classList.add('done');setTimeout(()=>{sb.textContent='Speichern';sb.classList.remove('done')},2500);try{localStorage.removeItem('lne_news')}catch(e){}diag();loadNews()};
 $('#testVoice').onclick=()=>{cfg.voice=$('#vSel').value;cfg.kO=$('#kO').value.trim();speak("Hey, welcome to the show! This is how I sound tonight.")};
 $('#remBtn').onclick=()=>{
  const [H,M]=($('#rem').value||'07:30').split(':');const d=today().replace(/-/g,'');
- const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//LateNightEnglish//DE','BEGIN:VEVENT','UID:lne-daily@local','DTSTAMP:'+d+'T000000Z',`DTSTART;TZID=Europe/Vienna:${d}T${H}${M}00`,'DURATION:PT10M','RRULE:FREQ=DAILY','SUMMARY:Late Night English – 10 Minuten reden','DESCRIPTION:Danny wartet mit den Nachrichten von heute.','BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:Zeit für deine Show','TRIGGER:PT0M','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
+ const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//LateNightEnglish//DE','BEGIN:VEVENT','UID:lne-daily@local','DTSTAMP:'+d+'T000000Z',`DTSTART;TZID=Europe/Vienna:${d}T${H}${M}00`,'DURATION:PT10M','RRULE:FREQ=DAILY','SUMMARY:Late Night English – 10 Minuten reden','DESCRIPTION:Jimmy wartet mit den Nachrichten von heute.','BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:Zeit für deine Show','TRIGGER:PT0M','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));a.download='late-night-english.ics';document.body.append(a);a.click();a.remove();
  $('#setMsg').textContent='Kalenderdatei erstellt – öffnen und zum Kalender hinzufügen.';
 };
