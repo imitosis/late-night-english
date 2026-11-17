@@ -83,6 +83,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 .mis{font-size:20px;line-height:1.4;margin:8px 0 16px}
 .talking .hero svg,.talking .hero p,.talking .stats{display:none}.talking .hero{padding-bottom:14px}.talking h1{font-size:28px}
 #toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#10131f;color:#fff;padding:12px 18px;border-radius:999px;font-weight:600;opacity:0;transition:.2s;z-index:9;pointer-events:none;white-space:nowrap}#toast.on{opacity:1;transform:translate(-50%,0)}
+.loading{display:flex;align-items:center;gap:10px;color:var(--mute);padding:14px 4px}.dots{display:inline-flex;gap:4px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--blue);animation:bl 1s infinite}.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}@keyframes bl{50%{opacity:.25;transform:translateY(-3px)}}@media(prefers-reduced-motion:reduce){.dots i{animation:none}}
 .skel{height:86px;border-radius:20px;background:var(--line);margin:10px 0;opacity:.5}
 </style>
 </head>
@@ -273,10 +274,13 @@ async function ai(prompt,{search=false}={}){
  return pickJSON(outText(await r.json()));
 }
 /* streamed text answer: onText(fullTextSoFar) */
-async function aiStream(prompt,onText){
+async function aiStream(prompt,onText,o={}){
  if(inClaude()){const r=await C.sample(prompt,{cache:false,modelTier:'quick',onText:({text})=>onText(text)});onText(r.text);return r.text}
  if(!cfg.kO)throw{code:'no_key'};
- const r=await fetch(OA+'responses',{method:'POST',headers:oaHead(),body:JSON.stringify({model:MODEL,input:prompt,reasoning:{effort:'none'},max_output_tokens:500,stream:true})});
+ const body={model:MODEL,input:prompt,reasoning:{effort:o.effort||'none'},max_output_tokens:o.max||500,stream:true};
+ if(o.search){body.tools=[{type:'web_search',search_context_size:'low'}];body.max_tool_calls=2}
+ let r=await fetch(OA+'responses',{method:'POST',headers:oaHead(),body:JSON.stringify(body)});
+ if(r.status===400&&o.search){body.tools=[{type:'web_search'}];r=await fetch(OA+'responses',{method:'POST',headers:oaHead(),body:JSON.stringify(body)})}
  if(!r.ok)throw httpErr(r);
  const rd=r.body.getReader(),dec=new TextDecoder();let buf='',full='';
  for(;;){const{done,value}=await rd.read();if(done)break;buf+=dec.decode(value,{stream:true});
@@ -435,16 +439,32 @@ For each:
 "summary" (5-6 short sentences in clear, simple English, B1 level: what happened, who is involved, why it matters, and what different sides say; neutral, no opinion),
 "words" (3 useful words or phrases from the story, each {"en":"","de":"German translation"}),
 "opener" (a casual question the host asks the guest about it).
-Format: {"items":[{"title":"","gist":"","summary":"","words":[{"en":"","de":""}],"opener":""}]}`;
+Output format: exactly 5 lines, one story per line, each line one compact JSON object {"title":"","gist":"","summary":"","words":[{"en":"","de":""}],"opener":""}. No array, no markdown, no other text.`;
+function renderNews(items,state){
+ $('#news').innerHTML=items.map((n,i)=>`<button class="story" data-n="${i}"><div class="k">Story ${i+1}</div><h3>${esc(n.title)}</h3><p>${esc(n.gist)}</p><div class="go">Lesen & darüber reden →</div></button>`).join('')+(state?`<div class="loading"><span class="dots"><i></i><i></i><i></i></span> ${esc(state)}</div>`:'');
+}
 async function loadNews(){
- const d=today();let got=null;
+ const d=today();
  const cached=LS.get('lne_news2',null);
- if(cached&&cached.date===d)got=cached;
- else if(inClaude()&&DB){try{const s=await DB.doc('news/today').get();const v=s&&(typeof s.data==='function'?s.data():(s.data??s));if(v&&v.items)got=v}catch(e){}}
- else if(!inClaude()&&cfg.kO){try{const r=await ai(NEWS_PROMPT(),{search:true});if(r.items&&r.items.length){got={date:d,items:r.items};LS.set('lne_news2',got)}}catch(e){}}
- NEWS=got?got.items:FALLBACK;
- $('#newsDate').textContent=got?(got.date===d?'heute':'vom '+new Date(got.date).toLocaleDateString('de-AT')):'Beispielthemen';
- $('#news').innerHTML=NEWS.map((n,i)=>`<button class="story" data-n="${i}"><div class="k">Story ${i+1}</div><h3>${esc(n.title)}</h3><p>${esc(n.gist)}</p><div class="go">Darüber reden →</div></button>`).join('')+(got?'':`<p class="hint">${!inClaude()&&!cfg.kO?'Trag unter „Ich“ den OpenAI-Schlüssel ein, dann kommen hier jeden Morgen die echten Nachrichten.':'Aktuelle Nachrichten sind gerade nicht erreichbar.'}</p>`);
+ const done=(items,label)=>{NEWS=items;$('#newsDate').textContent=label;renderNews(items,'')};
+ if(cached&&cached.date===d&&cached.items&&cached.items.length){done(cached.items,'heute');return}
+ if(inClaude()){
+  let v=null;if(DB){try{const s=await DB.doc('news/today').get();v=s&&(typeof s.data==='function'?s.data():(s.data??s))}catch(e){}}
+  if(v&&v.items){done(v.items,v.date===d?'heute':'vom '+new Date(v.date).toLocaleDateString('de-AT'))}else{done(FALLBACK,'Beispielthemen')}
+  return;
+ }
+ if(!cfg.kO){done(FALLBACK,'Beispielthemen');$('#news').insertAdjacentHTML('beforeend','<p class="hint">Trag unter „Ich“ den OpenAI-Schlüssel ein, dann kommen hier jeden Morgen die echten Nachrichten.</p>');return}
+ NEWS=[];$('#newsDate').textContent='wird geladen';
+ renderNews([],'Jimmy liest gerade die Zeitung …');
+ const t0=Date.now();const tick=setInterval(()=>{if(NEWS.length)return;const s=Math.round((Date.now()-t0)/1000);const el=$('#news .loading');if(el)el.lastChild.textContent=s<8?' Jimmy liest gerade die Zeitung …':s<20?' Er sucht die besten Storys raus …':' Gleich geschafft …'},1000);
+ let parsed=0;
+ const onText=t=>{const lines=t.split('\n');const complete=lines.slice(0,-1);
+  for(let i=parsed;i<complete.length;i++){parsed=i+1;try{const it=pickJSON(complete[i]);if(it.title){NEWS.push(it);renderNews(NEWS,NEWS.length<5?'Nächste Story kommt …':'')}}catch(e){}}};
+ try{const full=await aiStream(NEWS_PROMPT(),onText,{search:true,effort:'low',max:4000});
+  const last=full.split('\n').slice(parsed).join('\n').trim();if(last){try{const it=pickJSON(last);if(it.title)NEWS.push(it)}catch(e){}}}
+ catch(e){clearInterval(tick);if(!NEWS.length){done(FALLBACK,'Beispielthemen');$('#news').insertAdjacentHTML('beforeend',`<p class="hint">${esc(errLine(e))}</p>`);return}}
+ clearInterval(tick);
+ if(NEWS.length){LS.set('lne_news2',{date:d,items:NEWS});done(NEWS,'heute')}else done(FALLBACK,'Beispielthemen');
 }
 let briefN=null;
 $('#news').onclick=e=>{const b=e.target.closest('[data-n]');if(b)showBrief(+b.dataset.n)};
