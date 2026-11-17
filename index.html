@@ -182,7 +182,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
    <label for="vSel">Stimme von Jimmy</label>
    <div class="row"><select id="vSel" style="flex:1"><option value="openai">OpenAI (natürlich, ca. 2 $/Monat)</option><option value="free">Android (gratis, klingt wie ein Navi)</option></select><button id="testVoice" class="ib" aria-label="Stimme probehören"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></button></div>
    <label for="rate">Sprechtempo von Jimmy: <span id="rateV"></span></label>
-   <input id="rate" type="range" min="0.9" max="1.4" step="0.05" style="padding:0;accent-color:var(--blue)">
+   <input id="rate" type="range" min="1" max="1.7" step="0.05" style="padding:0;accent-color:var(--blue)">
    <label style="display:flex;gap:10px;align-items:center;font-weight:500"><input id="auto" type="checkbox" style="width:22px;height:22px"> Automatisch senden, wenn ich aufhöre zu sprechen</label>
    <label for="rem">Tägliche Erinnerung um</label>
    <div class="row"><input id="rem" type="time" value="07:30" style="flex:1"><button id="remBtn">Zum Kalender</button></div>
@@ -257,7 +257,7 @@ const FALLBACK=[
 ];
 
 /* ---------- state ---------- */
-let cfg=Object.assign({kO:'',voice:'openai',rem:'07:30',rate:1.15},LS.get('lne_cfg2',{}));
+let cfg=Object.assign({kO:'',voice:'openai',rem:'07:30',rate:1.3},LS.get('lne_cfg2',{}));
 let st=LS.get('lne',{days:[],saved:[],missions:{},shows:0});
 let dbRef=null,DB=null;
 function save(){LS.set('lne',st);if(dbRef)dbRef.set(st).catch(()=>{})}
@@ -323,7 +323,7 @@ const Voice={q:[],playing:null,gen:0,
    const p=fetch(OA+'audio/speech',{method:'POST',headers:oaHead(),body:JSON.stringify({model:'gpt-4o-mini-tts',voice:'ash',input:text,response_format:'mp3',instructions:'Energetic American late-night talk show host bantering with a guest. Brisk, punchy pace like on TV, lively emphasis, a smile in the voice. Do not drag words or pause too long.'})}).then(r=>r.ok?r.blob():null).catch(()=>null);
    this.q.push({p,text,g});this.pump();return;
   }
-  try{const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=Math.min(1.5,(cfg.rate||1.15)*.95);const v=bestVoice();if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}
+  try{const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=Math.min(1.5,(cfg.rate||1.3)*.95);const v=bestVoice();if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}
  },
  async pump(){
   if(this.playing||!this.q.length)return;
@@ -331,7 +331,7 @@ const Voice={q:[],playing:null,gen:0,
   const b=await it.p;
   if(it.g!==this.gen){this.playing=null;return this.pump()}
   if(!b){this.playing=null;cfgFallback(it.text);return this.pump()}
-  const a=player;it.a=a;if(a._u)URL.revokeObjectURL(a._u);a._u=URL.createObjectURL(b);a.src=a._u;a.playbackRate=cfg.rate||1.15;a.preservesPitch=true;
+  const a=player;it.a=a;if(a._u)URL.revokeObjectURL(a._u);a._u=URL.createObjectURL(b);a.src=a._u;a.playbackRate=cfg.rate||1.3;a.preservesPitch=true;
   a.onended=a.onerror=()=>{this.playing=null;this.pump()};
   a.play().catch(()=>{this.playing=null;cfgFallback(it.text);this.pump()});
  },
@@ -367,7 +367,7 @@ const Cloud={rec:null,stream:null,ctx:null,timer:null,
     an.getFloatTimeDomainData(buf);let s=0;for(const x of buf)s+=x*x;const rms=Math.sqrt(s/buf.length);
     if(rms>0.02){spoke=true;quiet=0}else quiet+=100;
     M.partial&&M.partial(spoke?'Ich hör zu '+'●'.repeat(Math.min(6,Math.round(rms*120))):'Ich hör zu … sprich einfach los.');
-    if((spoke&&quiet>1400)||Date.now()-t0>45000||(!spoke&&Date.now()-t0>9000))this.stop();
+    if((spoke&&quiet>2800)||Date.now()-t0>45000||(!spoke&&Date.now()-t0>9000))this.stop();
    },100);
    mr.start();M.state(true);
   }).catch(()=>{try{ctx.close()}catch(e){}M.state(false);M.end=null;document.dispatchEvent(new Event('micfail'))});
@@ -395,8 +395,8 @@ const Mic={on:false,cb:null,partial:null,end:null,rec:null,
   if(this.useCloud()){Cloud.start(this);return}
   if(C.dic){C.dic.start().catch(e=>{if(e&&e.code==='not_granted')C.dic=null;this.state(false);document.dispatchEvent(new Event('micfail'))});return}
   if(!SRC)return;
-  const r=new SRC();r.lang='en-US';r.interimResults=true;r.continuous=false;r.maxAlternatives=1;
-  r.onresult=e=>{let p='';for(let i=e.resultIndex;i<e.results.length;i++){const x=e.results[i];if(x.isFinal){this.cb&&this.cb(x[0].transcript.trim())}else p+=x[0].transcript}this.partial&&this.partial(p)};
+  const r=new SRC();r.lang='en-US';r.interimResults=true;r.continuous=true;r.maxAlternatives=1;let qt=null;const arm=()=>{clearTimeout(qt);qt=setTimeout(()=>{try{r.stop()}catch(e){}},2800)};r.onspeechstart=arm;r.onaudiostart=()=>{qt=setTimeout(()=>{try{r.stop()}catch(e){}},9000)};
+  r.onresult=e=>{arm();let p='';for(let i=e.resultIndex;i<e.results.length;i++){const x=e.results[i];if(x.isFinal){this.cb&&this.cb(x[0].transcript.trim())}else p+=x[0].transcript}this.partial&&this.partial(p)};
   r.onend=()=>{this.state(false);const f=this.end;this.end=null;f&&f()};
   r.onerror=e=>{if(e&&/not-allowed|service-not-allowed|audio-capture/.test(e.error)){this.end=null;document.dispatchEvent(new Event('micfail'))}};
   this.rec=r;try{r.start();this.state(true)}catch(e){this.state(false)}
@@ -509,7 +509,8 @@ const RULES=()=>`You are "Jimmy", the warm, quick-witted host of a fictional US 
 Keep it light and fair to all political sides. Use a useful idiom now and then.
 YOU ARE ALSO HIS ENGLISH COACH. Check the guest's LAST answer: grammar, word choice, German-sounding phrasing (false friends, word order, tenses, missing articles, "I am here since..." type errors).
 The guest's text comes from speech recognition: ignore punctuation and capitals. But if a word looks like a mispronounced word that got misheard (e.g. "sink" for "think", "wery" for "very", "vine" for "wine"), treat it as a pronunciation slip and tease him about the sound.
-If there is a real mistake (only the most useful one): open your reply by pointing it out IN CHARACTER with a quick, warm joke (a host teasing a guest he likes, never mean), say the correct version clearly, then carry on. If it was fine, react naturally; now and then praise a good phrase.
+Only correct when it really matters: a clear grammar or word mistake, or a phrase that sounds clearly un-English to a native speaker. Small stuff, minor style choices and speech-recognition glitches: let it go, no tip. Most answers should get NO correction; let the guest talk.
+If there is such a mistake (only the most useful one): open your reply by pointing it out IN CHARACTER with a quick, warm joke (a host teasing a guest he likes, never mean), say the correct version clearly, then carry on. If it was fine, just react to WHAT he said (the content), not how he said it. Do not comment on his phrasing.
 Conversation style: react to what the guest said like a real talk-show host: first share your own short take, a funny thought or a quick joke about the story (keep it original, never repeat jokes from real shows), then ask ONE question. Vary your questions: his opinion ("What's your take?"), his feelings ("Does that annoy you?"), surprise ("Did you see that coming?"), Austria ("How does that play in Vienna?"), a follow-up on something he said. Do NOT ask "What would you do?" or other hypothetical questions.
 Reply: 2-4 short spoken sentences of natural American conversational English, ending with that ONE question. Plain text only, no emojis, no stage directions.
 After the reply write a new line with exactly ###TIP### and then JSON for the same mistake: {"said":"wrong part as said","better":"correct version","why":"max 15 words in simple German, du"} or the word null if there was no mistake.`;
@@ -623,8 +624,8 @@ function toast(t){let d=$('#toast');if(!d){d=document.createElement('div');d.id=
 function diag(){$('#diag').textContent='Modus: '+(inClaude()?'Test über Claude':'eigenständig')+' · App-Mikro: '+(Mic.ok()?(Mic.useCloud()?'iPhone-Aufnahme':'verfügbar'):'nicht verfügbar')+' · Stimme: '+(C.tts?'Claude':Voice.useOA()?'OpenAI':'Android')+(!inClaude()?' · Schlüssel: '+(cfg.kO?'eingetragen':'fehlt'):'')}
 function rateLbl(){$('#rateV').textContent=Math.round($('#rate').value*100)+' %'}
 $('#rate').oninput=()=>{rateLbl();cfg.rate=+$('#rate').value};
-function fillSettings(){$('#rate').value=cfg.rate||1.15;rateLbl();$('#kO').value=cfg.kO;$('#vSel').value=cfg.voice;$('#rem').value=cfg.rem;$('#auto').checked=cfg.auto!==false}
-$('#saveSet').onclick=()=>{cfg={kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',auto:$('#auto').checked,rate:+$('#rate').value||1.15};LS.set('lne_cfg2',cfg);toast(cfg.kO?'Gespeichert ✓ Schlüssel ist eingetragen':'Gespeichert ✓');const sb=$('#saveSet');sb.textContent='Gespeichert ✓';sb.classList.add('done');setTimeout(()=>{sb.textContent='Speichern';sb.classList.remove('done')},2500);try{localStorage.removeItem('lne_news2')}catch(e){}diag();loadNews()};
+function fillSettings(){$('#rate').value=cfg.rate||1.3;rateLbl();$('#kO').value=cfg.kO;$('#vSel').value=cfg.voice;$('#rem').value=cfg.rem;$('#auto').checked=cfg.auto!==false}
+$('#saveSet').onclick=()=>{cfg={kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',auto:$('#auto').checked,rate:+$('#rate').value||1.3};LS.set('lne_cfg2',cfg);toast(cfg.kO?'Gespeichert ✓ Schlüssel ist eingetragen':'Gespeichert ✓');const sb=$('#saveSet');sb.textContent='Gespeichert ✓';sb.classList.add('done');setTimeout(()=>{sb.textContent='Speichern';sb.classList.remove('done')},2500);try{localStorage.removeItem('lne_news2')}catch(e){}diag();loadNews()};
 $('#testVoice').onclick=()=>{cfg.voice=$('#vSel').value;cfg.kO=$('#kO').value.trim();speak("Hey, welcome to the show! This is how I sound tonight.")};
 $('#remBtn').onclick=()=>{
  const [H,M]=($('#rem').value||'07:30').split(':');const d=today().replace(/-/g,'');
