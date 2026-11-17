@@ -33,6 +33,12 @@ text = "".join(
     for o in res.get("output", []) if o.get("type") == "message"
     for c in o.get("content", []) if c.get("type") == "output_text"
 )
+def clean(t):
+    t = re.sub(r"\(\s*\[[^\]]*\]\([^)]*\)\s*\)", "", t or "")
+    t = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", t)
+    t = re.sub(r"\(?https?://[^\s)]+\)?", "", t)
+    return re.sub(r"\s{2,}", " ", t).strip()
+
 items = []
 for line in text.splitlines():
     line = line.strip()
@@ -43,6 +49,8 @@ for line in text.splitlines():
     except json.JSONDecodeError:
         continue
     if it.get("title") and it.get("summary"):
+        for k in ("title", "gist", "summary", "host_open"):
+            it[k] = clean(it.get(k, ""))
         items.append(it)
 
 if len(items) < 3:
