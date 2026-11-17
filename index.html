@@ -314,12 +314,57 @@ function speak(t){Voice.stop();splitSentences(t).forEach(s=>Voice.add(s))}
 function splitSentences(t){return(t.match(/[^.!?…]+[.!?…]+["')\]]*|\S[^.!?…]*$/g)||[t]).map(s=>s.trim()).filter(Boolean)}
 
 /* ---------- voice in ---------- */
+const IOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+/* iPhone: record + OpenAI transcription, stops by itself after a short silence */
+const Cloud={rec:null,stream:null,ctx:null,timer:null,
+ ok(){return !inClaude()&&!!cfg.kO&&!!(navigator.mediaDevices&&window.MediaRecorder)},
+ start(M){
+  const p=navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});
+  const AC=window.AudioContext||window.webkitAudioContext;const ctx=new AC();this.ctx=ctx;ctx.resume&&ctx.resume();
+  p.then(stream=>{
+   this.stream=stream;const chunks=[];const mr=new MediaRecorder(stream);this.rec=mr;
+   mr.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
+   mr.onstop=async()=>{
+    stream.getTracks().forEach(t=>t.stop());clearInterval(this.timer);try{ctx.close()}catch(e){}
+    M.state(false);
+    if(!spoke){M.partial&&M.partial('Nichts gehört – tipp nochmal aufs Mikro.');M.end=null;return}
+    M.partial&&M.partial('Verstehe …');
+    try{const t=await transcribe(new Blob(chunks,{type:mr.mimeType||'audio/mp4'}));if(t){M.cb&&M.cb(t)}}catch(e){M.partial&&M.partial(errLine(e))}
+    const f=M.end;M.end=null;f&&f();
+   };
+   const src=ctx.createMediaStreamSource(stream),an=ctx.createAnalyser();an.fftSize=1024;src.connect(an);
+   const buf=new Float32Array(an.fftSize);let spoke=false,quiet=0,t0=Date.now();
+   this.spoke=()=>spoke;
+   this.timer=setInterval(()=>{
+    an.getFloatTimeDomainData(buf);let s=0;for(const x of buf)s+=x*x;const rms=Math.sqrt(s/buf.length);
+    if(rms>0.02){spoke=true;quiet=0}else quiet+=100;
+    M.partial&&M.partial(spoke?'Ich hör zu '+'●'.repeat(Math.min(6,Math.round(rms*120))):'Ich hör zu … sprich einfach los.');
+    if((spoke&&quiet>1400)||Date.now()-t0>45000||(!spoke&&Date.now()-t0>9000))this.stop();
+   },100);
+   mr.start();M.state(true);
+  }).catch(()=>{try{ctx.close()}catch(e){}M.state(false);M.end=null;document.dispatchEvent(new Event('micfail'))});
+ },
+ stop(){if(this.rec&&this.rec.state!=='inactive')this.rec.stop()}
+};
+async function transcribe(blob){
+ const ext=/mp4|m4a|aac/.test(blob.type)?'mp4':/ogg/.test(blob.type)?'ogg':/wav/.test(blob.type)?'wav':'webm';
+ for(const model of ['gpt-4o-mini-transcribe','gpt-transcribe','whisper-1']){
+  const fd=new FormData();fd.append('file',blob,'speech.'+ext);fd.append('model',model);fd.append('language','en');
+  fd.append('prompt','Spoken English by an Austrian learner. Transcribe exactly what is said, including grammar mistakes. Do not correct anything.');
+  const r=await fetch(OA+'audio/transcriptions',{method:'POST',headers:{authorization:'Bearer '+cfg.kO},body:fd});
+  if(r.ok){const j=await r.json();return(j.text||'').trim()}
+  if(r.status!==404&&r.status!==400)throw httpErr(r);
+ }
+ throw{code:'stt'};
+}
 const SRC=window.SpeechRecognition||window.webkitSpeechRecognition;
 const Mic={on:false,cb:null,partial:null,end:null,rec:null,
- ok(){return !!(C.dic||(!inClaude()&&SRC))},
+ useCloud(){return IOS&&Cloud.ok()},
+ ok(){return !!(C.dic||this.useCloud()||(!inClaude()&&SRC))},
  toggle(onFinal,onPartial,onEnd){
   if(this.on){this.stop();return}
   this.cb=onFinal;this.partial=onPartial;this.end=onEnd||null;Voice.stop();
+  if(this.useCloud()){Cloud.start(this);return}
   if(C.dic){C.dic.start().catch(e=>{if(e&&e.code==='not_granted')C.dic=null;this.state(false);document.dispatchEvent(new Event('micfail'))});return}
   if(!SRC)return;
   const r=new SRC();r.lang='en-US';r.interimResults=true;r.continuous=false;r.maxAlternatives=1;
@@ -328,7 +373,7 @@ const Mic={on:false,cb:null,partial:null,end:null,rec:null,
   r.onerror=e=>{if(e&&/not-allowed|service-not-allowed|audio-capture/.test(e.error)){this.end=null;document.dispatchEvent(new Event('micfail'))}};
   this.rec=r;try{r.start();this.state(true)}catch(e){this.state(false)}
  },
- stop(){if(C.dic)C.dic.stop().catch(()=>{});if(this.rec)try{this.rec.stop()}catch(e){}},
+ stop(){if(this.useCloud()){Cloud.stop();return}if(C.dic)C.dic.stop().catch(()=>{});if(this.rec)try{this.rec.stop()}catch(e){}},
  state(on){this.on=on;document.dispatchEvent(new CustomEvent('mic',{detail:on}))}
 };
 
@@ -438,7 +483,7 @@ $('#mic').onclick=()=>{
  if(!Mic.ok()){micFallback();return}
  Mic.toggle(x=>{$('#answer').value=($('#answer').value+' '+x).trim()},p=>{$('#live').textContent=p},()=>{if($('#answer').value.trim()&&cfg.auto!==false)send()});
 };
-document.addEventListener('mic',e=>{$('#mic').classList.toggle('on',e.detail);$('#live').textContent=e.detail?'Ich hör zu … sprich einfach los.':($('#answer').value?'Passt? Dann auf Senden.':'Mikro antippen und auf Englisch antworten.')});
+document.addEventListener('mic',e=>{$('#mic').classList.toggle('on',e.detail);if(Mic.useCloud())return;$('#live').textContent=e.detail?'Ich hör zu … sprich einfach los.':($('#answer').value?'Passt? Dann auf Senden.':'Mikro antippen und auf Englisch antworten.')});
 $('#end').onclick=async()=>{
  if(busy)return;Voice.stop();
  if(!hist.some(h=>h.r==='me')){document.body.classList.remove('talking');$('#talk').hidden=true;$('#home').hidden=false;return}
@@ -502,7 +547,7 @@ function renderStats(){
  $('#meTxt').textContent=(gap===null?'Noch keine Übung – heute ist ein guter Tag für die erste Show.':gap===0?'Heute schon geübt. Stark!':gap===1?'Gestern geübt – halt die Serie heute am Leben.':`Seit ${gap} Tagen nicht geübt. Eine kurze Show reicht schon.`)+` Insgesamt ${st.days.length} Übungstage, ${Object.keys(st.missions).length} Missionen.`;
 }
 function toast(t){let d=$('#toast');if(!d){d=document.createElement('div');d.id='toast';d.setAttribute('role','status');document.body.append(d)}d.textContent=t;d.classList.add('on');clearTimeout(d._t);d._t=setTimeout(()=>d.classList.remove('on'),2600)}
-function diag(){$('#diag').textContent='Modus: '+(inClaude()?'Test über Claude':'eigenständig')+' · App-Mikro: '+(Mic.ok()?'verfügbar':'nicht verfügbar')+' · Stimme: '+(C.tts?'Claude':Voice.useOA()?'OpenAI':'Android')+(!inClaude()?' · Schlüssel: '+(cfg.kO?'eingetragen':'fehlt'):'')}
+function diag(){$('#diag').textContent='Modus: '+(inClaude()?'Test über Claude':'eigenständig')+' · App-Mikro: '+(Mic.ok()?(Mic.useCloud()?'iPhone-Aufnahme':'verfügbar'):'nicht verfügbar')+' · Stimme: '+(C.tts?'Claude':Voice.useOA()?'OpenAI':'Android')+(!inClaude()?' · Schlüssel: '+(cfg.kO?'eingetragen':'fehlt'):'')}
 function fillSettings(){$('#kO').value=cfg.kO;$('#vSel').value=cfg.voice;$('#rem').value=cfg.rem;$('#auto').checked=cfg.auto!==false}
 $('#saveSet').onclick=()=>{cfg={kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',auto:$('#auto').checked};LS.set('lne_cfg2',cfg);toast(cfg.kO?'Gespeichert ✓ Schlüssel ist eingetragen':'Gespeichert ✓');const sb=$('#saveSet');sb.textContent='Gespeichert ✓';sb.classList.add('done');setTimeout(()=>{sb.textContent='Speichern';sb.classList.remove('done')},2500);try{localStorage.removeItem('lne_news')}catch(e){}diag();loadNews()};
 $('#testVoice').onclick=()=>{cfg.voice=$('#vSel').value;cfg.kO=$('#kO').value.trim();speak("Hey, welcome to the show! This is how I sound tonight.")};
