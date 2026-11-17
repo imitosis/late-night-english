@@ -75,9 +75,11 @@ button:focus-visible,textarea:focus-visible,input:focus-visible,.story:focus-vis
 .score{grid-column:1/-1;font-size:14px}
 .good{color:#0a8a4a;font-weight:700}.meh{color:#c2410c;font-weight:700}
 .tabs{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:5}
-.tabs button{background:none;border:0;border-radius:0;min-height:64px;font-size:14px;color:var(--mute);display:grid;place-items:center;gap:2px}
-.tabs button i{width:22px;height:4px;border-radius:4px;background:transparent}
-.tabs button[aria-current=true]{color:var(--ink)}.tabs button[aria-current=true] i{background:var(--blue)}
+.tabs button{background:none;border:0;border-radius:0;min-height:66px;padding:8px 2px 6px;font-size:12px;font-weight:600;color:var(--mute);display:grid;place-items:center;gap:3px}
+.tabs .ti{width:56px;height:30px;border-radius:999px;display:grid;place-items:center;transition:background .2s}
+.tabs .ti svg{width:22px;height:22px}
+.tabs button[aria-current=true]{color:var(--ink)}.tabs button[aria-current=true] .ti{background:var(--soft);color:var(--blue)}
+:root[data-theme=dark] .tabs button[aria-current=true] .ti{color:#9fb0ff}@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .tabs button[aria-current=true] .ti{color:#9fb0ff}}
 .view{display:none}.view.on{display:block}
 .days{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:5px;margin-top:10px}
 .days i{aspect-ratio:1;border-radius:6px;background:var(--line)}.days i.d{background:var(--blue)}
@@ -190,10 +192,10 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 </main>
 
 <nav class="tabs" aria-label="Bereiche">
- <button data-v="home" aria-current="true"><i></i>Show</button>
- <button data-v="gym"><i></i>Phrasen</button>
- <button data-v="mis"><i></i>Mission</button>
- <button data-v="me"><i></i>Ich</button>
+ <button data-v="home" aria-current="true"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>Show</button>
+ <button data-v="gym"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>Phrasen</button>
+ <button data-v="mis"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>Mission</button>
+ <button data-v="me"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>Profil</button>
 </nav>
 
 <script>
@@ -458,7 +460,7 @@ async function loadNews(){
   if(v&&v.items){done(v.items,v.date===d?'heute':'vom '+new Date(v.date).toLocaleDateString('de-AT'))}else{done(FALLBACK,'Beispielthemen')}
   return;
  }
- if(!cfg.kO){done(FALLBACK,'Beispielthemen');$('#news').insertAdjacentHTML('beforeend','<p class="hint">Trag unter „Ich“ den OpenAI-Schlüssel ein, dann kommen hier jeden Morgen die echten Nachrichten.</p>');return}
+ if(!cfg.kO){done(FALLBACK,'Beispielthemen');$('#news').insertAdjacentHTML('beforeend','<p class="hint">Trag unter „Profil“ den OpenAI-Schlüssel ein, dann kommen hier jeden Morgen die echten Nachrichten.</p>');return}
  NEWS=[];$('#newsDate').textContent='wird geladen';
  renderNews([],'Jimmy liest gerade die Zeitung …');
  const t0=Date.now();const tick=setInterval(()=>{if(NEWS.length)return;const s=Math.round((Date.now()-t0)/1000);const el=$('#news .loading');if(el)el.lastChild.textContent=s<8?' Jimmy liest gerade die Zeitung …':s<20?' Er sucht die besten Storys raus …':' Gleich geschafft …'},1000);
@@ -501,7 +503,7 @@ function hostBubble(t){const d=document.createElement('div');d.className='msg ho
 function addMe(t){const d=document.createElement('div');d.className='msg me';d.innerHTML=`<div class="who">Du</div>`;d.append(t);$('#chat').append(d);d.scrollIntoView({behavior:'smooth',block:'end'})}
 function addTip(t){if(!t||!t.better)return;const d=document.createElement('div');d.className='tip';d.innerHTML=`<s>${esc(t.said)}</s> → <b>${esc(t.better)}</b><br><span class="hint">${esc(t.why)}</span><div class="row" style="margin-top:8px"><button class="ib" aria-label="Anhören">${IC.spk}</button><button style="min-height:40px;padding:6px 14px">Merken</button></div>`;const [p,k]=d.querySelectorAll('button');p.onclick=()=>speak(t.better);k.onclick=()=>{keep(t.better,t.why);k.textContent='Gemerkt';k.disabled=true};$('#chat').append(d)}
 function keep(en,de){if(!st.saved.some(p=>p.en===en)){st.saved.unshift({en,de:de||''});save();renderMine();renderStats()}}
-function errLine(e){const c=e&&e.code;return c==='no_key'?'Ohne OpenAI-Schlüssel kann Jimmy nicht antworten. Trag ihn unter „Ich“ ein.':c==='bad_key'?'Der Schlüssel stimmt nicht. Bitte unter „Ich“ prüfen.':c==='no_credit'?'Das Guthaben bei OpenAI ist aufgebraucht oder noch nicht aufgeladen.':c==='rate_limited'?'Kurze Werbepause – bitte gleich nochmal versuchen.':'Verbindung hat nicht geklappt. Nochmal senden?'}
+function errLine(e){const c=e&&e.code;return c==='no_key'?'Ohne OpenAI-Schlüssel kann Jimmy nicht antworten. Trag ihn unter „Profil“ ein.':c==='bad_key'?'Der Schlüssel stimmt nicht. Bitte unter „Profil“ prüfen.':c==='no_credit'?'Das Guthaben bei OpenAI ist aufgebraucht oder noch nicht aufgeladen.':c==='rate_limited'?'Kurze Werbepause – bitte gleich nochmal versuchen.':'Verbindung hat nicht geklappt. Nochmal senden?'}
 async function hostTurn(extra){
  busy=true;Voice.stop();
  const b=hostBubble('…'),tx=b.querySelector('.tx');let spoken=0,full='';
@@ -640,7 +642,7 @@ renderGym();renderMine();renderMission();renderStats();fillSettings();
  if(inClaude())$('#sub').textContent='Testmodus über Claude – die Geschenk-Version läuft eigenständig.';
  if(!inClaude()&&'serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
  if(!inClaude()&&navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{});
- if(!inClaude()&&!cfg.kO)setTimeout(()=>{$('#sub').textContent='Willkommen! Trag zuerst unter „Ich“ den OpenAI-Schlüssel ein.'},0);
+ if(!inClaude()&&!cfg.kO)setTimeout(()=>{$('#sub').textContent='Willkommen! Trag zuerst unter „Profil“ den OpenAI-Schlüssel ein.'},0);
  diag();loadNews();
 })();
 }
