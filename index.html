@@ -98,7 +98,7 @@ button:focus-visible,textarea:focus-visible,input:focus-visible,.story:focus-vis
 .tb{display:inline-flex;align-items:center;gap:8px}.tb svg{width:18px;height:18px}
 .score{grid-column:1/-1;font-size:13px;line-height:1.45}
 .good{color:#6ee7a8;font-weight:700}.meh{color:#ffb86b;font-weight:700}
-.tabs{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#0e0920;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:5}
+.tabs{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:#0e0920;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:5}
 .tabs button{background:none;border:0;border-radius:0;min-height:58px;padding:5px 2px 4px;font-size:11px;letter-spacing:.01em;gap:1px;font-weight:600;color:var(--mute);display:grid;place-items:center;gap:3px}
 .tabs .ti{width:52px;height:28px;border-radius:999px;display:grid;place-items:center;transition:background .2s}
 .tabs .ti svg{width:21px;height:21px}
@@ -816,7 +816,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='44';
+const BUILD='45';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
