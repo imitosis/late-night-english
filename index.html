@@ -130,9 +130,10 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 .ob-reply{display:flex;gap:10px;align-items:flex-end;margin-top:14px}
 .ob-foot .big{width:100%}
 .greet{margin:18px 0 10px}.greet h2{font-size:22px}.greet small{color:var(--mute);font-size:13px}
-.upnext{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.upnext{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:6px}
 .upnext .k{font-size:12px}.upnext h3{font-size:18px;line-height:1.25}.upnext p{margin:0;color:var(--mute);font-size:14px;line-height:1.45}
-.talkbtn{align-self:flex-start;margin-top:8px;min-height:38px;padding:0 15px;border-radius:999px;border:1px solid rgba(76,197,218,.45);background:transparent;color:var(--blue);font-size:14px}
+.talkbtn{align-self:flex-start;margin-top:6px;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid rgba(76,197,218,.45);background:transparent;color:var(--blue);font-size:13px}
+.cards{display:flex;flex-direction:column;gap:10px}
 .more{display:flex;flex-direction:column;gap:8px;margin-top:10px}
 .more .story{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;padding:14px 16px;border-radius:16px;font-weight:600;font-size:15px}
 .chev{color:var(--mute);font-size:20px;line-height:1}
@@ -522,10 +523,9 @@ function normItem(n){
  return out}
 function storyMeta(n,i){const s=(n.shows||[]).filter(Boolean);return s.length?`<span>On ${esc(s.join(', '))}</span>`:''}
 function renderNews(items,state){
- const [top,...rest]=items;
- const up=top?`<article class="upnext"><div class="k">Up next${(top.shows||[]).filter(Boolean).length?' · on '+esc(top.shows.join(', ')):''}</div><h3>${esc(top.title)}</h3><p>${esc(top.gist)}</p><button class="talkbtn" data-n="0">Talk with Jimmy <span aria-hidden="true">→</span></button></article>`:'';
- const list=rest.map((n,i)=>`<button class="story" data-n="${i+1}"><span>${esc(n.title)}</span><span class="chev" aria-hidden="true">›</span></button>`).join('');
- $('#news').innerHTML=up+(list?`<div class="more">${list}</div>`:'')+(state?`<div class="loading"><span class="dots"><i></i><i></i><i></i></span> ${esc(state)}</div>`:'');
+ const card=(n,i)=>{const shows=(n.shows||[]).filter(Boolean);const k=(i===0?'Up next':'')+(shows.length?(i===0?' · ':'')+'On '+esc(shows.join(', ')):'');
+  return `<article class="upnext">${k?`<div class="k">${k}</div>`:''}<h3>${esc(n.title)}</h3><p>${esc(n.gist)}</p><button class="talkbtn" data-n="${i}">Talk with Jimmy <span aria-hidden="true">→</span></button></article>`};
+ $('#news').innerHTML=`<div class="cards">${items.map(card).join('')}</div>`+(state?`<div class="loading"><span class="dots"><i></i><i></i><i></i></span> ${esc(state)}</div>`:'');
 }
 function greet(){const hr=new Date().getHours();$('#greet').textContent=hr<11?'Good morning':hr<17?'Good afternoon':'Good evening'}
 async function loadNews(){
@@ -704,7 +704,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='26';
+const BUILD='27';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
