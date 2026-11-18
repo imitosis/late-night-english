@@ -709,8 +709,8 @@ async function hostTurn(extra){
 function startShow(t,g,opener){
  topic=t;gist=g;hist=[];$('#chat').innerHTML='';
  document.body.classList.add('talking');$('#home').hidden=true;$('#summary').hidden=true;$('#talk').hidden=false;$('#talkTopic').textContent=t;scrollTo(0,0);
- if(opener){const o=`Welcome back, my friend from Austria! ${opener}`;hist.push({r:'host',t:o});hostBubble(o);speak(o)}
- else hostTurn('Open the show: welcome the guest from Austria, make a quick original quip about the topic, then ask how he feels about it. No tip yet: write ###TIP### null.');
+ if(opener){const G=['Goooood evening!!!','Goooood evening, everybody!','Hey hey hey, look who\'s here!','Ladies and gentlemen… my favorite guest!','Welcome back to the show!','Oh, there you are!'];const hr=new Date().getHours(),g0=hr<12?'Goooood morning!!!':hr<17?'Goooood afternoon!!!':G[Math.floor(Math.random()*G.length)];const o=`${Math.random()<.5?g0:G[Math.floor(Math.random()*G.length)].replace('Goooood evening',hr<17?(hr<12?'Goooood morning':'Goooood afternoon'):'Goooood evening')} ${opener}`;hist.push({r:'host',t:o});hostBubble(o);speak(o)}
+ else hostTurn('Open the show: greet the guest with a big, fun late-night style greeting that fits the time of day (vary it, e.g. "Goooood evening!!!"; do NOT say "my friend from Austria"), make a quick original quip about the topic, then ask how he feels about it. No tip yet: write ###TIP### null.');
 }
 async function send(){
  const t=$('#answer').value.trim();if(!t||busy)return;
@@ -810,7 +810,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='42';
+const BUILD='43';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
