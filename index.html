@@ -19,7 +19,7 @@
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 html{overflow-x:hidden}
-body{margin:0;overflow-wrap:anywhere;background:var(--bg);color:var(--ink);font:15px/1.5 "Instrument Sans",system-ui,sans-serif;-webkit-text-size-adjust:100%;overflow-x:clip;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+body{margin:0;overflow-wrap:anywhere;background:var(--bg);color:var(--ink);font:15px/1.5 "Instrument Sans",system-ui,sans-serif;-webkit-text-size-adjust:100%;overflow-x:clip;padding-bottom:calc(64px + env(safe-area-inset-bottom))}
 h1,h2,h3{font-weight:700;line-height:1.15;text-wrap:balance;margin:0;letter-spacing:-.02em}
 h1{font-size:clamp(24px,6.5vw,30px);line-height:1.1}h2{font-size:21px;line-height:1.2}h3{font-size:16.5px;line-height:1.3;letter-spacing:-.01em}
 .serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400}
@@ -56,7 +56,7 @@ button:focus-visible,textarea:focus-visible,input:focus-visible,.story:focus-vis
 .who button{min-height:30px;padding:2px 10px;font-size:13px;border-radius:999px}
 .tip{align-self:stretch;background:var(--soft);border-radius:16px;padding:12px 15px;font-size:14px;line-height:1.45}
 .tip s{color:var(--mute)}.tip b{font-weight:700}
-.dock{position:fixed;left:0;right:0;bottom:calc(66px + env(safe-area-inset-bottom));z-index:4;background:var(--bg);padding:8px max(18px,calc((100% - 644px)/2)) 10px;border-top:1px solid var(--line);box-shadow:0 -8px 20px rgba(16,19,31,.06)}
+.dock{position:fixed;left:0;right:0;bottom:calc(54px + env(safe-area-inset-bottom));z-index:4;background:var(--bg);padding:8px max(18px,calc((100% - 644px)/2)) 10px;border-top:1px solid var(--line);box-shadow:0 -8px 20px rgba(16,19,31,.06)}
 .pill{display:flex;align-items:flex-end;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:6px 6px 6px 16px;box-shadow:0 2px 10px rgba(16,19,31,.06)}
 .pill:focus-within{border-color:var(--blue)}
 .pill textarea{flex:1;border:0;background:transparent;padding:9px 0;min-height:40px;max-height:132px;resize:none;border-radius:0;outline:none;font-size:16px}
@@ -86,9 +86,9 @@ button:focus-visible,textarea:focus-visible,input:focus-visible,.story:focus-vis
 .score{grid-column:1/-1;font-size:13px;line-height:1.45}
 .good{color:#0a8a4a;font-weight:700}.meh{color:#c2410c;font-weight:700}
 .tabs{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:5}
-.tabs button{background:none;border:0;border-radius:0;min-height:66px;padding:8px 2px 6px;font-size:12px;font-weight:600;color:var(--mute);display:grid;place-items:center;gap:3px}
-.tabs .ti{width:56px;height:30px;border-radius:999px;display:grid;place-items:center;transition:background .2s}
-.tabs .ti svg{width:22px;height:22px}
+.tabs button{background:none;border:0;border-radius:0;min-height:54px;padding:6px 2px;font-size:0;font-weight:600;color:var(--mute);display:grid;place-items:center;gap:3px}
+.tabs .ti{width:60px;height:36px;border-radius:999px;display:grid;place-items:center;transition:background .2s}
+.tabs .ti svg{width:24px;height:24px}
 .tabs button[aria-current=true]{color:var(--ink)}.tabs button[aria-current=true] .ti{background:var(--soft);color:var(--blue)}
 :root[data-theme=dark] .tabs button[aria-current=true] .ti{color:#9fb0ff}@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .tabs button[aria-current=true] .ti{color:#9fb0ff}}
 .view{display:none}.view.on{display:block}
@@ -99,10 +99,15 @@ button:focus-visible,textarea:focus-visible,input:focus-visible,.story:focus-vis
 label{display:block;font-weight:600;margin:14px 0 6px}
 .mis{font-size:17px;line-height:1.45;margin:10px 0 16px}
 .talking .hero svg,.talking .hero p,.talking .stats{display:none}.talking .hero{padding-bottom:14px}.talking h1{font-size:22px}
-#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#10131f;color:#fff;padding:12px 18px;border-radius:999px;font-weight:600;opacity:0;transition:.2s;z-index:9;pointer-events:none;white-space:nowrap}#toast.on{opacity:1;transform:translate(-50%,0)}
+#toast{position:fixed;left:50%;bottom:calc(72px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#10131f;color:#fff;padding:12px 18px;border-radius:999px;font-weight:600;opacity:0;transition:.2s;z-index:9;pointer-events:none;white-space:nowrap}#toast.on{opacity:1;transform:translate(-50%,0)}
 .loading{display:flex;align-items:center;gap:10px;color:var(--mute);padding:14px 4px}.dots{display:inline-flex;gap:4px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--blue);animation:bl 1s infinite}.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}@keyframes bl{50%{opacity:.25;transform:translateY(-3px)}}@media(prefers-reduced-motion:reduce){.dots i{animation:none}}
 .k{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--blue);font-weight:600}.cat{width:26px;height:26px;border-radius:8px;background:var(--soft);display:grid;place-items:center}.cat svg{width:16px;height:16px}
 #briefSrc a{color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.talking .tabs,.talking .hero{display:none}
+.talking{padding-bottom:env(safe-area-inset-bottom)}
+.talking .dock{bottom:0;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+.talking #talk>.sec,.talking #brief>.sec{position:sticky;top:0;z-index:3;background:var(--bg);margin:0;padding:12px 0 10px;border-bottom:1px solid var(--line)}
 .skel{height:86px;border-radius:20px;background:var(--line);margin:10px 0;opacity:.5}
 </style>
 </head>
@@ -154,7 +159,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
   <p class="hint">Tip: read it once, then tell Jimmy in your own words.</p>
  </div>
  <div id="talk" hidden>
-  <div class="sec"><small id="talkTopic"></small><button id="end" style="white-space:nowrap;min-height:38px;padding:6px 14px;font-size:14px">End show</button></div>
+  <div class="sec"><small id="talkTopic"></small><button id="end" style="white-space:nowrap;min-height:38px;padding:6px 14px;font-size:14px">✕ End show</button></div>
   <div class="chat" id="chat" aria-live="polite"></div>
   <div class="dock" id="dock">
    <div class="live" id="live">Tap the mic, or start conversation mode.</div>
@@ -206,10 +211,10 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 </main>
 
 <nav class="tabs" aria-label="Bereiche">
- <button data-v="home" aria-current="true"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>Show</button>
- <button data-v="gym"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>Phrases</button>
- <button data-v="mis"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>Mission</button>
- <button data-v="me"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>Profile</button>
+ <button data-v="home" aria-current="true" aria-label="Show"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><span class="sr">Show</span></button>
+ <button data-v="gym" aria-label="Phrases"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="sr">Phrases</span></button>
+ <button data-v="mis" aria-label="Mission"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><span class="sr">Mission</span></button>
+ <button data-v="me" aria-label="Profile"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><span class="sr">Profile</span></button>
 </nav>
 
 <script>
@@ -600,7 +605,7 @@ $('#end').onclick=async()=>{
  if(!hist.some(h=>h.r==='me')){document.body.classList.remove('talking');$('#talk').hidden=true;$('#home').hidden=false;return}
  busy=true;$('#end').textContent='One sec …';
  let r=null;try{r=await ai(`An Austrian learner finished a spoken English practice chat with a late-night host about "${topic}".\nTranscript:\n${transcript()}\n\nFormat: {"praise":"one encouraging, specific sentence in simple English","phrases":[{"en":"natural phrase for this kind of chat, ideally an improved version of something they tried to say","de":"German meaning"}],"next":"one concrete speaking task for outside the app, simple English, max 25 words"} with exactly 3 phrases.`)}catch(e){}
- busy=false;$('#end').textContent='End show';st.shows++;mark();
+ busy=false;$('#end').textContent='✕ End show';st.shows++;mark();
  document.body.classList.remove('talking');$('#talk').hidden=true;const s=$('#summary');s.hidden=false;
  const ps=(r&&r.phrases)||[];ps.forEach(p=>keep(p.en,p.de));
  s.innerHTML=`<div class="sec"><h2>That's a wrap!</h2></div><div class="card"><p style="margin-top:0">${esc((r&&r.praise)||'Nice work – every show counts.')}</p>${ps.length?'<h3>Your 3 phrases from today</h3>':''}${ps.map(p=>`<div class="ph"><div class="en">${esc(p.en)}</div><div class="de">${esc(p.de)}</div><div class="acts"><button class="ib" data-say="${esc(p.en)}" aria-label="Listen">${IC.spk}</button></div></div>`).join('')}${r&&r.next?`<p><span class="badge">Bonus mission</span> ${esc(r.next)}</p>`:''}</div><button class="pri big" id="again">Next story</button>`;
