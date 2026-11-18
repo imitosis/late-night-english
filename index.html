@@ -187,7 +187,7 @@ details.card[open]>summary::after{transform:rotate(-135deg)}
   <div class="streak" id="stats"></div>
  </div>
  <p id="sub" class="wrap hint" hidden></p>
- <svg class="studio" viewBox="72 16 260 100" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Neon late-night studio with host Jimmy at his desk">
+ <svg class="studio" viewBox="44 18 310 119.2" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Neon late-night studio with host Jimmy at his desk">
 <defs><filter id="gh" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <filter id="sh" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
 <linearGradient id="skyh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0716"/><stop offset="1" stop-color="#492e7e"/></linearGradient>
@@ -808,7 +808,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='40';
+const BUILD='41';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
