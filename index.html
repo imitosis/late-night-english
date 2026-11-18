@@ -151,6 +151,10 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 .more{display:flex;flex-direction:column;gap:8px;margin-top:10px}
 .more .story{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;padding:14px 16px;border-radius:16px;font-weight:600;font-size:15px}
 .me.pending{padding:12px 16px}.me.pending .dots i{background:var(--on)}
+.pill{position:relative}
+.wave{position:absolute;left:16px;right:100px;top:0;bottom:0;display:none;align-items:center;gap:3px;pointer-events:none}
+.recording .wave{display:flex}.recording #answer{opacity:0}
+.wave i{flex:1;max-width:4px;min-height:3px;height:3px;border-radius:3px;background:var(--blue);transition:height .09s linear;opacity:.9}
 .chev{color:var(--mute);font-size:20px;line-height:1}
 .chathead{justify-content:space-between;align-items:center}
 .ch{display:flex;align-items:center;gap:10px;min-width:0}.cht{display:flex;flex-direction:column;min-width:0}.cht b{font-size:15px}.cht small{color:var(--mute);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:56vw}
@@ -220,6 +224,7 @@ details.card[open]>summary::after{transform:rotate(-135deg)}
   <div class="dock" id="dock">
    <div class="live" id="live">Tap the mic, or start conversation mode.</div>
    <div class="pill">
+    <div class="wave" id="wave" aria-hidden="true"></div>
     <textarea id="answer" rows="1" placeholder="Reply to Jimmy …"></textarea>
     <button class="pb" id="mic" aria-label="Dictate once"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></button>
     <button class="pb main" id="convo" aria-label="Conversation mode: hands-free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"/></svg></button>
@@ -432,6 +437,13 @@ function speak(t){Voice.stop();splitSentences(t).forEach(s=>Voice.add(s))}
 function splitSentences(t){return(t.match(/[^.!?…]+[.!?…]+["')\]]*|\S[^.!?…]*$/g)||[t]).map(s=>s.trim()).filter(Boolean)}
 
 /* ---------- voice in ---------- */
+/* live level meter: a scrolling waveform while recording */
+const Wave={el:null,bars:[],on:false,
+ init(){this.el=$('#wave');if(!this.el)return;this.el.innerHTML='<i></i>'.repeat(40);this.bars=[...this.el.children]},
+ start(){if(!this.el)this.init();this.on=true;$('.pill').classList.add('recording');this.bars.forEach(b=>b.style.height='3px')},
+ push(level){if(!this.on||!this.bars.length)return;for(let i=0;i<this.bars.length-1;i++)this.bars[i].style.height=this.bars[i+1].style.height;
+  this.bars[this.bars.length-1].style.height=Math.max(3,Math.min(30,Math.round(level*30)))+'px'},
+ stop(){this.on=false;const p=$('.pill');if(p)p.classList.remove('recording')}};
 const IOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 /* iPhone: record + OpenAI transcription, stops by itself after a short silence */
 const Cloud={rec:null,stream:null,ctx:null,timer:null,
@@ -443,20 +455,23 @@ const Cloud={rec:null,stream:null,ctx:null,timer:null,
    this.stream=stream;const chunks=[];let mr;try{mr=new MediaRecorder(stream,{audioBitsPerSecond:32000})}catch(e){mr=new MediaRecorder(stream)}this.rec=mr;
    mr.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
    mr.onstop=async()=>{
-    stream.getTracks().forEach(t=>t.stop());clearInterval(this.timer);try{src.disconnect()}catch(e){}
+    stream.getTracks().forEach(t=>t.stop());clearInterval(this.timer);Wave.stop();try{src.disconnect()}catch(e){}
     M.state(false);
-    if(!spoke){M.partial&&M.partial('Didn\'t hear anything – tap the mic again.');M.end=null;return}
+    if(!spoke){M.partial&&M.partial('I didn\'t hear you – check the mic and tap again.');M.end=null;M.unsent&&M.unsent();return}
     M.partial&&M.partial('Got it …');M.sending&&M.sending();
     try{const t=await transcribe(new Blob(chunks,{type:mr.mimeType||'audio/mp4'}));if(t){M.cb&&M.cb(t)}else{M.unsent&&M.unsent()}}catch(e){M.unsent&&M.unsent();M.partial&&M.partial(errLine(e))}
     const f=M.end;M.end=null;f&&f();
    };
    const src=ctx.createMediaStreamSource(stream),an=ctx.createAnalyser();an.fftSize=1024;src.connect(an);
-   const buf=new Float32Array(an.fftSize);let spoke=false,quiet=0,t0=Date.now();
-   this.spoke=()=>spoke;
+   const buf=new Float32Array(an.fftSize);let spoke=false,quiet=0,t0=Date.now(),floor=0,n=0;
+   this.spoke=()=>spoke;Wave.start();
    this.timer=setInterval(()=>{
     an.getFloatTimeDomainData(buf);let s=0;for(const x of buf)s+=x*x;const rms=Math.sqrt(s/buf.length);
-    if(rms>0.02){spoke=true;quiet=0}else quiet+=100;
-    M.partial&&M.partial(spoke?'Listening '+'●'.repeat(Math.min(6,Math.round(rms*120))):'Listening … just start talking.');
+    if(n<4){floor=(floor*n+rms)/(n+1);n++}
+    const thr=Math.max(0.008,floor*2.6);
+    Wave.push(Math.min(1,rms/Math.max(thr*4,0.05)));
+    if(rms>thr){spoke=true;quiet=0}else quiet+=100;
+    M.partial&&M.partial(spoke?'Listening … pause when you’re done.':'Listening … just start talking.');
     if((spoke&&quiet>(convo?2000:2800))||Date.now()-t0>45000||(!spoke&&Date.now()-t0>9000))this.stop();
    },100);
    mr.start();M.state(true);
@@ -486,10 +501,10 @@ const Mic={on:false,cb:null,partial:null,end:null,rec:null,
   if(C.dic){C.dic.start().catch(e=>{if(e&&e.code==='not_granted')C.dic=null;this.state(false);document.dispatchEvent(new Event('micfail'))});return}
   if(!SRC)return;
   const r=new SRC();r.lang='en-US';r.interimResults=true;r.continuous=true;r.maxAlternatives=1;let qt=null;const arm=()=>{clearTimeout(qt);qt=setTimeout(()=>{try{r.stop()}catch(e){}},2800)};r.onspeechstart=arm;r.onaudiostart=()=>{qt=setTimeout(()=>{try{r.stop()}catch(e){}},9000)};
-  r.onresult=e=>{arm();let p='';for(let i=e.resultIndex;i<e.results.length;i++){const x=e.results[i];if(x.isFinal){this.cb&&this.cb(x[0].transcript.trim())}else p+=x[0].transcript}this.partial&&this.partial(p)};
-  r.onend=()=>{this.state(false);const f=this.end;this.end=null;f&&f()};
+  r.onaudiostart2=null;r.onresult=e=>{arm();Wave.push(.5+Math.random()*.5);let p='';for(let i=e.resultIndex;i<e.results.length;i++){const x=e.results[i];if(x.isFinal){this.cb&&this.cb(x[0].transcript.trim())}else p+=x[0].transcript}this.partial&&this.partial(p)};
+  r.onend=()=>{Wave.stop();clearInterval(this.wt);this.state(false);const f=this.end;this.end=null;f&&f()};
   r.onerror=e=>{if(e&&/not-allowed|service-not-allowed|audio-capture/.test(e.error)){this.end=null;document.dispatchEvent(new Event('micfail'))}};
-  this.rec=r;try{r.start();this.state(true)}catch(e){this.state(false)}
+  this.rec=r;try{r.start();this.state(true);Wave.start();clearInterval(this.wt);let sp=false;r.onspeechstart=()=>{sp=true;arm()};r.onspeechend=()=>{sp=false};this.wt=setInterval(()=>{if(!Wave.on){clearInterval(this.wt);return}Wave.push(sp?.25+Math.random()*.6:.04)},100)}catch(e){this.state(false)}
  },
  stop(){if(this.useCloud()){Cloud.stop();return}if(C.dic)C.dic.stop().catch(()=>{});if(this.rec)try{this.rec.stop()}catch(e){}},
  state(on){this.on=on;document.dispatchEvent(new CustomEvent('mic',{detail:on}))}
@@ -756,7 +771,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='34';
+const BUILD='35';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
