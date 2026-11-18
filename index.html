@@ -34,6 +34,11 @@ h1{font-size:clamp(24px,6.5vw,30px);line-height:1.1}h2{font-size:21px;line-heigh
 .biglogo{position:relative;display:inline-block;transform:rotate(-4deg);padding-top:30px;margin:6px 0 4px 12px}
 .biglogo .stampw{font-size:58px;padding:8px 16px 3px;border-width:4px;border-radius:7px;transform:none;display:inline-block}
 .biglogo .ln{position:absolute;left:-12px;top:0;font-size:36px;transform:rotate(-5deg)}
+.ttl{display:flex;flex-direction:column;gap:1px;min-width:0}
+.ttl small{font-size:12px;font-weight:600;color:var(--mute);letter-spacing:.01em}
+.ttl b{font-size:22px;line-height:1.15;letter-spacing:-.02em}
+.newsline{margin:16px 0 12px;color:var(--mute);font-size:13px}
+body:not([data-tab=home]) .view>.card:first-child,body:not([data-tab=home]) .view>.statrow:first-child,body:not([data-tab=home]) .view>.hint:first-child{margin-top:16px}
 .streak{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:14px;font-weight:700;color:var(--lime);white-space:nowrap}
 .studio{display:block;width:calc(100% - 36px);max-width:644px;height:auto;aspect-ratio:390/150;margin:4px auto 0;border-radius:18px}
 body:not([data-tab=home]) .studio{display:none}
@@ -160,7 +165,7 @@ details.card[open]>summary::after{transform:rotate(-135deg)}
 <body data-tab="home">
 <header class="hero">
  <div class="wrap topbar">
-  <h1 class="sr">Late Night English</h1><span></span>
+  <h1 class="sr">Late Night English</h1><div class="ttl"><small id="kick"></small><b id="ttl">Good evening</b></div>
   <div class="streak" id="stats"></div>
  </div>
  <p id="sub" class="wrap hint" hidden></p>
@@ -186,7 +191,7 @@ details.card[open]>summary::after{transform:rotate(-135deg)}
 <main class="wrap">
 <section id="v-home" class="view on">
  <div id="home">
-  <div class="greet"><h2 id="greet">Good evening</h2><small id="newsDate"></small></div>
+  <p class="newsline" id="newsDate"></p>
   <div id="news"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
   <div class="card">
    <h3>Your own topic</h3>
@@ -225,19 +230,19 @@ details.card[open]>summary::after{transform:rotate(-135deg)}
 </section>
 
 <section id="v-gym" class="view">
- <div class="sec"><h2>Phrase Gym</h2></div>
+ 
  <p class="hint">Listen, say it out loud, get feedback. Phrases from your shows appear at the top.</p>
  <div id="mine"></div><div id="phr"></div>
 </section>
 
 <section id="v-mis" class="view">
- <div class="sec"><h2>Today's mission</h2><small id="misDate"></small></div>
+ <small id="misDate" hidden></small>
  <div class="card"><span class="badge">Off the app</span><p class="mis" id="misText"></p><button id="misDone" class="pri big">Mark as done</button></div>
  <p class="hint">A new real-life speaking task every day. Completed missions count towards your streak.</p>
 </section>
 
 <section id="v-me" class="view">
- <div class="sec"><h2>Your progress</h2></div>
+ 
  <div class="statrow"><div class="stile"><b id="stStreak">0</b><span>day streak</span></div><div class="stile"><b id="stShows">0</b><span>shows</span></div><div class="stile"><b id="stPhr">0</b><span>phrases</span></div></div>
  <div class="card"><h3>Last 14 days</h3><div class="days" id="days"></div><p class="hint" id="meTxt" style="margin-bottom:0"></p></div>
  <details class="card" id="setCard">
@@ -513,7 +518,7 @@ Reply JSON only: {"score":0-100,"joke":"one short playful English line reacting 
 /* ---------- tabs ---------- */
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-current',x===b));
- document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));document.body.dataset.tab=b.dataset.v;
+ document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));document.body.dataset.tab=b.dataset.v;greet();
  scrollTo(0,0);
 });
 
@@ -545,7 +550,10 @@ function renderNews(items,state){
   return `<article class="upnext">${k?`<div class="k">${k}</div>`:''}<h3>${esc(n.title)}</h3><p>${esc(n.gist)}</p><button class="talkbtn" data-n="${i}">Talk with Jimmy <span aria-hidden="true">→</span></button></article>`};
  $('#news').innerHTML=`<div class="cards">${items.map(card).join('')}</div>`+(state?`<div class="loading"><span class="dots"><i></i><i></i><i></i></span> ${esc(state)}</div>`:'');
 }
-function greet(){const hr=new Date().getHours();$('#greet').textContent=hr<11?'Good morning':hr<17?'Good afternoon':'Good evening'}
+const TITLES={home:null,gym:'Phrase Gym',mis:"Today's mission",me:'Your progress'};
+function greet(){const v=document.body.dataset.tab||'home';const hr=new Date().getHours();
+ $('#kick').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});
+ $('#ttl').textContent=TITLES[v]||(hr<11?'Good morning':hr<17?'Good afternoon':'Good evening')}
 async function loadNews(){
  const d=today();
  const cached=LS.get('lne_news2',null);
@@ -723,7 +731,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='30';
+const BUILD='31';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
