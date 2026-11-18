@@ -147,6 +147,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 .upnext .k{font-size:12px}.upnext h3{font-size:18px;line-height:1.25}.upnext p{margin:0;color:var(--mute);font-size:14px;line-height:1.45}
 .talkbtn{align-self:flex-start;margin-top:6px;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid rgba(76,197,218,.45);background:transparent;color:var(--blue);font-size:13px}
 .cards{display:flex;flex-direction:column;gap:10px}
+.morebtn{display:block;margin:14px auto 4px;color:var(--blue);border-color:rgba(76,197,218,.45)}
 .more{display:flex;flex-direction:column;gap:8px;margin-top:10px}
 .more .story{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;padding:14px 16px;border-radius:16px;font-weight:600;font-size:15px}
 .chev{color:var(--mute);font-size:20px;line-height:1}
@@ -349,6 +350,13 @@ const inClaude=()=>!!C.sample;
 const OA='https://api.openai.com/v1/';
 const MODEL='gpt-6-luna';
 const oaHead=()=>({'content-type':'application/json',authorization:'Bearer '+cfg.kO});
+function jsonObjects(t){const out=[];let depth=0,start=-1,inStr=false,esc2=false;
+ for(let i=0;i<t.length;i++){const c=t[i];
+  if(inStr){if(esc2)esc2=false;else if(c==='\\')esc2=true;else if(c==='"')inStr=false;continue}
+  if(c==='"'){inStr=true;continue}
+  if(c==='{'){if(depth===0)start=i;depth++}
+  else if(c==='}'){depth--;if(depth===0&&start>=0){out.push(t.slice(start,i+1));start=-1}}}
+ return out}
 function pickJSON(t){const a=t.indexOf('{'),b=t.lastIndexOf('}');if(a<0||b<a)throw{code:'bad_json'};return JSON.parse(t.slice(a,b+1))}
 function httpErr(r){return{code:r.status===401?'bad_key':r.status===429?'rate_limited':r.status===402||r.status===403?'no_credit':'http_'+r.status}}
 function outText(j){return(j.output||[]).filter(o=>o.type==='message').flatMap(o=>o.content||[]).filter(c=>c.type==='output_text').map(c=>c.text).join('')}
@@ -525,7 +533,7 @@ document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
 /* ---------- news ---------- */
 let NEWS=[];
 const NEWS_PROMPT=()=>`Today is ${new Date().toDateString()}. Find out which news topics the US late-night shows joked about in their most recent monologues: Jimmy Kimmel Live, The Tonight Show with Jimmy Fallon and Late Night with Seth Meyers. Use recaps of last night's monologues if available; if there were no new episodes, use the biggest news of the last day instead.
-Pick 5 different topics (at least 2 US politics, ideally 1 from Europe or Austria if any show touched it, 1 lighter one). For each topic, report the FACTS from news coverage (not the jokes, do not quote the hosts).
+Pick 8 different topics (at least 3 US politics, 1 business or economy, 1 tech, ideally 1 from Europe or Austria if any show touched it, 1 lighter one). For each topic, report the FACTS from news coverage (not the jokes, do not quote the hosts).
 For each:
 "title" (max 8 words, plain English),
 "gist" (1 short teaser sentence),
@@ -536,7 +544,7 @@ For each:
 "source" ({"name":"news outlet","url":"exact article URL from your search results"}),
 "host_open" (how the host starts the chat: one short original quip or personal thought about what happened, then ONE question about the guest's opinion or feelings, e.g. "How do you feel about that?", "Did that surprise you?", "How does that look from Austria?". Never ask "What would you do".)
 Never put links, URLs or citations inside title, gist, summary or host_open; the article link goes only into "source".
-Output format: exactly 5 lines, one story per line, each line one compact JSON object with these keys. No array, no markdown, no other text.`;
+Output format: exactly 8 lines, one story per line, each line one compact JSON object with these keys. No array, no markdown, no other text.`;
 function cleanTxt(s){return String(s||'').replace(/\(\s*\[[^\]]*\]\([^)]*\)\s*\)/g,'').replace(/\[([^\]]*)\]\([^)]*\)/g,'$1').replace(/\(?https?:\/\/[^\s)]+\)?/g,'').replace(/\s+([.,!?])/g,'$1').replace(/\s{2,}/g,' ').trim()}
 function normItem(n){
  const raw=[n.summary,n.gist,n.title].join(' ');const m=raw.match(/\]\((https?:\/\/[^)\s]+)\)/)||raw.match(/https?:\/\/[^\s)]+/);
@@ -548,7 +556,7 @@ function storyMeta(n,i){const s=(n.shows||[]).filter(Boolean);return s.length?`<
 function renderNews(items,state){
  const card=(n,i)=>{const shows=(n.shows||[]).filter(Boolean);const k=(i===0?'Up next':'')+(shows.length?(i===0?' · ':'')+'On '+esc(shows.join(', ')):'');
   return `<article class="upnext">${k?`<div class="k">${k}</div>`:''}<h3>${esc(n.title)}</h3><p>${esc(n.gist)}</p><button class="talkbtn" data-n="${i}">Talk with Jimmy <span aria-hidden="true">→</span></button></article>`};
- $('#news').innerHTML=`<div class="cards">${items.map(card).join('')}</div>`+(state?`<div class="loading"><span class="dots"><i></i><i></i><i></i></span> ${esc(state)}</div>`:'');
+ $('#news').innerHTML=`<div class="cards">${items.map(card).join('')}</div>`+(!state&&items.length&&!inClaude()&&cfg.kO?`<button id="moreNews" class="morebtn">More stories</button>`:'')+(state?`<div class="loading"><span class="dots"><i></i><i></i><i></i></span> ${esc(state)}</div>`:'');
 }
 const TITLES={home:null,gym:'Phrase Gym',mis:"Today's mission",me:'Your progress'};
 function greet(){const v=document.body.dataset.tab||'home';const hr=new Date().getHours();
@@ -558,7 +566,7 @@ async function loadNews(){
  const d=today();
  const cached=LS.get('lne_news2',null);
  const done=(items,label)=>{items=items.map(normItem);NEWS=items;$('#newsDate').textContent=(label==='sample topics'?items.length+' sample topics':items.length+' stories '+(label==='today'?'today':label))+' · about '+Math.max(5,items.length*2)+' min';renderNews(items,'')};
- if(cached&&cached.date===d&&cached.items&&cached.items.length){done(cached.items,'today');return}
+ if(cached&&cached.date===d&&cached.items&&cached.items.length>=5){done(cached.items,'today');return}
  if(inClaude()){
   let v=null;if(DB){try{const s=await DB.doc('news/today').get();v=s&&(typeof s.data==='function'?s.data():(s.data??s))}catch(e){}}
   if(v&&v.items){done(v.items,v.date===d?'today':'from '+new Date(v.date).toLocaleDateString('en-GB'))}else{done(FALLBACK,'sample topics')}
@@ -567,22 +575,28 @@ async function loadNews(){
  if(!cfg.kO){done(FALLBACK,'sample topics');$('#news').insertAdjacentHTML('beforeend','<p class="hint">Add your OpenAI key under Profile to get real news here every morning.</p>');return}
  /* 1) daily file prepared each morning on GitHub: instant */
  try{const r=await fetch('https://raw.githubusercontent.com/imitosis/late-night-english/main/news.json?d='+d,{cache:'no-store'});
-  if(r.ok){const j=await r.json();if(j&&j.date===d&&j.items&&j.items.length){LS.set('lne_news2',j);done(j.items,'today');return}}}catch(e){}
+  if(r.ok){const j=await r.json();if(j&&j.date===d&&j.items&&j.items.length>=5){LS.set('lne_news2',j);done(j.items,'today');return}}}catch(e){}
  /* 2) fallback: search on the phone */
  NEWS=[];$('#newsDate').textContent='loading';
  renderNews([],'Jimmy is reading the paper …');
  const t0=Date.now();const tick=setInterval(()=>{if(NEWS.length)return;const s=Math.round((Date.now()-t0)/1000);const el=$('#news .loading');if(el)el.lastChild.textContent=s<8?' Jimmy is reading the paper …':s<20?' Picking the best stories …':' Almost there …'},1000);
- let parsed=0;
- const onText=t=>{const lines=t.split('\n');const complete=lines.slice(0,-1);
-  for(let i=parsed;i<complete.length;i++){parsed=i+1;try{const it=normItem(pickJSON(complete[i]));if(it.title){NEWS.push(it);renderNews(NEWS,NEWS.length<5?'Next story coming …':'')}}catch(e){}}};
- try{const full=await aiStream(NEWS_PROMPT(),onText,{search:true,effort:'low',max:4000});
-  const last=full.split('\n').slice(parsed).join('\n').trim();if(last){try{const it=normItem(pickJSON(last));if(it.title)NEWS.push(it)}catch(e){}}}
+ let seen=0;
+ const take=t=>{const objs=jsonObjects(t);for(let i=seen;i<objs.length;i++){seen=i+1;try{const it=normItem(JSON.parse(objs[i]));if(it.title&&!NEWS.some(n=>n.title===it.title)){NEWS.push(it);renderNews(NEWS,NEWS.length<8?'Next story coming …':'')}}catch(e){}}};
+ try{const full=await aiStream(NEWS_PROMPT(),take,{search:true,effort:'low',max:6000});take(full)}
  catch(e){clearInterval(tick);if(!NEWS.length){done(FALLBACK,'sample topics');$('#news').insertAdjacentHTML('beforeend',`<p class="hint">${esc(errLine(e))}</p>`);return}}
  clearInterval(tick);
  if(NEWS.length){LS.set('lne_news2',{date:d,items:NEWS});done(NEWS,'today')}else done(FALLBACK,'sample topics');
 }
 let briefN=null;
-$('#news').onclick=e=>{const b=e.target.closest('[data-n]');if(b)showBrief(+b.dataset.n)};
+async function moreNews(btn){
+ btn.disabled=true;btn.textContent='Jimmy is digging up more …';
+ const have=NEWS.map(n=>n.title).join(' | ');
+ const before=NEWS.length;
+ try{await aiStream(NEWS_PROMPT().replace('Pick 8 different topics','Pick 4 MORE different topics (not these: '+have+')').replace('exactly 8 lines','exactly 4 lines'),t=>{const objs=jsonObjects(t);for(const o of objs){try{const it=normItem(JSON.parse(o));if(it.title&&!NEWS.some(n=>n.title===it.title))NEWS.push(it)}catch(e){}}},{search:true,effort:'low',max:3500})}catch(e){}
+ if(NEWS.length>before){LS.set('lne_news2',{date:today(),items:NEWS})}
+ renderNews(NEWS,'');$('#newsDate').textContent=NEWS.length+' stories today · about '+Math.max(5,NEWS.length*2)+' min';if(NEWS.length===before){const b=$('#moreNews');if(b){b.textContent='No more stories right now';b.disabled=true}}
+}
+$('#news').onclick=e=>{if(e.target.closest('#moreNews')){moreNews(e.target.closest('#moreNews'));return}const b=e.target.closest('[data-n]');if(b)showBrief(+b.dataset.n)};
 function showBrief(i){
  const n=NEWS[i];briefN=n;
  $('#briefNo').textContent='';
@@ -731,7 +745,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='31';
+const BUILD='32';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();

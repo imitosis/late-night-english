@@ -39,13 +39,28 @@ def clean(t):
     t = re.sub(r"\(?https?://[^\s)]+\)?", "", t)
     return re.sub(r"\s{2,}", " ", t).strip()
 
+def objects(t):
+    out, depth, start, in_str, esc = [], 0, -1, False, False
+    for i, c in enumerate(t):
+        if in_str:
+            if esc: esc = False
+            elif c == "\\": esc = True
+            elif c == '"': in_str = False
+            continue
+        if c == '"': in_str = True
+        elif c == "{":
+            if depth == 0: start = i
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0 and start >= 0:
+                out.append(t[start:i + 1]); start = -1
+    return out
+
 items = []
-for line in text.splitlines():
-    line = line.strip()
-    if not line.startswith("{"):
-        continue
+for raw in objects(text):
     try:
-        it = json.loads(line)
+        it = json.loads(raw)
     except json.JSONDecodeError:
         continue
     if it.get("title") and it.get("summary"):
@@ -53,9 +68,9 @@ for line in text.splitlines():
             it[k] = clean(it.get(k, ""))
         items.append(it)
 
-if len(items) < 3:
+if len(items) < 5:
     sys.exit(f"Zu wenige Storys gefunden ({len(items)}), news.json bleibt unverändert.")
 
-json.dump({"date": now.strftime("%Y-%m-%d"), "items": items[:5]},
+json.dump({"date": now.strftime("%Y-%m-%d"), "items": items[:8]},
           open("news.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-print(f"{len(items[:5])} Storys gespeichert.")
+print(f"{len(items[:8])} Storys gespeichert.")
