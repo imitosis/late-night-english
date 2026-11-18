@@ -150,11 +150,18 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 .morebtn{display:block;margin:14px auto 4px;color:var(--blue);border-color:rgba(76,197,218,.45)}
 .more{display:flex;flex-direction:column;gap:8px;margin-top:10px}
 .more .story{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;padding:14px 16px;border-radius:16px;font-weight:600;font-size:15px}
-.me.pending{padding:12px 16px}.me.pending .dots i{background:var(--on)}
+.me.pending{display:flex;align-items:center;gap:10px;padding:10px 14px}
+.vm{display:flex;align-items:center;gap:2px;height:24px}.vm i{width:2.5px;border-radius:2px;background:var(--on);opacity:.75;animation:vmp 1.2s ease-in-out infinite}
+.vm i:nth-child(odd){animation-delay:.2s}@keyframes vmp{50%{opacity:.35}}
+.vmt{font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums}
 .pill{position:relative}
-.wave{position:absolute;left:16px;right:100px;top:0;bottom:0;display:none;align-items:center;gap:3px;pointer-events:none}
+.rec{position:absolute;left:16px;top:0;bottom:0;display:none;align-items:center;gap:7px;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);pointer-events:none}
+.recdot{width:8px;height:8px;border-radius:50%;background:var(--blue);animation:pulse 1.1s infinite}
+.recording .rec{display:flex}
+.wave{position:absolute;left:66px;right:100px;top:0;bottom:0;display:none;align-items:center;justify-content:flex-end;gap:2px;pointer-events:none;overflow:hidden}
 .recording .wave{display:flex}.recording #answer{opacity:0}
-.wave i{flex:1;max-width:4px;min-height:3px;height:3px;border-radius:3px;background:var(--blue);transition:height .09s linear;opacity:.9}
+.wave i{flex:none;width:2.5px;min-height:3px;height:3px;border-radius:2px;background:var(--blue);transition:height .09s linear}
+.pausehint{align-self:flex-start;margin-left:42px;color:var(--mute);font-size:13px;font-style:italic}
 .chev{color:var(--mute);font-size:20px;line-height:1}
 .chathead{justify-content:space-between;align-items:center}
 .ch{display:flex;align-items:center;gap:10px;min-width:0}.cht{display:flex;flex-direction:column;min-width:0}.cht b{font-size:15px}.cht small{color:var(--mute);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:56vw}
@@ -224,6 +231,7 @@ details.card[open]>summary::after{transform:rotate(-135deg)}
   <div class="dock" id="dock">
    <div class="live" id="live">Tap the mic, or start conversation mode.</div>
    <div class="pill">
+    <div class="rec" aria-hidden="true"><span class="recdot"></span><span id="recTime">0:00</span></div>
     <div class="wave" id="wave" aria-hidden="true"></div>
     <textarea id="answer" rows="1" placeholder="Reply to Jimmy …"></textarea>
     <button class="pb" id="mic" aria-label="Dictate once"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></button>
@@ -414,7 +422,7 @@ const Voice={q:[],playing:null,gen:0,
   if(C.tts){C.tts.add([{text,language:'en'}]).catch(()=>{});return}
   if(this.useOA()){
    const g=this.gen;
-   const p=fetch(OA+'audio/speech',{method:'POST',headers:oaHead(),body:JSON.stringify({model:'gpt-4o-mini-tts',voice:'ash',input:text,response_format:'mp3',instructions:'Energetic American late-night talk show host bantering with a guest. Brisk, punchy pace like on TV, lively emphasis, a smile in the voice. Do not drag words or pause too long.'})}).then(r=>r.ok?r.blob():null).catch(()=>null);
+   const p=fetch(OA+'audio/speech',{method:'POST',headers:oaHead(),body:JSON.stringify({model:'gpt-4o-mini-tts',voice:'ash',input:text,response_format:'mp3',instructions:'Energetic American late-night talk show host bantering with a guest. Lively emphasis and a smile in the voice. Keep one steady, natural conversational tempo the whole time, never rushing or speeding up, the same speed for short and long lines.'})}).then(r=>r.ok?r.blob():null).catch(()=>null);
    this.q.push({p,text,g});this.pump();return;
   }
   try{const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=Math.min(1.5,(cfg.rate||1.3)*.95);const v=bestVoice();if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}
@@ -427,7 +435,7 @@ const Voice={q:[],playing:null,gen:0,
   if(!b){this.playing=null;cfgFallback(it.text);return this.pump()}
   const a=player;it.a=a;if(a._u)URL.revokeObjectURL(a._u);a._u=URL.createObjectURL(b);a.src=a._u;a.playbackRate=cfg.rate||1.3;a.preservesPitch=true;
   a.onended=a.onerror=()=>{this.playing=null;this.pump()};
-  a.play().catch(()=>{this.playing=null;cfgFallback(it.text);this.pump()});
+  a.play().then(()=>{const f=this.onFirst;this.onFirst=null;f&&f()}).catch(()=>{this.playing=null;cfgFallback(it.text);this.pump()});
  },
  busy(){let s=false;try{s=speechSynthesis.speaking}catch(e){}return !!(this.playing||this.q.length||s)},
  stop(){this.gen++;this.q=[];if(this.playing&&this.playing.a)this.playing.a.pause();this.playing=null;try{C.tts&&C.tts.stop()}catch(e){}try{speechSynthesis.cancel()}catch(e){}}
@@ -439,10 +447,10 @@ function splitSentences(t){return(t.match(/[^.!?…]+[.!?…]+["')\]]*|\S[^.!?�
 /* ---------- voice in ---------- */
 /* live level meter: a scrolling waveform while recording */
 const Wave={el:null,bars:[],on:false,
- init(){this.el=$('#wave');if(!this.el)return;this.el.innerHTML='<i></i>'.repeat(40);this.bars=[...this.el.children]},
- start(){if(!this.el)this.init();this.on=true;$('.pill').classList.add('recording');this.bars.forEach(b=>b.style.height='3px')},
+ init(){this.el=$('#wave');if(!this.el)return;this.el.innerHTML='<i></i>'.repeat(56);this.bars=[...this.el.children]},
+ start(){if(!this.el)this.init();this.on=true;this.hist=[];this.t0=Date.now();$('.pill').classList.add('recording');this.bars.forEach(b=>b.style.height='3px')},
  push(level){if(!this.on||!this.bars.length)return;for(let i=0;i<this.bars.length-1;i++)this.bars[i].style.height=this.bars[i+1].style.height;
-  this.bars[this.bars.length-1].style.height=Math.max(3,Math.min(30,Math.round(level*30)))+'px'},
+  this.bars[this.bars.length-1].style.height=Math.max(3,Math.min(30,Math.round(level*30)))+'px';this.hist.push(level);const s=Math.floor((Date.now()-this.t0)/1000);const tm=$('#recTime');if(tm)tm.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0')},
  stop(){this.on=false;const p=$('.pill');if(p)p.classList.remove('recording')}};
 const IOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 /* iPhone: record + OpenAI transcription, stops by itself after a short silence */
@@ -643,36 +651,55 @@ Keep it light and fair to all political sides. But if the topic involves war, te
 YOU ARE ALSO HIS ENGLISH COACH. Check the guest's LAST answer: grammar, word choice, German-sounding phrasing (false friends, word order, tenses, missing articles, "I am here since..." type errors).
 The guest's text comes from speech recognition: ignore punctuation and capitals. But if a word looks like a mispronounced word that got misheard (e.g. "sink" for "think", "wery" for "very", "vine" for "wine"), treat it as a pronunciation slip and tease him about the sound.
 Only correct when it really matters: a clear grammar or word mistake, or a phrase that sounds clearly un-English to a native speaker. Small stuff, minor style choices and speech-recognition glitches: let it go, no tip. Most answers should get NO correction; let the guest talk.
-If there is such a mistake (only the most useful one): open your reply by pointing it out IN CHARACTER with a quick, warm joke (a host teasing a guest he likes, never mean), say the correct version clearly, then carry on. If it was fine, just react to WHAT he said (the content), not how he said it. Do not comment on his phrasing.
+If there is such a mistake (only the most useful one): first point it out IN CHARACTER with a quick, warm joke (a host teasing a guest he likes, never mean) and say the correct version clearly, in 1-2 sentences. Then write a new line with exactly ###NEXT### and after it carry on with the conversation. If there is no mistake, do not write ###NEXT###. If it was fine, just react to WHAT he said (the content), not how he said it. Do not comment on his phrasing.
 Conversation style: react to what the guest said like a real talk-show host: first share your own short take, a funny thought or a quick joke about the story (keep it original, never repeat jokes from real shows), then ask ONE question. Vary your questions: his opinion ("What's your take?"), his feelings ("Does that annoy you?"), surprise ("Did you see that coming?"), Austria ("How does that play in Vienna?"), a follow-up on something he said. Do NOT ask "What would you do?" or other hypothetical questions.
-Reply: 2-4 short spoken sentences of natural American conversational English, ending with that ONE question. Plain text only, no emojis, no stage directions.
+Reply (after ###NEXT### if you corrected him): 2-3 short spoken sentences of natural American conversational English, ending with that ONE question. Plain text only, no emojis, no stage directions.
 After the reply write a new line with exactly ###TIP### and then JSON for the same mistake: {"said":"wrong part as said","better":"correct version","why":"max 15 words of very simple English explaining the rule"} or the word null if there was no mistake.`;
 let tbT=0;function toBottom(force){const now=Date.now();if(!force&&now-tbT<250)return;tbT=now;requestAnimationFrame(()=>scrollTo({top:document.documentElement.scrollHeight,behavior:'smooth'}))}
 const transcript=()=>hist.map(h=>(h.r==='host'?'HOST: ':'GUEST: ')+h.t).join('\n');
 function hostBubble(t){const w=document.createElement('div');w.className='hrow';w.innerHTML=`<span class="av" title="Jimmy">${JIMMY}</span><div class="msg host"><button class="ib sm" aria-label="Play again">${IC.spk}</button><span class="tx"></span></div>`;w.querySelector('.tx').textContent=t;w.querySelector('button').onclick=()=>speak(w.querySelector('.tx').textContent);$('#chat').append(w);toBottom(true);return w}
 function addMe(t){const p=$('#chat .me.pending');if(p){p.classList.remove('pending');p.textContent=t;toBottom(true);return}const d=document.createElement('div');d.className='msg me';d.textContent=t;$('#chat').append(d);toBottom(true)}
-function pendingMe(){if($('#chat .me.pending'))return;const d=document.createElement('div');d.className='msg me pending';d.innerHTML='<span class="dots"><i></i><i></i><i></i></span>';$('#chat').append(d);toBottom(true)}
+function pendingMe(){if($('#chat .me.pending'))return;
+ const hs=Wave.hist||[],n=26,out=[];for(let i=0;i<n;i++){const a=Math.floor(i*hs.length/n),b=Math.max(a+1,Math.floor((i+1)*hs.length/n));let m=0;for(let j=a;j<b&&j<hs.length;j++)m=Math.max(m,hs[j]);out.push(m)}
+ const s=Math.round((Date.now()-(Wave.t0||Date.now()))/1000);
+ const d=document.createElement('div');d.className='msg me pending';
+ d.innerHTML='<span class="vm">'+out.map(v=>'<i style="height:'+Math.max(3,Math.round(v*22))+'px"></i>').join('')+'</span><span class="vmt">'+Math.floor(s/60)+':'+String(s%60).padStart(2,'0')+'</span>';
+ $('#chat').append(d);toBottom(true)}
 function dropPending(){const p=$('#chat .me.pending');if(p)p.remove()}
 function addTip(t){if(!t||!t.better)return;const d=document.createElement('div');d.className='tip';d.innerHTML=`<s>${esc(t.said)}</s> → <b>${esc(t.better)}</b><br><span class="hint">${esc(t.why)}</span><div class="row" style="margin-top:8px"><button class="ib" aria-label="Listen">${IC.spk}</button><button style="min-height:40px;padding:6px 14px">Save</button></div>`;const [p,k]=d.querySelectorAll('button');p.onclick=()=>speak(t.better);k.onclick=()=>{keep(t.better,t.why);k.textContent='Saved';k.disabled=true};$('#chat').append(d)}
 function keep(en,de){if(!st.saved.some(p=>p.en===en)){st.saved.unshift({en,de:de||''});save();renderMine();renderStats()}}
 function errLine(e){const c=e&&e.code;return c==='no_key'?'Jimmy needs an OpenAI key to answer. Add it under Profile.':c==='bad_key'?'That key doesn\'t work. Please check it under Profile.':c==='no_credit'?'Your OpenAI credit is used up or not topped up yet.':c==='rate_limited'?'Quick commercial break – please try again in a moment.':'Connection failed. Send again?'}
+const firstChunk=s=>{const m=s.match(/^[\s\S]*?[.!?…]["')\]]*(?=\s)/);if(m)return m[0];const c=s.indexOf(', ',28);return c>0&&c<110?s.slice(0,c+1):null};
+function waitVoice(ms){return new Promise(res=>{const t0=Date.now();const w=setInterval(()=>{if(!Voice.busy()||Date.now()-t0>20000){clearInterval(w);setTimeout(res,ms)}},150)})}
 async function hostTurn(extra){
  busy=true;Voice.stop();
- const b=hostBubble('…'),tx=b.querySelector('.tx');let spoken=0,full='';
+ const b=hostBubble(''),tx=b.querySelector('.tx');tx.innerHTML='<span class="dots"><i></i><i></i><i></i></span>';
+ let spoken=0,full='',revealed=!Voice.useOA()&&!C.tts;
+ const show=()=>{const a=full.split('###TIP###')[0].split('###NEXT###')[0].trim();if(revealed&&a)tx.textContent=a;toBottom()};
+ Voice.onFirst=()=>{revealed=true;show()};setTimeout(()=>{revealed=true;show()},2200);
  const onText=t=>{
-  full=t;const reply=t.split('###TIP###')[0];
-  tx.textContent=reply.trim()||'…';toBottom();
-  const done=reply.slice(spoken).match(/^[\s\S]*?[.!?…]["')\]]*(?=\s)/);
-  if(done&&!t.includes('###TIP###')){Voice.add(done[0]);spoken+=done[0].length}
+  full=t;const a=t.split('###TIP###')[0].split('###NEXT###')[0];
+  show();
+  if(t.includes('###NEXT###')||t.includes('###TIP###'))return;
+  const piece=spoken===0?firstChunk(a):(a.slice(spoken).match(/^[\s\S]*?[.!?…]["')\]]*(?=\s)/)||[])[0];
+  if(piece){Voice.add(piece);spoken+=piece.length}
  };
  try{await aiStream(RULES()+'\n\nConversation so far:\n'+(transcript()||'(none yet)')+'\n\n'+extra,onText)}
  catch(e){tx.textContent=errLine(e);busy=false;return}
- const [reply,tipRaw]=full.split('###TIP###');
- Voice.add(reply.slice(spoken));
- const r=(reply||'').trim();tx.textContent=r;
- if(r)hist.push({r:'host',t:r});
+ const [body,tipRaw]=full.split('###TIP###');
+ const [partA,partB]=(body||'').split('###NEXT###');
+ Voice.add(partA.slice(spoken));
+ revealed=true;tx.textContent=partA.trim();
  let tip=null;try{if(tipRaw&&tipRaw.trim()!=='null')tip=pickJSON(tipRaw)}catch(e){}
- addTip(tip);busy=false;toBottom(true);
+ addTip(tip);toBottom(true);
+ const B=(partB||'').trim();
+ if(B){ /* a correction: give him a moment to take it in before the conversation goes on */
+  const w=document.createElement('div');w.className='pausehint';w.textContent='Take a second …';$('#chat').append(w);toBottom(true);
+  await waitVoice(2600);w.remove();
+  const b2=hostBubble(B);speak(B);
+  hist.push({r:'host',t:(partA.trim()+' '+B).trim()});
+ } else if(partA.trim()) hist.push({r:'host',t:partA.trim()});
+ busy=false;toBottom(true);
 }
 function startShow(t,g,opener){
  topic=t;gist=g;hist=[];$('#chat').innerHTML='';
@@ -771,7 +798,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='36';
+const BUILD='37';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
