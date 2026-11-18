@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Logo lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&family=Neonderthaw&family=Bebas+Neue&family=Archivo+Black&family=Instrument+Sans:wght@600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0b0716;color:#f4f0ff;font-family:"Instrument Sans",sans-serif}
+.row{display:flex;flex-wrap:wrap;gap:0}
+.cell{flex:1 1 480px;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;border-bottom:1px solid #2c2058;border-right:1px solid #2c2058;position:relative}
+.cell small{position:absolute;left:14px;top:10px;color:#ab9fcc;font-size:12px}
+.neon{font-family:"Tilt Neon",sans-serif;color:#f2fdff;text-shadow:0 0 2px #fff,0 0 7px #5fd8ee,0 0 18px #5fd8ee,0 0 40px rgba(95,216,238,.55);line-height:.9}
+.stamp{display:inline-flex;align-items:center;justify-content:center;font-family:"Bebas Neue",sans-serif;letter-spacing:.12em;color:#fad243;border:3px solid #fad243;border-radius:6px;position:relative}
+.bub::after{content:"";position:absolute;left:18%;bottom:-11px;width:16px;height:16px;border-left:3px solid #fad243;border-bottom:3px solid #fad243;background:#0b0716;transform:skewY(-35deg) rotate(-8deg)}
+.grain{-webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2' seed='9'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -0.9 1.35'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");-webkit-mask-size:200px 80px;mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2' seed='9'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -0.9 1.35'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");mask-size:200px 80px}
+</style></head><body><div class="row">
+
+<div class="cell"><small>A · Neon stacked, stamp crossing</small>
+ <div style="position:relative;transform:rotate(-6deg)">
+  <div class="neon" style="font-size:78px">Late<br>Night</div>
+  <div class="stamp grain" style="position:absolute;right:-70px;bottom:-14px;font-size:40px;padding:4px 12px 0;transform:rotate(14deg)">ENGLISH</div>
+ </div>
+</div>
+
+<div class="cell"><small>B · Neon line, speech-bubble stamp</small>
+ <div style="display:flex;align-items:center;gap:14px;transform:rotate(-5deg)">
+  <div class="neon" style="font-size:64px">Late Night</div>
+  <div class="stamp bub grain" style="font-size:30px;padding:3px 10px 0;transform:rotate(9deg)">ENGLISH</div>
+ </div>
+</div>
+
+<div class="cell"><small>C · Stamp first, neon over it</small>
+ <div style="position:relative;transform:rotate(-4deg);padding:30px 10px">
+  <div class="stamp grain" style="font-size:96px;padding:6px 22px 0;opacity:.95;border-width:5px">ENGLISH</div>
+  <div class="neon" style="position:absolute;left:-12px;top:-6px;font-size:58px;transform:rotate(-6deg)">Late Night</div>
+ </div>
+</div>
+
+<div class="cell"><small>D · Header size (as in the app)</small>
+ <div style="display:flex;align-items:center;gap:8px;transform:rotate(-3deg)">
+  <div class="neon" style="font-size:34px">Late Night</div>
+  <div class="stamp bub grain" style="font-size:15px;padding:2px 6px 0;border-width:2px;transform:rotate(9deg)">ENGLISH</div>
+ </div>
+ <div style="display:flex;gap:16px;align-items:center">
+  <div style="width:96px;height:96px;border-radius:22px;background:radial-gradient(circle at 50% 35%,#2a1a52,#0b0716 75%);display:grid;place-items:center">
+   <div class="stamp bub grain" style="font-size:30px;padding:3px 9px 0;transform:rotate(-8deg)">EN</div></div>
+  <div style="width:96px;height:96px;border-radius:22px;background:radial-gradient(circle at 50% 35%,#2a1a52,#0b0716 75%);display:grid;place-items:center">
+   <div class="neon" style="font-size:44px;transform:rotate(-8deg)">LN</div></div>
+ </div>
+</div>
+
+</div></body></html>
