@@ -8,7 +8,7 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Late Night English</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=Neonderthaw&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=Tilt+Neon&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 /* VOICE: friendly, quick, a little cheeky — a late-night show in your pocket
    IDEA: calm surfaces, glowing moments: only the listening mic glows
@@ -26,14 +26,19 @@ h1{font-size:clamp(24px,6.5vw,30px);line-height:1.1}h2{font-size:21px;line-heigh
 .wrap{max-width:680px;margin:0 auto;padding:0 18px}
 .hero{background:var(--bg);padding:calc(10px + env(safe-area-inset-top)) 0 0;overflow:hidden}
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px}
-.logo{display:flex;align-items:center;gap:4px;transform:rotate(-4deg);margin:0;font-weight:400;letter-spacing:0}
-.logo .ln{font-family:Neonderthaw,"Instrument Serif",cursive;font-size:36px;line-height:1;color:#e9fbff;text-shadow:0 0 2px #fff,0 0 8px #5fd8ee,0 0 20px rgba(95,216,238,.8)}
-.logo .en{font-family:Montserrat,"Instrument Sans",sans-serif;font-weight:900;font-size:12px;letter-spacing:.14em;color:#ec5cc8;border:2px solid #ec5cc8;border-radius:3px;padding:2px 5px 1px;transform:rotate(11deg) translate(-2px,4px);align-self:center;-webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='60'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -1.1 1.45'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='60'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -2.4 1.75'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");-webkit-mask-size:160px 60px;mask-size:160px 60px;box-shadow:inset 0 0 0 1px rgba(236,92,200,.35)}
+.logo{display:flex;align-items:center;gap:10px;transform:rotate(-3deg);margin:0;font-weight:400;letter-spacing:0}
+.ln,.logo .ln{font-family:"Tilt Neon","Instrument Sans",sans-serif;font-size:27px;line-height:1;color:#f2fdff;white-space:nowrap;text-shadow:0 0 2px #fff,0 0 7px #5fd8ee,0 0 18px #5fd8ee,0 0 40px rgba(95,216,238,.5)}
+.stampw,.logo .en{font-family:"Bebas Neue","Instrument Sans",sans-serif;font-size:16px;line-height:1;letter-spacing:.12em;color:var(--lime);border:2px solid var(--lime);border-radius:4px;padding:3px 7px 1px;transform:rotate(7deg);white-space:nowrap}
+.grain{-webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='2' seed='9'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -0.8 1.3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='2' seed='9'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -0.8 1.3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");-webkit-mask-size:240px 120px;mask-size:240px 120px}
+.biglogo{position:relative;display:inline-block;transform:rotate(-4deg);padding-top:30px;margin:6px 0 4px 12px}
+.biglogo .stampw{font-size:58px;padding:8px 16px 3px;border-width:4px;border-radius:7px;transform:none;display:inline-block}
+.biglogo .ln{position:absolute;left:-12px;top:0;font-size:36px;transform:rotate(-5deg)}
 .streak{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:14px;font-weight:700;color:var(--lime);white-space:nowrap}
-.studio{display:block;width:100%;height:150px;margin-top:4px}
-.sec{margin:22px 0 10px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.studio{display:block;width:calc(100% - 36px);max-width:644px;height:auto;aspect-ratio:390/150;margin:4px auto 0;border-radius:18px}
+body:not([data-tab=home]) .studio{display:none}
+.sec{margin:24px 0 12px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .sec small{color:var(--mute);font-size:13px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}
 .story{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 18px;margin:10px 0;color:var(--ink);cursor:pointer;font:inherit;transition:transform .15s}
 .story:active{transform:scale(.98)}
 .story .k{font-size:13px;color:var(--blue);font-weight:600}
@@ -42,10 +47,12 @@ h1{font-size:clamp(24px,6.5vw,30px);line-height:1.1}h2{font-size:21px;line-heigh
 .story p{margin:5px 0 0;color:var(--mute);font-size:14px;line-height:1.45}
 .story .go{margin-top:10px;font-weight:600;font-size:14px}
 textarea,input,select{width:100%;font:16px/1.4 inherit;font-family:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:12px}
-button{font:600 15px "Instrument Sans",sans-serif;min-height:44px;border-radius:14px;border:1px solid var(--line);padding:10px 16px;cursor:pointer;color:var(--ink);background:var(--card)}
+button{font:600 14.5px "Instrument Sans",sans-serif;min-height:42px;border-radius:999px;border:1px solid var(--line);padding:0 18px;cursor:pointer;color:var(--ink);background:transparent}
+.tbtn{border:0;background:none;padding:0 4px;min-height:40px;color:var(--ink);font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.tbtn svg{width:18px;height:18px}
 button:focus-visible,textarea:focus-visible,input:focus-visible,.story:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 .pri{background:var(--blue);border-color:var(--blue);color:var(--on)}
-.big{width:100%;min-height:50px;font-size:16px}
+.big{width:100%;min-height:48px;font-size:15.5px}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .hint{font-size:13px;line-height:1.45;color:var(--mute)}
 .chat{display:flex;flex-direction:column;gap:12px;margin:18px 0}
@@ -94,7 +101,7 @@ button:focus-visible,textarea:focus-visible,input:focus-visible,.story:focus-vis
 .view{display:none}.view.on{display:block}
 .days{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:5px;margin-top:10px}
 .days i{aspect-ratio:1;border-radius:6px;background:var(--line)}.days i.d{background:var(--blue)}
-.done{background:var(--lime);color:#10131f;border-color:var(--lime)}
+.done{background:transparent!important;color:var(--lime)!important;border-color:var(--lime)!important}
 .badge{display:inline-block;font-size:12px;font-weight:600;background:var(--lime);color:#10131f;border-radius:999px;padding:2px 10px}
 label{display:block;font-weight:600;margin:14px 0 6px}
 .mis{font-size:17px;line-height:1.45;margin:10px 0 16px}
@@ -129,7 +136,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 .ob-say{min-height:24px;text-align:center;color:var(--mute);font-style:italic}
 .ob-reply{display:flex;gap:10px;align-items:flex-end;margin-top:14px}
 .ob-foot .big{width:100%}
-.greet{margin:18px 0 10px}.greet h2{font-size:22px}.greet small{color:var(--mute);font-size:13px}
+.greet{margin:22px 0 14px;display:flex;flex-direction:column;gap:2px}.greet h2{font-size:22px}.greet small{color:var(--mute);font-size:13px}
 .upnext{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:6px}
 .upnext .k{font-size:12px}.upnext h3{font-size:18px;line-height:1.25}.upnext p{margin:0;color:var(--mute);font-size:14px;line-height:1.45}
 .talkbtn{align-self:flex-start;margin-top:6px;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid rgba(76,197,218,.45);background:transparent;color:var(--blue);font-size:13px}
@@ -137,17 +144,26 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 .more{display:flex;flex-direction:column;gap:8px;margin-top:10px}
 .more .story{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;padding:14px 16px;border-radius:16px;font-weight:600;font-size:15px}
 .chev{color:var(--mute);font-size:20px;line-height:1}
+.chathead{justify-content:space-between;align-items:center}
+.ch{display:flex;align-items:center;gap:10px;min-width:0}.cht{display:flex;flex-direction:column;min-width:0}.cht b{font-size:15px}.cht small{color:var(--mute);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:56vw}
+#end{color:var(--mute)}
+.statrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.stile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px}.stile b{display:block;font-size:24px;line-height:1.1}.stile span{font-size:12.5px;color:var(--mute)}
+details.card>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:16.5px}
+details.card>summary::-webkit-details-marker{display:none}
+details.card>summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:rotate(45deg);margin-right:4px}
+details.card[open]>summary::after{transform:rotate(-135deg)}
 .skel{height:86px;border-radius:20px;background:var(--line);margin:10px 0;opacity:.5}
 </style>
 </head>
-<body>
+<body data-tab="home">
 <header class="hero">
  <div class="wrap topbar">
-  <h1 class="logo" aria-label="Late Night English"><span class="ln">Late Night</span><span class="en">ENGLISH</span></h1>
+  <h1 class="logo" aria-label="Late Night English"><span class="ln" aria-hidden="true">Late Night</span><span class="en" aria-hidden="true">ENGLISH</span></h1>
   <div class="streak" id="stats"></div>
  </div>
  <p id="sub" class="wrap hint" hidden></p>
- <svg class="studio" viewBox="0 0 390 150" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Neon late-night studio with host Jimmy at his desk">
+ <svg class="studio" viewBox="0 0 390 150" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Neon late-night studio with host Jimmy at his desk">
 <defs><filter id="gh" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <filter id="sh" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
 <linearGradient id="skyh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0716"/><stop offset="1" stop-color="#492e7e"/></linearGradient>
@@ -179,7 +195,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
   </div>
  </div>
  <div id="brief" hidden>
-  <div class="sec"><button id="briefBack">← Back</button><small id="briefNo"></small></div>
+  <div class="sec"><button id="briefBack" class="tbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Back</button><small id="briefNo"></small></div>
   <div class="card">
    <div class="k" id="briefMeta" style="margin-bottom:8px"></div>
    <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between"><h2 id="briefTitle" style="margin-bottom:10px"></h2><button class="ib" id="briefRead" aria-label="Read summary aloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></button></div>
@@ -191,7 +207,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
   <p class="hint">Tip: read it once, then tell Jimmy in your own words.</p>
  </div>
  <div id="talk" hidden>
-  <div class="sec"><small id="talkTopic"></small><button id="end" style="white-space:nowrap;min-height:38px;padding:6px 14px;font-size:14px">✕ End show</button></div>
+  <div class="sec chathead"><div class="ch"><span class="av" id="chAv"></span><div class="cht"><b>Jimmy</b><small id="talkTopic"></small></div></div><button id="end" class="tbtn">End show</button></div>
   <div class="chat" id="chat" aria-live="polite"></div>
   <div class="dock" id="dock">
    <div class="live" id="live">Tap the mic, or start conversation mode.</div>
@@ -215,15 +231,16 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 
 <section id="v-mis" class="view">
  <div class="sec"><h2>Today's mission</h2><small id="misDate"></small></div>
- <div class="card"><span class="badge">Off the app</span><p class="mis" id="misText"></p><button id="misDone" class="big">Mark as done</button></div>
+ <div class="card"><span class="badge">Off the app</span><p class="mis" id="misText"></p><button id="misDone" class="pri big">Mark as done</button></div>
  <p class="hint">A new real-life speaking task every day. Completed missions count towards your streak.</p>
 </section>
 
 <section id="v-me" class="view">
  <div class="sec"><h2>Your progress</h2></div>
+ <div class="statrow"><div class="stile"><b id="stStreak">0</b><span>day streak</span></div><div class="stile"><b id="stShows">0</b><span>shows</span></div><div class="stile"><b id="stPhr">0</b><span>phrases</span></div></div>
  <div class="card"><h3>Last 14 days</h3><div class="days" id="days"></div><p class="hint" id="meTxt" style="margin-bottom:0"></p></div>
- <div class="card" id="setCard">
-  <h3>Settings</h3>
+ <details class="card" id="setCard">
+  <summary>Settings</summary>
   <button id="obAgain" style="margin:8px 0 4px;min-height:38px;padding:6px 14px;font-size:14px">Show welcome tour again</button>
   <p class="hint" id="diag"></p><div id="claudeMode" hidden><p class="hint">Test mode: the app is running inside Claude.</p></div>
   <div id="ownMode">
@@ -239,7 +256,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
    <button class="pri big" id="saveSet" style="margin-top:16px">Save</button>
    <p class="hint" id="setMsg"></p>
   </div>
- </div>
+ </details>
 </section>
 </main>
 
@@ -495,7 +512,7 @@ Reply JSON only: {"score":0-100,"joke":"one short playful English line reacting 
 /* ---------- tabs ---------- */
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-current',x===b));
- document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));
+ document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));document.body.dataset.tab=b.dataset.v;
  scrollTo(0,0);
 });
 
@@ -531,7 +548,7 @@ function greet(){const hr=new Date().getHours();$('#greet').textContent=hr<11?'G
 async function loadNews(){
  const d=today();
  const cached=LS.get('lne_news2',null);
- const done=(items,label)=>{items=items.map(normItem);NEWS=items;$('#newsDate').textContent=items.length+' stories '+(label==='today'?'today':label)+' · about '+Math.max(5,items.length*2)+' minutes';renderNews(items,'')};
+ const done=(items,label)=>{items=items.map(normItem);NEWS=items;$('#newsDate').textContent=(label==='sample topics'?items.length+' sample topics':items.length+' stories '+(label==='today'?'today':label))+' · about '+Math.max(5,items.length*2)+' min';renderNews(items,'')};
  if(cached&&cached.date===d&&cached.items&&cached.items.length){done(cached.items,'today');return}
  if(inClaude()){
   let v=null;if(DB){try{const s=await DB.doc('news/today').get();v=s&&(typeof s.data==='function'?s.data():(s.data??s))}catch(e){}}
@@ -611,7 +628,7 @@ async function hostTurn(extra){
 }
 function startShow(t,g,opener){
  topic=t;gist=g;hist=[];$('#chat').innerHTML='';
- document.body.classList.add('talking');$('#home').hidden=true;$('#summary').hidden=true;$('#talk').hidden=false;$('#talkTopic').textContent='Topic: '+t;scrollTo(0,0);
+ document.body.classList.add('talking');$('#home').hidden=true;$('#summary').hidden=true;$('#talk').hidden=false;$('#talkTopic').textContent=t;scrollTo(0,0);
  if(opener){const o=`Welcome back, my friend from Austria! ${opener}`;hist.push({r:'host',t:o});hostBubble(o);speak(o)}
  else hostTurn('Open the show: welcome the guest from Austria, make a quick original quip about the topic, then ask how he feels about it. No tip yet: write ###TIP### null.');
 }
@@ -647,7 +664,7 @@ $('#end').onclick=async()=>{
  if(!hist.some(h=>h.r==='me')){document.body.classList.remove('talking');$('#talk').hidden=true;$('#home').hidden=false;return}
  busy=true;$('#end').textContent='One sec …';
  let r=null;try{r=await ai(`An Austrian learner finished a spoken English practice chat with a late-night host about "${topic}".\nTranscript:\n${transcript()}\n\nFormat: {"praise":"one encouraging, specific sentence in simple English","phrases":[{"en":"natural phrase for this kind of chat, ideally an improved version of something they tried to say","de":"German meaning"}],"next":"one concrete speaking task for outside the app, simple English, max 25 words"} with exactly 3 phrases.`)}catch(e){}
- busy=false;$('#end').textContent='✕ End show';st.shows++;mark();
+ busy=false;$('#end').textContent='End show';st.shows++;mark();
  document.body.classList.remove('talking');$('#talk').hidden=true;const s=$('#summary');s.hidden=false;
  const ps=(r&&r.phrases)||[];ps.forEach(p=>keep(p.en,p.de));
  s.innerHTML=`<div class="sec"><h2>That's a wrap!</h2></div><div class="card"><p style="margin-top:0">${esc((r&&r.praise)||'Nice work – every show counts.')}</p>${ps.length?'<h3>Your 3 phrases from today</h3>':''}${ps.map(p=>`<div class="ph"><div class="en">${esc(p.en)}</div><div class="de">${esc(p.de)}</div><div class="acts"><button class="ib" data-say="${esc(p.en)}" aria-label="Listen">${IC.spk}</button></div></div>`).join('')}${r&&r.next?`<p><span class="badge">Bonus mission</span> ${esc(r.next)}</p>`:''}</div><button class="pri big" id="again">Next story</button>`;
@@ -689,7 +706,7 @@ $('#v-gym').addEventListener('click',async e=>{
 /* ---------- mission ---------- */
 function renderMission(){
  const d=today(),n=Math.floor(new Date(d)/864e5);
- $('#misDate').textContent=new Date().toLocaleDateString('de-AT',{weekday:'long',day:'numeric',month:'long'});
+ $('#misDate').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});
  $('#misText').textContent=MISSIONS[n%MISSIONS.length];
  const done=!!st.missions[d];$('#misDone').textContent=done?'Done ✓':'Mark as done';$('#misDone').classList.toggle('done',done);
 }
@@ -698,13 +715,14 @@ $('#misDone').onclick=()=>{const d=today();if(st.missions[d])delete st.missions[
 /* ---------- stats & settings ---------- */
 function renderStats(){
  const s=streak();
+ {const S=$('#stStreak');if(S){S.textContent=s;$('#stShows').textContent=st.shows;$('#stPhr').textContent=st.saved.length}}
  $('#stats').innerHTML=`<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c1 4 6 5.5 6 11a6 6 0 0 1-12 0c0-3 2-4.5 2-7 2 1 3 2.5 3 4 1-2.5 1-5.5 1-8z" fill="#fad243"/></svg><span>${s}</span>`;$('#stats').setAttribute('aria-label',`Streak: ${s} ${s===1?'day':'days'}`);
- let h='';for(let i=13;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);h+=`<i class="${st.days.includes(d.toLocaleDateString('sv-SE'))?'d':''}" title="${d.toLocaleDateString('de-AT')}"></i>`}
+ let h='';for(let i=13;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);h+=`<i class="${st.days.includes(d.toLocaleDateString('sv-SE'))?'d':''}" title="${d.toLocaleDateString('en-GB')}"></i>`}
  $('#days').innerHTML=h;
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='27';
+const BUILD='28';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
@@ -738,7 +756,7 @@ function obRender(){
  $('#obDots').innerHTML=Array.from({length:OB_STEPS},(_,i)=>`<i class="${i<=ob.step?'on':''}"></i>`).join('');
  const B=$('#obBody'),N=$('#obNext');N.disabled=false;$('#obSkip').hidden=ob.step===0;
  if(ob.step===0){
-  B.innerHTML=`<div class="ob-av">${JIMMY}</div><h2 id="onbT">Hey, I'm Jimmy!</h2><p>Five minutes a day, we chat about the news – in English. I'll help you sound natural, and I'll tease you a little when you slip up.</p>`;N.textContent="Let's go";
+  B.innerHTML=`<div class="biglogo" aria-label="Late Night English"><span class="stampw grain">ENGLISH</span><span class="ln">Late Night</span></div><div class="ob-av" style="margin-top:28px">${JIMMY}</div><h2 id="onbT">Hey, I'm Jimmy!</h2><p>Five minutes a day, we chat about the news – in English. I'll help you sound natural, and I'll tease you a little when you slip up.</p>`;N.textContent="Let's go";
  }else if(ob.step===1){
   B.innerHTML=`<h2 id="onbT">Where do you need English?</h2><p>Pick all that fit. I'll bring these situations into our chats.</p><div class="ob-opts">${GOALS.map(g=>`<button class="ob-opt" aria-pressed="${ob.goals.has(g)}" data-g="${esc(g)}">${esc(g)}<span class="ck">✓</span></button>`).join('')}</div>`;
   B.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{const g=b.dataset.g;ob.goals.has(g)?ob.goals.delete(g):ob.goals.add(g);b.setAttribute('aria-pressed',ob.goals.has(g))});N.textContent='Next';
@@ -766,7 +784,7 @@ function obRender(){
   N.textContent="I'm ready – start the show";
  }
 }
-renderGym();renderMine();renderMission();renderStats();fillSettings();
+renderGym();renderMine();renderMission();renderStats();fillSettings();$('#chAv').innerHTML=JIMMY;
 
 /* ---------- start: detect Claude test mode ---------- */
 (async()=>{
