@@ -377,7 +377,7 @@ async function aiStream(prompt,onText,o={}){
  if(inClaude()){const r=await C.sample(prompt,{cache:false,modelTier:'quick',onText:({text})=>onText(text)});onText(r.text);return r.text}
  if(!cfg.kO)throw{code:'no_key'};
  const body={model:MODEL,input:prompt,reasoning:{effort:o.effort||'none'},max_output_tokens:o.max||500,stream:true};
- if(o.search){body.tools=[{type:'web_search',search_context_size:'low'}];body.max_tool_calls=2}
+ if(o.search){body.tools=[{type:'web_search',search_context_size:'low'}];body.max_tool_calls=4}
  let r=await fetch(OA+'responses',{method:'POST',headers:oaHead(),body:JSON.stringify(body)});
  if(r.status===400&&o.search){body.tools=[{type:'web_search'}];r=await fetch(OA+'responses',{method:'POST',headers:oaHead(),body:JSON.stringify(body)})}
  if(!r.ok)throw httpErr(r);
@@ -533,14 +533,21 @@ document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
 
 /* ---------- news ---------- */
 let NEWS=[];
-const NEWS_PROMPT=()=>`Today is ${new Date().toDateString()}. Find out which news topics the US late-night shows joked about in their most recent monologues: Jimmy Kimmel Live, The Tonight Show with Jimmy Fallon and Late Night with Seth Meyers. Use recaps of last night's monologues if available; if there were no new episodes, use the biggest news of the last day instead.
-Pick 8 different topics (at least 3 US politics, 1 business or economy, 1 tech, ideally 1 from Europe or Austria if any show touched it, 1 lighter one). For each topic, report the FACTS from news coverage (not the jokes, do not quote the hosts).
+const NEWS_PROMPT=()=>`Today is ${new Date().toDateString()}. Build tonight's news rundown for an Austrian professional who practises English, mixed like a good evening news show (e.g. ORF ZiB 2):
+- 2 stories from Austria (search Austrian sources such as ORF, Der Standard, Die Presse; explain them in English),
+- 2 big international stories (e.g. the war in Ukraine, Israel and Gaza / the Middle East, or whatever leads world news today),
+- 1 from the EU or another European country,
+- at most 2 from US politics (pick what the US late-night shows Jimmy Kimmel Live, The Tonight Show with Jimmy Fallon and Late Night with Seth Meyers joked about most recently),
+- 1 from business, tech or science,
+- 1 lighter or funny story.
+That makes 8. Avoid the same person dominating: a single politician's name may appear in at most 2 titles. For each story, check whether any of those three late-night shows covered it in a recent monologue and list them in "shows".
+Report the FACTS from news coverage (not the jokes, do not quote the hosts). Be neutral and careful, especially on wars and conflicts. For stories about war, terror, disasters or deaths, host_open must be respectful with no joke at all.
 For each:
 "title" (max 8 words, plain English),
 "gist" (1 short teaser sentence),
 "summary" (5-6 short sentences in clear, simple English, B1 level: what happened, who is involved, why it matters, and what different sides say; neutral, no opinion),
 "words" (3 useful words or phrases from the story, each {"en":"","de":"German translation"}),
-"shows" (which of the three shows covered it, e.g. ["Kimmel","Fallon"], or [] if none),
+"shows" (which of the three late-night shows covered it, e.g. ["Kimmel","Fallon"], or [] if none),
 "category" (one of: politics, world, europe, economy, tech, fun),
 "source" ({"name":"news outlet","url":"exact article URL from your search results"}),
 "host_open" (how the host starts the chat: one short original quip or personal thought about what happened, then ONE question about the guest's opinion or feelings, e.g. "How do you feel about that?", "Did that surprise you?", "How does that look from Austria?". Never ask "What would you do".)
@@ -565,7 +572,7 @@ function greet(){const v=document.body.dataset.tab||'home';const hr=new Date().g
  $('#ttl').textContent=TITLES[v]||(hr<11?'Good morning':hr<17?'Good afternoon':'Good evening')}
 async function loadNews(){
  const d=today();
- const cached=LS.get('lne_news2',null);
+ const cached=LS.get('lne_news3',null);
  const done=(items,label)=>{items=items.map(normItem);NEWS=items;$('#newsDate').textContent=(label==='sample topics'?items.length+' sample topics':items.length+' stories '+(label==='today'?'today':label))+' · about '+Math.max(5,items.length*2)+' min';renderNews(items,'')};
  if(cached&&cached.date===d&&cached.items&&cached.items.length>=5){done(cached.items,'today');return}
  if(inClaude()){
@@ -576,7 +583,7 @@ async function loadNews(){
  if(!cfg.kO){done(FALLBACK,'sample topics');$('#news').insertAdjacentHTML('beforeend','<p class="hint">Add your OpenAI key under Profile to get real news here every morning.</p>');return}
  /* 1) daily file prepared each morning on GitHub: instant */
  try{const r=await fetch('https://raw.githubusercontent.com/imitosis/late-night-english/main/news.json?d='+d,{cache:'no-store'});
-  if(r.ok){const j=await r.json();if(j&&j.date===d&&j.items&&j.items.length>=5){LS.set('lne_news2',j);done(j.items,'today');return}}}catch(e){}
+  if(r.ok){const j=await r.json();if(j&&j.date===d&&j.items&&j.items.length>=5){LS.set('lne_news3',j);done(j.items,'today');return}}}catch(e){}
  /* 2) fallback: search on the phone */
  NEWS=[];$('#newsDate').textContent='loading';
  renderNews([],'Jimmy is reading the paper …');
@@ -586,15 +593,15 @@ async function loadNews(){
  try{const full=await aiStream(NEWS_PROMPT(),take,{search:true,effort:'low',max:6000});take(full)}
  catch(e){clearInterval(tick);if(!NEWS.length){done(FALLBACK,'sample topics');$('#news').insertAdjacentHTML('beforeend',`<p class="hint">${esc(errLine(e))}</p>`);return}}
  clearInterval(tick);
- if(NEWS.length){LS.set('lne_news2',{date:d,items:NEWS});done(NEWS,'today')}else done(FALLBACK,'sample topics');
+ if(NEWS.length){LS.set('lne_news3',{date:d,items:NEWS});done(NEWS,'today')}else done(FALLBACK,'sample topics');
 }
 let briefN=null;
 async function moreNews(btn){
  btn.disabled=true;btn.textContent='Jimmy is digging up more …';
  const have=NEWS.map(n=>n.title).join(' | ');
  const before=NEWS.length;
- try{await aiStream(NEWS_PROMPT().replace('Pick 8 different topics','Pick 4 MORE different topics (not these: '+have+')').replace('exactly 8 lines','exactly 4 lines'),t=>{const objs=jsonObjects(t);for(const o of objs){try{const it=normItem(JSON.parse(o));if(it.title&&!NEWS.some(n=>n.title===it.title))NEWS.push(it)}catch(e){}}},{search:true,effort:'low',max:3500})}catch(e){}
- if(NEWS.length>before){LS.set('lne_news2',{date:today(),items:NEWS})}
+ try{await aiStream(NEWS_PROMPT().replace('That makes 8.','Now pick only 4 MORE stories in the same spirit, different from these: '+have+'.').replace('exactly 8 lines','exactly 4 lines'),t=>{const objs=jsonObjects(t);for(const o of objs){try{const it=normItem(JSON.parse(o));if(it.title&&!NEWS.some(n=>n.title===it.title))NEWS.push(it)}catch(e){}}},{search:true,effort:'low',max:3500})}catch(e){}
+ if(NEWS.length>before){LS.set('lne_news3',{date:today(),items:NEWS})}
  renderNews(NEWS,'');$('#newsDate').textContent=NEWS.length+' stories today · about '+Math.max(5,NEWS.length*2)+' min';if(NEWS.length===before){const b=$('#moreNews');if(b){b.textContent='No more stories right now';b.disabled=true}}
 }
 $('#news').onclick=e=>{if(e.target.closest('#moreNews')){moreNews(e.target.closest('#moreNews'));return}const b=e.target.closest('[data-n]');if(b)showBrief(+b.dataset.n)};
@@ -617,7 +624,7 @@ $('#own').onclick=()=>{const t=$('#topic').value.trim();if(t)startShow(t,'','')}
 let hist=[],topic='',gist='',busy=false;
 const RULES=()=>`You are "Jimmy", the warm, quick-witted host of a fictional US late-night talk show (an invented character, not any real TV host; never claim to be one). Your guest is an Austrian professional practising everyday spoken English (B1-B2). Tonight's topic: "${topic}".${gist?` The guest just read this news summary: ${gist} Use these facts; do not add facts that are not in it.`:' You may not know the details; let the guest explain and never invent facts.'}
 ${(cfg.goals||[]).length?`He needs English at work for: ${cfg.goals.join(', ')}. Now and then, connect the topic to these situations (e.g. how he might bring it up in small talk before a meeting).`:''}${cfg.level==='stuck'?' He often gets stuck: use simple words and short sentences, and only correct big mistakes.':cfg.level==='polish'?' He is fairly fluent: also suggest more natural or business-appropriate phrasing when it helps.':''}
-Keep it light and fair to all political sides. Use a useful idiom now and then.
+Keep it light and fair to all political sides. But if the topic involves war, terror, disasters, victims or deaths, drop the jokes completely: be warm, respectful and serious, and still help with his English. Use a useful idiom now and then.
 YOU ARE ALSO HIS ENGLISH COACH. Check the guest's LAST answer: grammar, word choice, German-sounding phrasing (false friends, word order, tenses, missing articles, "I am here since..." type errors).
 The guest's text comes from speech recognition: ignore punctuation and capitals. But if a word looks like a mispronounced word that got misheard (e.g. "sink" for "think", "wery" for "very", "vine" for "wine"), treat it as a pronunciation slip and tease him about the sound.
 Only correct when it really matters: a clear grammar or word mistake, or a phrase that sounds clearly un-English to a native speaker. Small stuff, minor style choices and speech-recognition glitches: let it go, no tip. Most answers should get NO correction; let the guest talk.
@@ -749,7 +756,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='33';
+const BUILD='34';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
@@ -759,7 +766,7 @@ function diag(){$('#diag').textContent='Mode: '+(inClaude()?'test in Claude':'st
 function rateLbl(){$('#rateV').textContent=Math.round($('#rate').value*100)+' %'}
 $('#rate').oninput=()=>{rateLbl();cfg.rate=+$('#rate').value;LS.set('lne_rate_set',1)};
 function fillSettings(){$('#rate').value=cfg.rate||1.3;rateLbl();$('#kO').value=cfg.kO;$('#vSel').value=cfg.voice;$('#rem').value=cfg.rem;0}
-$('#saveSet').onclick=()=>{cfg=Object.assign(cfg,{kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',rate:+$('#rate').value||1.3});if(cfg.kO&&!LS.get('lne_onb',0))setTimeout(obOpen,600);LS.set('lne_cfg2',cfg);toast(cfg.kO?'Saved ✓ Key added':'Saved ✓');const sb=$('#saveSet');sb.textContent='Saved ✓';sb.classList.add('done');setTimeout(()=>{sb.textContent='Save';sb.classList.remove('done')},2500);try{localStorage.removeItem('lne_news2')}catch(e){}diag();loadNews()};
+$('#saveSet').onclick=()=>{cfg=Object.assign(cfg,{kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',rate:+$('#rate').value||1.3});if(cfg.kO&&!LS.get('lne_onb',0))setTimeout(obOpen,600);LS.set('lne_cfg2',cfg);toast(cfg.kO?'Saved ✓ Key added':'Saved ✓');const sb=$('#saveSet');sb.textContent='Saved ✓';sb.classList.add('done');setTimeout(()=>{sb.textContent='Save';sb.classList.remove('done')},2500);try{localStorage.removeItem('lne_news3')}catch(e){}diag();loadNews()};
 $('#testVoice').onclick=()=>{cfg.voice=$('#vSel').value;cfg.kO=$('#kO').value.trim();speak("Hey, welcome to the show! This is how I sound tonight.")};
 $('#remBtn').onclick=()=>{
  const [H,M]=($('#rem').value||'07:30').split(':');const d=today().replace(/-/g,'');
