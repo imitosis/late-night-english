@@ -108,6 +108,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 .talking{padding-bottom:env(safe-area-inset-bottom)}
 .talking .dock{bottom:0;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
 .talking #talk>.sec,.talking #brief>.sec{position:sticky;top:0;z-index:3;background:var(--bg);margin:0;padding:12px 0 10px;border-bottom:1px solid var(--line)}
+#upd{position:fixed;left:50%;top:calc(10px + env(safe-area-inset-top));transform:translateX(-50%);z-index:10;background:var(--lime);color:#10131f;border:0;border-radius:999px;padding:10px 18px;font-weight:700;box-shadow:0 6px 20px rgba(16,19,31,.2);white-space:nowrap}
 .skel{height:86px;border-radius:20px;background:var(--line);margin:10px 0;opacity:.5}
 </style>
 </head>
@@ -662,6 +663,11 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
+const BUILD='21';
+/* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
+let updShown=false;
+async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
+ if(j.v&&j.v!==BUILD){updShown=true;const b=document.createElement('button');b.id='upd';b.textContent='New version available · Tap to update';b.onclick=()=>{b.textContent='Updating …';navigator.serviceWorker&&navigator.serviceWorker.getRegistration().then(r=>r&&r.update()).finally(()=>location.reload())};document.body.append(b)}}catch(e){}}
 function toast(t){let d=$('#toast');if(!d){d=document.createElement('div');d.id='toast';d.setAttribute('role','status');document.body.append(d)}d.textContent=t;d.classList.add('on');clearTimeout(d._t);d._t=setTimeout(()=>d.classList.remove('on'),2600)}
 function diag(){$('#diag').textContent='Mode: '+(inClaude()?'test in Claude':'standalone')+' · Mic: '+(Mic.ok()?(Mic.useCloud()?'iPhone recording':'available'):'not available')+' · Voice: '+(C.tts?'Claude':Voice.useOA()?'OpenAI':'phone')+(!inClaude()?' · Key: '+(cfg.kO?'added':'missing'):'')}
 function rateLbl(){$('#rateV').textContent=Math.round($('#rate').value*100)+' %'}
@@ -698,7 +704,8 @@ renderGym();renderMine();renderMission();renderStats();fillSettings();
  }
  $('#claudeMode').hidden=!inClaude();$('#ownMode').hidden=inClaude();
  if(inClaude())$('#sub').textContent='Test mode inside Claude.';
- if(!inClaude()&&'serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+ if(!inClaude()&&'serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+ if(!inClaude()&&location.protocol==='https:'){checkUpdate();document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkUpdate()})}
  if(!inClaude()&&navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{});
  if(!inClaude()&&!cfg.kO)setTimeout(()=>{$('#sub').textContent='Welcome! First add your OpenAI key under Profile.'},0);
  diag();loadNews();
