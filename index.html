@@ -692,7 +692,13 @@ async function hostTurn(extra){
  try{await aiStream(RULES()+'\n\nConversation so far:\n'+(transcript()||'(none yet)')+'\n\n'+extra,onText)}
  catch(e){tx.textContent=errLine(e);busy=false;return}
  const [body,tipRaw]=full.split('###TIP###');
- const [partA,partB]=(body||'').split('###NEXT###');
+ let [partA,partB]=(body||'').split('###NEXT###');
+ let tip0=null;try{if(tipRaw&&tipRaw.trim()!=='null')tip0=pickJSON(tipRaw)}catch(e){}
+ if(partB===undefined&&tip0&&tip0.better){ /* model forgot the marker: split after the sentence that gives the fix */
+  const ss=partA.match(/[^.!?…]+[.!?…]+["'”’)\]]*\s*/g)||[partA];const k=tip0.better.toLowerCase().slice(0,24);
+  let i=ss.findIndex(s=>s.toLowerCase().includes(k));
+  if(i>=0&&i<ss.length-1){const a=ss.slice(0,i+1).join('');if(spoken<=a.length+2){partA=a;partB=ss.slice(i+1).join('')}}
+ }
  Voice.add(partA.slice(spoken));
  revealed=true;tx.textContent=partA.trim();
  let tip=null;try{if(tipRaw&&tipRaw.trim()!=='null')tip=pickJSON(tipRaw)}catch(e){}
@@ -716,7 +722,7 @@ async function send(){
  const t=$('#answer').value.trim();if(!t||busy)return;
  if(Mic.on)Mic.stop();
  $('#answer').value='';grow();$('#live').textContent=convo?'Jimmy is thinking …':'';hist.push({r:'me',t});addMe(t);mark();
- await hostTurn("Write your next line, then ###TIP### and the tip for the guest's last answer.");
+ await hostTurn("Write your next line. If you correct a mistake, the format MUST be: correction (1-2 sentences), new line ###NEXT###, then the rest of your reply with the question. Then ###TIP### and the tip for the guest's last answer.");
  afterJimmy();
 }
 $('#send').onclick=send;
@@ -810,7 +816,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='43';
+const BUILD='44';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
