@@ -784,7 +784,7 @@ $('#v-gym').addEventListener('click',async e=>{
   return;
  }
  /* fallback: compare recognised words */
- if(!Mic.ok()){out.innerHTML='<span class="hint">The pronunciation check needs the app mic and an OpenAI key. Until then: listen and repeat out loud.</span>';return}
+ if(!Mic.ok()||(IOS&&!cfg.kO)||!(navigator.mediaDevices&&window.MediaRecorder)&&!SRC){out.innerHTML='<span class="hint">'+(!cfg.kO?'The pronunciation check needs your OpenAI key on this phone – add it under Profile. Until then: listen and repeat out loud.':'This browser can\'t record here. Open the app from the home-screen icon in Safari (iPhone) or Chrome (Android).')+'</span>';return}
  if(Mic.on){Mic.stop();return}
  out.textContent='Listening … say the phrase.';let heard='';
  Mic.toggle(x=>{heard=(heard+' '+x).trim();const r=compare(en,heard);out.innerHTML=`Heard: “${esc(heard)}” · <span class="${r.p>=80?'good':'meh'}">${r.p}%</span>${r.miss.length?' · missing: '+esc(r.miss.join(', ')):''}`;if(r.p>=60)mark()},()=>{});
@@ -816,7 +816,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='46';
+const BUILD='47';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
