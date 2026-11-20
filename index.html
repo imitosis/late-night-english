@@ -171,6 +171,13 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 .cf{position:fixed;top:0;width:7px;height:11px;border-radius:2px;z-index:99;pointer-events:none;animation:cf 1.6s cubic-bezier(.2,.6,.4,1) forwards}
 @keyframes cf{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
 @media (prefers-reduced-motion:reduce){.cf{display:none}}
+.seg{display:flex;gap:4px;padding:4px;margin:0 0 14px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+.seg button{flex:1;border:0;background:none;color:var(--mute);font:inherit;font-size:14px;font-weight:600;padding:8px 10px;border-radius:999px;min-height:0}
+.seg button[aria-selected=true]{background:var(--soft);color:var(--ink)}
+.acch{display:flex;align-items:baseline;justify-content:space-between;gap:10px}.best{font-size:12.5px;font-weight:600;color:var(--blue);white-space:nowrap}
+.pairs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.wchip{border:1px solid var(--line);background:none;color:var(--ink);font:inherit;font-size:14px;padding:5px 12px;border-radius:999px;min-height:0}
+.wchip:active{background:var(--soft);color:var(--blue)}
 .chev{color:var(--mute);font-size:20px;line-height:1}
 .chathead{justify-content:space-between;align-items:center}
 .ch{display:flex;align-items:center;gap:10px;min-width:0}.cht{display:flex;flex-direction:column;min-width:0}.cht b{font-size:15px}.cht small{color:var(--mute);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:56vw}
@@ -257,8 +264,15 @@ details.card[open]>summary::after{transform:rotate(-135deg)}
 
 <section id="v-gym" class="view">
  
+ <div class="seg" role="tablist"><button data-g="phr" aria-selected="true">Phrases</button><button data-g="acc" aria-selected="false">Accent coach</button></div>
+ <div id="gPhr">
  <p class="hint">Listen, say it out loud, get feedback. Phrases from your shows appear at the top.</p>
  <div id="mine"></div><div id="phr"></div>
+ </div>
+ <div id="gAcc" hidden>
+ <p class="hint">The sounds German speakers find tricky. Tap a word to hear it, then record the sentences – Jimmy listens for exactly that sound.</p>
+ <div id="acc"></div>
+ </div>
 </section>
 
 <section id="v-mis" class="view">
@@ -546,10 +560,10 @@ async function toWav16k(blob){
  let bin='';const u=new Uint8Array(buf);for(let i=0;i<u.length;i+=0x8000)bin+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));
  return btoa(bin);
 }
-async function pronCheck(target,b64){
+async function pronCheck(target,b64,focus){
  const r=await fetch(OA+'chat/completions',{method:'POST',headers:oaHead(),body:JSON.stringify({model:'gpt-audio-mini',modalities:['text'],messages:[{role:'user',content:[
   {type:'text',text:`You are Jimmy, a warm, funny American late-night host coaching an Austrian (German speaker) on English pronunciation. Listen to the recording. Target sentence: "${target}".
-Judge pronunciation only (not voice quality). Look for typical German-speaker issues: th (as s/d/z), w (as v), v, final consonants devoiced, r, vowel length, word stress, sentence melody.
+Judge pronunciation only (not voice quality).${focus?` This is an accent drill: focus your score and fixes on ${focus}; mention other issues only if they are big.`:''} Look for typical German-speaker issues: th (as s/d/z), w (as v), v, final consonants devoiced, r, vowel length, word stress, sentence melody.
 Reply JSON only: {"score":0-100,"joke":"one short playful English line reacting to how it sounded","fixes":[{"word":"","tip":"max 15 words of simple English, how to say it right"}] (0-2 items, most important first),"praise":"short English praise for what was good"}`},
   {type:'input_audio',input_audio:{data:b64,format:'wav'}}]}]})});
  if(!r.ok)throw httpErr(r);
@@ -769,16 +783,30 @@ function compare(a,b){const A=words(a),B=words(b);const miss=A.filter(w=>!B.incl
 const phRow=(en,de,id)=>`<div class="ph" data-i="${id}"><div class="en">${esc(en)}</div><div class="de">${esc(de)}</div><div class="acts"><button class="ib" data-a="say" aria-label="Listen">${IC.spk}</button><button class="ib" data-a="rep" aria-label="Say it and check pronunciation">${IC.mic}</button></div><div class="score"></div></div>`;
 function renderGym(){const cats=[...new Set(PHRASES.map(p=>p[0]))];$('#phr').innerHTML=cats.map(c=>`<div class="card"><h3>${c}</h3>${PHRASES.map((p,i)=>p[0]===c?phRow(p[1],p[2],'p'+i):'').join('')}</div>`).join('')}
 function renderMine(){$('#mine').innerHTML=st.saved.length?`<div class="card"><h3>Your collection</h3>${st.saved.slice(0,30).map((p,i)=>phRow(p.en,p.de,'m'+i)).join('')}</div>`:''}
-const phText=id=>id[0]==='p'?PHRASES[+id.slice(1)][1]:st.saved[+id.slice(1)].en;
+const ACCENT=[
+ {k:'th1',t:'TH as in “think”',f:'the voiceless th /θ/ (not s, t or f)',de:'Zungenspitze leicht zwischen die Zähne, Luft sanft drüberblasen – kein s, kein f, kein t.',w:['think','sink','three','free','thank','tank','mouth','mouse'],s:[['I think three things went wrong.','Ich glaube, drei Dinge sind schiefgelaufen.'],['Thanks for the birthday present.','Danke für das Geburtstagsgeschenk.']]},
+ {k:'th2',t:'TH as in “this”',f:'the voiced th /ð/ (not d or z)',de:'Gleiche Zunge wie beim „think“, aber mit Stimme – es summt. Kein d, kein z.',w:['they','day','then','den','breathe','breeze','other','udder'],s:[['They would rather do it together.','Sie würden es lieber gemeinsam machen.'],['This is the other one.','Das ist der andere.']]},
+ {k:'wv',t:'W or V',f:'w versus v (German speakers often say v for w)',de:'W: Lippen rund wie zum Kuss, die Zähne berühren nichts. V: obere Zähne leicht auf die Unterlippe.',w:['wine','vine','west','vest','wet','vet','while','vile'],s:[['We visited a very windy village.','Wir haben ein sehr windiges Dorf besucht.'],['Would you wait a while?','Würdest du kurz warten?']]},
+ {k:'r',t:'The English R',f:'the American r (no rolled or throaty German r)',de:'Zunge berührt nichts, Spitze leicht nach hinten gebogen, Lippen etwas rund. Nicht im Hals, nicht rollen. Am Wortende hörbar bleiben.',w:['red','really','around','car','word','her','problem','very'],s:[['I really agree with you.','Da stimme ich dir wirklich zu.'],['The report arrived around three.','Der Bericht kam gegen drei an.']]},
+ {k:'fin',t:'Soft endings',f:'voiced final consonants b, d, g, v, z (German speakers harden them)',de:'Im Deutschen wird am Wortende alles hart („Hund“ = Hunt). Im Englischen bleiben b, d, g, v, z weich – und der Vokal davor wird etwas länger.',w:['bad','bat','dog','dock','eyes','ice','leave','leaf'],s:[['I need a bigger bag.','Ich brauche eine größere Tasche.'],['He loves his job.','Er liebt seinen Job.']]},
+ {k:'ae',t:'“Bad” is not “bed”',f:'the open ae vowel in bad, man, that (not like e in bed)',de:'Für „bad“, „man“, „that“: Mund weit auf, Kiefer runter, ein breites, flaches ä. „bed“ dagegen kurz und geschlossen.',w:['bad','bed','man','men','sad','said','had','head'],s:[['That man had a bad day.','Der Mann hatte einen schlechten Tag.'],['Actually, that sounds fantastic.','Eigentlich klingt das fantastisch.']]},
+ {k:'ed',t:'-ed endings',f:'past tense -ed endings (t, d or id – no extra syllable)',de:'Nach t/d → „-id“ (wanted). Nach stimmlosen Lauten wie k, p, s, sh → „-t“ (worked). Sonst → „-d“ (played). Kein extra „e“ sprechen!',w:['worked','played','wanted','stopped','decided','called','watched','needed'],s:[['I worked late and watched the news.','Ich habe lange gearbeitet und Nachrichten geschaut.'],['She wanted to know what happened.','Sie wollte wissen, was passiert ist.']]},
+ {k:'st',t:'Stress & melody',f:'word stress and sentence melody (strong stressed syllables, reduced weak ones)',de:'Englisch betont eine Silbe stark und verschluckt den Rest: COMF-ta-ble, VEG-ta-ble, IN-tres-ting. Satzmelodie: Aussagen gehen am Ende runter, Ja/Nein-Fragen hoch.',w:['comfortable','vegetable','interesting','development','photograph','photography','event','hotel'],s:[['That is actually really interesting.','Das ist eigentlich wirklich interessant.'],['Are you comfortable with that?','Passt dir das so?']]}
+];
+function renderAcc(){st.acc=st.acc||{};$('#acc').innerHTML=ACCENT.map((a,i)=>`<div class="card acc" data-f="${esc(a.f)}"><div class="acch"><h3>${esc(a.t)}</h3>${st.acc[a.k]!=null?`<span class="best">best ${st.acc[a.k]}</span>`:''}</div><p class="hint" style="margin:4px 0 10px">${esc(a.de)}</p><div class="pairs">${a.w.map(x=>`<button class="wchip" data-w="${esc(x)}">${esc(x)}</button>`).join('')}</div>${a.s.map((s,j)=>phRow(s[0],s[1],'a'+i+'_'+j)).join('')}</div>`).join('')}
+const phText=id=>id[0]==='p'?PHRASES[+id.slice(1)][1]:id[0]==='a'?ACCENT[+id.slice(1).split('_')[0]].s[+id.split('_')[1]][0]:st.saved[+id.slice(1)].en;
+document.querySelectorAll('#v-gym .seg button').forEach(b=>b.onclick=()=>{const g=b.dataset.g;document.querySelectorAll('#v-gym .seg button').forEach(x=>x.setAttribute('aria-selected',x===b));$('#gPhr').hidden=g!=='phr';$('#gAcc').hidden=g!=='acc';if(g==='acc')renderAcc()});
 let recBtn=null;
 $('#v-gym').addEventListener('click',async e=>{
+ const wc=e.target.closest('.wchip');if(wc){speak(wc.dataset.w);return}
  const b=e.target.closest('[data-a]');if(!b)return;
  const row=b.closest('.ph'),en=phText(row.dataset.i),out=row.querySelector('.score');
  if(b.dataset.a==='say'){speak(en);return}
  /* real pronunciation check: record audio, Jimmy listens */
  if(Rec.ok()){
   if(recBtn===b){recBtn=null;b.innerHTML=IC.mic;b.classList.remove('rec');b.setAttribute('aria-label','Say it and check pronunciation');out.textContent='Jimmy is listening to it …';
-   try{const blob=await Rec.stop();const r=await pronCheck(en,await toWav16k(blob));
+   try{const blob=await Rec.stop();const accC=row.closest('.acc');const r=await pronCheck(en,await toWav16k(blob),accC&&accC.dataset.f);
+    if(accC&&typeof r.score==='number'){const k=ACCENT[+row.dataset.i.slice(1).split('_')[0]].k;st.acc=st.acc||{};if(!(st.acc[k]>=r.score)){st.acc[k]=r.score;save();const hd=accC.querySelector('.acch');let bs=hd.querySelector('.best');if(!bs){bs=document.createElement('span');bs.className='best';hd.append(bs)}bs.textContent='best '+r.score}}
     out.innerHTML=`<span class="${r.score>=80?'good':'meh'}">${esc(r.score)}/100</span> · <i>${esc(r.joke)}</i>${(r.fixes||[]).map(f=>`<br><b>${esc(f.word)}</b>: ${esc(f.tip)}`).join('')}${r.praise?`<br><span class="hint">${esc(r.praise)}</span>`:''}`;
     if(r.joke)speak(r.joke);if(r.score>=60)mark()}catch(err){out.textContent=err&&err.name==='NotAllowedError'?'Microphone blocked – allow it for this site in your browser settings (iPhone: Settings › Safari › Microphone).':errLine(err)}
    return}
@@ -823,7 +851,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='48';
+const BUILD='49';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
