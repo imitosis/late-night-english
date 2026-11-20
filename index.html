@@ -564,7 +564,7 @@ async function pronCheck(target,b64,focus){
  const r=await fetch(OA+'chat/completions',{method:'POST',headers:oaHead(),body:JSON.stringify({model:'gpt-audio-mini',modalities:['text'],messages:[{role:'user',content:[
   {type:'text',text:`You are Jimmy, a warm, funny American late-night host coaching an Austrian (German speaker) on English pronunciation. Listen to the recording. Target sentence: "${target}".
 Judge pronunciation only (not voice quality).${focus?` This is an accent drill: focus your score and fixes on ${focus}; mention other issues only if they are big.`:''} Look for typical German-speaker issues: th (as s/d/z), w (as v), v, final consonants devoiced, r, vowel length, word stress, sentence melody.
-Reply JSON only: {"score":0-100,"joke":"one short playful English line reacting to how it sounded","fixes":[{"word":"","tip":"max 15 words of simple English, how to say it right"}] (0-2 items, most important first),"praise":"short English praise for what was good"}`},
+If the recording is silent, only noise, or clearly not this sentence, reply exactly {"silent":true}. Otherwise reply JSON only: {"score":0-100,"joke":"one short playful English line reacting to how it sounded","fixes":[{"word":"","tip":"max 15 words of simple English, how to say it right"}] (0-2 items, most important first),"praise":"short English praise for what was good"}`},
   {type:'input_audio',input_audio:{data:b64,format:'wav'}}]}]})});
  if(!r.ok)throw httpErr(r);
  const j=await r.json();return pickJSON(j.choices[0].message.content||'');
@@ -805,7 +805,11 @@ $('#v-gym').addEventListener('click',async e=>{
  /* real pronunciation check: record audio, Jimmy listens */
  if(Rec.ok()){
   if(recBtn===b){recBtn=null;b.innerHTML=IC.mic;b.classList.remove('rec');b.setAttribute('aria-label','Say it and check pronunciation');out.textContent='Jimmy is listening to it …';
-   try{const blob=await Rec.stop();const accC=row.closest('.acc');const r=await pronCheck(en,await toWav16k(blob),accC&&accC.dataset.f);
+   try{const blob=await Rec.stop();
+    if(Date.now()-Rec.t0<700||Rec.peak<.1||Rec.loud<4){out.innerHTML='<span class="hint">I didn\'t hear anything – tap the mic and say the sentence again.</span>';return}
+    const accC=row.closest('.acc');const wav=await toWav16k(blob);let r;
+    try{r=await pronCheck(en,wav,accC&&accC.dataset.f)}catch(e1){out.textContent='Connection hiccup – trying again …';await new Promise(z=>setTimeout(z,900));r=await pronCheck(en,wav,accC&&accC.dataset.f)}
+    if(!r||r.score==null||r.silent){out.innerHTML='<span class="hint">I couldn\'t really hear the sentence – try again a bit closer to the mic.</span>';return}
     if(accC&&typeof r.score==='number'){const k=ACCENT[+row.dataset.i.slice(1).split('_')[0]].k;st.acc=st.acc||{};if(!(st.acc[k]>=r.score)){st.acc[k]=r.score;save();const hd=accC.querySelector('.acch');let bs=hd.querySelector('.best');if(!bs){bs=document.createElement('span');bs.className='best';hd.append(bs)}bs.textContent='best '+r.score}}
     out.innerHTML=`<span class="${r.score>=80?'good':'meh'}">${esc(r.score)}/100</span> · <i>${esc(r.joke)}</i>${(r.fixes||[]).map(f=>`<br><b>${esc(f.word)}</b>: ${esc(f.tip)}`).join('')}${r.praise?`<br><span class="hint">${esc(r.praise)}</span>`:''}`;
     if(r.joke)speak(r.joke);if(r.score>=60)mark()}catch(err){out.textContent=err&&err.name==='NotAllowedError'?'Microphone blocked – allow it for this site in your browser settings (iPhone: Settings › Safari › Microphone).':errLine(err)}
@@ -813,7 +817,8 @@ $('#v-gym').addEventListener('click',async e=>{
   if(recBtn)return;
   try{Voice.stop();out.innerHTML='<span class="gymrec"><span class="recdot"></span><span class="gt">0:00</span><span class="gw">'+'<i></i>'.repeat(28)+'</span><span class="hint">tap ■ when done</span></span>';
    const bars=[...out.querySelectorAll('.gw i')],gt=out.querySelector('.gt'),t0=Date.now();let last=0;
-   await Rec.start(l=>{const now=Date.now();if(now-last<70)return;last=now;bars.forEach((x,i)=>{if(i<bars.length-1)x.style.height=bars[i+1].style.height});bars[bars.length-1].style.height=Math.max(3,Math.round(l*22))+'px';const s=Math.floor((now-t0)/1000);gt.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0')});
+   Rec.peak=0;Rec.loud=0;Rec.t0=Date.now();
+   await Rec.start(l=>{if(l>Rec.peak)Rec.peak=l;if(l>.12)Rec.loud++;const now=Date.now();if(now-last<70)return;last=now;bars.forEach((x,i)=>{if(i<bars.length-1)x.style.height=bars[i+1].style.height});bars[bars.length-1].style.height=Math.max(3,Math.round(l*22))+'px';const s=Math.floor((now-t0)/1000);gt.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0')});
    recBtn=b;b.innerHTML=IC.stop;b.classList.add('rec');b.setAttribute('aria-label','Stop recording')}
   catch(err){out.textContent='Microphone blocked – allow it for this site in your browser settings (iPhone: Settings › Safari › Microphone).'}
   return;
@@ -851,7 +856,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='49';
+const BUILD='50';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
