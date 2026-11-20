@@ -816,7 +816,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='45';
+const BUILD='46';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
@@ -905,7 +905,8 @@ renderGym();renderMine();renderMission();renderStats();fillSettings();$('#chAv')
  if(!inClaude()&&navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{});
  if(!inClaude()&&!cfg.kO)setTimeout(()=>{$('#sub').textContent='Welcome! First add your OpenAI key under Profile.'},0);
  diag();greet();loadNews();
- if(!inClaude()&&cfg.kO&&!LS.get('lne_onb',0))obOpen();
+ if(/[?&]onboarding/.test(location.search)){history.replaceState(null,'',location.pathname);obOpen()}
+ else if(!inClaude()&&cfg.kO&&!LS.get('lne_onb',0))obOpen();
 })();
 }
 </script>
