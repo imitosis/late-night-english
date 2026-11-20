@@ -94,7 +94,9 @@ button:focus-visible,textarea:focus-visible,input:focus-visible,.story:focus-vis
 .ph .acts{display:flex;gap:6px;align-items:center}
 .ib{width:40px;height:40px;min-height:40px;padding:0;border-radius:50%;display:inline-grid;place-items:center;background:var(--soft);border:0;color:var(--blue);flex:none}
 
-.ib svg{width:19px;height:19px}.ib.rec{background:var(--blue);color:var(--on)}
+.ib svg{width:19px;height:19px}.ib.rec{background:var(--blue);color:var(--on);box-shadow:0 0 0 4px rgba(76,197,218,.18)}
+.gymrec{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}.gymrec .hint{font-weight:400;margin-left:auto}
+.gw{display:flex;align-items:center;gap:2px;height:24px}.gw i{width:2.5px;height:3px;border-radius:2px;background:var(--blue);transition:height .07s linear}
 .tb{display:inline-flex;align-items:center;gap:8px}.tb svg{width:18px;height:18px}
 .score{grid-column:1/-1;font-size:13px;line-height:1.45}
 .good{color:#6ee7a8;font-weight:700}.meh{color:#ffb86b;font-weight:700}
@@ -155,9 +157,9 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 .vm i:nth-child(odd){animation-delay:.2s}@keyframes vmp{50%{opacity:.35}}
 .vmt{font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums}
 .pill{position:relative}
-.rec{position:absolute;left:16px;top:0;bottom:0;display:none;align-items:center;gap:7px;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);pointer-events:none}
+.recbar{position:absolute;left:16px;top:0;bottom:0;display:none;align-items:center;gap:7px;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);pointer-events:none}
 .recdot{width:8px;height:8px;border-radius:50%;background:var(--blue);animation:pulse 1.1s infinite}
-.recording .rec{display:flex}
+.recording .recbar{display:flex}
 .wave{position:absolute;left:66px;right:100px;top:0;bottom:0;display:none;align-items:center;justify-content:flex-end;gap:2px;pointer-events:none;overflow:hidden}
 .recording .wave{display:flex}.recording #answer{opacity:0}
 .wave i{flex:none;width:2.5px;min-height:3px;height:3px;border-radius:2px;background:var(--blue);transition:height .09s linear}
@@ -240,7 +242,7 @@ details.card[open]>summary::after{transform:rotate(-135deg)}
   <div class="dock" id="dock">
    <div class="live" id="live">Tap the mic, or start conversation mode.</div>
    <div class="pill">
-    <div class="rec" aria-hidden="true"><span class="recdot"></span><span id="recTime">0:00</span></div>
+    <div class="recbar" aria-hidden="true"><span class="recdot"></span><span id="recTime">0:00</span></div>
     <div class="wave" id="wave" aria-hidden="true"></div>
     <textarea id="answer" rows="1" placeholder="Reply to Jimmy …"></textarea>
     <button class="pb" id="mic" aria-label="Dictate once"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></button>
@@ -526,7 +528,9 @@ const Mic={on:false,cb:null,partial:null,end:null,rec:null,
 /* ---------- recorder for the pronunciation check ---------- */
 const Rec={mr:null,chunks:[],
  ok(){return !inClaude()&&!!cfg.kO&&!!(navigator.mediaDevices&&window.MediaRecorder)},
- async start(){const s=await navigator.mediaDevices.getUserMedia({audio:true});this.chunks=[];this.mr=new MediaRecorder(s);this.mr.ondataavailable=e=>this.chunks.push(e.data);this.mr.start()},
+ async start(onLevel){const s=await navigator.mediaDevices.getUserMedia({audio:true});this.chunks=[];this.mr=new MediaRecorder(s);this.mr.ondataavailable=e=>this.chunks.push(e.data);this.mr.start();
+  if(onLevel){try{const ctx=sharedCtx||new (window.AudioContext||window.webkitAudioContext)();sharedCtx=ctx;ctx.resume&&ctx.resume();const src=ctx.createMediaStreamSource(s),an=ctx.createAnalyser();an.fftSize=512;src.connect(an);const d=new Uint8Array(an.fftSize);
+   const tick=()=>{if(!this.mr){try{src.disconnect()}catch(e){}return}an.getByteTimeDomainData(d);let m=0;for(const v of d)m=Math.max(m,Math.abs(v-128));onLevel(Math.min(1,m/60));requestAnimationFrame(tick)};tick()}catch(e){}}},
  stop(){return new Promise(res=>{const mr=this.mr;if(!mr)return res(null);mr.onstop=()=>{mr.stream.getTracks().forEach(t=>t.stop());res(new Blob(this.chunks,{type:mr.mimeType}))};mr.stop();this.mr=null})}
 };
 async function toWav16k(blob){
@@ -773,13 +777,16 @@ $('#v-gym').addEventListener('click',async e=>{
  if(b.dataset.a==='say'){speak(en);return}
  /* real pronunciation check: record audio, Jimmy listens */
  if(Rec.ok()){
-  if(recBtn===b){recBtn=null;b.innerHTML=IC.mic;b.classList.remove('rec');out.textContent='Jimmy is listening to it …';
+  if(recBtn===b){recBtn=null;b.innerHTML=IC.mic;b.classList.remove('rec');b.setAttribute('aria-label','Say it and check pronunciation');out.textContent='Jimmy is listening to it …';
    try{const blob=await Rec.stop();const r=await pronCheck(en,await toWav16k(blob));
     out.innerHTML=`<span class="${r.score>=80?'good':'meh'}">${esc(r.score)}/100</span> · <i>${esc(r.joke)}</i>${(r.fixes||[]).map(f=>`<br><b>${esc(f.word)}</b>: ${esc(f.tip)}`).join('')}${r.praise?`<br><span class="hint">${esc(r.praise)}</span>`:''}`;
     if(r.joke)speak(r.joke);if(r.score>=60)mark()}catch(err){out.textContent=err&&err.name==='NotAllowedError'?'Microphone blocked – allow it for this site in your browser settings (iPhone: Settings › Safari › Microphone).':errLine(err)}
    return}
   if(recBtn)return;
-  try{Voice.stop();await Rec.start();recBtn=b;b.innerHTML=IC.stop;b.classList.add('rec');out.textContent='Recording … say the phrase, then tap ■.'}
+  try{Voice.stop();out.innerHTML='<span class="gymrec"><span class="recdot"></span><span class="gt">0:00</span><span class="gw">'+'<i></i>'.repeat(28)+'</span><span class="hint">tap ■ when done</span></span>';
+   const bars=[...out.querySelectorAll('.gw i')],gt=out.querySelector('.gt'),t0=Date.now();let last=0;
+   await Rec.start(l=>{const now=Date.now();if(now-last<70)return;last=now;bars.forEach((x,i)=>{if(i<bars.length-1)x.style.height=bars[i+1].style.height});bars[bars.length-1].style.height=Math.max(3,Math.round(l*22))+'px';const s=Math.floor((now-t0)/1000);gt.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0')});
+   recBtn=b;b.innerHTML=IC.stop;b.classList.add('rec');b.setAttribute('aria-label','Stop recording')}
   catch(err){out.textContent='Microphone blocked – allow it for this site in your browser settings (iPhone: Settings › Safari › Microphone).'}
   return;
  }
@@ -816,7 +823,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='47';
+const BUILD='48';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
