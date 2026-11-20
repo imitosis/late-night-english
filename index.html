@@ -560,11 +560,12 @@ async function toWav16k(blob){
  let bin='';const u=new Uint8Array(buf);for(let i=0;i<u.length;i+=0x8000)bin+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));
  return btoa(bin);
 }
-async function pronCheck(target,b64,focus){
+async function pronCheck(target,b64,focus,heard){
  const r=await fetch(OA+'chat/completions',{method:'POST',headers:oaHead(),body:JSON.stringify({model:'gpt-audio-mini',modalities:['text'],messages:[{role:'user',content:[
   {type:'text',text:`You are Jimmy, a warm, funny American late-night host coaching an Austrian (German speaker) on English pronunciation. Listen to the recording. Target sentence: "${target}".
-Judge pronunciation only (not voice quality).${focus?` This is an accent drill: focus your score and fixes on ${focus}; mention other issues only if they are big.`:''} Look for typical German-speaker issues: th (as s/d/z), w (as v), v, final consonants devoiced, r, vowel length, word stress, sentence melody.
-If the recording is silent, only noise, or clearly not this sentence, reply exactly {"silent":true}. Otherwise reply JSON only: {"score":0-100,"joke":"one short playful English line reacting to how it sounded","fixes":[{"word":"","tip":"max 15 words of simple English, how to say it right"}] (0-2 items, most important first),"praise":"short English praise for what was good"}`},
+${heard?`A speech recognizer transcribed the recording as: "${heard}". Words it got wrong or missed are strong evidence of mispronunciation; words it got right were probably understandable.`:''}
+Judge pronunciation only (not voice quality). Base every fix on something you actually hear in THIS recording – name the exact word and what it sounded like. Do not give generic tips. If it sounded good, give no fixes and a high score.${focus?` This is an accent drill: focus your score and fixes on ${focus}; mention other issues only if they are big.`:''} Look for typical German-speaker issues: th (as s/d/z), w (as v), v, final consonants devoiced, r, vowel length, word stress, sentence melody.
+If the recording is silent, only noise, or clearly not this sentence, reply exactly {"silent":true}. Otherwise reply JSON only: {"score":0-100,"joke":"one short playful English line reacting to how it sounded","fixes":[{"word":"","tip":"max 18 words: what it sounded like and how to say it right"}] (0-2 items, most important first),"praise":"short English praise for what was good"}`},
   {type:'input_audio',input_audio:{data:b64,format:'wav'}}]}]})});
  if(!r.ok)throw httpErr(r);
  const j=await r.json();return pickJSON(j.choices[0].message.content||'');
@@ -808,10 +809,14 @@ $('#v-gym').addEventListener('click',async e=>{
    try{const blob=await Rec.stop();
     if(Date.now()-Rec.t0<700||Rec.peak<.1||Rec.loud<4){out.innerHTML='<span class="hint">I didn\'t hear anything – tap the mic and say the sentence again.</span>';return}
     const accC=row.closest('.acc');const wav=await toWav16k(blob);let r;
-    try{r=await pronCheck(en,wav,accC&&accC.dataset.f)}catch(e1){out.textContent='Connection hiccup – trying again …';await new Promise(z=>setTimeout(z,900));r=await pronCheck(en,wav,accC&&accC.dataset.f)}
+    let heard='';try{heard=await transcribe(blob)}catch(e0){try{heard=await transcribe(blob)}catch(e2){}}
+    const cmp=heard?compare(en,heard):null;
+    if(heard!==''&&cmp&&cmp.p<35){out.innerHTML=`Heard: “${esc(heard)}”<br><span class="hint">That didn't sound like the sentence – give it another go.</span>`;return}
+    try{r=await pronCheck(en,wav,accC&&accC.dataset.f,heard)}catch(e1){out.textContent='Connection hiccup – trying again …';await new Promise(z=>setTimeout(z,900));r=await pronCheck(en,wav,accC&&accC.dataset.f,heard)}
     if(!r||r.score==null||r.silent){out.innerHTML='<span class="hint">I couldn\'t really hear the sentence – try again a bit closer to the mic.</span>';return}
+    r.heard=heard;
     if(accC&&typeof r.score==='number'){const k=ACCENT[+row.dataset.i.slice(1).split('_')[0]].k;st.acc=st.acc||{};if(!(st.acc[k]>=r.score)){st.acc[k]=r.score;save();const hd=accC.querySelector('.acch');let bs=hd.querySelector('.best');if(!bs){bs=document.createElement('span');bs.className='best';hd.append(bs)}bs.textContent='best '+r.score}}
-    out.innerHTML=`<span class="${r.score>=80?'good':'meh'}">${esc(r.score)}/100</span> · <i>${esc(r.joke)}</i>${(r.fixes||[]).map(f=>`<br><b>${esc(f.word)}</b>: ${esc(f.tip)}`).join('')}${r.praise?`<br><span class="hint">${esc(r.praise)}</span>`:''}`;
+    out.innerHTML=(r.heard?`<span class="hint">Heard: “${esc(r.heard)}”</span><br>`:'')+`<span class="${r.score>=80?'good':'meh'}">${esc(r.score)}/100</span> · <i>${esc(r.joke)}</i>${(r.fixes||[]).map(f=>`<br><b>${esc(f.word)}</b>: ${esc(f.tip)}`).join('')}${r.praise?`<br><span class="hint">${esc(r.praise)}</span>`:''}`;
     if(r.joke)speak(r.joke);if(r.score>=60)mark()}catch(err){out.textContent=err&&err.name==='NotAllowedError'?'Microphone blocked – allow it for this site in your browser settings (iPhone: Settings › Safari › Microphone).':errLine(err)}
    return}
   if(recBtn)return;
@@ -856,7 +861,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='50';
+const BUILD='51';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
