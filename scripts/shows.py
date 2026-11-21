@@ -54,7 +54,17 @@ for name, host, handle, cid, marks in SHOWS:
         entries.append(en)
     print(f"{name}: newest titles:", [e.findtext("a:title", "", NS) for e in entries[:6]])
     marked = [e for e in entries if any(m in (e.findtext("a:title", "", NS) or "").lower() for m in marks)]
-    for en in (marked or entries[:1]):
+    def score(t):
+        lo = t.lower()
+        sc = 3 * len(re.findall(r"\b(trump|musk|putin|xi|biden|vance|congress|president|white house|maga|election|senate|government|shutdown)\b", lo))
+        sc += min(3, t.count(","))
+        if re.match(r"^[A-Z][\w.'’-]+(?: [A-Z][\w.'’-]+)* (?:on|talks|reveals|thought|dives|helps|explains|shares|recalls|and)\b", t): sc -= 6  # guest interview
+        if "|" in t or " – " in t or "catchphrase" in lo: sc -= 6  # music, games
+        return sc
+    if not marked:
+        ranked = sorted(entries[:10], key=lambda e: -score(e.findtext("a:title", "", NS) or ""))
+        marked = [e for e in ranked if score(e.findtext("a:title", "", NS) or "") > 2][:1] or entries[:1]
+    for en in marked:
         title = (en.findtext("a:title", "", NS) or "").strip()
         vid = en.findtext("yt:videoId", "", NS)
         desc = (en.findtext("media:group/media:description", "", NS) or "").strip()
