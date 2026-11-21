@@ -7,6 +7,10 @@ damit App und dieses Skript immer dasselbe verlangen.
 import datetime, json, os, re, sys, urllib.request
 from zoneinfo import ZoneInfo
 
+if not os.environ.get("OPENAI_API_KEY"):
+    print("Noch kein Secret OPENAI_API_KEY eingetragen – überspringe (die App lädt die News dann selbst).")
+    sys.exit(0)
+
 now = datetime.datetime.now(ZoneInfo("Europe/Vienna"))
 html = open("index.html", encoding="utf-8").read()
 tpl = re.search(r"const NEWS_PROMPT=\(\)=>`(.*?)`;", html, re.S).group(1)

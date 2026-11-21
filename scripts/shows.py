@@ -46,10 +46,16 @@ for name, host, handle, cid, marks in SHOWS:
     if root is None:
         continue
     picked = 0
+    entries = []
     for en in root.findall("a:entry", NS):
+        link = en.find("a:link", NS)
+        if link is not None and "/shorts/" in (link.get("href") or ""):
+            continue  # skip YouTube Shorts
+        entries.append(en)
+    print(f"{name}: newest titles:", [e.findtext("a:title", "", NS) for e in entries[:6]])
+    marked = [e for e in entries if any(m in (e.findtext("a:title", "", NS) or "").lower() for m in marks)]
+    for en in (marked or entries[:1]):
         title = (en.findtext("a:title", "", NS) or "").strip()
-        if not any(m in title.lower() for m in marks):
-            continue
         vid = en.findtext("yt:videoId", "", NS)
         desc = (en.findtext("media:group/media:description", "", NS) or "").strip()
         desc = re.sub(r"https?://\S+", "", desc)
