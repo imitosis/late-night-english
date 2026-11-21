@@ -184,6 +184,11 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 body.quiz #gPhr .ph:not(.shown) .en{filter:blur(7px);user-select:none;cursor:pointer}
 body.quiz #gPhr .ph:not(.shown) .acts{visibility:hidden}
 .usedcard b{color:var(--blue)}
+.ln{padding-top:14px}.lnchips{display:flex;gap:6px;margin-bottom:12px}.wchip.on{background:var(--soft);border-color:rgba(76,197,218,.45);color:var(--blue)}
+.thumb{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:14px;overflow:hidden;background:#000;min-height:0}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
+.thumb .play{position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;background:var(--blue);color:var(--on);display:grid;place-items:center;box-shadow:0 0 24px rgba(76,197,218,.45)}.thumb .play svg{width:26px;height:26px;margin-left:3px}
+.vid{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000}.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .chev{color:var(--mute);font-size:20px;line-height:1}
 .chathead{justify-content:space-between;align-items:center}
 .ch{display:flex;align-items:center;gap:10px;min-width:0}.cht{display:flex;flex-direction:column;min-width:0}.cht b{font-size:15px}.cht small{color:var(--mute);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:56vw}
@@ -228,6 +233,7 @@ details.card[open]>summary::after{transform:rotate(-135deg)}
  <div id="home">
   <small id="misDate" hidden></small>
   <div class="card miscard" id="misCard"><span class="badge">Today's mission · off the app</span><p class="mis" id="misText"></p><button id="misDone" class="pri">Done it</button></div>
+  <div id="lastNight"></div>
   <p class="newsline" id="newsDate"></p>
   <div id="news"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
   <div class="card">
@@ -248,6 +254,14 @@ details.card[open]>summary::after{transform:rotate(-135deg)}
   </div>
   <button class="pri big" id="briefGo">Talk to Jimmy about it</button>
   <p class="hint">Tip: read it once, then tell Jimmy in your own words.</p>
+ </div>
+ <div id="watch" hidden>
+  <div class="sec"><button id="watchBack" class="tbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Back</button><small id="watchShow"></small></div>
+  <div class="vid"><iframe id="watchFrame" title="Monologue video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  <h2 id="watchTitle" style="margin:14px 0 6px"></h2>
+  <p class="hint" style="margin:0 0 14px">Tip: tap <b>CC</b> in the video for English subtitles. Too fast? Use ⚙︎ → Playback speed 0.75.</p>
+  <button class="pri big" id="watchGo">I watched it – talk to Jimmy</button>
+  <p class="hint" id="watchPrep" style="text-align:center">Jimmy will ask you a quick question about it, then you tell him your favourite joke in your own words.</p>
  </div>
  <div id="talk" hidden>
   <div class="sec chathead"><div class="ch"><span class="av" id="chAv"></span><div class="cht"><b>Jimmy</b><small id="talkTopic"></small></div></div><button id="end" class="tbtn">End show</button></div>
@@ -738,10 +752,42 @@ async function hostTurn(extra){
  } else if(partA.trim()) hist.push({r:'host',t:partA.trim()});
  busy=false;toBottom(true);
 }
-function startShow(t,g,opener){
+let SHOWS=[],showSel=0,watchV=null,watchCtx=null;
+async function loadShows(){try{const r=await fetch('https://raw.githubusercontent.com/imitosis/late-night-english/main/shows.json?d='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();
+ const seen=new Set();SHOWS=(j.items||[]).filter(x=>{if(seen.has(x.host))return false;seen.add(x.host);return true});renderLastNight()}catch(e){}}
+function ago(iso){const hrs=Math.round((Date.now()-Date.parse(iso))/36e5);return hrs<1?'just now':hrs<24?hrs+' h ago':Math.round(hrs/24)+' d ago'}
+function renderLastNight(){const el=$('#lastNight');if(!SHOWS.length){el.innerHTML='';return}const v=SHOWS[Math.min(showSel,SHOWS.length-1)];
+ el.innerHTML=`<p class="newsline" style="margin-top:0">Last night on TV</p><div class="card ln">
+ <div class="lnchips">${SHOWS.map((s,i)=>`<button class="wchip${i===showSel?' on':''}" data-s="${i}">${esc(s.host.split(' ').pop())}</button>`).join('')}</div>
+ <button class="thumb" id="lnPlay" aria-label="Watch ${esc(v.title)}"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></button>
+ <div class="k" style="margin:10px 0 4px">${esc(v.show)} · ${esc(ago(v.published))}</div><h3>${esc(v.title)}</h3>
+ <button class="talkbtn" id="lnGo">Watch &amp; talk</button></div>`;
+ el.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{showSel=+b.dataset.s;renderLastNight()});
+ $('#lnPlay').onclick=$('#lnGo').onclick=()=>openWatch(v)}
+function recapKey(v){return 'lne_recap_'+v.id}
+async function getRecap(v){const c=LS.get(recapKey(v),null);if(c)return c;
+ const t=await ai(`Find news coverage, recaps or articles about this late-night segment: "${v.title}" by ${v.host} (${v.show}), published on YouTube ${v.published.slice(0,10)}. YouTube description: "${v.desc}".
+Reply JSON only: {"topics":["3-5 short topics he joked about"],"jokes":["up to 5 jokes, paraphrased in your own words, max 20 words each"],"questions":["3 easy listening-check questions about what was said, answerable after watching once"]}. If you find nothing reliable, base it only on the title and description and keep it general.`,{search:true});
+ const j=pickJSON(t);try{localStorage.setItem(recapKey(v),JSON.stringify(j))}catch(e){}return j}
+function openWatch(v){watchV=v;watchCtx=null;Voice.stop();
+ document.body.classList.add('talking');$('#home').hidden=true;$('#watch').hidden=false;scrollTo(0,0);
+ $('#watchShow').textContent=v.show;$('#watchTitle').textContent=v.title;
+ $('#watchFrame').src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(v.id)+'?playsinline=1&rel=0&cc_load_policy=1&cc_lang_pref=en&hl=en';
+ getRecap(v).then(r=>{if(watchV===v)watchCtx=r}).catch(()=>{})}
+$('#watchBack').onclick=()=>{$('#watchFrame').src='about:blank';document.body.classList.remove('talking');$('#watch').hidden=true;$('#home').hidden=false};
+$('#watchGo').onclick=async()=>{const v=watchV;$('#watchFrame').src='about:blank';$('#watch').hidden=true;
+ if(!watchCtx){try{$('#watchPrep').textContent='Jimmy is catching up on the show …';watchCtx=await getRecap(v)}catch(e){watchCtx={}}}
+ const r=watchCtx||{};
+ const g=`The guest has just watched this monologue on YouTube: "${v.title}" (${v.host}, ${v.show}). Description: ${v.desc}
+What it covered (from recaps – may be incomplete): topics: ${(r.topics||[]).join('; ')}. Jokes: ${(r.jokes||[]).join(' | ')}.
+Listening questions you can use: ${(r.questions||[]).join(' | ')}.
+SHOW PLAN: 1) Ask ONE easy listening question (one at a time; if he's unsure, give a small hint, never lecture). 2) After 1-2 questions, ask him to retell his favourite joke from the monologue in his own words. 3) Then chat about the topics. Never claim details you are not sure were in the clip; if he says something you can't confirm, play along curiously.`;
+ startShow(v.host+': '+v.title,g,null,'watch')};
+function startShow(t,g,opener,mode){
  topic=t;gist=g;hist=[];$('#chat').innerHTML='';
  document.body.classList.add('talking');$('#home').hidden=true;$('#summary').hidden=true;$('#talk').hidden=false;$('#talkTopic').textContent=t;scrollTo(0,0);
  if(opener){const G=['Goooood evening!!!','Goooood evening, everybody!','Hey hey hey, look who\'s here!','Ladies and gentlemen… my favorite guest!','Welcome back to the show!','Oh, there you are!'];const hr=new Date().getHours(),g0=hr<12?'Goooood morning!!!':hr<17?'Goooood afternoon!!!':G[Math.floor(Math.random()*G.length)];const o=`${Math.random()<.5?g0:G[Math.floor(Math.random()*G.length)].replace('Goooood evening',hr<17?(hr<12?'Goooood morning':'Goooood afternoon'):'Goooood evening')} ${opener}`;hist.push({r:'host',t:o});hostBubble(o);speak(o)}
+ else if(mode==='watch')hostTurn('Open the show: big, fun late-night greeting that fits the time of day (vary it; do NOT say "my friend from Austria"), one quick quip that the guest just watched the other guy\'s monologue (friendly rivalry), then ask your FIRST easy listening question about it. No tip yet: write ###TIP### null.');
  else hostTurn('Open the show: greet the guest with a big, fun late-night style greeting that fits the time of day (vary it, e.g. "Goooood evening!!!"; do NOT say "my friend from Austria"), make a quick original quip about the topic, then ask how he feels about it. No tip yet: write ###TIP### null.');
 }
 async function send(){
@@ -876,7 +922,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='52';
+const BUILD='53';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
@@ -938,7 +984,7 @@ function obRender(){
   N.textContent="I'm ready – start the show";
  }
 }
-renderGym();renderMine();renderMission();renderStats();fillSettings();$('#chAv').innerHTML=JIMMY;
+renderGym();renderMine();renderMission();renderStats();loadShows();fillSettings();$('#chAv').innerHTML=JIMMY;
 
 /* ---------- start: detect Claude test mode ---------- */
 (async()=>{

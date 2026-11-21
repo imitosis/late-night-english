@@ -1,0 +1,32 @@
+name: Monologe der letzten Nacht
+
+on:
+  schedule:
+    - cron: "41 5,7,9,13 * * *"   # mehrmals am Morgen (UTC), weil die Clips nach und nach online kommen
+  workflow_dispatch:                # Knopf "Run workflow" zum Ausprobieren
+  push:
+    branches: [main]
+    paths: [scripts/shows.py, .github/workflows/shows.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  shows:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Monologe suchen (kein Schlüssel nötig)
+        run: python scripts/shows.py
+      - name: Speichern
+        run: |
+          git config user.name "news-bot"
+          git config user.email "news-bot@users.noreply.github.com"
+          git add shows.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "Monologe vom $(date +%F)"
+          git pull --rebase -q || true
+          git push
