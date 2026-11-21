@@ -184,7 +184,7 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 body.quiz #gPhr .ph:not(.shown) .en{filter:blur(7px);user-select:none;cursor:pointer}
 body.quiz #gPhr .ph:not(.shown) .acts{visibility:hidden}
 .usedcard b{color:var(--blue)}
-.ln{padding-top:14px}.lnchips{display:flex;gap:6px;margin-bottom:12px}.wchip.on{background:var(--soft);border-color:rgba(76,197,218,.45);color:var(--blue)}
+.lncard{padding-top:14px}.lnchips{display:flex;gap:6px;margin-bottom:12px}.wchip.on{background:var(--soft);border-color:rgba(76,197,218,.45);color:var(--blue)}
 .thumb{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:14px;overflow:hidden;background:#000;min-height:0}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
 .thumb .play{position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;background:var(--blue);color:var(--on);display:grid;place-items:center;box-shadow:0 0 24px rgba(76,197,218,.45)}.thumb .play svg{width:26px;height:26px;margin-left:3px}
@@ -757,7 +757,7 @@ async function loadShows(){try{const r=await fetch('https://raw.githubuserconten
  const seen=new Set();SHOWS=(j.items||[]).filter(x=>{if(seen.has(x.host))return false;seen.add(x.host);return true});renderLastNight()}catch(e){}}
 function ago(iso){const hrs=Math.round((Date.now()-Date.parse(iso))/36e5);return hrs<1?'just now':hrs<24?hrs+' h ago':Math.round(hrs/24)+' d ago'}
 function renderLastNight(){const el=$('#lastNight');if(!SHOWS.length){el.innerHTML='';return}const v=SHOWS[Math.min(showSel,SHOWS.length-1)];
- el.innerHTML=`<p class="newsline" style="margin-top:0">Last night on TV</p><div class="card ln">
+ el.innerHTML=`<p class="newsline" style="margin-top:0">Last night on TV</p><div class="card lncard">
  <div class="lnchips">${SHOWS.map((s,i)=>`<button class="wchip${i===showSel?' on':''}" data-s="${i}">${esc(s.host.split(' ').pop())}</button>`).join('')}</div>
  <button class="thumb" id="lnPlay" aria-label="Watch ${esc(v.title)}"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></button>
  <div class="k" style="margin:10px 0 4px">${esc(v.show)} · ${esc(ago(v.published))}</div><h3>${esc(v.title)}</h3>
@@ -922,7 +922,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='53';
+const BUILD='54';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
