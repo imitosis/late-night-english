@@ -144,6 +144,9 @@ label{display:block;font-weight:600;margin:14px 0 6px}
 .ob-say{min-height:24px;text-align:center;color:var(--mute);font-style:italic}
 .ob-reply{display:flex;gap:10px;align-items:flex-end;margin-top:14px}
 .ob-foot .big{width:100%}
+.ob-tour{display:grid;gap:10px}.ob-t{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.ob-t b{display:block;font-size:16px;margin-bottom:3px}.ob-t small{display:block;color:var(--mute);font-size:14px;line-height:1.45}
+.ob-n{flex:none;width:32px;height:32px;border-radius:50%;background:var(--soft);color:var(--blue);display:grid;place-items:center;font-weight:700;font-size:13px}
 .greet{margin:22px 0 14px;display:flex;flex-direction:column;gap:2px}.greet h2{font-size:22px}.greet small{color:var(--mute);font-size:13px}
 .upnext{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:6px}
 .upnext .k{font-size:12px}.upnext h3{font-size:18px;line-height:1.32}.upnext p{margin:0;color:var(--mute);font-size:14px;line-height:1.45}
@@ -696,9 +699,9 @@ YOU ARE ALSO HIS ENGLISH COACH. Check the guest's LAST answer: grammar, word cho
 The guest's text comes from speech recognition: ignore punctuation and capitals. But if a word looks like a mispronounced word that got misheard (e.g. "sink" for "think", "wery" for "very", "vine" for "wine"), treat it as a pronunciation slip and tease him about the sound.
 Phrases the guest is practising: ${targets().map(p=>'"'+p[0]+'"').join(', ')||'none'}. Now and then steer the chat so one of them would fit naturally, but never say them yourself and never ask him to use them. If he uses one, cheer for it in one quick in-character line.
 Only correct when it really matters: a clear grammar or word mistake, or a phrase that sounds clearly un-English to a native speaker. Small stuff, minor style choices and speech-recognition glitches: let it go, no tip. Most answers should get NO correction; let the guest talk.
-If there is such a mistake (only the most useful one): first point it out IN CHARACTER with a quick, warm joke (a host teasing a guest he likes, never mean) and say the correct version clearly, in 1-2 sentences. Then write a new line with exactly ###NEXT### and after it carry on with the conversation. If there is no mistake, do not write ###NEXT###. If it was fine, just react to WHAT he said (the content), not how he said it. Do not comment on his phrasing.
-Conversation style: react to what the guest said like a real talk-show host: first share your own short take, a funny thought or a quick joke about the story (keep it original, never repeat jokes from real shows), then ask ONE question. Vary your questions: his opinion ("What's your take?"), his feelings ("Does that annoy you?"), surprise ("Did you see that coming?"), Austria ("How does that play in Vienna?"), a follow-up on something he said. Do NOT ask "What would you do?" or other hypothetical questions.
-Reply (after ###NEXT### if you corrected him): 2-3 short spoken sentences of natural American conversational English, ending with that ONE question. Plain text only, no emojis, no stage directions.
+If there is such a mistake (only the most useful one): open your reply by pointing it out IN CHARACTER with a quick, warm joke (a host teasing a guest he likes, never mean), say the correct version clearly, then carry on in the same reply. Never write ###NEXT###. If it was fine, just react to WHAT he said (the content), not how he said it. Do not comment on his phrasing.
+Conversation style: react to what the guest said like a real talk-show host: first share your own short take, a funny thought or a quick joke about the story (keep it original, never repeat jokes from real shows), then hand the mic back to him in the way the MOVE for this turn says (given below). Do NOT ask "What would you do?" and do not ask for his opinion unless the move says so. Opinion questions get boring fast.
+Reply: 2-4 short spoken sentences of natural American conversational English, ending with that ONE question. Plain text only, no emojis, no stage directions.
 After the reply write a new line with exactly ###TIP### and then JSON for the same mistake: {"said":"wrong part as said","better":"correct version","why":"max 15 words of very simple English explaining the rule"} or the word null if there was no mistake.`;
 let tbT=0;function toBottom(force){const now=Date.now();if(!force&&now-tbT<250)return;tbT=now;requestAnimationFrame(()=>scrollTo({top:document.documentElement.scrollHeight,behavior:'smooth'}))}
 const transcript=()=>hist.map(h=>(h.r==='host'?'HOST: ':'GUEST: ')+h.t).join('\n');
@@ -734,11 +737,6 @@ async function hostTurn(extra){
  const [body,tipRaw]=full.split('###TIP###');
  let [partA,partB]=(body||'').split('###NEXT###');
  let tip0=null;try{if(tipRaw&&tipRaw.trim()!=='null')tip0=pickJSON(tipRaw)}catch(e){}
- if(partB===undefined&&tip0&&tip0.better){ /* model forgot the marker: split after the sentence that gives the fix */
-  const ss=partA.match(/[^.!?…]+[.!?…]+["'”’)\]]*\s*/g)||[partA];const k=tip0.better.toLowerCase().slice(0,24);
-  let i=ss.findIndex(s=>s.toLowerCase().includes(k));
-  if(i>=0&&i<ss.length-1){const a=ss.slice(0,i+1).join('');if(spoken<=a.length+2){partA=a;partB=ss.slice(i+1).join('')}}
- }
  Voice.add(partA.slice(spoken));
  revealed=true;tx.textContent=partA.trim();
  let tip=null;try{if(tipRaw&&tipRaw.trim()!=='null')tip=pickJSON(tipRaw)}catch(e){}
@@ -752,6 +750,19 @@ async function hostTurn(extra){
  } else if(partA.trim()) hist.push({r:'host',t:partA.trim()});
  busy=false;toBottom(true);
 }
+const MOVES=[
+ ['opinion','MOVE: ask for his take or his feelings about it, in a fresh way (e.g. "Does that annoy you?", "Did you see that coming?").'],
+ ['explain','MOVE: play dumb and ask him to EXPLAIN something to you: what actually happened, or how this works in Austria. ("Wait, walk me through it – what happened?")'],
+ ['story','MOVE: ask for a short personal story or experience connected to it ("Has anything like that ever happened to you?", "When did you last…?").'],
+ ['recap','MOVE: ask him to sum something up in one or two sentences, like a news anchor ("Give me the headline version.").'],
+ ['roleplay','MOVE: start a 2-line mini role-play connected to the topic: you play a character (an annoyed airline agent, a nosy neighbour, a journalist at a press conference, a colleague at the coffee machine) and say your first line in character; he answers in character. Say clearly who he is.'],
+ ['choice','MOVE: give him a fun either/or choice connected to the story and ask which one and why ("Snow chaos or heat wave – pick one.").'],
+ ['describe','MOVE: ask him to describe something concrete: a place, a person, a typical scene in Austria, his morning.'],
+ ['react','MOVE: no question this time. Tell a slightly longer funny bit (3 sentences), then invite him with a short statement like "Your turn – tell me something good that happened this week." or "Convince me I\'m wrong."']
+];
+let lastMoves=[];
+function nextMove(){const pool=MOVES.filter(m=>!lastMoves.includes(m[0]));const m=pool[Math.floor(Math.random()*pool.length)];lastMoves=[m[0],...lastMoves].slice(0,3);
+ if(hist.length<2)return MOVES[0][1];return m[1]+' (If the conversation clearly needs something else – he asked you a question, or he seems lost – answer him first and keep it simple.)'}
 let SHOWS=[],showSel=0,watchV=null,watchCtx=null;
 async function loadShows(){try{const r=await fetch('https://raw.githubusercontent.com/imitosis/late-night-english/main/shows.json?d='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();
  const seen=new Set();SHOWS=(j.items||[]).filter(x=>{if(seen.has(x.host))return false;seen.add(x.host);return true});renderLastNight()}catch(e){}}
@@ -796,7 +807,7 @@ async function send(){
  $('#answer').value='';grow();$('#live').textContent=convo?'Jimmy is thinking …':'';hist.push({r:'me',t});addMe(t);mark();
  {const hit=[...st.saved.map(p=>p.en),...PHRASES.map(p=>p[1])].filter((p,i,a)=>a.indexOf(p)===i).find(p=>{const W=words(p.replace(/\.\.\.|…/g,''));return W.length>=3&&compare(p.replace(/\.\.\.|…/g,''),t).p>=85});
   if(hit){st.used=st.used||{};st.used[hit]=(st.used[hit]||0)+1;save();const c=document.createElement('div');c.className='tip usedcard';c.innerHTML=`<b>✓ Phrase used</b> · “${esc(hit)}”${st.used[hit]===2?' <span class="hint">– that one\'s yours now!</span>':''}`;$('#chat').append(c);try{navigator.vibrate&&navigator.vibrate(25)}catch(e){}renderMine()}}
- await hostTurn("Write your next line. If you correct a mistake, the format MUST be: correction (1-2 sentences), new line ###NEXT###, then the rest of your reply with the question. Then ###TIP### and the tip for the guest's last answer.");
+ await hostTurn(nextMove()+"\nWrite your next line. Then ###TIP### and the tip for the guest's last answer.");
  afterJimmy();
 }
 $('#send').onclick=send;
@@ -922,7 +933,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='54';
+const BUILD='55';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
@@ -946,8 +957,9 @@ const GOALS=['Meetings','Phone & video calls','Small talk with colleagues','Busi
 const LEVELS=[['stuck','I often get stuck','Jimmy speaks a bit slower and only fixes big mistakes'],['ok','I manage','Normal pace, fixes real mistakes'],['polish','I\'m fluent, I want polish','Faster, and tips for more natural phrasing']];
 let ob={step:0,goals:new Set(cfg.goals||[]),level:cfg.level||'',heard:'',done:false};
 const OB_STEPS=5;
+if(!cfg.goals||!cfg.goals.length){cfg.goals=['Meetings','Phone & video calls','Small talk with colleagues'];cfg.level=cfg.level||'ok';LS.set('lne_cfg2',cfg)}
 function obOpen(){LS.set('lne_onb',1);ob.step=0;document.body.classList.add('ob-open');$('#onb').hidden=false;obRender()}
-function obClose(){LS.set('lne_onb',1);cfg.goals=[...ob.goals];if(ob.level){cfg.level=ob.level;if(!LS.get('lne_rate_set',0))cfg.rate=ob.level==='stuck'?1.15:ob.level==='polish'?1.4:1.3}LS.set('lne_cfg2',cfg);fillSettings();if(Mic.on)Mic.stop();Voice.stop();$('#onb').hidden=true;document.body.classList.remove('ob-open')}
+function obClose(){LS.set('lne_onb',1);if(ob.goals&&ob.goals.size)cfg.goals=[...ob.goals];if(ob.level){cfg.level=ob.level;if(!LS.get('lne_rate_set',0))cfg.rate=ob.level==='stuck'?1.15:ob.level==='polish'?1.4:1.3}LS.set('lne_cfg2',cfg);fillSettings();if(Mic.on)Mic.stop();Voice.stop();$('#onb').hidden=true;document.body.classList.remove('ob-open')}
 function obNext(){if(ob.step<OB_STEPS-1){ob.step++;obRender()}else obClose()}
 $('#obNext').onclick=obNext;
 $('#obSkip').onclick=()=>{if(ob.step<OB_STEPS-1){ob.step++;obRender()}else obClose()};
@@ -958,11 +970,15 @@ function obRender(){
  if(ob.step===0){
   B.innerHTML=`<div class="biglogo" aria-label="Late Night English"><span class="stampw grain">ENGLISH</span><span class="ln">Late Night</span></div><div class="ob-av" style="margin-top:28px">${JIMMY}</div><h2 id="onbT">Hey, I'm Jimmy!</h2><p>Five minutes a day, we chat about the news – in English. I'll help you sound natural, and I'll tease you a little when you slip up.</p>`;N.textContent="Let's go";
  }else if(ob.step===1){
-  B.innerHTML=`<h2 id="onbT">Where do you need English?</h2><p>Pick all that fit. I'll bring these situations into our chats.</p><div class="ob-opts">${GOALS.map(g=>`<button class="ob-opt" aria-pressed="${ob.goals.has(g)}" data-g="${esc(g)}">${esc(g)}<span class="ck">✓</span></button>`).join('')}</div>`;
-  B.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{const g=b.dataset.g;ob.goals.has(g)?ob.goals.delete(g):ob.goals.add(g);b.setAttribute('aria-pressed',ob.goals.has(g))});N.textContent='Next';
+  B.innerHTML=`<h2 id="onbT">Your daily show</h2><p>Three ways in – pick whatever you feel like today.</p><div class="ob-tour">
+  <div class="ob-t"><span class="ob-n">1</span><div><b>Last night on TV</b><small>Watch the newest monologue from Kimmel, Fallon or Meyers right in the app. Then tell Jimmy what you saw – he checks what you understood.</small></div></div>
+  <div class="ob-t"><span class="ob-n">2</span><div><b>Today's news</b><small>Instead of scrolling the paper: short stories from Austria and the world. Tap <i>Talk with Jimmy</i> and chat with Jimmy.</small></div></div>
+  <div class="ob-t"><span class="ob-n">3</span><div><b>Talk, don't type</b><small>Just speak. Jimmy answers out loud and only corrects real mistakes – with a joke, never mean.</small></div></div></div>`;N.textContent='Next';
  }else if(ob.step===2){
-  B.innerHTML=`<h2 id="onbT">How does speaking English feel?</h2><p>Be honest – this just sets my pace.</p><div class="ob-opts">${LEVELS.map(([k,t,s])=>`<button class="ob-opt" aria-pressed="${ob.level===k}" data-l="${k}"><span>${esc(t)}<small>${esc(s)}</small></span><span class="ck">✓</span></button>`).join('')}</div>`;
-  B.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{ob.level=b.dataset.l;B.querySelectorAll('[data-l]').forEach(x=>x.setAttribute('aria-pressed',x===b))});N.textContent='Next';
+  B.innerHTML=`<h2 id="onbT">On the side</h2><p>Small things that make it stick.</p><div class="ob-tour">
+  <div class="ob-t"><span class="ob-n">✓</span><div><b>Today's mission</b><small>One small real-life English task per day. Done it? Tap it – your streak grows.</small></div></div>
+  <div class="ob-t"><span class="ob-n">Aa</span><div><b>Phrase notebook</b><small>Good phrases from your shows land here. Three of them are “Use tonight” – slip them into a chat and Jimmy notices.</small></div></div>
+  <div class="ob-t"><span class="ob-n">th</span><div><b>Accent coach</b><small>Short drills for the sounds German speakers find tricky – th, w and v, the English r. Record yourself, get a score.</small></div></div></div>`;N.textContent='Next';
  }else if(ob.step===3){
   B.innerHTML=`<h2 id="onbT">Say hi to Jimmy!</h2><p>Tap the mic and introduce yourself in one or two sentences. Your phone will ask for microphone access – please allow it.</p><button class="ob-mic" id="obMic" aria-label="Talk">${IC.mic}</button><div class="ob-say" id="obSay">${esc(ob.heard)}</div><div id="obReply"></div>`;
   N.textContent='Next';

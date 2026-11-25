@@ -1,4 +1,4 @@
-const V='lne-v54',FILES=['./','index.html','manifest.webmanifest','icon.svg'];
+const V='lne-v55',FILES=['./','index.html','manifest.webmanifest','icon.svg'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(V).then(c=>c.addAll(FILES)))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
 /* always try the network first, bypassing the browser cache; offline: use the saved copy */
