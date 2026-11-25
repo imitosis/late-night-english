@@ -2,214 +2,220 @@
  "date": "2026-11-25",
  "items": [
   {
-   "title": "A1 Plans 430 Net Job Cuts",
-   "gist": "Austria’s biggest telecom operator is restructuring while investing in newer services.",
-   "summary": "A1 Austria plans to reduce its workforce by 430 net jobs in 2027. The plan means 500 departures and 70 new hires in future-focused areas. The company says it wants to cut costs by €300 million by 2030. About €100 million of the savings is expected to come from staff costs. A1 says it is moving skills toward cloud services, information technology and cybersecurity. It also plans to invest up to €500 million a year in networks and other projects.",
+   "title": "Austria Stays On Budget Track",
+   "gist": "The European Commission says Austria is meeting a key spending limit, but its deficit procedure remains open.",
+   "summary": "The European Commission says Austria is on track to meet a spending limit set under its deficit procedure. The limit concerns the growth of net public spending. The Commission expects this growth to be 2.1 percent in 2026 and 2027. That is just below the recommended limit of 2.2 percent. The procedure is not over, but the Commission says it will take no further steps for now. Austria’s deficit was above the EU’s 3 percent limit in 2024.",
    "words": [
     {
-     "en": "net job cuts",
-     "de": "Netto-Stellenabbau"
+     "en": "spending limit",
+     "de": "Ausgabenobergrenze"
     },
     {
-     "en": "cost savings",
-     "de": "Kosteneinsparungen"
+     "en": "deficit procedure",
+     "de": "Defizitverfahren"
     },
     {
-     "en": "cybersecurity",
-     "de": "Cybersicherheit"
-    }
-   ],
-   "shows": [],
-   "category": "economy",
-   "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449200/"
-   },
-   "host_open": "A1 is planning fewer jobs but also new roles in future-facing fields. How do you feel about that?"
-  },
-  {
-   "title": "Snow Preparations Pick Up In Lower Austria",
-   "gist": "Drivers, rail services and road crews are getting ready for a widespread snowfall.",
-   "summary": "Snow is forecast across Lower Austria on Thursday, according to ORF. Some drivers are rushing to fit winter tyres, and some repair shops are fully booked. One workshop reported changing tyres on more than 130 vehicles on busy days. The province’s road service says about 280 staff and 101 winter vehicles are ready. Rail operator ÖBB and road operator ASFINAG also say they are prepared. The forecast says snow may reach lower areas, though conditions can vary by region.",
-   "words": [
-    {
-     "en": "winter tyres",
-     "de": "Winterreifen"
-    },
-    {
-     "en": "snowfall",
-     "de": "Schneefall"
-    },
-    {
-     "en": "road crew",
-     "de": "Straßendienst-Team"
+     "en": "gross domestic product",
+     "de": "Bruttoinlandsprodukt"
     }
    ],
    "shows": [],
    "category": "politics",
+   "wiki": "Austria",
    "source": {
-    "name": "ORF Lower Austria",
-    "url": "https://noe.orf.at/stories/3380970/"
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449163/"
    },
-   "host_open": "Winter seems to have booked an early appointment across Lower Austria. How does that look from where you are?"
+   "host_open": "Austria has got a little breathing room from Brussels, though the paperwork is not finished. How does that look from Austria?"
   },
   {
-   "title": "Russian Attack Kills Two In Zaporizhzhia",
-   "gist": "A strike hit the Ukrainian city as Kyiv explained its attack on a Russian ship in Libya.",
-   "summary": "A Russian nighttime attack on Zaporizhzhia killed two civilians, Ukrainian officials said. They reported that 48 people were wounded, including four children. The attack came as Ukraine discussed its strike on a Russian warship docked in Benghazi, Libya. Libya’s foreign ministry said the Tripoli-based government had not authorised foreign military operations in its territory or waters. Ukrainian officials described the attack on the ship as part of their military effort against Russia. The events show how the war is affecting people far from Ukraine’s front lines.",
+   "title": "Linz Power Outage Investigated",
+   "gist": "Police suspect deliberate damage after a fault left thousands of homes without power.",
+   "summary": "A power outage affected about 20,000 households in Linz on Monday morning. The outage began after a fault at a substation in the Kleinmünchen area. Police say their investigation suggests the fault may have been caused deliberately. They are investigating suspected serious property damage. The cause has not been finally established, and no suspect has been named. The case matters because it raises questions about the security of local power infrastructure.",
    "words": [
     {
-     "en": "nighttime attack",
-     "de": "nächtlicher Angriff"
+     "en": "power outage",
+     "de": "Stromausfall"
     },
     {
-     "en": "wounded",
-     "de": "verletzt"
+     "en": "substation",
+     "de": "Umspannwerk"
     },
     {
-     "en": "territorial waters",
-     "de": "Hoheitsgewässer"
+     "en": "deliberate damage",
+     "de": "vorsätzliche Beschädigung"
+    }
+   ],
+   "shows": [],
+   "category": "politics",
+   "wiki": "Linz",
+   "source": {
+    "name": "ORF",
+    "url": "https://on.orf.at/video/14348626/16192871/ermittlungen-nach-stromausfall-in-linz"
+   },
+   "host_open": "A short power cut can affect a lot of people at once. How does the investigation make you feel?"
+  },
+  {
+   "title": "Ukraine Attack Kills Libyan Soldiers",
+   "gist": "Two Libyan soldiers died after Ukrainian attacks on Russian ships near Benghazi, according to eastern Libyan authorities.",
+   "summary": "Two Libyan soldiers have died from injuries after Ukrainian attacks on two Russian ships near Libya. The deaths were announced by authorities in eastern Libya. The attacks took place near the port of Benghazi. France’s foreign minister defended Ukraine’s actions as self-defence against Russia’s invasion. The Libyan authorities described the attacks as aggression. The reports add a new dimension to the war, but details of the attack have not been independently confirmed in the report.",
+   "words": [
+    {
+     "en": "injuries",
+     "de": "Verletzungen"
+    },
+    {
+     "en": "self-defence",
+     "de": "Selbstverteidigung"
+    },
+    {
+     "en": "invasion",
+     "de": "Invasion"
     }
    ],
    "shows": [],
    "category": "world",
+   "wiki": "Benghazi",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/bfff959fb4c7415f9473b34e78a4f750"
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449224/"
    },
-   "host_open": "Families in Zaporizhzhia are facing another night of violence. How are you feeling about this news?"
+   "host_open": "Two soldiers have died after an attack near Benghazi. How do you feel about this widening risk to people outside Ukraine?"
   },
   {
-   "title": "Israeli Strikes Kill Nine In Gaza",
-   "gist": "Gaza officials report fresh deaths as strikes continue despite a ceasefire deal.",
-   "summary": "Officials in Gaza said Israeli strikes killed at least nine people between Monday night and Tuesday. Hospital officials reported deaths in several strikes, including a child and three police officers. The strikes came after a ceasefire deal between Israel and Hamas took effect in October 2025. Israel’s military did not immediately answer questions about one strike that killed the officers. The figures come from Gaza officials and hospitals. The continued violence raises concern about the ceasefire and the safety of civilians.",
+   "title": "Iran Reports Tanker Explosions",
+   "gist": "Iran says two ships hit sea mines in the Strait of Hormuz, but the claim could not be independently checked.",
+   "summary": "Iran’s Revolutionary Guard says two oil tankers struck sea mines in the Strait of Hormuz on Wednesday. The report says the claim could not initially be verified independently. Iran’s navy warned shipping companies against using routes it had not approved. The US military has been escorting civilian ships to help restore oil and gas trade. Talks between Tehran and Washington have not produced a breakthrough. The strait is an important route for energy shipments, so any threat to shipping could matter internationally.",
    "words": [
     {
-     "en": "ceasefire deal",
-     "de": "Waffenstillstandsabkommen"
+     "en": "sea mine",
+     "de": "Seemine"
     },
     {
-     "en": "hospital officials",
-     "de": "Krankenhausvertreter"
+     "en": "shipping route",
+     "de": "Schifffahrtsroute"
     },
     {
-     "en": "civilian safety",
-     "de": "Sicherheit der Zivilbevölkerung"
+     "en": "independently verified",
+     "de": "unabhängig bestätigt"
     }
    ],
    "shows": [],
    "category": "world",
+   "wiki": "Strait of Hormuz",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/ba01cb036a849ba69873da5000ee08d5"
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449223/"
    },
-   "host_open": "Fresh deaths in Gaza are a painful reminder of how fragile the ceasefire remains. How are you feeling about this?"
+   "host_open": "Reports of mines in a busy shipping lane raise serious safety concerns. How does that news make you feel?"
   },
   {
-   "title": "EU Proposes New Russia Sanctions",
-   "gist": "The proposed measures target banks, crypto platforms and Russian participation in European events.",
-   "summary": "The European Union has proposed a new package of sanctions against Russia. The plan targets banks and cryptocurrency platforms, among other areas. European Commission President Ursula von der Leyen said the measures are intended to limit ways of financing Russia’s war. The proposal would also bar Russian teams and athletes from competing under the Russian flag at EU sports events. The measures are a proposal, so EU governments still need to agree on them. Russia has faced repeated rounds of EU sanctions since its full-scale invasion of Ukraine.",
+   "title": "Eurostar Trains Hit By Strike",
+   "gist": "Unexpected industrial action disrupted trains between France and Britain on Wednesday.",
+   "summary": "Eurostar said an unexpected strike disrupted train services between France and Britain on Wednesday. The company did not give details about the strike. It asked unions to continue talks directly with management. An AFP report cited company sources who said wage negotiations were under way. The same sources said staff were unhappy about a planned farewell event for a former chief executive. Passengers faced cancellations in both directions through the Channel Tunnel.",
    "words": [
     {
-     "en": "sanctions package",
-     "de": "Sanktionspaket"
+     "en": "industrial action",
+     "de": "Arbeitskampf"
     },
     {
-     "en": "cryptocurrency platform",
-     "de": "Kryptowährungsplattform"
+     "en": "wage negotiations",
+     "de": "Lohnverhandlungen"
     },
     {
-     "en": "under the flag",
-     "de": "unter der Flagge"
+     "en": "cancellation",
+     "de": "Ausfall"
     }
    ],
    "shows": [],
    "category": "europe",
+   "wiki": "Channel Tunnel",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/ecad86868390f6602b346c70d1fa5757"
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449232/"
    },
-   "host_open": "The EU is widening its sanctions plan beyond familiar targets. What do you make of that approach?"
+   "host_open": "A strike has disrupted one of Europe’s key rail links. Did that surprise you?"
   },
   {
-   "title": "Trump Faces Questions Over FAA Ground Stop",
-   "gist": "Officials blamed overloaded systems for a major disruption, while scrutiny of the agency grows.",
-   "summary": "A nationwide flight ground stop followed problems in the United States air traffic control system. Trump administration officials said new technology overloaded older parts of the system. They reported gaps in communications and radar, but said they had found no signs of a cyberattack. The disruption was described as the longest nationwide ground stop in 25 years. The FAA says it is working on major upgrades, backed by money approved by Congress. A recent Fallon monologue joked about the flight disruption and airport chaos; the facts here come from news coverage.",
+   "title": "A1 Austria Plans 430 Job Cuts",
+   "gist": "The telecom company plans a net reduction of 430 positions in Austria in 2027 as part of a cost-saving drive.",
+   "summary": "A1 Austria plans to reduce its workforce by a net 430 jobs in 2027. The plan includes 500 departures and 70 new jobs in future-focused areas. The company currently employs just under 6,000 people in Austria. A1 says it wants to cut costs by 300 million euros by 2030. About 100 million euros of the planned savings would come from staff costs. The company also says it will continue investing in fibre, mobile networks and IT projects.",
    "words": [
     {
-     "en": "ground stop",
-     "de": "landesweiter Flugstopp"
+     "en": "net reduction",
+     "de": "Nettoabbau"
     },
     {
-     "en": "air traffic control",
-     "de": "Flugsicherung"
+     "en": "cost-saving drive",
+     "de": "Sparkurs"
     },
     {
-     "en": "system upgrade",
-     "de": "Systemmodernisierung"
+     "en": "workforce",
+     "de": "Belegschaft"
     }
    ],
-   "shows": [
-    "Fallon"
-   ],
-   "category": "politics",
+   "shows": [],
+   "category": "economy",
+   "wiki": "A1 Telekom Austria",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/f81b0904331dafad6133f291e5f531a8"
+    "name": "ORF",
+    "url": "https://news.orf.at/"
    },
-   "host_open": "A technology upgrade is meant to help air traffic, not stop it. Did that surprise you?"
+   "host_open": "A1 plans to cut more jobs while still investing in its network. How does that balance look to you?"
   },
   {
-   "title": "A1 Cuts Costs And Invests In Networks",
-   "gist": "The telecom company plans a major efficiency drive alongside large annual investments.",
-   "summary": "A1 Austria says it wants to reduce costs by €300 million by 2030. The company plans to cut 430 net jobs in 2027, while hiring 70 people in newer areas. Its chief executive said annual investment in Austria can reach €500 million. That spending includes fibre broadband, mobile network upgrades and information technology projects. A1 also aims to reduce the number of its IT systems by 30 percent over three years. The company says the changes will simplify operations and shift work toward newer technologies.",
+   "title": "New Test Can Detect GHB Later",
+   "gist": "A laboratory in Austria is using a method that can detect the drug GHB in blood for up to two days.",
+   "summary": "A new method can detect GHB in blood for up to two days after it is taken. GHB is a drug often linked to so-called knockout drops. A laboratory in Seibersdorf is among the few places already using the method. The laboratory examines samples in cases referred by clinics, police or courts. Until now, GHB was usually detectable in the body for only six to twelve hours. The longer window may help investigators, although many suspected cases still have no confirmed trace of the drug.",
    "words": [
     {
-     "en": "fibre broadband",
-     "de": "Glasfaser-Breitband"
+     "en": "detect",
+     "de": "nachweisen"
     },
     {
-     "en": "mobile network",
-     "de": "Mobilfunknetz"
+     "en": "blood sample",
+     "de": "Blutprobe"
     },
     {
-     "en": "efficiency drive",
-     "de": "Effizienzprogramm"
+     "en": "suspected case",
+     "de": "Verdachtsfall"
     }
    ],
    "shows": [],
    "category": "tech",
+   "wiki": "Seibersdorf",
    "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449200/"
+    "name": "ORF science",
+    "url": "https://science.orf.at/stories/3238347/"
    },
-   "host_open": "A1 is trying to make its digital toolbox smaller while upgrading its networks. Does that surprise you?"
+   "host_open": "A longer testing window could make evidence easier to find. How does that sound to you?"
   },
   {
-   "title": "Thanksgiving Parade Balloons Face Wind",
-   "gist": "Strong gusts could keep some famous giant balloons grounded in New York.",
-   "summary": "The Macy’s Thanksgiving Day Parade in New York may face strong winds and rain. The forecast calls for gusts that could become stronger during the day. City rules say large balloons cannot fly if winds pass set speed limits. Organisers may therefore have to leave some of the parade’s character balloons on the ground. The parade is scheduled for Thanksgiving Day, Thursday, November 26. The safety rules aim to reduce risks in crowded streets and between tall buildings.",
+   "title": "Paris Uses Cards To Challenge Sexism",
+   "gist": "Paris is distributing a card game in schools and youth centres to help teenagers recognise misogynistic ideas online.",
+   "summary": "Paris has begun distributing a card game called Mascuradar. The game is intended to help young people recognise misogynistic statements and harmful ideas about masculinity online. It is aimed at boys aged about twelve and older. Schools, youth centres and local town halls are among the first places to receive the cards. The project was developed by the group En avant toutes and Paris’s observatory on violence against women. The city plans to make the cards available in all its secondary schools next year.",
    "words": [
     {
-     "en": "gust",
-     "de": "Windböe"
+     "en": "misogynistic",
+     "de": "frauenfeindlich"
     },
     {
-     "en": "grounded",
-     "de": "am Boden gehalten"
+     "en": "youth centre",
+     "de": "Jugendzentrum"
     },
     {
-     "en": "parade route",
-     "de": "Paradenstrecke"
+     "en": "secondary school",
+     "de": "Mittelschule"
     }
    ],
    "shows": [],
    "category": "fun",
+   "wiki": "Paris",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/3a0da094f00b04a073b33ffb2c03d040"
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449220/"
    },
-   "host_open": "New York’s parade balloons may need to sit this one out if the wind gets too lively. Would that surprise you?"
+   "host_open": "Paris is using a card game to start a serious conversation with teenagers. Would that approach surprise you?"
   }
  ]
 }
