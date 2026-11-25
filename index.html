@@ -251,6 +251,33 @@ h2{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.12}
 #news .upnext .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
 svg.studio{display:none!important}
 #news .talkbtn{border:0;padding:0;min-height:28px;color:var(--gold);font-weight:600}
+
+/* home v2: one thing first, newspaper below */
+.ttl small{font-size:13px;letter-spacing:0;text-transform:none;font-weight:500}
+.sech{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.1;margin:22px 0 12px}
+.lntabs{display:flex;gap:18px;margin:-4px 0 12px}
+.lntabs button{border:0;background:none;padding:0 0 4px;min-height:0;border-radius:0;font-size:14px;font-weight:600;color:var(--mute);border-bottom:2px solid transparent}
+.lntabs button.on{color:var(--ink);border-color:var(--ink)}
+#lastNight .thumb{border-radius:16px;background:#1f1a15}
+#lastNight .thumb img{opacity:1}
+#lastNight .thumb .play{background:rgba(246,241,231,.94);color:var(--ink);box-shadow:none;width:60px;height:60px}
+.lnmeta{font-size:13px;color:var(--mute);margin-top:12px}
+.lnt{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.12;margin:4px 0 14px}
+.lnbtn{width:100%;min-height:48px;font-size:15.5px}
+.newsline{border:0;padding:0;margin:-6px 0 10px;text-transform:none;letter-spacing:0;font-size:13px;font-weight:500}
+#news .cards{gap:0}
+#news .nk{font-size:12.5px;font-weight:600;color:var(--gold)}#news .onshow{color:var(--mute);font-weight:500}
+#news .lead{cursor:pointer;padding:0 0 18px;border-bottom:1px solid var(--line)}
+#news .nimg{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px;margin-bottom:12px;background:var(--line)}
+#news .lead h3{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.1;margin:4px 0 6px}
+#news .lead p{margin:0 0 8px;color:var(--mute);font-size:15px;line-height:1.45}
+#news .lead .talkbtn{display:inline-block;color:var(--ink);font-weight:600;font-size:14px;border:0;padding:0}
+#news .nrow{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer}
+#news .nt{flex:1}#news .nrow h3{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.15;margin-top:3px}
+#news .nth{flex:none;width:84px;height:84px;object-fit:cover;border-radius:10px;background:var(--line)}
+#news .upnext::before{content:none}
+.tabs{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
+.tabs [hidden]{display:none}
 </style>
 </head>
 <body data-tab="home">
@@ -284,8 +311,8 @@ svg.studio{display:none!important}
  <div id="home">
   <div id="lastNight"></div>
   <small id="misDate" hidden></small>
-  <div class="card miscard" id="misCard"><span class="badge">Today's mission</span><p class="mis" id="misText"></p><button id="misDone" class="pri">Done it</button></div>
-  <p class="newsline" id="newsDate"></p>
+  <div class="card miscard" id="misCard" hidden><span class="badge">Today's mission</span><p class="mis" id="misText"></p><button id="misDone" class="pri">Done it</button></div>
+  <h2 class="sech" style="margin-top:34px">Today’s paper</h2><p class="newsline" id="newsDate"></p>
   <div id="news"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
   <div class="card">
    <h3>Your own topic</h3>
@@ -658,7 +685,7 @@ const NEWS_PROMPT=()=>`Today is ${new Date().toDateString()}. Build tonight's ne
 - at most 2 from US politics (pick what the US late-night shows Jimmy Kimmel Live, The Tonight Show with Jimmy Fallon and Late Night with Seth Meyers joked about most recently),
 - 1 from business, tech or science,
 - 1 lighter or funny story.
-That makes 8. Avoid the same person dominating: a single politician's name may appear in at most 2 titles. For each story, check whether any of those three late-night shows covered it in a recent monologue and list them in "shows".
+That makes 8. Every story must be a different topic: never two stories about the same company, event or place. Avoid the same person dominating: a single politician's name may appear in at most 2 titles. For each story, check whether any of those three late-night shows covered it in a recent monologue and list them in "shows".
 Report the FACTS from news coverage (not the jokes, do not quote the hosts). Be neutral and careful, especially on wars and conflicts. For stories about war, terror, disasters or deaths, host_open must be respectful with no joke at all.
 For each:
 "title" (max 8 words, plain English),
@@ -667,6 +694,7 @@ For each:
 "words" (3 useful words or phrases from the story, each {"en":"","de":"German translation"}),
 "shows" (which of the three late-night shows covered it, e.g. ["Kimmel","Fallon"], or [] if none),
 "category" (one of: politics, world, europe, economy, tech, fun),
+"wiki" (exact title of the English Wikipedia article that would give a good photo for this story: prefer a place, city, building, landmark, organisation or object; NOT a person; e.g. "Zaporizhzhia", "Vienna State Opera"; or "" if nothing fits),
 "source" ({"name":"news outlet","url":"exact article URL from your search results"}),
 "host_open" (how the host starts the chat: one short original quip or personal thought about what happened, then ONE question about the guest's opinion or feelings, e.g. "How do you feel about that?", "Did that surprise you?", "How does that look from Austria?". Never ask "What would you do".)
 Never put links, URLs or citations inside title, gist, summary or host_open; the article link goes only into "source".
@@ -679,10 +707,19 @@ function normItem(n){
  if(out.source&&out.source.url)out.source.url=out.source.url.replace(/[?&]utm_[^&]*/g,'').replace(/\?$/,'');
  return out}
 function storyMeta(n,i){const s=(n.shows||[]).filter(Boolean);return s.length?`<span>On ${esc(s.join(', '))}</span>`:''}
+const IMG=LS.get('lne_img',{});
+const CATL={politics:'Politics',world:'World',europe:'Europe',economy:'Business',tech:'Tech & science',fun:'And finally'};
+function imgFor(n){const k=n.wiki||'';return k?IMG[k]:null}
+async function fetchImgs(items){let ch=false;for(const n of items){const k=n.wiki;if(!k||k in IMG)continue;
+ try{const r=await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(k.replace(/ /g,'_')));const j=r.ok?await r.json():{};const t=j.thumbnail&&j.thumbnail.source;IMG[k]=t?t.replace(/\/(\d+)px-/,'/640px-'):''}catch(e){IMG[k]=''}ch=true}
+ if(ch){try{localStorage.setItem('lne_img',JSON.stringify(IMG))}catch(e){}if(NEWS===items)renderNews(items,'')}}
 function renderNews(items,state){
- const card=(n,i)=>{const shows=(n.shows||[]).filter(Boolean);const k=(i===0?'Up next':'')+(shows.length?(i===0?' · ':'')+'On '+esc(shows.join(', ')):'');
-  return `<article class="upnext">${k?`<div class="k">${k}</div>`:''}<h3>${esc(n.title)}</h3><p>${esc(n.gist)}</p><button class="talkbtn" data-n="${i}">Talk with Jimmy <span aria-hidden="true">→</span></button></article>`};
+ const lab=n=>{const shows=(n.shows||[]).filter(Boolean);return esc(CATL[n.category]||'News')+(shows.length?' · <span class="onshow">on '+esc(shows.join(', '))+'</span>':'')};
+ const card=(n,i)=>{const im=imgFor(n);
+  if(i===0)return `<article class="lead" data-n="0">${im?`<img class="nimg" src="${esc(im)}" alt="" loading="lazy" onerror="this.remove()">`:''}<div class="nk">${lab(n)}</div><h3>${esc(n.title)}</h3><p>${esc(n.gist)}</p><span class="talkbtn">Talk with Jimmy →</span></article>`;
+  return `<article class="nrow" data-n="${i}"><div class="nt"><div class="nk">${lab(n)}</div><h3>${esc(n.title)}</h3></div>${im?`<img class="nth" src="${esc(im)}" alt="" loading="lazy" onerror="this.remove()">`:''}</article>`};
  $('#news').innerHTML=`<div class="cards">${items.map(card).join('')}</div>`+(!state&&items.length&&!inClaude()&&cfg.kO?`<button id="moreNews" class="morebtn">More stories</button>`:'')+(state?`<div class="loading"><span class="dots"><i></i><i></i><i></i></span> ${esc(state)}</div>`:'');
+ if(!state)fetchImgs(items);
 }
 const TITLES={home:null,gym:'Phrase Gym',mis:"Today's mission",me:'Your progress'};
 function greet(){const v=document.body.dataset.tab||'home';const hr=new Date().getHours();
@@ -816,12 +853,13 @@ async function loadShows(){try{const r=await fetch('https://raw.githubuserconten
  const seen=new Set();SHOWS=(j.items||[]).filter(x=>{if(seen.has(x.host))return false;seen.add(x.host);return true});renderLastNight()}catch(e){}}
 function ago(iso){const hrs=Math.round((Date.now()-Date.parse(iso))/36e5);return hrs<1?'just now':hrs<24?hrs+' h ago':Math.round(hrs/24)+' d ago'}
 function renderLastNight(){const el=$('#lastNight');if(!SHOWS.length){el.innerHTML='';return}const v=SHOWS[Math.min(showSel,SHOWS.length-1)];
- el.innerHTML=`<div class="card lncard">
- ${SHOWS.length>1?`<div class="lnchips">${SHOWS.map((s,i)=>`<button class="wchip${i===showSel?' on':''}" data-s="${i}">${esc(s.host.split(' ').pop())}</button>`).join('')}</div>`:''}
- <div class="k">Last night on TV</div><h3>${esc(v.title)}</h3><div class="meta">${esc(v.show)} · ${esc(ago(v.published))}</div>
- <div class="lnplay"><button class="go" id="lnGo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14l12-7z" fill="currentColor"/></svg>Watch &amp; talk</button><span>then tell Jimmy what you saw</span></div></div>`;
+ el.innerHTML=`<h2 class="sech">Last night on TV</h2>
+ ${SHOWS.length>1?`<div class="lntabs">${SHOWS.map((s,i)=>`<button class="${i===showSel?'on':''}" data-s="${i}">${esc(s.host.split(' ').pop())}</button>`).join('')}</div>`:''}
+ <button class="thumb" id="lnGo" aria-label="Watch and talk: ${esc(v.title)}"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></button>
+ <div class="lnmeta">${esc(v.show)} · ${esc(ago(v.published))}</div><h3 class="lnt">${esc(v.title)}</h3>
+ <button class="pri lnbtn" id="lnGo2">Watch &amp; talk</button>`;
  el.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{showSel=+b.dataset.s;renderLastNight()});
- $('#lnGo').onclick=()=>openWatch(v)}
+ $('#lnGo').onclick=$('#lnGo2').onclick=()=>openWatch(v)}
 function recapKey(v){return 'lne_recap_'+v.id}
 async function getRecap(v){const c=LS.get(recapKey(v),null);if(c)return c;
  const t=await ai(`Find news coverage, recaps or articles about this late-night segment: "${v.title}" by ${v.host} (${v.show}), published on YouTube ${v.published.slice(0,10)}. YouTube description: "${v.desc}".
@@ -883,7 +921,7 @@ $('#end').onclick=async()=>{
  if(!hist.some(h=>h.r==='me')){document.body.classList.remove('talking');$('#talk').hidden=true;$('#home').hidden=false;return}
  busy=true;$('#end').textContent='One sec …';
  let r=null;try{r=await ai(`An Austrian learner finished a spoken English practice chat with a late-night host about "${topic}".\nTranscript:\n${transcript()}\n\nFormat: {"praise":"one encouraging, specific sentence in simple English","phrases":[{"en":"natural phrase for this kind of chat, ideally an improved version of something they tried to say","de":"German meaning"}],"next":"one concrete speaking task for outside the app, simple English, max 25 words"} with exactly 3 phrases.`)}catch(e){}
- busy=false;$('#end').textContent='End show';st.shows++;mark();
+ busy=false;$('#end').textContent='End show';st.shows++;mark();unlocks(true);
  document.body.classList.remove('talking');$('#talk').hidden=true;const s=$('#summary');s.hidden=false;
  const ps=(r&&r.phrases)||[];ps.forEach(p=>keep(p.en,p.de));
  s.innerHTML=`<div class="sec"><h2>That's a wrap!</h2></div><div class="card"><p style="margin-top:0">${esc((r&&r.praise)||'Nice work – every show counts.')}</p>${ps.length?'<h3>Your 3 phrases from today</h3>':''}${ps.map(p=>`<div class="ph"><div class="en">${esc(p.en)}</div><div class="de">${esc(p.de)}</div><div class="acts"><button class="ib" data-say="${esc(p.en)}" aria-label="Listen">${IC.spk}</button></div></div>`).join('')}${r&&r.next?`<p><span class="badge">Bonus mission</span> ${esc(r.next)}</p>`:''}</div><button class="pri big" id="again">Next story</button>`;
@@ -980,11 +1018,15 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='56';
+const BUILD='57';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
  if(j.v&&j.v!==BUILD){updShown=true;const b=document.createElement('button');b.id='upd';b.textContent='New version available · Tap to update';b.onclick=()=>{b.textContent='Updating …';navigator.serviceWorker&&navigator.serviceWorker.getRegistration().then(r=>r&&r.update()).finally(()=>location.reload())};document.body.append(b)}}catch(e){}}
+function unlocks(announce){const n=st.shows||0,g=$('.tabs [data-v=gym]'),a=$('#v-gym .seg');
+ const was=g.hidden===false;g.hidden=n<3;if(a)a.hidden=n<5;
+ if(announce&&n===3)setTimeout(()=>toast('New: your Phrase notebook is unlocked'),900);
+ if(announce&&n===5)setTimeout(()=>toast('New: Accent coach unlocked in Phrases'),900)}
 function toast(t){let d=$('#toast');if(!d){d=document.createElement('div');d.id='toast';d.setAttribute('role','status');document.body.append(d)}d.textContent=t;d.classList.add('on');clearTimeout(d._t);d._t=setTimeout(()=>d.classList.remove('on'),2600)}
 function diag(){$('#diag').textContent='Mode: '+(inClaude()?'test in Claude':'standalone')+' · Mic: '+(Mic.ok()?(Mic.useCloud()?'iPhone recording':'available'):'not available')+' · Voice: '+(C.tts?'Claude':Voice.useOA()?'OpenAI':'phone')+(!inClaude()?' · Key: '+(cfg.kO?'added':'missing'):'')}
 function rateLbl(){$('#rateV').textContent=Math.round($('#rate').value*100)+' %'}
@@ -1047,7 +1089,7 @@ function obRender(){
   N.textContent="I'm ready – start the show";
  }
 }
-renderGym();renderMine();renderMission();renderStats();loadShows();fillSettings();$('#chAv').innerHTML=JIMMY;
+renderGym();renderMine();renderMission();renderStats();loadShows();unlocks(false);fillSettings();$('#chAv').innerHTML=JIMMY;
 
 /* ---------- start: detect Claude test mode ---------- */
 (async()=>{
