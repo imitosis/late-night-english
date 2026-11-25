@@ -19,8 +19,8 @@ prompt = tpl.replace("${new Date().toDateString()}", now.strftime("%a %b %d %Y")
 body = {
     "model": "gpt-6-luna",
     "input": prompt,
-    "reasoning": {"effort": "medium"},
-    "max_output_tokens": 6000,
+    "reasoning": {"effort": "low"},
+    "max_output_tokens": 20000,
     "tools": [{"type": "web_search"}],
     "max_tool_calls": 6,
 }
@@ -29,14 +29,19 @@ req = urllib.request.Request(
     data=json.dumps(body).encode(),
     headers={"content-type": "application/json", "authorization": "Bearer " + os.environ["OPENAI_API_KEY"]},
 )
-with urllib.request.urlopen(req, timeout=300) as r:
-    res = json.load(r)
+def ask():
+    with urllib.request.urlopen(urllib.request.Request(req.full_url, data=req.data, headers=dict(req.header_items())), timeout=300) as r:
+        res = json.load(r)
+    text = "".join(
+        c.get("text", "")
+        for o in res.get("output", []) if o.get("type") == "message"
+        for c in o.get("content", []) if c.get("type") == "output_text"
+    )
+    print("Status:", res.get("status"), res.get("incomplete_details") or "", "| Textlänge:", len(text))
+    print("Anfang:", text[:300].replace("\n", " "))
+    return text
 
-text = "".join(
-    c.get("text", "")
-    for o in res.get("output", []) if o.get("type") == "message"
-    for c in o.get("content", []) if c.get("type") == "output_text"
-)
+text = ask()
 def clean(t):
     t = re.sub(r"\(\s*\[[^\]]*\]\([^)]*\)\s*\)", "", t or "")
     t = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", t)
@@ -71,6 +76,19 @@ for raw in objects(text):
         for k in ("title", "gist", "summary", "host_open"):
             it[k] = clean(it.get(k, ""))
         items.append(it)
+
+if len(items) < 5:
+    print("Zu wenig – zweiter Versuch …")
+    text = ask(); items = []
+    for raw in objects(text):
+        try:
+            it = json.loads(raw)
+        except json.JSONDecodeError:
+            continue
+        if it.get("title") and it.get("summary"):
+            for k in ("title", "gist", "summary", "host_open"):
+                it[k] = clean(it.get(k, ""))
+            items.append(it)
 
 if len(items) < 5:
     sys.exit(f"Zu wenige Storys gefunden ({len(items)}), news.json bleibt unverändert.")
