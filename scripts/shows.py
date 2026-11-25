@@ -63,7 +63,7 @@ for name, host, handle, cid, marks in SHOWS:
         return sc
     if not marked:
         ranked = sorted(entries[:10], key=lambda e: -score(e.findtext("a:title", "", NS) or ""))
-        marked = [e for e in ranked if score(e.findtext("a:title", "", NS) or "") > 2][:1] or entries[:1]
+        marked = [e for e in ranked if score(e.findtext("a:title", "", NS) or "") > 2][:1] or ranked[:1]
     for en in marked:
         title = (en.findtext("a:title", "", NS) or "").strip()
         vid = en.findtext("yt:videoId", "", NS)

@@ -8,7 +8,7 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Late Night English</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=Tilt+Neon&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Tilt+Neon&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 /* VOICE: friendly, quick, a little cheeky — a late-night show in your pocket
    IDEA: calm surfaces, glowing moments: only the listening mic glows
@@ -203,6 +203,54 @@ details.card>summary::-webkit-details-marker{display:none}
 details.card>summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:rotate(45deg);margin-right:4px}
 details.card[open]>summary::after{transform:rotate(-135deg)}
 .skel{height:86px;border-radius:20px;background:var(--line);margin:10px 0;opacity:.5}
+
+/* ===== PAPER THEME (25.11.) – editorial, light: cream paper, dark ink, serif headlines, one dark hero card ===== */
+:root{color-scheme:light;--bg:#f6f1e7;--card:#fbf7ef;--ink:#1f1a15;--mute:#7d7366;--line:#e2d8c7;--blue:#1f1a15;--blue2:#3a3229;--lime:#9a6a1c;--soft:rgba(31,26,21,.07);--on:#f6f1e7;--gold:#9a6a1c;--serif:"Instrument Serif",Georgia,serif}
+.hero{background:var(--bg)}
+.ttl small{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.ttl b{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.02;letter-spacing:-.005em}
+.streak{border:0;padding:0;color:var(--gold);font-weight:600}
+h2{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.12}
+.card,.upnext,.tip,.host,.pill{background:var(--card);border-color:var(--line);box-shadow:none}
+.tabs{background:#f9f5ee}
+.tab[aria-selected=true],.tabs button[aria-selected=true]{color:var(--ink)}
+.me{background:var(--ink);color:var(--on)}.me .who{color:#d8cfc2}
+.av,.ob-av{background:#efe6d6}
+.pb.on,#convo.active,.ob-mic.on{box-shadow:0 0 0 5px rgba(31,26,21,.12)}
+.ib.rec{box-shadow:0 0 0 4px rgba(31,26,21,.12)}
+.talkbtn,.morebtn{border-color:var(--line);color:var(--ink)}
+.wchip.on{border-color:var(--ink);color:var(--ink)}
+.good{color:#2f7d4f}.meh{color:#a8661c}
+.badge{background:var(--soft);color:var(--ink)}
+#toast{background:var(--ink);color:var(--on)}
+#upd{background:var(--ink);color:var(--on)}
+.k{color:var(--gold)}
+.sec-label,.newsline{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--mute)}
+.newsline{border-top:1px solid var(--line);padding-top:14px;margin:22px 0 2px}
+/* hero: last night on TV */
+.lncard{background:var(--ink);color:var(--on);border:0;border-radius:22px;padding:18px}
+.lncard .k{color:#e0bd78;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase}
+.lncard h3{font-family:var(--serif);font-weight:400;font-size:25px;line-height:1.08;color:var(--on);margin:6px 0 0}
+.lncard .meta{font-size:12.5px;color:#b8ac9b;margin-top:8px}
+.lncard .lnchips{margin:0 0 14px}.lncard .wchip{border-color:#4a4036;color:#cfc4b4}.lncard .wchip.on{background:#f6f1e7;border-color:#f6f1e7;color:var(--ink)}
+.lnplay{display:flex;align-items:center;gap:12px;margin-top:16px}
+.lnplay .go{display:inline-flex;align-items:center;gap:8px;background:var(--on);color:var(--ink);border:0;border-radius:999px;padding:0 16px 0 12px;min-height:40px;font-weight:600;white-space:nowrap}
+.lnplay .go svg{width:15px;height:15px}
+.lnplay span{font-size:13px;color:#b8ac9b}
+/* mission */
+.miscard{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:14px 0 0;margin:22px 0 0}
+.miscard .badge{background:none;color:var(--mute);padding:0;font-size:11px;letter-spacing:.16em}
+.miscard .mis{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.22;margin:6px 0 12px}
+.miscard #misDone{background:none;border:1px solid var(--ink);color:var(--ink);min-height:36px}
+.miscard.done{border-top:1px solid var(--line);padding:12px 0 0}.miscard.done #misDone{border:0;color:var(--gold)}
+/* news as numbered list */
+#news .cards{gap:0;counter-reset:n}
+#news .upnext{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:14px 0 14px 34px;position:relative;counter-increment:n}
+#news .upnext::before{content:counter(n);position:absolute;left:0;top:12px;font-family:var(--serif);font-size:22px;color:var(--gold)}
+#news .upnext h3{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.14}
+#news .upnext .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+svg.studio{display:none!important}
+#news .talkbtn{border:0;padding:0;min-height:28px;color:var(--gold);font-weight:600}
 </style>
 </head>
 <body data-tab="home">
@@ -234,9 +282,9 @@ details.card[open]>summary::after{transform:rotate(-135deg)}
 <main class="wrap">
 <section id="v-home" class="view on">
  <div id="home">
-  <small id="misDate" hidden></small>
-  <div class="card miscard" id="misCard"><span class="badge">Today's mission · off the app</span><p class="mis" id="misText"></p><button id="misDone" class="pri">Done it</button></div>
   <div id="lastNight"></div>
+  <small id="misDate" hidden></small>
+  <div class="card miscard" id="misCard"><span class="badge">Today's mission</span><p class="mis" id="misText"></p><button id="misDone" class="pri">Done it</button></div>
   <p class="newsline" id="newsDate"></p>
   <div id="news"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
   <div class="card">
@@ -768,13 +816,12 @@ async function loadShows(){try{const r=await fetch('https://raw.githubuserconten
  const seen=new Set();SHOWS=(j.items||[]).filter(x=>{if(seen.has(x.host))return false;seen.add(x.host);return true});renderLastNight()}catch(e){}}
 function ago(iso){const hrs=Math.round((Date.now()-Date.parse(iso))/36e5);return hrs<1?'just now':hrs<24?hrs+' h ago':Math.round(hrs/24)+' d ago'}
 function renderLastNight(){const el=$('#lastNight');if(!SHOWS.length){el.innerHTML='';return}const v=SHOWS[Math.min(showSel,SHOWS.length-1)];
- el.innerHTML=`<p class="newsline" style="margin-top:0">Last night on TV</p><div class="card lncard">
- <div class="lnchips">${SHOWS.map((s,i)=>`<button class="wchip${i===showSel?' on':''}" data-s="${i}">${esc(s.host.split(' ').pop())}</button>`).join('')}</div>
- <button class="thumb" id="lnPlay" aria-label="Watch ${esc(v.title)}"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></button>
- <div class="k" style="margin:10px 0 4px">${esc(v.show)} · ${esc(ago(v.published))}</div><h3>${esc(v.title)}</h3>
- <button class="talkbtn" id="lnGo">Watch &amp; talk</button></div>`;
+ el.innerHTML=`<div class="card lncard">
+ ${SHOWS.length>1?`<div class="lnchips">${SHOWS.map((s,i)=>`<button class="wchip${i===showSel?' on':''}" data-s="${i}">${esc(s.host.split(' ').pop())}</button>`).join('')}</div>`:''}
+ <div class="k">Last night on TV</div><h3>${esc(v.title)}</h3><div class="meta">${esc(v.show)} · ${esc(ago(v.published))}</div>
+ <div class="lnplay"><button class="go" id="lnGo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14l12-7z" fill="currentColor"/></svg>Watch &amp; talk</button><span>then tell Jimmy what you saw</span></div></div>`;
  el.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{showSel=+b.dataset.s;renderLastNight()});
- $('#lnPlay').onclick=$('#lnGo').onclick=()=>openWatch(v)}
+ $('#lnGo').onclick=()=>openWatch(v)}
 function recapKey(v){return 'lne_recap_'+v.id}
 async function getRecap(v){const c=LS.get(recapKey(v),null);if(c)return c;
  const t=await ai(`Find news coverage, recaps or articles about this late-night segment: "${v.title}" by ${v.host} (${v.show}), published on YouTube ${v.published.slice(0,10)}. YouTube description: "${v.desc}".
@@ -933,7 +980,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='55';
+const BUILD='56';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
