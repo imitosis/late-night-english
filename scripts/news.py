@@ -4,7 +4,7 @@ Läuft auf GitHub (siehe .github/workflows/news.yml). Braucht das Secret
 OPENAI_API_KEY. Der Auftrag an die KI steht in index.html (NEWS_PROMPT),
 damit App und dieses Skript immer dasselbe verlangen.
 """
-import datetime, json, os, re, sys, urllib.request
+import datetime, json, os, re, sys, urllib.request, urllib.parse
 from zoneinfo import ZoneInfo
 
 if not os.environ.get("OPENAI_API_KEY"):
@@ -92,6 +92,22 @@ if len(items) < 5:
 
 if len(items) < 5:
     sys.exit(f"Zu wenige Storys gefunden ({len(items)}), news.json bleibt unverändert.")
+
+def wiki_img(title):
+    if not title:
+        return ""
+    try:
+        u = "https://en.wikipedia.org/api/rest_v1/page/summary/" + urllib.parse.quote(title.replace(" ", "_"))
+        with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "late-night-english/1.0"}), timeout=15) as r:
+            j = json.load(r)
+        t = (j.get("thumbnail") or {}).get("source", "")
+        return re.sub(r"/(\d+)px-", "/640px-", t) if t else ""
+    except Exception as e:
+        print("Kein Bild für", title, e)
+        return ""
+
+for it in items[:8]:
+    it["img"] = wiki_img(it.get("wiki", ""))
 
 json.dump({"date": now.strftime("%Y-%m-%d"), "items": items[:8]},
           open("news.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)

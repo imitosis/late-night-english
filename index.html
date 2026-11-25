@@ -254,6 +254,8 @@ svg.studio{display:none!important}
 
 /* home v2: one thing first, newspaper below */
 .ttl small{font-size:13px;letter-spacing:0;text-transform:none;font-weight:500}
+.lnbox{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 16px 18px;margin-top:6px}
+.lnbox .sech{margin-top:0}
 .sech{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.1;margin:22px 0 12px}
 .lntabs{display:flex;gap:18px;margin:-4px 0 12px}
 .lntabs button{border:0;background:none;padding:0 0 4px;min-height:0;border-radius:0;font-size:14px;font-weight:600;color:var(--mute);border-bottom:2px solid transparent}
@@ -709,8 +711,8 @@ function normItem(n){
 function storyMeta(n,i){const s=(n.shows||[]).filter(Boolean);return s.length?`<span>On ${esc(s.join(', '))}</span>`:''}
 const IMG=LS.get('lne_img',{});
 const CATL={politics:'Politics',world:'World',europe:'Europe',economy:'Business',tech:'Tech & science',fun:'And finally'};
-function imgFor(n){const k=n.wiki||'';return k?IMG[k]:null}
-async function fetchImgs(items){let ch=false;for(const n of items){const k=n.wiki;if(!k||k in IMG)continue;
+function imgFor(n){if(n.img)return n.img;const k=n.wiki||'';return k?IMG[k]:null}
+async function fetchImgs(items){let ch=false;for(const n of items){const k=n.wiki;if(n.img||!k||k in IMG)continue;
  try{const r=await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(k.replace(/ /g,'_')));const j=r.ok?await r.json():{};const t=j.thumbnail&&j.thumbnail.source;IMG[k]=t?t.replace(/\/(\d+)px-/,'/640px-'):''}catch(e){IMG[k]=''}ch=true}
  if(ch){try{localStorage.setItem('lne_img',JSON.stringify(IMG))}catch(e){}if(NEWS===items)renderNews(items,'')}}
 function renderNews(items,state){
@@ -853,7 +855,7 @@ async function loadShows(){try{const r=await fetch('https://raw.githubuserconten
  const seen=new Set();SHOWS=(j.items||[]).filter(x=>{if(seen.has(x.host))return false;seen.add(x.host);return true});renderLastNight()}catch(e){}}
 function ago(iso){const hrs=Math.round((Date.now()-Date.parse(iso))/36e5);return hrs<1?'just now':hrs<24?hrs+' h ago':Math.round(hrs/24)+' d ago'}
 function renderLastNight(){const el=$('#lastNight');if(!SHOWS.length){el.innerHTML='';return}const v=SHOWS[Math.min(showSel,SHOWS.length-1)];
- el.innerHTML=`<h2 class="sech">Last night on TV</h2>
+ el.classList.add('lnbox');el.innerHTML=`<h2 class="sech">Last night on TV</h2>
  ${SHOWS.length>1?`<div class="lntabs">${SHOWS.map((s,i)=>`<button class="${i===showSel?'on':''}" data-s="${i}">${esc(s.host.split(' ').pop())}</button>`).join('')}</div>`:''}
  <button class="thumb" id="lnGo" aria-label="Watch and talk: ${esc(v.title)}"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></button>
  <div class="lnmeta">${esc(v.show)} · ${esc(ago(v.published))}</div><h3 class="lnt">${esc(v.title)}</h3>
@@ -1018,7 +1020,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='58';
+const BUILD='59';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
