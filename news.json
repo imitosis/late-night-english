@@ -2,220 +2,230 @@
  "date": "2026-11-25",
  "items": [
   {
-   "title": "Austria Stays On Budget Track",
-   "gist": "The European Commission says Austria is meeting a key spending limit, but its deficit procedure remains open.",
-   "summary": "The European Commission says Austria is on track to meet a spending limit set under its deficit procedure. The limit concerns the growth of net public spending. The Commission expects this growth to be 2.1 percent in 2026 and 2027. That is just below the recommended limit of 2.2 percent. The procedure is not over, but the Commission says it will take no further steps for now. Austria’s deficit was above the EU’s 3 percent limit in 2024.",
+   "title": "Austria Sets Out Drone Defence Plan",
+   "gist": "The government has presented a new plan to strengthen Austria’s protection against drones.",
+   "summary": "Austria presented a drone-defence strategy on Tuesday. Chancellor Christian Stocker attended the presentation by the Cobra police unit and the armed forces. The plan aims to improve the country’s ability to detect and respond to drones. Drones can threaten public safety and important infrastructure. The announcement comes as European countries pay closer attention to security risks. The report describes the strategy’s presentation but does not give all its details.",
    "words": [
     {
-     "en": "spending limit",
-     "de": "Ausgabenobergrenze"
+     "en": "drone defence",
+     "de": "Drohnenabwehr"
     },
     {
-     "en": "deficit procedure",
-     "de": "Defizitverfahren"
+     "en": "armed forces",
+     "de": "Streitkräfte"
     },
     {
-     "en": "gross domestic product",
-     "de": "Bruttoinlandsprodukt"
+     "en": "infrastructure",
+     "de": "Infrastruktur"
     }
    ],
    "shows": [],
    "category": "politics",
    "wiki": "Austria",
    "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449163/"
+    "name": "The Local Austria",
+    "url": "https://www.thelocal.at/20261125/today-in-austria-a-roundup-of-the-latest-news-on-wednesday-262"
    },
-   "host_open": "Austria has got a little breathing room from Brussels, though the paperwork is not finished. How does that look from Austria?"
+   "host_open": "A new security plan is on the table, and drones are part of the debate. How does that look from Austria?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/640px-Flag_of_Austria.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "Linz Power Outage Investigated",
-   "gist": "Police suspect deliberate damage after a fault left thousands of homes without power.",
-   "summary": "A power outage affected about 20,000 households in Linz on Monday morning. The outage began after a fault at a substation in the Kleinmünchen area. Police say their investigation suggests the fault may have been caused deliberately. They are investigating suspected serious property damage. The cause has not been finally established, and no suspect has been named. The case matters because it raises questions about the security of local power infrastructure.",
-   "words": [
-    {
-     "en": "power outage",
-     "de": "Stromausfall"
-    },
-    {
-     "en": "substation",
-     "de": "Umspannwerk"
-    },
-    {
-     "en": "deliberate damage",
-     "de": "vorsätzliche Beschädigung"
-    }
-   ],
-   "shows": [],
-   "category": "politics",
-   "wiki": "Linz",
-   "source": {
-    "name": "ORF",
-    "url": "https://on.orf.at/video/14348626/16192871/ermittlungen-nach-stromausfall-in-linz"
-   },
-   "host_open": "A short power cut can affect a lot of people at once. How does the investigation make you feel?"
-  },
-  {
-   "title": "Ukraine Attack Kills Libyan Soldiers",
-   "gist": "Two Libyan soldiers died after Ukrainian attacks on Russian ships near Benghazi, according to eastern Libyan authorities.",
-   "summary": "Two Libyan soldiers have died from injuries after Ukrainian attacks on two Russian ships near Libya. The deaths were announced by authorities in eastern Libya. The attacks took place near the port of Benghazi. France’s foreign minister defended Ukraine’s actions as self-defence against Russia’s invasion. The Libyan authorities described the attacks as aggression. The reports add a new dimension to the war, but details of the attack have not been independently confirmed in the report.",
-   "words": [
-    {
-     "en": "injuries",
-     "de": "Verletzungen"
-    },
-    {
-     "en": "self-defence",
-     "de": "Selbstverteidigung"
-    },
-    {
-     "en": "invasion",
-     "de": "Invasion"
-    }
-   ],
-   "shows": [],
-   "category": "world",
-   "wiki": "Benghazi",
-   "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449224/"
-   },
-   "host_open": "Two soldiers have died after an attack near Benghazi. How do you feel about this widening risk to people outside Ukraine?"
-  },
-  {
-   "title": "Iran Reports Tanker Explosions",
-   "gist": "Iran says two ships hit sea mines in the Strait of Hormuz, but the claim could not be independently checked.",
-   "summary": "Iran’s Revolutionary Guard says two oil tankers struck sea mines in the Strait of Hormuz on Wednesday. The report says the claim could not initially be verified independently. Iran’s navy warned shipping companies against using routes it had not approved. The US military has been escorting civilian ships to help restore oil and gas trade. Talks between Tehran and Washington have not produced a breakthrough. The strait is an important route for energy shipments, so any threat to shipping could matter internationally.",
-   "words": [
-    {
-     "en": "sea mine",
-     "de": "Seemine"
-    },
-    {
-     "en": "shipping route",
-     "de": "Schifffahrtsroute"
-    },
-    {
-     "en": "independently verified",
-     "de": "unabhängig bestätigt"
-    }
-   ],
-   "shows": [],
-   "category": "world",
-   "wiki": "Strait of Hormuz",
-   "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449223/"
-   },
-   "host_open": "Reports of mines in a busy shipping lane raise serious safety concerns. How does that news make you feel?"
-  },
-  {
-   "title": "Eurostar Trains Hit By Strike",
-   "gist": "Unexpected industrial action disrupted trains between France and Britain on Wednesday.",
-   "summary": "Eurostar said an unexpected strike disrupted train services between France and Britain on Wednesday. The company did not give details about the strike. It asked unions to continue talks directly with management. An AFP report cited company sources who said wage negotiations were under way. The same sources said staff were unhappy about a planned farewell event for a former chief executive. Passengers faced cancellations in both directions through the Channel Tunnel.",
-   "words": [
-    {
-     "en": "industrial action",
-     "de": "Arbeitskampf"
-    },
-    {
-     "en": "wage negotiations",
-     "de": "Lohnverhandlungen"
-    },
-    {
-     "en": "cancellation",
-     "de": "Ausfall"
-    }
-   ],
-   "shows": [],
-   "category": "europe",
-   "wiki": "Channel Tunnel",
-   "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449232/"
-   },
-   "host_open": "A strike has disrupted one of Europe’s key rail links. Did that surprise you?"
-  },
-  {
-   "title": "A1 Austria Plans 430 Job Cuts",
-   "gist": "The telecom company plans a net reduction of 430 positions in Austria in 2027 as part of a cost-saving drive.",
-   "summary": "A1 Austria plans to reduce its workforce by a net 430 jobs in 2027. The plan includes 500 departures and 70 new jobs in future-focused areas. The company currently employs just under 6,000 people in Austria. A1 says it wants to cut costs by 300 million euros by 2030. About 100 million euros of the planned savings would come from staff costs. The company also says it will continue investing in fibre, mobile networks and IT projects.",
+   "title": "A1 Plans 430 Net Job Cuts",
+   "gist": "Telecom company A1 says it plans to reduce its Austrian workforce next year.",
+   "summary": "A1 Austria plans a net reduction of 430 jobs in 2027. The company expects about 500 departures and 70 new hires in growing areas. It currently employs just under 6,000 people in Austria. A1 says it wants to cut costs by €300 million by 2030. The company also plans to invest up to €500 million a year in Austria. The announcement raises questions about workers’ futures as the company changes its business.",
    "words": [
     {
      "en": "net reduction",
      "de": "Nettoabbau"
     },
     {
-     "en": "cost-saving drive",
-     "de": "Sparkurs"
+     "en": "to cut costs",
+     "de": "Kosten senken"
     },
     {
-     "en": "workforce",
-     "de": "Belegschaft"
+     "en": "to hire",
+     "de": "einstellen"
     }
    ],
    "shows": [],
    "category": "economy",
-   "wiki": "A1 Telekom Austria",
+   "wiki": "Austria",
    "source": {
     "name": "ORF",
-    "url": "https://news.orf.at/"
+    "url": "https://www.orf.at/?href=http%3A%2F%2Fwww.orf.at%2Fticker%2F227731.html"
    },
-   "host_open": "A1 plans to cut more jobs while still investing in its network. How does that balance look to you?"
+   "host_open": "A1 is cutting some roles while hiring for others. How do you feel about that?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/640px-Flag_of_Austria.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "New Test Can Detect GHB Later",
-   "gist": "A laboratory in Austria is using a method that can detect the drug GHB in blood for up to two days.",
-   "summary": "A new method can detect GHB in blood for up to two days after it is taken. GHB is a drug often linked to so-called knockout drops. A laboratory in Seibersdorf is among the few places already using the method. The laboratory examines samples in cases referred by clinics, police or courts. Until now, GHB was usually detectable in the body for only six to twelve hours. The longer window may help investigators, although many suspected cases still have no confirmed trace of the drug.",
+   "title": "Ukraine Strike Kills Libyan Officers",
+   "gist": "Two Libyan naval officers have died after a Ukrainian drone attack on a Russian warship in Libya.",
+   "summary": "Two Libyan naval officers died from injuries after a Ukrainian drone attack on a Russian warship in Libya. The attack took place far from Ukraine’s front lines. Libya’s army has vowed to retaliate, according to the report. The incident adds a dangerous new dimension to the war between Russia and Ukraine. The attack’s consequences for people in Libya and the wider region remain uncertain. The report describes the deaths and the army’s response; it does not establish what retaliation will involve.",
    "words": [
     {
-     "en": "detect",
-     "de": "nachweisen"
+     "en": "naval officer",
+     "de": "Marineoffizier"
     },
     {
-     "en": "blood sample",
-     "de": "Blutprobe"
+     "en": "drone attack",
+     "de": "Drohnenangriff"
     },
     {
-     "en": "suspected case",
-     "de": "Verdachtsfall"
+     "en": "to retaliate",
+     "de": "Vergeltung üben"
+    }
+   ],
+   "shows": [],
+   "category": "world",
+   "wiki": "Libya",
+   "source": {
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/5719d6750c0619695c7f23a373cecd7b"
+   },
+   "host_open": "The fighting has brought tragedy to Libya. How do you feel about its widening reach?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Libya.svg/640px-Flag_of_Libya.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+   "title": "Amnesty Seeks Tigray War Crimes Probe",
+   "gist": "Amnesty International is calling for an independent investigation into shelling in Ethiopia’s Tigray region.",
+   "summary": "Amnesty International says shelling of civilian areas in Tigray should be investigated as possible war crimes. Residents near the Eritrean border have described military build-ups and fear of renewed fighting. The report attributes the shelling to Ethiopian forces and an allied militia. Fighting resumed in September, after a 2022 agreement ended a two-year war. Amnesty is calling for an independent inquiry; the allegations have not been decided by a court. The renewed tension matters to civilians in Tigray and neighbouring areas.",
+   "words": [
+    {
+     "en": "shelling",
+     "de": "Beschuss"
+    },
+    {
+     "en": "war crimes probe",
+     "de": "Untersuchung zu möglichen Kriegsverbrechen"
+    },
+    {
+     "en": "military build-up",
+     "de": "militärische Aufrüstung"
+    }
+   ],
+   "shows": [],
+   "category": "world",
+   "wiki": "Tigray Region",
+   "source": {
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/427358084fef2eb567e38acd81c3eacd"
+   },
+   "host_open": "For people in Tigray, renewed fighting brings real fear. How does this report make you feel?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Flag_of_the_Tigray_Region.svg/640px-Flag_of_the_Tigray_Region.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+   "title": "Canary Islands See Record Migrant Arrivals",
+   "gist": "Nearly 2,000 people reached Spain’s Canary Islands in a single day, an unusually high number.",
+   "summary": "Nearly 2,000 people arrived in the Canary Islands in one day, setting a single-day record. The islands are a key entry point for migrants trying to reach Europe. More than 26,000 people have reached them this year, according to the report. About half of this year’s arrivals came in November. The increase puts pressure on local services and renews debate about migration policy. The report gives arrival figures but does not set out the views of migrants or Spanish officials in detail.",
+   "words": [
+    {
+     "en": "arrival",
+     "de": "Ankunft"
+    },
+    {
+     "en": "entry point",
+     "de": "Einreisepunkt"
+    },
+    {
+     "en": "to put pressure on",
+     "de": "Druck ausüben auf"
+    }
+   ],
+   "shows": [],
+   "category": "europe",
+   "wiki": "Canary Islands",
+   "source": {
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/dfa1b036283a58d040ea6a6ae6d8141a"
+   },
+   "host_open": "That is a striking number of arrivals in one day. Did that surprise you?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Islas_Canarias_%28real_location%29_in_Spain.svg/640px-Islas_Canarias_%28real_location%29_in_Spain.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+   "title": "Kimmel Jokes About Trump and Nvidia",
+   "gist": "Kimmel’s recent monologue touched on Trump, Nvidia and the company’s leadership turmoil.",
+   "summary": "Jimmy Kimmel’s November 23 monologue covered President Donald Trump and Nvidia. The company has recently faced a leadership crisis, including the departure of its chief executive, Jensen Huang. Kimmel also addressed Trump’s comments about the company and its role in technology and national security. The monologue used the subject for political satire. This rundown reports the underlying news topic, not the jokes. The show’s segment does not establish the disputed claims about the company.",
+   "words": [
+    {
+     "en": "leadership crisis",
+     "de": "Führungskrise"
+    },
+    {
+     "en": "chief executive",
+     "de": "Geschäftsführer/in"
+    },
+    {
+     "en": "national security",
+     "de": "nationale Sicherheit"
+    }
+   ],
+   "shows": [
+    "Kimmel"
+   ],
+   "category": "politics",
+   "wiki": "Nvidia",
+   "source": {
+    "name": "On Late Night",
+    "url": "https://onlatenight.com/last-night?date=2026-11-23"
+   },
+   "host_open": "Washington and Silicon Valley are tangled up in this story. Did that surprise you?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/2788-2888_San_Tomas_Expwy.jpg/640px-2788-2888_San_Tomas_Expwy.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+   "title": "EU Academy Warns of Data Leak",
+   "gist": "The European Commission has warned users of its EU Academy platform about a data leak after a cyberattack.",
+   "summary": "The European Commission warned users of its EU Academy platform about a data leak. The warning followed a cyberattack driven by artificial intelligence, according to the report. The platform provides learning resources connected to the European Union. A data leak can expose personal information and weaken trust in online services. The report does not specify how many users were affected or what information was exposed. The Commission’s warning signals that users should take the incident seriously while details are assessed.",
+   "words": [
+    {
+     "en": "data leak",
+     "de": "Datenleck"
+    },
+    {
+     "en": "cyberattack",
+     "de": "Cyberangriff"
+    },
+    {
+     "en": "to expose information",
+     "de": "Informationen offenlegen"
     }
    ],
    "shows": [],
    "category": "tech",
-   "wiki": "Seibersdorf",
+   "wiki": "European Commission",
    "source": {
-    "name": "ORF science",
-    "url": "https://science.orf.at/stories/3238347/"
+    "name": "Associated Press",
+    "url": "https://mymotherlode.com/news/world/europe"
    },
-   "host_open": "A longer testing window could make evidence easier to find. How does that sound to you?"
+   "host_open": "Even a learning platform can become a target online. How do you feel about that?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Belgique_-_Bruxelles_-_Schuman_-_Berlaymont_-_01.jpg/640px-Belgique_-_Bruxelles_-_Schuman_-_Berlaymont_-_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "Paris Uses Cards To Challenge Sexism",
-   "gist": "Paris is distributing a card game in schools and youth centres to help teenagers recognise misogynistic ideas online.",
-   "summary": "Paris has begun distributing a card game called Mascuradar. The game is intended to help young people recognise misogynistic statements and harmful ideas about masculinity online. It is aimed at boys aged about twelve and older. Schools, youth centres and local town halls are among the first places to receive the cards. The project was developed by the group En avant toutes and Paris’s observatory on violence against women. The city plans to make the cards available in all its secondary schools next year.",
+   "title": "Athens Museum Reopens After Restoration",
+   "gist": "Greece’s oldest modern-era museum has reopened on the Acropolis after major restoration work.",
+   "summary": "Greece’s oldest modern-era museum has reopened on the Acropolis in Athens. It had been closed for a major restoration. The reopening gives visitors access to a refreshed cultural site in one of Greece’s most important historic areas. The museum’s return is also a boost for local tourism and cultural life. The report describes the reopening but does not give details about every part of the restoration. Visitors can once again explore the museum and its collection.",
    "words": [
     {
-     "en": "misogynistic",
-     "de": "frauenfeindlich"
+     "en": "reopening",
+     "de": "Wiedereröffnung"
     },
     {
-     "en": "youth centre",
-     "de": "Jugendzentrum"
+     "en": "restoration",
+     "de": "Restaurierung"
     },
     {
-     "en": "secondary school",
-     "de": "Mittelschule"
+     "en": "collection",
+     "de": "Sammlung"
     }
    ],
    "shows": [],
    "category": "fun",
-   "wiki": "Paris",
+   "wiki": "Acropolis of Athens",
    "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449220/"
+    "name": "Associated Press",
+    "url": "https://mymotherlode.com/news/world/europe"
    },
-   "host_open": "Paris is using a card game to start a serious conversation with teenagers. Would that approach surprise you?"
+   "host_open": "Athens has welcomed an old museum back to life. What do you enjoy most about visiting museums?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/1029_Acropolis_of_Athens_in_Greece_at_night_Photo_by_Giles_Laurent.jpg/640px-1029_Acropolis_of_Athens_in_Greece_at_night_Photo_by_Giles_Laurent.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   }
  ]
 }
