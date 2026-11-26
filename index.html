@@ -706,7 +706,7 @@ For each:
 "shows" (which of the three late-night shows covered it, e.g. ["Kimmel","Fallon"], or [] if none),
 "category" (one of: politics, world, europe, economy, tech, fun),
 "wiki" (exact title of the English Wikipedia article that would give a good photo for this story: prefer a place, city, building, landmark, organisation or object; NOT a person; e.g. "Zaporizhzhia", "Vienna State Opera"; or "" if nothing fits),
-"source" ({"name":"news outlet","url":"exact article URL from your search results"}),
+"source" ({"name":"news outlet","url":"exact article URL from your search results"}; prefer outlets whose articles have a good lead photo – ORF, Der Standard, Die Presse, Kurier, BBC, The Guardian, Euronews, CNN, NBC News – over AP or wire copies when they cover the same story),
 "host_open" (how the host starts the chat: one short original quip or personal thought about what happened, then ONE question about the guest's opinion or feelings, e.g. "How do you feel about that?", "Did that surprise you?", "How does that look from Austria?". Never ask "What would you do".)
 Never put links, URLs or citations inside title, gist, summary or host_open; the article link goes only into "source".
 Output format: one line per story (10 to 14 lines), each line one compact JSON object with these keys. No array, no markdown, no other text.`;
@@ -1032,7 +1032,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='69';
+const BUILD='70';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();

@@ -101,11 +101,15 @@ def wiki_img(title):
         with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "late-night-english/1.0"}), timeout=15) as r:
             j = json.load(r)
         t = (j.get("thumbnail") or {}).get("source", "")
-        orig = (j.get("originalimage") or {}).get("source", "")
+        o = j.get("originalimage") or {}
+        orig = o.get("source", "")
         # only real photos – no flags, logos, seals, maps or charts (those are SVG/PNG)
         if not t or not re.search(r"\.jpe?g", orig or t, re.I):
             return ""
-        return t.split("?")[0]
+        if (o.get("width") or 0) < 900:
+            return ""  # too small, would look pixelated
+        # a sharp version in one of Wikimedia's standard sizes
+        return re.sub(r"/\d+px-", "/960px-", t.split("?")[0])
     except Exception as e:
         print("Kein Bild für", title, e)
         return ""
