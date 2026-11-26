@@ -254,6 +254,7 @@ svg.studio{display:none!important}
 
 /* home v2: one thing first, newspaper below */
 .ttl small{font-size:13px;letter-spacing:0;text-transform:none;font-weight:500}
+.bk{border-top:1px solid var(--line);margin-top:14px;padding-top:12px}.bk button{min-height:38px;font-size:14px;margin:0 6px 6px 0}
 .lnbox{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 16px 18px;margin-top:6px}
 .lnbox .sech{margin-top:0}
 .sech{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.1;margin:22px 0 12px}
@@ -399,6 +400,8 @@ svg.studio{display:none!important}
    <button class="pri big" id="saveSet" style="margin-top:16px">Save</button>
    <p class="hint" id="setMsg"></p>
   </div>
+ <div class="bk"><b>Backup</b><p class="hint" style="margin:2px 0 8px">Your progress lives only on this phone. Save a backup file now and then – it never includes your OpenAI key.</p>
+  <button id="bkOut">Save backup</button> <button id="bkIn">Restore backup</button><input type="file" id="bkFile" accept=".json,application/json" hidden><p class="hint" id="bkMsg"></p></div>
  </details>
 </section>
 </main>
@@ -1020,7 +1023,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='59';
+const BUILD='60';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
@@ -1029,6 +1032,16 @@ function unlocks(announce){const n=st.shows||0,g=$('.tabs [data-v=gym]'),a=$('#v
  const was=g.hidden===false;g.hidden=n<3;if(a)a.hidden=n<5;
  if(announce&&n===3)setTimeout(()=>toast('New: your Phrase notebook is unlocked'),900);
  if(announce&&n===5)setTimeout(()=>toast('New: Accent coach unlocked in Phrases'),900)}
+/* ---- backup: export / import (keeps the API key out of the file) ---- */
+const BK_KEYS=['lne','lne_cfg2','lne_onb','lne_rate_set'];
+function backupData(){const d={app:'late-night-english',v:1,at:new Date().toISOString(),data:{}};for(const k of BK_KEYS){const v=LS.get(k,null);if(v!=null)d.data[k]=v}
+ if(d.data.lne_cfg2){d.data.lne_cfg2=Object.assign({},d.data.lne_cfg2);delete d.data.lne_cfg2.kO}
+ for(const k of Object.keys(localStorage))if(k.startsWith('lne_recap_'))d.data[k]=LS.get(k,null);return d}
+$('#bkOut').onclick=()=>{const b=new Blob([JSON.stringify(backupData(),null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='late-night-english-backup-'+today()+'.json';document.body.append(a);a.click();a.remove();$('#bkMsg').textContent='Backup saved to your downloads.'};
+$('#bkIn').onclick=()=>$('#bkFile').click();
+$('#bkFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(d.app!=='late-night-english'||!d.data)throw 0;
+ if(!confirm('Replace the progress on this phone with the backup from '+(d.at||'').slice(0,10)+'?'))return;
+ const key=cfg.kO;for(const [k,v] of Object.entries(d.data)){if(k==='lne_cfg2'){v.kO=key}LS.set(k,v)}location.reload()}catch(x){$('#bkMsg').textContent='That file is not a Late Night English backup.'}};
 function toast(t){let d=$('#toast');if(!d){d=document.createElement('div');d.id='toast';d.setAttribute('role','status');document.body.append(d)}d.textContent=t;d.classList.add('on');clearTimeout(d._t);d._t=setTimeout(()=>d.classList.remove('on'),2600)}
 function diag(){$('#diag').textContent='Mode: '+(inClaude()?'test in Claude':'standalone')+' · Mic: '+(Mic.ok()?(Mic.useCloud()?'iPhone recording':'available'):'not available')+' · Voice: '+(C.tts?'Claude':Voice.useOA()?'OpenAI':'phone')+(!inClaude()?' · Key: '+(cfg.kO?'added':'missing'):'')}
 function rateLbl(){$('#rateV').textContent=Math.round($('#rate').value*100)+' %'}
