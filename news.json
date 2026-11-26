@@ -2,9 +2,9 @@
  "date": "2026-11-26",
  "items": [
   {
-   "title": "Snow Disrupts Austria",
-   "gist": "A heavy first snowfall brought winter into the commute all at once. Roads, trains and flights faced delays, and emergency crews were busy.",
-   "summary": "Heavy snow fell across many parts of Austria on Thursday. The A21 motorway near Vienna was closed after vehicles became stuck. Traffic was also disrupted in Vienna, Tirol and Kärnten. In Kärnten, about 8,000 homes temporarily lost power. Authorities warned that snow and icy roads could cause more delays. Road and winter-service teams worked to clear routes and assist people.",
+   "title": "Snow Brings Austria to a Halt",
+   "gist": "A heavy November snowfall covered Vienna and disrupted travel across the country. Some roads closed, and officials warned that cold weather could keep the snow in place.",
+   "summary": "Vienna recorded 17 centimetres of snow at the Hohe Warte weather station on Thursday. ORF reported that the city had not seen this much November snow in more than 40 years. The A21 motorway was closed for several hours. Accidents and delays were also reported in Lower Austria, Carinthia and Tyrol. Weather experts said the snow may remain because freezing conditions are expected.",
    "words": [
     {
      "en": "heavy snowfall",
@@ -15,8 +15,8 @@
      "de": "Straßensperre"
     },
     {
-     "en": "power cut",
-     "de": "Stromausfall"
+     "en": "freezing conditions",
+     "de": "Frostbedingungen"
     }
    ],
    "shows": [],
@@ -24,111 +24,115 @@
    "wiki": "Vienna",
    "source": {
     "name": "ORF",
-    "url": "https://oesterreich.orf.at/stories/3381169/"
+    "url": "https://oesterreich.orf.at/stories/3381265/"
    },
-   "host_open": "Austria woke to a very different commute today. How did the snow affect your plans?",
+   "host_open": "Vienna got a very early winter blanket, but the roads paid the price. How does that look from Austria?",
+   "img_from": "article",
    "img": "news_img/20261126-0.jpg"
   },
   {
-   "title": "Vienna Cuts Culture Budget",
-   "gist": "The city plans to save €31 million in its cultural budget next year. Arts groups are questioning what those cuts could mean for venues and programmes.",
-   "summary": "Vienna plans to save €31 million in its cultural budget for 2027. City culture councillor Veronica Kaup-Hasler announced the planned savings on Thursday. The cuts come as the city prepares its next budget. The announcement has drawn criticism from people in the cultural sector. They have called for more understanding of the effects on cultural work. The city has not yet detailed how every cut will be made.",
+   "title": "Calls for a New Prosecutor’s Office Plan",
+   "gist": "Legal experts have criticised a draft law on Austria’s planned federal public prosecutor’s office. The debate centres on how independent the office would be from politicians.",
+   "summary": "Austria is discussing a draft for a federal public prosecutor’s office. Legal experts say the proposal could give parliament influence over appointments. They also warn that parliament could oversee the office while investigations are still under way. Supporters of the draft argue that the new body needs democratic oversight. Critics say safeguards are needed to protect its independence. ORF reported calls for a fresh start to the proposal.",
    "words": [
     {
-     "en": "budget cut",
-     "de": "Budgetkürzung"
+     "en": "draft law",
+     "de": "Gesetzentwurf"
     },
     {
-     "en": "cultural sector",
-     "de": "Kulturbereich"
+     "en": "oversight",
+     "de": "Aufsicht"
     },
     {
-     "en": "savings",
-     "de": "Einsparungen"
+     "en": "independence",
+     "de": "Unabhängigkeit"
     }
    ],
    "shows": [],
    "category": "politics",
-   "wiki": "Vienna",
+   "wiki": "Parliament of Austria",
    "source": {
-    "name": "ORF Wien",
-    "url": "https://wien.orf.at/stories/3381141/"
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449375/"
    },
-   "host_open": "Vienna’s cultural scene is facing a tighter budget. What do you think the city should protect first?",
-   "img": "news_img/20261126-1.jpg"
+   "host_open": "A new prosecutor’s office needs both independence and public trust. What matters most to you in this debate?",
+   "img_from": "article",
+   "img": "news_img/20261126-1.png"
   },
   {
-   "title": "Fuel Price Rules Face Change",
-   "gist": "Austria’s fuel-price measures are due to expire soon, but the government is divided on what should replace them. The economics minister has now proposed ending one key part.",
-   "summary": "Austria’s current fuel-price measure is due to end in a few days. The governing parties disagree over whether to limit oil companies’ profit margins. Economics Minister Wolfgang Hattmannsdorfer said he wants that margin limit to end. He proposed continuing a reduction in mineral oil tax instead. He said there was no longer a need for the margin measure to protect supply. The government said it would provide more details before the end of November.",
+   "title": "Universities Seek Budget Talks",
+   "gist": "Staff at Austria’s public universities want the government to reopen budget discussions. They say funding for the years ahead needs another look.",
+   "summary": "Employees at Austria’s 22 public universities held workplace meetings on Wednesday. They called for new talks on the universities’ budget for 2028 to 2030. The request comes as institutions plan their work for the coming years. University staff say funding must match their needs. The government has not yet announced a new negotiation timetable. The issue matters for research, teaching and university jobs.",
    "words": [
     {
-     "en": "fuel-price measure",
-     "de": "Spritpreisbremse"
+     "en": "public university",
+     "de": "öffentliche Universität"
     },
     {
-     "en": "profit margin",
-     "de": "Gewinnspanne"
+     "en": "budget talks",
+     "de": "Budgetverhandlungen"
     },
     {
-     "en": "mineral oil tax",
-     "de": "Mineralölsteuer"
+     "en": "funding",
+     "de": "Finanzierung"
     }
    ],
    "shows": [],
-   "category": "economy",
-   "wiki": "",
+   "category": "politics",
+   "wiki": "University of Vienna",
    "source": {
     "name": "ORF",
-    "url": "https://orf.at/stories/3449364/"
+    "url": "https://orf.at/"
    },
-   "host_open": "Austria’s fuel-price rules may soon take a different shape. How does that look from your perspective?",
-   "img": ""
+   "host_open": "Universities are planning years ahead, while their budget still needs discussion. What do you think deserves priority?",
+   "img_from": "article",
+   "img": "news_img/20261126-2.png"
   },
   {
-   "title": "Ukraine Warns of Power Grid Attack",
-   "gist": "Ukraine’s president says Russia may be preparing a major strike on vital systems. The warning comes as US-mediated talks continue without agreement on territory.",
-   "summary": "President Volodymyr Zelenskyy said Russia was preparing another major attack on Ukraine. He said energy systems, logistics and other critical services could be targeted. Russia has not publicly confirmed the reported plan. US envoy Jared Kushner said he believes Russian President Vladimir Putin wants peace. Kushner also said the talks had reached a deadlock over Ukrainian territory. The warning matters because attacks on energy systems can disrupt heat and electricity during winter.",
+   "title": "Trump and NATO Chief Discuss Russia",
+   "gist": "Donald Trump and NATO Secretary-General Mark Rutte urged Russia not to widen the war in Ukraine. Their meeting comes as European leaders discuss Ukraine’s future funding.",
+   "summary": "Trump and Rutte met at Trump’s Mar-a-Lago residence in Florida. They called on Russia not to expand its war in Ukraine and said a peace solution was needed soon. The war continues to shape security debates across Europe. EU leaders are also discussing Ukraine’s financing needs for 2027. The meeting did not announce a new peace agreement. Russia’s position was not included in ORF’s report.",
    "words": [
     {
-     "en": "power grid",
-     "de": "Stromnetz"
+     "en": "widen the war",
+     "de": "den Krieg ausweiten"
     },
     {
-     "en": "critical services",
-     "de": "lebenswichtige Dienste"
+     "en": "peace solution",
+     "de": "Friedenslösung"
     },
     {
-     "en": "deadlock",
-     "de": "Sackgasse"
+     "en": "security debate",
+     "de": "Sicherheitsdebatte"
     }
    ],
    "shows": [],
    "category": "world",
-   "wiki": "Ukraine",
+   "wiki": "Mar-a-Lago",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/122f7f187eea20d4d2b659692b4c4f1e"
+    "name": "ORF",
+    "url": "https://orf.at/"
    },
-   "host_open": "Ukraine faces another serious threat to essential services. How does this warning make you feel?",
-   "img": ""
+   "host_open": "Calls for peace are coming alongside continued fighting. How do you feel about that?",
+   "img_from": "article",
+   "img": "news_img/20261126-3.png"
   },
   {
-   "title": "Gaza Strikes Kill Ten",
-   "gist": "Israeli strikes killed at least ten people in Gaza, according to reports. The latest violence is unfolding despite a ceasefire agreement between Israel and Hamas.",
-   "summary": "Israeli strikes killed at least ten people in Gaza, according to the Associated Press. Israel said its military killed a Hamas official who handled economic and education affairs. Gaza’s authorities reported the deaths. The strikes are part of continuing violence more than a year after a ceasefire deal began. The fighting has caused a severe humanitarian crisis for people in Gaza. The claims in the report could not all be independently verified.",
+   "title": "Israeli Strikes Kill People in Gaza",
+   "gist": "Israeli strikes in Gaza killed ten people, according to an Associated Press report. The violence continues despite a ceasefire deal reached more than a year ago.",
+   "summary": "The Associated Press reported that Israeli strikes killed ten people in Gaza on Thursday. The report said Israeli fire and airstrikes have continued almost daily despite a ceasefire deal. The AP said it could not independently verify some claims in its coverage. The latest deaths add to the human cost of the conflict. The report also described wider regional tensions, including Iranian drone attacks in Kuwait. Further details about the victims and the circumstances were limited in the report.",
    "words": [
     {
      "en": "airstrike",
      "de": "Luftangriff"
     },
     {
-     "en": "ceasefire",
-     "de": "Waffenruhe"
+     "en": "ceasefire deal",
+     "de": "Waffenstillstandsabkommen"
     },
     {
-     "en": "humanitarian crisis",
-     "de": "humanitäre Krise"
+     "en": "verify a claim",
+     "de": "eine Behauptung überprüfen"
     }
    ],
    "shows": [],
@@ -138,109 +142,84 @@
     "name": "Associated Press",
     "url": "https://apnews.com/article/522676f17532b878878ff7a4347d0e31"
    },
-   "host_open": "Another night of strikes has brought loss and fear in Gaza. What is your reaction to this news?",
+   "host_open": "More people have been killed despite the ceasefire agreement. How does this news make you feel?",
+   "img_from": "",
    "img": ""
   },
   {
-   "title": "Iraqi Kurds Protest Federal Takeover",
-   "gist": "Thousands protested in Irbil over Baghdad’s plans for oil and border crossings. The dispute puts regional control and national authority in focus.",
-   "summary": "Thousands of people protested in Irbil, the capital of Iraq’s Kurdish region. They opposed plans by Iraq’s federal government to take control of oil operations and border crossings. These areas have been managed by Kurdish authorities. Baghdad says it is asserting federal control. Kurdish leaders and protesters object to the proposed changes. The dispute could affect oil revenues and relations between the region and the central government.",
-   "words": [
-    {
-     "en": "border crossing",
-     "de": "Grenzübergang"
-    },
-    {
-     "en": "federal government",
-     "de": "Bundesregierung"
-    },
-    {
-     "en": "oil revenue",
-     "de": "Öleinnahmen"
-    }
-   ],
-   "shows": [],
-   "category": "world",
-   "wiki": "Erbil",
-   "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/1b0e8cb02a09ce16b8885c60f4733a44"
-   },
-   "host_open": "A dispute over oil and borders has brought crowds into Irbil. What do you think is at stake for the region?",
-   "img": "news_img/20261126-5.jpg"
-  },
-  {
-   "title": "EU Leaders Debate Long-Term Budget",
-   "gist": "European leaders met in Brussels to discuss the bloc’s next long-term budget and Ukraine’s financing needs. Several governments remain divided over the proposals.",
-   "summary": "EU leaders met in Brussels on Thursday and Friday for a special summit. They are discussing the EU’s next long-term budget and financing for Ukraine in 2027. The talks aim to bring governments closer to agreement. Some member states object to the proposals on the table. The budget will shape spending on security, competitiveness and other shared priorities. No final agreement was reported at the start of the summit.",
+   "title": "EU Leaders Clash Over Long-Term Budget",
+   "gist": "EU leaders are meeting in Brussels to discuss the bloc’s next seven-year budget. Disagreements remain over its size and how to fund Ukraine’s needs.",
+   "summary": "Leaders of the European Union met in Brussels on Thursday and Friday. They are discussing the long-term budget for 2028 to 2034. Ukraine’s financing needs for 2027 are also on the agenda. The EU Council president said he hoped to bring countries closer to agreement. Several governments object to parts of the proposed budget. The talks matter because the EU needs agreement from all member states on the plan.",
    "words": [
     {
      "en": "long-term budget",
-     "de": "mehrjähriger Finanzrahmen"
+     "de": "langfristiger Haushalt"
     },
     {
      "en": "member state",
      "de": "Mitgliedstaat"
     },
     {
-     "en": "financing needs",
-     "de": "Finanzierungsbedarf"
+     "en": "reach an agreement",
+     "de": "eine Einigung erzielen"
     }
    ],
    "shows": [],
    "category": "europe",
    "wiki": "European Council",
    "source": {
-    "name": "European Council",
-    "url": "https://www.consilium.europa.eu/media/ysfdpeob/president-costa-s-invitation-letter-to-the-extraordinary-european-council-26-27-november.pdf"
+    "name": "Euronews",
+    "url": "https://www.euronews.com/2026/11/26/eu-budget-and-ukraine-aid-headed-for-collision-at-turbulent-summit"
    },
-   "host_open": "The EU’s next budget will shape priorities for years. Which issue do you think deserves most attention?",
-   "img": ""
+   "host_open": "Europe’s next budget has to balance many competing priorities. What should leaders focus on first?",
+   "img_from": "article",
+   "img": "news_img/20261126-5.jpg"
   },
   {
-   "title": "Spain’s Far Right Seeks Power",
-   "gist": "Spain votes on Sunday, with immigration fears helping the far-right Vox party attract support. The election could reshape the country’s politics.",
-   "summary": "Spain is due to hold a national election on Sunday, November 29. The far-right Vox party is campaigning on immigration and national identity. It says that Spanish citizens should come before foreign residents and immigrants. Some voters say they support Vox for its defence of Spain’s Catholic roots. Vox has not governed nationally since the Franco era. The result could affect the balance of power in Madrid.",
+   "title": "Spain’s Former Central Bank Chief Chosen for ECB",
+   "gist": "EU leaders have chosen Spain’s former central bank head to lead the European Central Bank next. The institution faces difficult choices on inflation and government borrowing costs.",
+   "summary": "EU leaders selected Pablo Hernández de Cos as the next president of the European Central Bank. He previously led Spain’s central bank. He is set to succeed Christine Lagarde, according to the Associated Press. The ECB is dealing with inflation and concerns about government debt and borrowing costs. The report linked price pressures partly to the war in Iran. The appointment still needs to proceed through the relevant EU process.",
    "words": [
     {
-     "en": "far right",
-     "de": "Rechtsextreme"
+     "en": "central bank",
+     "de": "Zentralbank"
     },
     {
-     "en": "national election",
-     "de": "Parlamentswahl"
+     "en": "inflation",
+     "de": "Inflation"
     },
     {
-     "en": "immigration",
-     "de": "Einwanderung"
+     "en": "borrowing costs",
+     "de": "Kreditkosten"
     }
    ],
    "shows": [],
-   "category": "europe",
-   "wiki": "Spain",
+   "category": "economy",
+   "wiki": "European Central Bank",
    "source": {
     "name": "Associated Press",
-    "url": "https://apnews.com/article/cb1d921d60bbcdb5b11ec2056f9050a7"
+    "url": "https://apnews.com/article/d308b6cfbe6399b131255f2a678b10e4"
    },
-   "host_open": "Spain is heading into a closely watched election. How do you think immigration will shape the result?",
+   "host_open": "A new ECB president will face tough choices on prices and debt. What do you think should be the main priority?",
+   "img_from": "",
    "img": ""
   },
   {
-   "title": "Judge Blocks ABC License Review",
-   "gist": "A US judge stopped the regulator from starting an early review of ABC station licenses. The network said the review could chill its speech.",
-   "summary": "A federal judge blocked the Federal Communications Commission from an early review of ABC broadcast licenses. The ruling came after ABC challenged the regulator’s action. The network argued that the move could restrict its freedom of speech. The FCC is an independent US agency that regulates broadcasting. The administration has disputed ABC in a wider conflict with news outlets. The case is part of ongoing legal battles over media access and government power.",
+   "title": "Judge Blocks Early ABC License Review",
+   "gist": "A US judge has stopped the regulator from starting an early review of ABC’s broadcast licences. The network argued that the move threatened its freedom to report and speak.",
+   "summary": "A federal judge in Washington blocked the Federal Communications Commission from conducting an early review of ABC’s broadcast licences. ABC had argued that the move could chill its free-speech rights. The network welcomed the ruling as a First Amendment victory. The decision came after tensions between the government and the broadcaster. The ruling is about the regulator’s attempt to review licences early. It does not end wider disputes over media regulation.",
    "words": [
     {
-     "en": "broadcast license",
+     "en": "broadcast licence",
      "de": "Sendelizenz"
+    },
+    {
+     "en": "free-speech rights",
+     "de": "Recht auf freie Meinungsäußerung"
     },
     {
      "en": "regulator",
      "de": "Aufsichtsbehörde"
-    },
-    {
-     "en": "freedom of speech",
-     "de": "Meinungsfreiheit"
     }
    ],
    "shows": [],
@@ -250,120 +229,69 @@
     "name": "Associated Press",
     "url": "https://apnews.com/article/f04f6b2b1a17fc10f2da11e4fd83a9df"
    },
-   "host_open": "A court has put a pause on a high-profile media dispute. How do you feel about that?",
+   "host_open": "A court has drawn a line in a dispute over media oversight. Did that surprise you?",
+   "img_from": "",
    "img": ""
   },
   {
-   "title": "Lukoil Assets Draw US-Led Bid",
-   "gist": "A consortium including a US government lender agreed to acquire Lukoil’s overseas energy assets. Critics say the arrangement raises questions about sanctions and public money.",
-   "summary": "A consortium led by US investment firm Eldridge agreed to acquire Lukoil International. The company owns energy assets in 11 countries, including oil and gas fields and refineries. The group includes a US government lender and companies from the United Arab Emirates and the United States. The proposed deal would use restricted Russian shares rather than direct cash payments to Russia. A US lawmaker criticized the government lender’s involvement. The deal is linked to sanctions imposed on Russian energy companies over the war in Ukraine.",
+   "title": "ORF Approves Its 2027 Budget",
+   "gist": "The ORF supervisory board has approved the broadcaster’s budget for 2027. The plan includes measures to offset a loss of federal funding.",
+   "summary": "ORF’s supervisory board approved the broadcaster’s budget for 2027 on Thursday. ORF said it plans steps to make up for a financial shortfall from the federal government. One of the planned measures is a 40-million-euro package. The budget decision sets the broadcaster’s financial framework for next year. The report did not provide full details of all planned savings or measures. The funding question matters for Austria’s public broadcaster and its services.",
    "words": [
     {
-     "en": "consortium",
-     "de": "Konsortium"
+     "en": "supervisory board",
+     "de": "Stiftungsrat"
     },
     {
-     "en": "energy assets",
-     "de": "Energieanlagen"
+     "en": "financial shortfall",
+     "de": "Finanzierungslücke"
     },
     {
-     "en": "sanctions",
-     "de": "Sanktionen"
+     "en": "public broadcaster",
+     "de": "öffentlich-rechtlicher Sender"
     }
    ],
    "shows": [],
    "category": "economy",
-   "wiki": "Lukoil",
+   "wiki": "ORF",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/8d5df1befb2ebb2a0ce4f6b259fcdf14"
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449374/"
    },
-   "host_open": "A proposed oil deal is raising questions about sanctions and public finance. What stands out to you?",
+   "host_open": "The ORF has set its budget for next year while facing a funding gap. How does that look from Austria?",
+   "img_from": "article",
+   "img": "news_img/20261126-8.png"
+  },
+  {
+   "title": "Thanksgiving Turkey Becomes Political News",
+   "gist": "The annual turkey-pardon ceremony drew fresh attention in Washington. Late-night coverage focused on President Trump’s questions about choosing the turkey.",
+   "summary": "President Donald Trump took part in the annual Thanksgiving turkey-pardon ceremony. News coverage said he appeared confused about how to size up a turkey. The ceremony is a White House tradition before Thanksgiving. Seth Meyers discussed the moment in a recent segment, according to coverage of his show. The event is light-hearted, but it also provides a regular opportunity for public political jokes. The turkey was pardoned as part of the tradition.",
+   "words": [
+    {
+     "en": "turkey pardon",
+     "de": "Begnadigung eines Truthahns"
+    },
+    {
+     "en": "annual tradition",
+     "de": "jährliche Tradition"
+    },
+    {
+     "en": "size up",
+     "de": "einschätzen"
+    }
+   ],
+   "shows": [
+    "Seth Meyers"
+   ],
+   "category": "fun",
+   "wiki": "White House",
+   "source": {
+    "name": "The Daily Beast",
+    "url": "https://www.thedailybeast.com/obsessed/trumps-late-night-nemesis-seth-meyers-roasts-his-bonkers-turkey-question"
+   },
+   "host_open": "Even the Thanksgiving turkey ceremony became a sizing-up exercise. Did that surprise you?",
+   "img_from": "article",
    "img": "news_img/20261126-9.jpg"
-  },
-  {
-   "title": "NASA’s Voyager Reaches One Light-Day",
-   "gist": "Voyager 1 has reached a remarkable distance from Earth, nearly fifty years after launch. The milestone shows how long a spacecraft can keep travelling.",
-   "summary": "NASA’s Voyager 1 spacecraft reached a distance of one light-day from Earth on November 18. That is about 25.9 billion kilometres. The spacecraft launched in 1977 and has travelled through space for nearly five decades. A light-day is the distance light travels in one day. Voyager continues to send information from far beyond the planets. Its journey remains a landmark in space exploration.",
-   "words": [
-    {
-     "en": "spacecraft",
-     "de": "Raumsonde"
-    },
-    {
-     "en": "light-day",
-     "de": "Lichttag"
-    },
-    {
-     "en": "space exploration",
-     "de": "Weltraumforschung"
-    }
-   ],
-   "shows": [],
-   "category": "tech",
-   "wiki": "Voyager 1",
-   "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/f772fe6d6eb7a235f5a459ca11bf4d4c"
-   },
-   "host_open": "Voyager 1 has travelled farther than most of us can picture. Did that surprise you?",
-   "img": ""
-  },
-  {
-   "title": "Book Wien Opens Its Doors",
-   "gist": "Vienna’s major book fair began with a public opening on Wednesday evening. Readers can meet writers and researchers through Sunday.",
-   "summary": "The Buch Wien book fair opened in Vienna on Wednesday evening. Publicist Michel Friedman took part in the opening. The programme runs until Sunday, November 29. Guests include prize-winning author Elias Hirschl and bestselling writer Marc Elsberg. Extremism researcher Julia Ebner is also on the programme. The fair brings authors, readers and current debates together in one place.",
-   "words": [
-    {
-     "en": "book fair",
-     "de": "Buchmesse"
-    },
-    {
-     "en": "bestselling author",
-     "de": "Bestsellerautor"
-    },
-    {
-     "en": "programme",
-     "de": "Programm"
-    }
-   ],
-   "shows": [],
-   "category": "fun",
-   "wiki": "Messe Wien",
-   "source": {
-    "name": "ORF",
-    "url": "https://on.orf.at/video/14349011/16193797/michel-friedman-eroeffnet-die-buch-wien"
-   },
-   "host_open": "Vienna’s book fair has turned the city into a meeting place for readers. Which kind of book event do you enjoy most?",
-   "img": "news_img/20261126-11.jpg"
-  },
-  {
-   "title": "A 400,000-Guest Wedding",
-   "gist": "A wedding celebration in India drew an enormous crowd and brought traffic to a standstill. A planned horse race had to be postponed after tens of thousands arrived.",
-   "summary": "A wedding celebration in Bihar, India, drew an estimated 400,000 guests. The host was politician Anant Singh, who invited local residents as well as public figures. Roads near the event became heavily congested. Organisers prepared a large vegetarian meal and hundreds of thousands of sweets. A horse race planned as part of the celebration was delayed after around 100,000 people gathered to watch. The event drew attention for its huge scale and the disruption it caused.",
-   "words": [
-    {
-     "en": "celebration",
-     "de": "Feier"
-    },
-    {
-     "en": "traffic congestion",
-     "de": "Verkehrschaos"
-    },
-    {
-     "en": "postponed",
-     "de": "verschoben"
-    }
-   ],
-   "shows": [],
-   "category": "fun",
-   "wiki": "Bihar",
-   "source": {
-    "name": "ORF",
-    "url": "https://www.orf.at/"
-   },
-   "host_open": "This wedding needed a crowd plan on a remarkable scale. What was your first reaction to those numbers?",
-   "img": "news_img/20261126-12.jpg"
   }
  ]
 }
