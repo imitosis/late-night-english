@@ -1,78 +1,78 @@
 {
- "date": "2026-11-25",
+ "date": "2026-11-26",
  "items": [
   {
-   "title": "Austria Sets Out Drone Defence Plan",
-   "gist": "The government has presented a new plan to strengthen Austria’s protection against drones.",
-   "summary": "Austria presented a drone-defence strategy on Tuesday. Chancellor Christian Stocker attended the presentation by the Cobra police unit and the armed forces. The plan aims to improve the country’s ability to detect and respond to drones. Drones can threaten public safety and important infrastructure. The announcement comes as European countries pay closer attention to security risks. The report describes the strategy’s presentation but does not give all its details.",
+   "title": "Vienna Plans New Heat System",
+   "gist": "A familiar power-station landmark is coming down as the site shifts toward renewable heat.",
+   "summary": "Vienna Energy plans to remove the tall chimney at the Donaustadt power station. The chimney will be taken apart in stages, not blown up. The site is set to gain geothermal energy, heat pumps and heat storage. City officials say the future system could supply 280,000 Vienna households. The project is part of a wider change to how the city produces heat.",
    "words": [
     {
-     "en": "drone defence",
-     "de": "Drohnenabwehr"
+     "en": "chimney",
+     "de": "Schornstein"
     },
     {
-     "en": "armed forces",
-     "de": "Streitkräfte"
+     "en": "heat storage",
+     "de": "Wärmespeicher"
     },
     {
-     "en": "infrastructure",
-     "de": "Infrastruktur"
+     "en": "renewable energy",
+     "de": "erneuerbare Energie"
     }
    ],
    "shows": [],
    "category": "politics",
-   "wiki": "Austria",
+   "wiki": "Donaustadt",
    "source": {
-    "name": "The Local Austria",
-    "url": "https://www.thelocal.at/20261125/today-in-austria-a-roundup-of-the-latest-news-on-wednesday-262"
+    "name": "wien.ORF.at",
+    "url": "https://wien.orf.at/stories/3381097/"
    },
-   "host_open": "A new security plan is on the table, and drones are part of the debate. How does that look from Austria?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/640px-Flag_of_Austria.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "Vienna is changing its skyline for a new source of heat. How does that look from Austria?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Wien_-_Donaucity%2C_Ostansicht_%28b%29.JPG/640px-Wien_-_Donaucity%2C_Ostansicht_%28b%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "A1 Plans 430 Net Job Cuts",
-   "gist": "Telecom company A1 says it plans to reduce its Austrian workforce next year.",
-   "summary": "A1 Austria plans a net reduction of 430 jobs in 2027. The company expects about 500 departures and 70 new hires in growing areas. It currently employs just under 6,000 people in Austria. A1 says it wants to cut costs by €300 million by 2030. The company also plans to invest up to €500 million a year in Austria. The announcement raises questions about workers’ futures as the company changes its business.",
+   "title": "Home Workers May Get Internet Costs",
+   "gist": "Austria’s top court says employers must cover the work-related cost of home internet.",
+   "summary": "Austria’s Supreme Court has ruled that employers must provide or pay for internet needed for regular remote work. The case began after a company policy offered laptops but excluded other costs. The court said an internet connection can count as a digital work tool. The amount owed may depend on the work-related share of the bill. Labour experts say employers should review their home-office agreements, while businesses have raised concerns about costs and tax rules.",
    "words": [
     {
-     "en": "net reduction",
-     "de": "Nettoabbau"
+     "en": "Supreme Court",
+     "de": "Oberster Gerichtshof"
     },
     {
-     "en": "to cut costs",
-     "de": "Kosten senken"
+     "en": "work-related costs",
+     "de": "berufsbedingte Kosten"
     },
     {
-     "en": "to hire",
-     "de": "einstellen"
+     "en": "remote work",
+     "de": "Telearbeit"
     }
    ],
    "shows": [],
-   "category": "economy",
-   "wiki": "Austria",
+   "category": "politics",
+   "wiki": "Supreme Court of Austria",
    "source": {
-    "name": "ORF",
-    "url": "https://www.orf.at/?href=http%3A%2F%2Fwww.orf.at%2Fticker%2F227731.html"
+    "name": "ORF.at",
+    "url": "https://orf.at/stories/3449200/"
    },
-   "host_open": "A1 is cutting some roles while hiring for others. How do you feel about that?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/640px-Flag_of_Austria.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "Your home internet may now have a work-related price tag. Did that surprise you?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Wien_01_Justizpalast_a.jpg/640px-Wien_01_Justizpalast_a.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "Ukraine Strike Kills Libyan Officers",
-   "gist": "Two Libyan naval officers have died after a Ukrainian drone attack on a Russian warship in Libya.",
-   "summary": "Two Libyan naval officers died from injuries after a Ukrainian drone attack on a Russian warship in Libya. The attack took place far from Ukraine’s front lines. Libya’s army has vowed to retaliate, according to the report. The incident adds a dangerous new dimension to the war between Russia and Ukraine. The attack’s consequences for people in Libya and the wider region remain uncertain. The report describes the deaths and the army’s response; it does not establish what retaliation will involve.",
+   "title": "Ukraine War Reaches Libya",
+   "gist": "A Ukrainian drone strike on a Russian ship in Libya has reportedly killed two Libyan naval officers.",
+   "summary": "Two Libyan naval officers died after a Ukrainian drone attack on a Russian warship in Libya, according to reports. The attack opened a new setting for the war, far from Ukraine’s front lines. The Libyan officers’ deaths were reported after the strike. Ukraine has described its attack as a military success. Libya’s internationally recognised government said neither side has the right to conduct military operations on Libyan territory or in its waters.",
    "words": [
     {
      "en": "naval officer",
      "de": "Marineoffizier"
     },
     {
-     "en": "drone attack",
+     "en": "drone strike",
      "de": "Drohnenangriff"
     },
     {
-     "en": "to retaliate",
-     "de": "Vergeltung üben"
+     "en": "territorial waters",
+     "de": "Hoheitsgewässer"
     }
    ],
    "shows": [],
@@ -80,152 +80,152 @@
    "wiki": "Libya",
    "source": {
     "name": "Associated Press",
-    "url": "https://apnews.com/article/5719d6750c0619695c7f23a373cecd7b"
+    "url": "https://apnews.com/article/6995de4ee91278459742a359eeb7439e"
    },
-   "host_open": "The fighting has brought tragedy to Libya. How do you feel about its widening reach?",
+   "host_open": "This conflict has reached far beyond its main front. How do you feel about that?",
    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Libya.svg/640px-Flag_of_Libya.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "Amnesty Seeks Tigray War Crimes Probe",
-   "gist": "Amnesty International is calling for an independent investigation into shelling in Ethiopia’s Tigray region.",
-   "summary": "Amnesty International says shelling of civilian areas in Tigray should be investigated as possible war crimes. Residents near the Eritrean border have described military build-ups and fear of renewed fighting. The report attributes the shelling to Ethiopian forces and an allied militia. Fighting resumed in September, after a 2022 agreement ended a two-year war. Amnesty is calling for an independent inquiry; the allegations have not been decided by a court. The renewed tension matters to civilians in Tigray and neighbouring areas.",
+   "title": "Gaza Strike Kills Hamas Official",
+   "gist": "Gaza officials say an Israeli strike killed a senior Hamas security figure and members of his family.",
+   "summary": "A strike hit the Shati refugee camp in Gaza City on November 25, according to Gaza civil defence. It said the attack killed Colonel Mohammed Abu al-Ouf, a senior figure in Hamas’s internal security service. His wife and two daughters were also reported killed. The Israeli military said it targeted a Hamas member. The reported deaths come amid continuing violence despite a ceasefire agreement reached in 2025.",
    "words": [
     {
-     "en": "shelling",
-     "de": "Beschuss"
+     "en": "refugee camp",
+     "de": "Flüchtlingslager"
     },
     {
-     "en": "war crimes probe",
-     "de": "Untersuchung zu möglichen Kriegsverbrechen"
+     "en": "strike",
+     "de": "Luftangriff"
     },
     {
-     "en": "military build-up",
-     "de": "militärische Aufrüstung"
+     "en": "ceasefire",
+     "de": "Waffenruhe"
     }
    ],
    "shows": [],
    "category": "world",
-   "wiki": "Tigray Region",
+   "wiki": "Shati refugee camp",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/427358084fef2eb567e38acd81c3eacd"
+    "name": "AP News",
+    "url": "https://argus.yeomniverse.com/en/archive/2026-11-26/"
    },
-   "host_open": "For people in Tigray, renewed fighting brings real fear. How does this report make you feel?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Flag_of_the_Tigray_Region.svg/640px-Flag_of_the_Tigray_Region.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "Families have again been caught in the violence in Gaza. How does this news make you feel?",
+   "img": ""
   },
   {
-   "title": "Canary Islands See Record Migrant Arrivals",
-   "gist": "Nearly 2,000 people reached Spain’s Canary Islands in a single day, an unusually high number.",
-   "summary": "Nearly 2,000 people arrived in the Canary Islands in one day, setting a single-day record. The islands are a key entry point for migrants trying to reach Europe. More than 26,000 people have reached them this year, according to the report. About half of this year’s arrivals came in November. The increase puts pressure on local services and renews debate about migration policy. The report gives arrival figures but does not set out the views of migrants or Spanish officials in detail.",
+   "title": "Eurostar Trains Face Strike Disruption",
+   "gist": "An unexpected strike is disrupting trains through the Channel Tunnel in both directions.",
+   "summary": "Eurostar says an unexpected strike is affecting train services between France and Britain. The disruption is hitting journeys in both directions through the Channel Tunnel. The company has not given detailed information about the strike. Reports say pay negotiations are under way. Travellers are being urged to check their journeys as talks continue.",
    "words": [
     {
-     "en": "arrival",
-     "de": "Ankunft"
+     "en": "disruption",
+     "de": "Beeinträchtigung"
     },
     {
-     "en": "entry point",
-     "de": "Einreisepunkt"
+     "en": "pay negotiations",
+     "de": "Lohnverhandlungen"
     },
     {
-     "en": "to put pressure on",
-     "de": "Druck ausüben auf"
+     "en": "in both directions",
+     "de": "in beide Richtungen"
     }
    ],
    "shows": [],
    "category": "europe",
-   "wiki": "Canary Islands",
+   "wiki": "Channel Tunnel",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/dfa1b036283a58d040ea6a6ae6d8141a"
+    "name": "ORF.at",
+    "url": "https://www.orf.at/?href=http%3A%2F%2Fwww.orf.at%2Fticker%2F295401.html"
    },
-   "host_open": "That is a striking number of arrivals in one day. Did that surprise you?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Islas_Canarias_%28real_location%29_in_Spain.svg/640px-Islas_Canarias_%28real_location%29_in_Spain.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "A tunnel can be open and still leave travellers stuck. Did that surprise you?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/TGV_TMST_3011-2_-_Sortie_Tunnel_sous_la_Manche_%C3%A0_Coquelles.jpg/640px-TGV_TMST_3011-2_-_Sortie_Tunnel_sous_la_Manche_%C3%A0_Coquelles.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "Kimmel Jokes About Trump and Nvidia",
-   "gist": "Kimmel’s recent monologue touched on Trump, Nvidia and the company’s leadership turmoil.",
-   "summary": "Jimmy Kimmel’s November 23 monologue covered President Donald Trump and Nvidia. The company has recently faced a leadership crisis, including the departure of its chief executive, Jensen Huang. Kimmel also addressed Trump’s comments about the company and its role in technology and national security. The monologue used the subject for political satire. This rundown reports the underlying news topic, not the jokes. The show’s segment does not establish the disputed claims about the company.",
+   "title": "Judge Rejects Ban on Partisan Ads",
+   "gist": "A US judge declined to extend a block on government ads that critics called political propaganda.",
+   "summary": "A federal judge in the United States declined to extend a temporary ban on taxpayer-funded government advertisements. Critics said the ads promoted partisan messages and President Donald Trump ahead of the midterm elections. The judge noted that the elections had already taken place. Democrats argued the ads could still harm their party during December runoffs and the 2028 election cycle. The decision leaves the ads unblocked for now.",
    "words": [
     {
-     "en": "leadership crisis",
-     "de": "Führungskrise"
+     "en": "temporary ban",
+     "de": "vorläufiges Verbot"
     },
     {
-     "en": "chief executive",
-     "de": "Geschäftsführer/in"
+     "en": "taxpayer-funded",
+     "de": "aus Steuermitteln finanziert"
     },
     {
-     "en": "national security",
-     "de": "nationale Sicherheit"
+     "en": "runoff election",
+     "de": "Stichwahl"
     }
    ],
    "shows": [
-    "Kimmel"
+    "Fallon"
    ],
    "category": "politics",
-   "wiki": "Nvidia",
+   "wiki": "United States federal courts",
    "source": {
-    "name": "On Late Night",
-    "url": "https://onlatenight.com/last-night?date=2026-11-23"
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/fcc1b61e8e7134c01ca3e6dec7728442"
    },
-   "host_open": "Washington and Silicon Valley are tangled up in this story. Did that surprise you?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/2788-2888_San_Tomas_Expwy.jpg/640px-2788-2888_San_Tomas_Expwy.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "The campaign season may be over, but the argument over ads is not. Did that surprise you?",
+   "img": ""
   },
   {
-   "title": "EU Academy Warns of Data Leak",
-   "gist": "The European Commission has warned users of its EU Academy platform about a data leak after a cyberattack.",
-   "summary": "The European Commission warned users of its EU Academy platform about a data leak. The warning followed a cyberattack driven by artificial intelligence, according to the report. The platform provides learning resources connected to the European Union. A data leak can expose personal information and weaken trust in online services. The report does not specify how many users were affected or what information was exposed. The Commission’s warning signals that users should take the incident seriously while details are assessed.",
+   "title": "A1 Plans 430 Net Job Cuts",
+   "gist": "Austria’s largest telecom company plans to reduce its workforce while investing in newer technologies.",
+   "summary": "A1 Austria plans a net reduction of 430 jobs in 2027. The plan involves 500 departures and 70 new hires in areas such as cloud services and cybersecurity. The company says it wants to cut costs by €300 million by 2030. It says some roles are linked to older technologies that are shrinking or have been switched off. A1 also says it will continue investing in networks and new technology.",
    "words": [
     {
-     "en": "data leak",
-     "de": "Datenleck"
+     "en": "net reduction",
+     "de": "Nettoabbau"
     },
     {
-     "en": "cyberattack",
-     "de": "Cyberangriff"
+     "en": "workforce",
+     "de": "Belegschaft"
     },
     {
-     "en": "to expose information",
-     "de": "Informationen offenlegen"
+     "en": "cybersecurity",
+     "de": "Cybersicherheit"
     }
    ],
    "shows": [],
-   "category": "tech",
-   "wiki": "European Commission",
+   "category": "economy",
+   "wiki": "A1 Telekom Austria",
    "source": {
-    "name": "Associated Press",
-    "url": "https://mymotherlode.com/news/world/europe"
+    "name": "ORF.at",
+    "url": "https://orf.at/stories/3449227/"
    },
-   "host_open": "Even a learning platform can become a target online. How do you feel about that?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Belgique_-_Bruxelles_-_Schuman_-_Berlaymont_-_01.jpg/640px-Belgique_-_Bruxelles_-_Schuman_-_Berlaymont_-_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "A1 is cutting some roles while hiring for newer fields. How does that look from Austria?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/A1_red_logo.png/640px-A1_red_logo.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "Athens Museum Reopens After Restoration",
-   "gist": "Greece’s oldest modern-era museum has reopened on the Acropolis after major restoration work.",
-   "summary": "Greece’s oldest modern-era museum has reopened on the Acropolis in Athens. It had been closed for a major restoration. The reopening gives visitors access to a refreshed cultural site in one of Greece’s most important historic areas. The museum’s return is also a boost for local tourism and cultural life. The report describes the reopening but does not give details about every part of the restoration. Visitors can once again explore the museum and its collection.",
+   "title": "Thanksgiving Parade Postponed by Storm",
+   "gist": "For the first time, New York’s Macy’s parade has been moved because of dangerous weather.",
+   "summary": "Organisers have postponed New York’s Macy’s Thanksgiving Day Parade until Saturday. The decision was made because of severe weather forecasts. The parade was due to mark its 100th year. New York Mayor Zohran Mamdani said strong winds could break tree limbs and bring down power lines. Officials said rescheduling was the safer choice for spectators and participants.",
    "words": [
     {
-     "en": "reopening",
-     "de": "Wiedereröffnung"
+     "en": "postpone",
+     "de": "verschieben"
     },
     {
-     "en": "restoration",
-     "de": "Restaurierung"
+     "en": "severe weather",
+     "de": "Unwetter"
     },
     {
-     "en": "collection",
-     "de": "Sammlung"
+     "en": "spectator",
+     "de": "Zuschauerin / Zuschauer"
     }
    ],
    "shows": [],
    "category": "fun",
-   "wiki": "Acropolis of Athens",
+   "wiki": "Macy's Thanksgiving Day Parade",
    "source": {
     "name": "Associated Press",
-    "url": "https://mymotherlode.com/news/world/europe"
+    "url": "https://apnews.com/article/cdc870899c8dc2d32a0ac3d86119b3ba"
    },
-   "host_open": "Athens has welcomed an old museum back to life. What do you enjoy most about visiting museums?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/1029_Acropolis_of_Athens_in_Greece_at_night_Photo_by_Giles_Laurent.jpg/640px-1029_Acropolis_of_Athens_in_Greece_at_night_Photo_by_Giles_Laurent.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "Even the balloons need to wait for calmer weather. How does that look from Austria?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Macy%27s_Thanksgiving_Parade%2C_New_York_City%2C_2005_15.jpg/640px-Macy%27s_Thanksgiving_Parade%2C_New_York_City%2C_2005_15.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   }
  ]
 }
