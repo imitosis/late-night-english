@@ -2,105 +2,21 @@
  "date": "2026-11-26",
  "items": [
   {
-   "title": "Nehammer Denies Media Pressure",
-   "gist": "A former chancellor faced questions in a parliamentary inquiry. His account is contested, and the committee is also examining a recording linked to the case.",
-   "summary": "Former chancellor Karl Nehammer testified before a parliamentary inquiry into the Pilnacek case. The inquiry is examining claims that politicians tried to influence media coverage. Nehammer denied contacting ORF or the newspaper Kronen Zeitung to intervene. He said he spoke with the newspaper’s editor only after a witness raised the claim. The inquiry is also looking at a recording in which the late official Christian Pilnacek spoke of alleged political pressure. The parties in parliament disagree about the meaning of the evidence.",
+   "title": "Snow Brings Austria to a Standstill",
+   "gist": "The season’s first heavy snowfall disrupted travel across much of Austria. The A21 closed, and flights and trains also faced delays.",
+   "summary": "Heavy snow hit many parts of Austria on Thursday, especially in the east. Several vehicles became stuck on roads, and the A21 motorway was closed in both directions. Vienna also saw traffic jams and delays on a suburban rail line. Some flights from Vienna were delayed. Emergency services and road crews worked to manage the disruption.",
    "words": [
     {
-     "en": "to testify",
-     "de": "aussagen"
-    },
-    {
-     "en": "inquiry",
-     "de": "Untersuchungsausschuss"
-    },
-    {
-     "en": "to deny",
-     "de": "bestreiten"
-    }
-   ],
-   "shows": [],
-   "category": "politics",
-   "wiki": "Parliament of Austria",
-   "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449329/"
-   },
-   "host_open": "This inquiry has more twists than a courtroom drama, minus the popcorn. How does Nehammer’s testimony look to you?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Austria_Federal_Council_%28current_seat_distribution%29.svg/640px-Austria_Federal_Council_%28current_seat_distribution%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-  },
-  {
-   "title": "Universities Seek More Funding",
-   "gist": "Staff at Austria’s public universities want the government to reopen budget talks. They warn that the current plan may put teaching and research under pressure.",
-   "summary": "Staff at Austria’s 22 public universities have asked the government to renegotiate their budget for 2028 to 2030. They say the planned funding does not cover the universities’ needs. The government has agreed on about 16 billion euros for the period. The universities’ umbrella body says about 18 billion euros would be needed just to cover inflation. University leaders have warned that major staff cuts may follow. The staff representatives say teaching or research could suffer if the budget stays as planned.",
-   "words": [
-    {
-     "en": "to renegotiate",
-     "de": "neu verhandeln"
-    },
-    {
-     "en": "funding",
-     "de": "Finanzierung"
-    },
-    {
-     "en": "staff cuts",
-     "de": "Personalkürzungen"
-    }
-   ],
-   "shows": [],
-   "category": "politics",
-   "wiki": "University of Vienna",
-   "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449320/"
-   },
-   "host_open": "University budgets are not exactly light reading, but they shape campus life. Do you think the planned funding is enough?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Seal_of_the_University_of_Vienna.svg/640px-Seal_of_the_University_of_Vienna.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-  },
-  {
-   "title": "Donations Lose Buying Power",
-   "gist": "People in Austria gave more than a billion euros to charities last year. Inflation means those donations may support less work than before.",
-   "summary": "A report says people in Austria donated 1.08 billion euros in 2025. The Fundraising Association Austria says rising prices have reduced charities’ purchasing power. Its director estimates that organisations have lost about a quarter of their financial impact since 2023. Private donations make up most of the sector’s funding, the report says. Older people were more likely to donate than younger adults. Social and health services received the largest share of donations.",
-   "words": [
-    {
-     "en": "donation",
-     "de": "Spende"
-    },
-    {
-     "en": "purchasing power",
-     "de": "Kaufkraft"
-    },
-    {
-     "en": "charity",
-     "de": "gemeinnützige Organisation"
-    }
-   ],
-   "shows": [],
-   "category": "economy",
-   "wiki": "Austria",
-   "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449348/"
-   },
-   "host_open": "A billion euros sounds enormous until inflation takes a bite. Did the report’s figures surprise you?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/640px-Flag_of_Austria.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-  },
-  {
-   "title": "Snow Disrupts Austrian Travel",
-   "gist": "Heavy snow caused crashes, delays and road closures across Austria. The A21 near Vienna was shut in both directions as conditions worsened.",
-   "summary": "Heavy snowfall affected many parts of Austria on Thursday. The A21 motorway was closed in both directions between Steinhäusl and Vösendorf after vehicles became stuck. Traffic jams were reported in Vienna, and some local train services were delayed. Police, firefighters and road crews responded to crashes and other incidents. Forecasters warned that more snow was expected in several areas. Authorities urged drivers to slow down and allow extra travel time.",
-   "words": [
-    {
-     "en": "snowfall",
-     "de": "Schneefall"
+     "en": "heavy snowfall",
+     "de": "starker Schneefall"
     },
     {
      "en": "road closure",
      "de": "Straßensperre"
     },
     {
-     "en": "delay",
-     "de": "Verspätung"
+     "en": "traffic jam",
+     "de": "Stau"
     }
    ],
    "shows": [],
@@ -110,13 +26,97 @@
     "name": "ORF",
     "url": "https://oesterreich.orf.at/stories/3381169/"
    },
-   "host_open": "Austria got a sudden white blanket, and the roads got the hard part. How is the weather looking where you are?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Palais_Schwarzenberg_Wien_Sept_2020_1.jpg/640px-Palais_Schwarzenberg_Wien_Sept_2020_1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "The snow turned familiar routes into slow journeys today. How did that look from where you are?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Palais_Schwarzenberg_Wien_Sept_2020_1.jpg/330px-Palais_Schwarzenberg_Wien_Sept_2020_1.jpg"
   },
   {
-   "title": "Israeli Strikes Kill Eight In Gaza",
-   "gist": "Health officials in Gaza reported eight deaths in overnight Israeli strikes. Israel said one strike targeted a Hamas figure; the military’s account of another was not immediately clear.",
-   "summary": "Health officials said Israeli strikes killed eight Palestinians in Gaza overnight. The reported deaths were in Gaza City and Deir al-Balah. Officials said a man and his wife died when a residential apartment was hit. Israeli leaders said the military killed Khaled Abu Nada, a Hamas official responsible for economic and education affairs. The Israeli military said one strike targeted three militants, but did not immediately comment on another. The strikes came despite a ceasefire agreement reached more than a year ago.",
+   "title": "Austrian Teenager Faces Terror Charges",
+   "gist": "Prosecutors have charged a 15-year-old in Innsbruck over an alleged plan involving a teenager in Sweden. The case now moves to court, but the charge is not a conviction.",
+   "summary": "Prosecutors in Innsbruck have charged a 15-year-old with terrorism-related offences. They allege he encouraged a 14-year-old in Sweden to attack people with a knife and gave him advice online. The two teenagers are said to have met through an online forum. The Austrian teenager admitted sending messages, but said he did not understand their seriousness. The charge is not final, no trial date has been set, and he is presumed innocent.",
+   "words": [
+    {
+     "en": "to face charges",
+     "de": "sich einer Anklage stellen"
+    },
+    {
+     "en": "alleged plan",
+     "de": "mutmaßlicher Plan"
+    },
+    {
+     "en": "presumed innocent",
+     "de": "es gilt die Unschuldsvermutung"
+    }
+   ],
+   "shows": [],
+   "category": "politics",
+   "wiki": "Innsbruck",
+   "source": {
+    "name": "ORF Tirol",
+    "url": "https://tirol.orf.at/stories/3381173/"
+   },
+   "host_open": "This is a serious case involving very young people and an allegation, not a verdict. How does the legal process look from Austria?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/B%C3%BCrgerstra%C3%9Fe_26%2B24_%28BT0A2830%29.jpg/330px-B%C3%BCrgerstra%C3%9Fe_26%2B24_%28BT0A2830%29.jpg"
+  },
+  {
+   "title": "Austrians Donate More Despite Rising Costs",
+   "gist": "People in Austria gave €1.08 billion to good causes in 2025. Yet higher costs mean charities say each euro may achieve less.",
+   "summary": "A new Austrian fundraising report says donations reached €1.08 billion in 2025. That was about one percent more than in 2024. The report says fewer donors are giving larger amounts. Many people who do not donate say rising living costs make it difficult. Charity groups also warn that higher costs reduce what their funds can achieve. Most charitable funding still comes from private individuals.",
+   "words": [
+    {
+     "en": "donation",
+     "de": "Spende"
+    },
+    {
+     "en": "rising living costs",
+     "de": "steigende Lebenshaltungskosten"
+    },
+    {
+     "en": "charity group",
+     "de": "Hilfsorganisation"
+    }
+   ],
+   "shows": [],
+   "category": "economy",
+   "wiki": "Austria",
+   "source": {
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449348/"
+   },
+   "host_open": "People are giving more money overall, even as budgets feel tight. Did that surprise you?",
+   "img": ""
+  },
+  {
+   "title": "Russia Threatens Ukraine’s Energy System",
+   "gist": "Ukraine’s president says Russia is preparing a major attack on energy and other infrastructure. The warning comes as winter puts added pressure on the country’s power system.",
+   "summary": "Ukrainian President Volodymyr Zelenskyy said intelligence reports point to preparations for a major Russian strike. He said energy facilities, logistics and essential services could be targets. Russia has repeatedly attacked Ukraine’s power network during the war. A US envoy described Russian President Vladimir Putin as showing restraint, referring to his agreement not to use nuclear weapons. Ukraine’s government has urged people and services to prepare for possible attacks. The warning is a statement by Ukraine and does not confirm that an attack is imminent.",
+   "words": [
+    {
+     "en": "power grid",
+     "de": "Stromnetz"
+    },
+    {
+     "en": "critical services",
+     "de": "lebenswichtige Dienste"
+    },
+    {
+     "en": "to prepare for",
+     "de": "sich vorbereiten auf"
+    }
+   ],
+   "shows": [],
+   "category": "world",
+   "wiki": "Ukraine",
+   "source": {
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/122f7f187eea20d4d2b659692b4c4f1e"
+   },
+   "host_open": "For people facing another winter under attack, the warning is deeply worrying. How does it look from Austria?",
+   "img": ""
+  },
+  {
+   "title": "Israeli Strikes Kill People in Gaza",
+   "gist": "Israeli strikes killed people in Gaza, according to local reports. Israel said one target was a Hamas official; the claims could not be independently verified by AP.",
+   "summary": "Israeli strikes hit Gaza overnight, and local sources reported that ten people were killed. Israel’s leaders said the military killed Khaled Abu Nada, whom they described as responsible for economic and education affairs for Hamas. The Associated Press said it could not independently verify Israel’s claim. The strikes come despite a ceasefire agreement reached more than a year ago. Near-daily Israeli fire and airstrikes have continued, according to AP. The deaths add to the human cost of a conflict with sharply different accounts from the sides.",
    "words": [
     {
      "en": "airstrike",
@@ -127,8 +127,8 @@
      "de": "Waffenruhe"
     },
     {
-     "en": "health officials",
-     "de": "Gesundheitsbehörden"
+     "en": "to verify a claim",
+     "de": "eine Behauptung überprüfen"
     }
    ],
    "shows": [],
@@ -136,178 +136,94 @@
    "wiki": "Gaza Strip",
    "source": {
     "name": "Associated Press",
-    "url": "https://apnews.com/article/gaza-iran-israel-uae-hormuz-november-26-2026-522676f17532b878878ff7a4347d0e31"
+    "url": "https://apnews.com/article/522676f17532b878878ff7a4347d0e31"
    },
-   "host_open": "More deaths have been reported despite the ceasefire, a painful reminder of how fragile it is. How are you feeling about the latest news?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Gaza_Strip_in_Palestine.svg/640px-Gaza_Strip_in_Palestine.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "Reports of more deaths in Gaza are painful to hear. How are you feeling about the news?",
+   "img": ""
   },
   {
-   "title": "EU Debates New Ukraine Loan",
-   "gist": "EU leaders are discussing a proposed 45-billion-euro loan for Ukraine. They are also divided over the bloc’s long-term budget and how to share the costs.",
-   "summary": "EU leaders met in Brussels to discuss a new loan for Ukraine and the bloc’s next long-term budget. The proposed loan is worth 45 billion euros. The European Commission’s plan would direct money to Ukraine’s economy and armed forces. Some governments oppose using EU funds for military support, while others argue that helping Ukraine is important for European security. The wider budget talks also reveal disagreements over farming, regional support and new spending priorities. Leaders may need more time before they reach a deal.",
+   "title": "Protesters Challenge Baghdad’s Kurdish Policy",
+   "gist": "Thousands gathered in Irbil to oppose Baghdad’s plans for oil operations and border crossings. The dispute touches on power, resources and the Kurdish region’s autonomy.",
+   "summary": "Thousands of people protested in Irbil, the capital of Iraq’s semiautonomous Kurdish region. They opposed moves by the federal government in Baghdad to take control of oil operations and border crossings. Kurdish authorities have previously managed these areas. The dispute reflects a long-running conflict over political authority and resources. Iraq’s constitution has not resolved all questions about disputed territories. The protest shows that the disagreement remains politically sensitive.",
    "words": [
     {
-     "en": "loan",
-     "de": "Kredit"
+     "en": "semiautonomous region",
+     "de": "teilautonome Region"
     },
     {
-     "en": "to share the costs",
-     "de": "die Kosten teilen"
+     "en": "border crossing",
+     "de": "Grenzübergang"
     },
+    {
+     "en": "to take control",
+     "de": "die Kontrolle übernehmen"
+    }
+   ],
+   "shows": [],
+   "category": "world",
+   "wiki": "Irbil",
+   "source": {
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/1b0e8cb02a09ce16b8885c60f4733a44"
+   },
+   "host_open": "The protest reflects a deep dispute about power and resources. What stands out to you about it?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Shar_Park%2C_Hawler%2C_Erbil_Governorate%2C_Iraq.jpg/330px-Shar_Park%2C_Hawler%2C_Erbil_Governorate%2C_Iraq.jpg"
+  },
+  {
+   "title": "EU Leaders Wrestle Over Ukraine Funding",
+   "gist": "EU leaders met to discuss Ukraine’s 2027 financing and the bloc’s next long-term budget. Countries disagree on how much to spend and how to share the cost.",
+   "summary": "European Union leaders gathered in Brussels for a special summit on the next long-term budget. They also discussed how to help finance Ukraine in 2027. The proposed EU budget covers the years 2028 to 2034 and is worth nearly €1.6 trillion. Governments disagree about spending priorities and how to fund support for Ukraine. Russia’s government says EU funding could make Ukraine less willing to seek peace. No final agreement was reported at the start of the talks.",
+   "words": [
     {
      "en": "long-term budget",
-     "de": "langfristiger Haushalt"
+     "de": "Langzeitbudget"
+    },
+    {
+     "en": "to share the cost",
+     "de": "die Kosten aufteilen"
+    },
+    {
+     "en": "financing",
+     "de": "Finanzierung"
     }
    ],
    "shows": [],
    "category": "europe",
    "wiki": "European Council",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/europe-ukraine-budget-summit-loan-debt-f073925a2ed77232e0d7db404600985e"
+    "name": "Euronews",
+    "url": "https://www.euronews.com/2026/11/26/eu-budget-and-ukraine-aid-headed-for-collision-at-turbulent-summit"
    },
-   "host_open": "The EU’s budget table is crowded with competing priorities. Which issue do you think leaders will find hardest to agree on?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Council_of_the_EU_and_European_Council.svg/640px-Council_of_the_EU_and_European_Council.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "EU leaders have a difficult bill to divide and several priorities to balance. What do you think matters most?",
+   "img": ""
   },
   {
-   "title": "Norway Checks Religious Memberships",
-   "gist": "Norway plans to send millions of text messages asking people to check their religious registration. The move follows reports that some people were listed without their knowledge.",
-   "summary": "Norway plans to send text messages to people registered as members of religious groups. The messages will begin next week and go to residents aged 15 and over. People will be able to check their membership through a link. The government says the checks should help prevent public grants being paid for incorrect registrations. Reports have described complaints from people who say they never joined the groups. Registered faith and outlook communities can receive state funding based on their membership numbers.",
+   "title": "Spain’s De Cos Picked for ECB Role",
+   "gist": "EU leaders chose Spain’s former central-bank chief to succeed Christine Lagarde at the European Central Bank. His appointment comes as Europe faces inflation and high borrowing costs.",
+   "summary": "European Union leaders chose Pablo Hernández de Cos as the next president of the European Central Bank. He previously led Spain’s central bank and now heads the Bank for International Settlements. He is set to take over from Christine Lagarde, who plans to leave early. The ECB helps set interest rates for countries that use the euro. Leaders are facing inflation linked in part to the war in Iran, as well as concern about government debt. The choice still needs to pass the formal appointment process.",
    "words": [
     {
-     "en": "membership",
-     "de": "Mitgliedschaft"
+     "en": "central bank",
+     "de": "Zentralbank"
     },
     {
-     "en": "to register",
-     "de": "registrieren"
+     "en": "interest rate",
+     "de": "Zinssatz"
     },
     {
-     "en": "public grant",
-     "de": "staatlicher Zuschuss"
+     "en": "to succeed someone",
+     "de": "jemandem nachfolgen"
     }
    ],
    "shows": [],
    "category": "europe",
-   "wiki": "Norway",
-   "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449337/"
-   },
-   "host_open": "A text message asking about religion is an unusual inbox arrival. Would you find that surprising?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/640px-Flag_of_Norway.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-  },
-  {
-   "title": "Global Stocks Rebound",
-   "gist": "European and Asian markets rose as investors bought technology shares. Caution about AI stocks and possible US tariffs remains in the background.",
-   "summary": "Stock markets in Europe and Asia rose on Thursday. US markets were closed for the Thanksgiving holiday. Buying of shares linked to artificial intelligence helped lift some Asian markets. Investors are still cautious about AI companies and are watching proposed US tariffs on several trading partners. Germany’s DAX and France’s CAC 40 both climbed in early trading. Oil prices also rose amid continuing tensions in the Middle East.",
-   "words": [
-    {
-     "en": "to rebound",
-     "de": "sich erholen"
-    },
-    {
-     "en": "tariff",
-     "de": "Zoll"
-    },
-    {
-     "en": "investor",
-     "de": "Anleger"
-    }
-   ],
-   "shows": [],
-   "category": "economy",
-   "wiki": "Frankfurt Stock Exchange",
+   "wiki": "European Central Bank",
    "source": {
     "name": "Associated Press",
-    "url": "https://apnews.com/article/stocks-markets-ai-oil-bonds-320cd8c9c286a7773797bf2f478ef314"
+    "url": "https://apnews.com/article/d308b6cfbe6399b131255f2a678b10e4"
    },
-   "host_open": "Markets found some lift while investors kept an eye on the risks. Did the rebound surprise you?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Frankfurt_Am_Main-Neue_Boerse_von_Suedosten-20120222.jpg/640px-Frankfurt_Am_Main-Neue_Boerse_von_Suedosten-20120222.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-  },
-  {
-   "title": "Smart Glasses Assist Surgeons",
-   "gist": "A hospital in Leipzig is testing a headset that overlays 3D anatomy with surgical information. Doctors say it can show important structures with great precision.",
-   "summary": "Surgeons at a university hospital in Leipzig are using Apple’s Vision Pro headset in research. The device overlays three-dimensional images of a patient’s anatomy with information used during an operation. It can help show important structures during procedures, including surgery around the eye socket. The hospital has used the technology in about 30 operations so far. The report says the application remains limited to research in Europe. The technology aims to support surgeons, not replace their medical judgement.",
-   "words": [
-    {
-     "en": "to overlay",
-     "de": "überlagern"
-    },
-    {
-     "en": "anatomy",
-     "de": "Anatomie"
-    },
-    {
-     "en": "surgery",
-     "de": "Operation"
-    }
-   ],
-   "shows": [],
-   "category": "tech",
-   "wiki": "Apple Vision Pro",
-   "source": {
-    "name": "ORF",
-    "url": "https://on.orf.at/video/14348843/16193653/apple-datenbrille-unterstuetzt-chirurgen-bei-operationen"
-   },
-   "host_open": "A computer display in your field of vision is moving from science fiction to the operating room. Would that make you feel more confident or more cautious?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Apple_Vision_Pro_with_Solo_Knit_Band.jpg/640px-Apple_Vision_Pro_with_Solo_Knit_Band.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-  },
-  {
-   "title": "A Bookshop Gives Away 10,000 Books",
-   "gist": "A bookseller in Bologna put thousands of books outside for people to take. He wanted to save them from being thrown away during a move.",
-   "summary": "Bookseller Davide Scilabra offered nearly 10,000 books for free in Bologna. The books came from subjects including art, languages, philosophy and mathematics. He was moving his shop to a smaller, cheaper space. At first, he tried selling the books cheaply, but said many were taken without payment. He then decided to give the books away. The shop owner said they were still useful, and almost all had gone by the time of the report.",
-   "words": [
-    {
-     "en": "bookseller",
-     "de": "Buchhändler"
-    },
-    {
-     "en": "to give away",
-     "de": "verschenken"
-    },
-    {
-     "en": "to throw away",
-     "de": "wegwerfen"
-    }
-   ],
-   "shows": [],
-   "category": "fun",
-   "wiki": "Bologna",
-   "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449336/"
-   },
-   "host_open": "Ten thousand books on the pavement sounds like a book lover’s dream. Which shelf would you head for first?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Torri_di_Bologna%2C_Bologna.jpg/640px-Torri_di_Bologna%2C_Bologna.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-  },
-  {
-   "title": "James Sets NBA Triple-Double Record",
-   "gist": "LeBron James became the oldest player in NBA history to record a triple-double. He did it in Philadelphia’s win over Miami.",
-   "summary": "LeBron James recorded a triple-double in the Philadelphia 76ers’ 111–104 win over the Miami Heat. He scored 25 points, took 10 rebounds and made 12 assists. At nearly 42, he became the oldest player in NBA history to achieve the mark. The 76ers were leading the Eastern Conference with 15 wins from 19 games, according to the report. In another game, Kevin Durant passed 33,000 career points. The record highlights how long top players can remain productive in the league.",
-   "words": [
-    {
-     "en": "triple-double",
-     "de": "Triple-Double"
-    },
-    {
-     "en": "rebound",
-     "de": "Rebound"
-    },
-    {
-     "en": "assist",
-     "de": "Assist"
-    }
-   ],
-   "shows": [],
-   "category": "fun",
-   "wiki": "National Basketball Association",
-   "source": {
-    "name": "ORF",
-    "url": "https://sport.orf.at/stories/3165442/"
-   },
-   "host_open": "At nearly 42, James is still filling every column on the stat sheet. Did that record surprise you?",
-   "img": "https://thumb.wikimedia.org/wikipedia/en/thumb/0/03/National_Basketball_Association_logo.svg/640px-National_Basketball_Association_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "A new central-bank chief will soon face some tough choices on prices and borrowing. Did the selection surprise you?",
+   "img": ""
   }
  ]
 }
