@@ -20,8 +20,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Monologe suchen (kein Schlüssel nötig)
+      - name: Monologe suchen + Notizen für Jimmy vorbereiten
         run: python scripts/shows.py
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       - name: Speichern
         run: |
           git config user.name "news-bot"

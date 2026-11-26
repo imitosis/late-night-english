@@ -83,6 +83,42 @@ if not items:
     sys.exit(0)
 
 items.sort(key=lambda x: x["published"], reverse=True)
+
+# Prepare Jimmy's notes for each monologue in advance, so "Watch & talk" starts instantly.
+# Keeps notes from the previous file for videos we already know; needs the OPENAI_API_KEY secret.
+import os
+old = {}
+try:
+    old = {i["id"]: i.get("recap") for i in json.load(open("shows.json", encoding="utf-8")).get("items", []) if i.get("recap")}
+except Exception:
+    pass
+key = os.environ.get("OPENAI_API_KEY", "")
+for it in items:
+    if it["id"] in old:
+        it["recap"] = old[it["id"]]
+        continue
+    if not key:
+        continue
+    prompt = (f'Find news coverage, recaps or articles about this late-night segment: "{it["title"]}" by {it["host"]} ({it["show"]}), '
+              f'published on YouTube {it["published"][:10]}. YouTube description: "{it["desc"]}".\n'
+              'Reply JSON only: {"topics":["3-5 short topics he joked about"],"jokes":["up to 5 jokes, paraphrased in your own words, max 20 words each"],'
+              '"questions":["3 easy listening-check questions about what was said, answerable after watching once"]}. '
+              'If you find nothing reliable, base it only on the title and description and keep it general.')
+    body = {"model": "gpt-6-luna", "input": prompt, "reasoning": {"effort": "low"}, "max_output_tokens": 4000,
+            "tools": [{"type": "web_search"}], "max_tool_calls": 3}
+    try:
+        req = urllib.request.Request("https://api.openai.com/v1/responses", data=json.dumps(body).encode(),
+                                     headers={"content-type": "application/json", "authorization": "Bearer " + key})
+        with urllib.request.urlopen(req, timeout=180) as r:
+            res = json.load(r)
+        text = "".join(c.get("text", "") for o in res.get("output", []) if o.get("type") == "message"
+                       for c in o.get("content", []) if c.get("type") == "output_text")
+        m = re.search(r"\{.*\}", text, re.S)
+        if m:
+            it["recap"] = json.loads(m.group(0))
+            print("Notizen fertig:", it["host"])
+    except Exception as e:
+        print("Keine Notizen für", it["host"], e)
 with open("shows.json", "w", encoding="utf-8") as f:
     json.dump({"updated": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "items": items}, f, ensure_ascii=False, indent=1)
 print(f"Saved {len(items)} items.")

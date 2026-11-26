@@ -876,7 +876,7 @@ function renderLastNight(){const el=$('#lastNight');if(!SHOWS.length){el.innerHT
  el.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{showSel=+b.dataset.s;renderLastNight()});
  $('#lnGo').onclick=$('#lnGo2').onclick=()=>openWatch(v)}
 function recapKey(v){return 'lne_recap_'+v.id}
-async function getRecap(v){const c=LS.get(recapKey(v),null);if(c)return c;
+async function getRecap(v){if(v.recap)return v.recap;const c=LS.get(recapKey(v),null);if(c)return c;
  const t=await ai(`Find news coverage, recaps or articles about this late-night segment: "${v.title}" by ${v.host} (${v.show}), published on YouTube ${v.published.slice(0,10)}. YouTube description: "${v.desc}".
 Reply JSON only: {"topics":["3-5 short topics he joked about"],"jokes":["up to 5 jokes, paraphrased in your own words, max 20 words each"],"questions":["3 easy listening-check questions about what was said, answerable after watching once"]}. If you find nothing reliable, base it only on the title and description and keep it general.`,{search:true});
  const j=pickJSON(t);try{localStorage.setItem(recapKey(v),JSON.stringify(j))}catch(e){}return j}
@@ -1033,7 +1033,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='71';
+const BUILD='72';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
