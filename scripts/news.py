@@ -20,7 +20,7 @@ body = {
     "model": "gpt-6-luna",
     "input": prompt,
     "reasoning": {"effort": "low"},
-    "max_output_tokens": 20000,
+    "max_output_tokens": 32000,
     "tools": [{"type": "web_search"}],
     "max_tool_calls": 6,
 }
@@ -77,7 +77,7 @@ for raw in objects(text):
             it[k] = clean(it.get(k, ""))
         items.append(it)
 
-if len(items) < 5:
+if len(items) < 8:
     print("Zu wenig – zweiter Versuch …")
     text = ask(); items = []
     for raw in objects(text):
@@ -90,7 +90,7 @@ if len(items) < 5:
                 it[k] = clean(it.get(k, ""))
             items.append(it)
 
-if len(items) < 5:
+if len(items) < 8:
     sys.exit(f"Zu wenige Storys gefunden ({len(items)}), news.json bleibt unverändert.")
 
 def wiki_img(title):
@@ -106,9 +106,9 @@ def wiki_img(title):
         print("Kein Bild für", title, e)
         return ""
 
-for it in items[:8]:
+for it in items[:14]:
     it["img"] = wiki_img(it.get("wiki", ""))
 
-json.dump({"date": now.strftime("%Y-%m-%d"), "items": items[:8]},
+json.dump({"date": now.strftime("%Y-%m-%d"), "items": items[:14]},
           open("news.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-print(f"{len(items[:8])} Storys gespeichert.")
+print(f"{len(items[:14])} Storys gespeichert.")

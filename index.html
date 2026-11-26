@@ -278,6 +278,11 @@ svg.studio{display:none!important}
 #news .nrow{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer}
 #news .nt{flex:1}#news .nrow h3{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.15;margin-top:3px}
 #news .ntz{margin:4px 0 0;color:var(--mute);font-size:14.5px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#news .post{cursor:pointer;padding:22px 0;border-bottom:1px solid var(--line)}
+#news .post h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.12;margin:4px 0 6px}
+#news .post .ntz{font-size:15px;-webkit-line-clamp:3;margin:0 0 10px}
+#news .post .talkbtn{display:inline-block;color:var(--ink);font-weight:600;font-size:14px;border:0;padding:0;min-height:0}
+#news .lead .nimg{aspect-ratio:4/3}
 #news .nth{flex:none;width:84px;height:84px;object-fit:cover;border-radius:10px;background:var(--line)}
 #news .upnext::before{content:none}
 .tabs{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
@@ -685,17 +690,17 @@ document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
 /* ---------- news ---------- */
 let NEWS=[];
 const NEWS_PROMPT=()=>`Today is ${new Date().toDateString()}. Build tonight's news rundown for an Austrian professional who practises English, mixed like a good evening news show (e.g. ORF ZiB 2):
-- 2 stories from Austria (search Austrian sources such as ORF, Der Standard, Die Presse; explain them in English),
-- 2 big international stories (e.g. the war in Ukraine, Israel and Gaza / the Middle East, or whatever leads world news today),
-- 1 from the EU or another European country,
+- 3 stories from Austria (search Austrian sources such as ORF, Der Standard, Die Presse; explain them in English),
+- 3 big international stories (e.g. the war in Ukraine, Israel and Gaza / the Middle East, or whatever leads world news today),
+- 2 from the EU or other European countries,
 - at most 2 from US politics (pick what the US late-night shows Jimmy Kimmel Live, The Tonight Show with Jimmy Fallon and Late Night with Seth Meyers joked about most recently),
-- 1 from business, tech or science,
-- 1 lighter or funny story.
-That makes 8. Every story must be a different topic: never two stories about the same company, event or place. Avoid the same person dominating: a single politician's name may appear in at most 2 titles. For each story, check whether any of those three late-night shows covered it in a recent monologue and list them in "shows".
+- 2 from business, tech or science,
+- 2 lighter or funny stories (culture, sport, curiosities).
+That makes 14. Every story must be a different topic: never two stories about the same company, event or place. Avoid the same person dominating: a single politician's name may appear in at most 2 titles. For each story, check whether any of those three late-night shows covered it in a recent monologue and list them in "shows".
 Report the FACTS from news coverage (not the jokes, do not quote the hosts). Be neutral and careful, especially on wars and conflicts. For stories about war, terror, disasters or deaths, host_open must be respectful with no joke at all.
 For each:
 "title" (max 8 words, plain English),
-"gist" (1 short teaser sentence),
+"gist" (2 short teaser sentences that make you want to read on),
 "summary" (5-6 short sentences in clear, simple English, B1 level: what happened, who is involved, why it matters, and what different sides say; neutral, no opinion),
 "words" (3 useful words or phrases from the story, each {"en":"","de":"German translation"}),
 "shows" (which of the three late-night shows covered it, e.g. ["Kimmel","Fallon"], or [] if none),
@@ -723,7 +728,7 @@ function renderNews(items,state){
  const lab=n=>{const shows=(n.shows||[]).filter(Boolean);return esc(CATL[n.category]||'News')+(shows.length?' · <span class="onshow">on '+esc(shows.join(', '))+'</span>':'')};
  const card=(n,i)=>{const im=imgFor(n);
   if(i===0)return `<article class="lead" data-n="0">${im?`<img class="nimg" src="${esc(im)}" alt="" loading="lazy" onerror="this.remove()">`:''}<div class="nk">${lab(n)}</div><h3>${esc(n.title)}</h3><p>${esc(n.gist)}</p><span class="talkbtn">Talk with Jimmy →</span></article>`;
-  return `<article class="nrow" data-n="${i}"><div class="nt"><div class="nk">${lab(n)}</div><h3>${esc(n.title)}</h3><p class="ntz">${esc(n.gist||"")}</p></div>${im?`<img class="nth" src="${esc(im)}" alt="" loading="lazy" onerror="this.remove()">`:''}</article>`};
+  return `<article class="post" data-n="${i}">${im?`<img class="nimg" src="${esc(im)}" alt="" loading="lazy" onerror="this.remove()">`:''}<div class="nk">${lab(n)}</div><h3>${esc(n.title)}</h3><p class="ntz">${esc(n.gist||'')}</p><span class="talkbtn">Talk with Jimmy →</span></article>`};
  $('#news').innerHTML=`<div class="cards">${items.map(card).join('')}</div>`+(!state&&items.length&&!inClaude()&&cfg.kO?`<button id="moreNews" class="morebtn">More stories</button>`:'')+(state?`<div class="loading"><span class="dots"><i></i><i></i><i></i></span> ${esc(state)}</div>`:'');
  if(!state)fetchImgs(items);
 }
@@ -733,7 +738,7 @@ function greet(){const v=document.body.dataset.tab||'home';const hr=new Date().g
  $('#ttl').textContent=TITLES[v]||(hr<11?'Good morning':hr<17?'Good afternoon':'Good evening')}
 async function loadNews(){
  const d=today();
- const cached=LS.get('lne_news4',null);
+ const cached=LS.get('lne_news5',null);
  const done=(items,label)=>{items=items.map(normItem);NEWS=items;$('#newsDate').textContent=(label==='sample topics'?items.length+' sample topics':items.length+' stories '+(label==='today'?'today':label))+' · about '+Math.max(5,items.length*2)+' min';renderNews(items,'')};
  if(cached&&cached.date===d&&cached.items&&cached.items.length>=5){done(cached.items,'today');return}
  if(inClaude()){
@@ -744,7 +749,7 @@ async function loadNews(){
  if(!cfg.kO){done(FALLBACK,'sample topics');$('#news').insertAdjacentHTML('beforeend','<p class="hint">Add your OpenAI key under Profile to get real news here every morning.</p>');return}
  /* 1) daily file prepared each morning on GitHub: instant */
  try{const r=await fetch('https://raw.githubusercontent.com/imitosis/late-night-english/main/news.json?d='+d,{cache:'no-store'});
-  if(r.ok){const j=await r.json();if(j&&j.date===d&&j.items&&j.items.length>=5){LS.set('lne_news4',j);done(j.items,'today');return}}}catch(e){}
+  if(r.ok){const j=await r.json();if(j&&j.date===d&&j.items&&j.items.length>=5){LS.set('lne_news5',j);done(j.items,'today');return}}}catch(e){}
  /* 2) fallback: search on the phone */
  NEWS=[];$('#newsDate').textContent='loading';
  renderNews([],'Jimmy is reading the paper …');
@@ -754,7 +759,7 @@ async function loadNews(){
  try{const full=await aiStream(NEWS_PROMPT(),take,{search:true,effort:'low',max:6000});take(full)}
  catch(e){clearInterval(tick);if(!NEWS.length){done(FALLBACK,'sample topics');$('#news').insertAdjacentHTML('beforeend',`<p class="hint">${esc(errLine(e))}</p>`);return}}
  clearInterval(tick);
- if(NEWS.length){LS.set('lne_news4',{date:d,items:NEWS});done(NEWS,'today')}else done(FALLBACK,'sample topics');
+ if(NEWS.length){LS.set('lne_news5',{date:d,items:NEWS});done(NEWS,'today')}else done(FALLBACK,'sample topics');
 }
 let briefN=null;
 async function moreNews(btn){
@@ -762,7 +767,7 @@ async function moreNews(btn){
  const have=NEWS.map(n=>n.title).join(' | ');
  const before=NEWS.length;
  try{await aiStream(NEWS_PROMPT().replace('That makes 8.','Now pick only 4 MORE stories in the same spirit, different from these: '+have+'.').replace('exactly 8 lines','exactly 4 lines'),t=>{const objs=jsonObjects(t);for(const o of objs){try{const it=normItem(JSON.parse(o));if(it.title&&!NEWS.some(n=>n.title===it.title))NEWS.push(it)}catch(e){}}},{search:true,effort:'low',max:3500})}catch(e){}
- if(NEWS.length>before){LS.set('lne_news4',{date:today(),items:NEWS})}
+ if(NEWS.length>before){LS.set('lne_news5',{date:today(),items:NEWS})}
  renderNews(NEWS,'');$('#newsDate').textContent=NEWS.length+' stories today · about '+Math.max(5,NEWS.length*2)+' min';if(NEWS.length===before){const b=$('#moreNews');if(b){b.textContent='No more stories right now';b.disabled=true}}
 }
 $('#news').onclick=e=>{if(e.target.closest('#moreNews')){moreNews(e.target.closest('#moreNews'));return}const b=e.target.closest('[data-n]');if(b)showBrief(+b.dataset.n)};
@@ -1024,7 +1029,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='61';
+const BUILD='62';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
@@ -1048,7 +1053,7 @@ function diag(){$('#diag').textContent='Mode: '+(inClaude()?'test in Claude':'st
 function rateLbl(){$('#rateV').textContent=Math.round($('#rate').value*100)+' %'}
 $('#rate').oninput=()=>{rateLbl();cfg.rate=+$('#rate').value;LS.set('lne_rate_set',1)};
 function fillSettings(){$('#rate').value=cfg.rate||1.3;rateLbl();$('#kO').value=cfg.kO;$('#vSel').value=cfg.voice;$('#rem').value=cfg.rem;0}
-$('#saveSet').onclick=()=>{cfg=Object.assign(cfg,{kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',rate:+$('#rate').value||1.3});if(cfg.kO&&!LS.get('lne_onb',0))setTimeout(obOpen,600);LS.set('lne_cfg2',cfg);toast(cfg.kO?'Saved ✓ Key added':'Saved ✓');const sb=$('#saveSet');sb.textContent='Saved ✓';sb.classList.add('done');setTimeout(()=>{sb.textContent='Save';sb.classList.remove('done')},2500);try{localStorage.removeItem('lne_news4')}catch(e){}diag();loadNews()};
+$('#saveSet').onclick=()=>{cfg=Object.assign(cfg,{kO:$('#kO').value.trim(),voice:$('#vSel').value,rem:$('#rem').value||'07:30',rate:+$('#rate').value||1.3});if(cfg.kO&&!LS.get('lne_onb',0))setTimeout(obOpen,600);LS.set('lne_cfg2',cfg);toast(cfg.kO?'Saved ✓ Key added':'Saved ✓');const sb=$('#saveSet');sb.textContent='Saved ✓';sb.classList.add('done');setTimeout(()=>{sb.textContent='Save';sb.classList.remove('done')},2500);try{localStorage.removeItem('lne_news5')}catch(e){}diag();loadNews()};
 $('#testVoice').onclick=()=>{cfg.voice=$('#vSel').value;cfg.kO=$('#kO').value.trim();speak("Hey, welcome to the show! This is how I sound tonight.")};
 $('#remBtn').onclick=()=>{
  const [H,M]=($('#rem').value||'07:30').split(':');const d=today().replace(/-/g,'');
