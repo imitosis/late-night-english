@@ -725,7 +725,7 @@ async function fetchImgs(items){let ch=false;for(const n of items){const k=n.wik
  try{const r=await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(k.replace(/ /g,'_')));const j=r.ok?await r.json():{};const t=j.thumbnail&&j.thumbnail.source;IMG[k]=(t&&/\.jpe?g/i.test(t))?t.split('?')[0]:''}catch(e){IMG[k]=''}ch=true}
  if(ch){try{localStorage.setItem('lne_img2',JSON.stringify(IMG))}catch(e){}if(NEWS===items)renderNews(items,'')}}
 function renderNews(items,state){
- const lab=n=>{const shows=(n.shows||[]).filter(Boolean);return esc(CATL[n.category]||'News')+(shows.length?' · <span class="onshow">on '+esc(shows.join(', '))+'</span>':'')};
+ const lab=n=>{const shows=(n.shows||[]).filter(Boolean);const src=n.source&&n.source.name;return (src?esc(src):esc(CATL[n.category]||'News'))+(shows.length?' · <span class="onshow">on '+esc(shows.join(', '))+'</span>':'')};
  const card=(n,i)=>{const im=imgFor(n);
   if(i===0)return `<article class="lead" data-n="0">${im?`<img class="nimg" src="${esc(im)}" alt="" loading="lazy" onerror="this.remove()">`:''}<div class="nk">${lab(n)}</div><h3>${esc(n.title)}</h3><p>${esc(n.gist)}</p><span class="talkbtn">Talk with Jimmy →</span></article>`;
   return `<article class="post" data-n="${i}">${im?`<img class="nimg" src="${esc(im)}" alt="" loading="lazy" onerror="this.remove()">`:''}<div class="nk">${lab(n)}</div><h3>${esc(n.title)}</h3><p class="ntz">${esc(n.gist||'')}</p><span class="talkbtn">Talk with Jimmy →</span></article>`};
@@ -1032,7 +1032,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='67';
+const BUILD='68';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();

@@ -134,27 +134,58 @@ def preview_img(page):
         print("Keine Vorschau:", page, e)
     return ""
 
-for n, it in enumerate(items[:14]):
-    src = it.get("source") or {}
-    url = preview_img(src.get("url", "") if isinstance(src, dict) else "")
-    it["img_from"] = "article" if url else ""
-    if not url:
-        url = wiki_img(it.get("wiki", ""))
-        it["img_from"] = "wikipedia" if url else ""
-    it["img"] = ""
-    if not url:
-        continue
+import hashlib
+
+def fetch_bytes(url):
     try:
         req2 = urllib.request.Request(url, headers={"User-Agent": "late-night-english/1.0 (https://github.com/imitosis/late-night-english)"})
         with urllib.request.urlopen(req2, timeout=20) as r:
             data = r.read(3000000)
-        if len(data) > 2000:
-            ext = ".png" if data[:4] == b"\x89PNG" else ".webp" if data[8:12] == b"WEBP" else ".jpg"
-            fn = f"news_img/{stamp}-{n}{ext}"
-            open(fn, "wb").write(data)
-            it["img"] = fn
+        return data if len(data) > 2000 else b""
     except Exception as e:
         print("Bild nicht geladen:", url, e)
+        return b""
+
+# 1) the article's own preview picture
+got = {}
+for n, it in enumerate(items[:14]):
+    src = it.get("source") or {}
+    url = preview_img(src.get("url", "") if isinstance(src, dict) else "")
+    if url:
+        data = fetch_bytes(url)
+        if data:
+            got[n] = ("article", data)
+
+# 2) the same picture for several stories = the site's default logo picture -> throw away
+counts = {}
+for k, (_, data) in got.items():
+    h = hashlib.md5(data).hexdigest()
+    counts[h] = counts.get(h, 0) + 1
+for k in list(got):
+    if counts[hashlib.md5(got[k][1]).hexdigest()] > 1:
+        print("Standardbild der Seite verworfen:", items[k].get("title"))
+        del got[k]
+
+# 3) otherwise a real photo from Wikipedia
+for n, it in enumerate(items[:14]):
+    if n in got:
+        continue
+    url = wiki_img(it.get("wiki", ""))
+    if url:
+        data = fetch_bytes(url)
+        if data:
+            got[n] = ("wikipedia", data)
+
+for n, it in enumerate(items[:14]):
+    it["img"] = ""
+    it["img_from"] = ""
+    if n in got:
+        kind, data = got[n]
+        ext = ".png" if data[:4] == b"\x89PNG" else ".webp" if data[8:12] == b"WEBP" else ".jpg"
+        fn = f"news_img/{stamp}-{n}{ext}"
+        open(fn, "wb").write(data)
+        it["img"] = fn
+        it["img_from"] = kind
 
 json.dump({"date": now.strftime("%Y-%m-%d"), "items": items[:14]},
           open("news.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
