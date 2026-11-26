@@ -2,50 +2,50 @@
  "date": "2026-11-26",
  "items": [
   {
-   "title": "Heavy Snow Disrupts Austria",
-   "gist": "A powerful snowfall blanketed much of the country, including Vienna. Roads and transport faced a difficult day.",
-   "summary": "Heavy snow fell across many parts of Austria on Thursday. Vienna recorded 17 centimetres at Hohe Warte, the most November snow there in more than 40 years. The A21 motorway was closed for several hours after vehicles became stuck. Accidents and delays were also reported in other regions. Forecasters said cold weather could keep the snow on the ground into next week.",
+   "title": "Snow Brings Austria to a Standstill",
+   "gist": "A heavy November snowfall disrupted roads, trains and flights across Austria. The snow may stay for days, while colder weather brings new risks.",
+   "summary": "Snow fell across much of Austria on Thursday. The A21 motorway near Vienna was closed in both directions for several hours after vehicles got stuck. Emergency services dealt with hundreds of calls, and flights at Vienna Airport were delayed by de-icing. Several other roads and rail lines were also affected. Forecasters said the snow could remain as temperatures drop.",
    "words": [
     {
-     "en": "heavy snowfall",
-     "de": "starker Schneefall"
+     "en": "snowfall",
+     "de": "Schneefall"
     },
     {
-     "en": "motorway closure",
-     "de": "Autobahnsperre"
+     "en": "road closure",
+     "de": "Straßensperre"
     },
     {
-     "en": "road conditions",
-     "de": "Straßenverhältnisse"
+     "en": "de-icing",
+     "de": "Enteisung"
     }
    ],
    "shows": [],
-   "category": "politics",
+   "category": "fun",
    "wiki": "Vienna",
    "source": {
     "name": "ORF",
     "url": "https://oesterreich.orf.at/stories/3381265/"
    },
-   "host_open": "Vienna got a very wintry November surprise. How does that look from Austria?",
+   "host_open": "Austria woke up to a very white commute. How did the snow affect your day?",
    "img": "news_img/20261126-0.jpg",
    "img_from": "article"
   },
   {
-   "title": "Nehammer Denies Media Pressure",
-   "gist": "Former chancellor Karl Nehammer answered questions in a parliamentary inquiry. The hearing focused on claims linked to a secret recording.",
-   "summary": "Former Austrian chancellor Karl Nehammer appeared before a parliamentary inquiry on Thursday. The inquiry concerns Christian Pilnacek, a former senior justice official who died in 2023. A recording of Pilnacek had included claims of political pressure on investigations. Nehammer denied trying to influence the ORF or the newspaper Kronen Zeitung. He said he spoke to the newspaper's editor only after hearing a witness's claim. The inquiry is examining what happened and who knew about it.",
+   "title": "Experts Criticise Prosecutor Plan",
+   "gist": "Legal experts say Austria’s proposed federal prosecution office needs a fresh start. They warn the current draft could leave prosecutors exposed to political pressure.",
+   "summary": "Legal experts criticised the government’s latest plan for a federal prosecution office. They say it does not provide enough independence from political influence. One concern is that parliament could have an ongoing role in overseeing the office, including during investigations. The government needs a two-thirds majority in parliament to pass the measure. The Greens say they will not negotiate until a substantially revised draft is presented.",
    "words": [
     {
-     "en": "parliamentary inquiry",
-     "de": "parlamentarischer Untersuchungsausschuss"
+     "en": "prosecutor",
+     "de": "Staatsanwalt/Staatsanwältin"
     },
     {
-     "en": "to deny a claim",
-     "de": "einen Vorwurf bestreiten"
+     "en": "independence",
+     "de": "Unabhängigkeit"
     },
     {
-     "en": "recording",
-     "de": "Tonaufnahme"
+     "en": "draft law",
+     "de": "Gesetzentwurf"
     }
    ],
    "shows": [],
@@ -53,74 +53,74 @@
    "wiki": "Austrian Parliament Building",
    "source": {
     "name": "ORF",
-    "url": "https://orf.at/stories/3449329/"
+    "url": "https://orf.at/stories/3449375/"
    },
-   "host_open": "A parliamentary hearing can bring old questions back into the room. What did you make of Nehammer’s answer?",
-   "img": "news_img/20261126-1.jpg",
-   "img_from": "wikipedia"
+   "host_open": "A watchdog needs room to do its job. Does this debate surprise you?",
+   "img": "news_img/20261126-1.png",
+   "img_from": "article"
   },
   {
-   "title": "Vienna Cuts Culture Spending",
-   "gist": "Vienna plans to save €31 million from its cultural budget. Some major venues and festivals say the cuts leave little time to adjust.",
-   "summary": "Vienna's culture department must save €31 million in its 2027 budget. The cuts affect theatres, festivals and other cultural institutions. The city plans to end the Kultursommer and pause the Klima Biennale. Some theatres have criticised both the size of the cuts and the short notice. The city says it must reduce spending because of financial pressure. It says some cultural support and free entry at the Wien Museum will continue.",
+   "title": "Vienna Plans Major Culture Cuts",
+   "gist": "Vienna says it must save €31 million from its culture budget. The cuts could affect theatres, festivals and popular summer events.",
+   "summary": "Vienna’s culture department must save €31 million in its 2027 budget. The city says the cuts are part of efforts to reduce its debt. Subsidies for several theatres and festivals will fall, and the Kultursommer will be stopped. The Klima Biennale will also be paused. Some arts organisations say the scale and short notice of the cuts make it hard to respond.",
    "words": [
+    {
+     "en": "subsidy",
+     "de": "Förderung"
+    },
     {
      "en": "budget cut",
      "de": "Budgetkürzung"
     },
     {
-     "en": "cultural venue",
-     "de": "Kulturstätte"
-    },
-    {
-     "en": "short notice",
-     "de": "kurzfristig"
+     "en": "arts organisation",
+     "de": "Kulturinstitution"
     }
    ],
    "shows": [],
    "category": "politics",
    "wiki": "Vienna",
    "source": {
-    "name": "ORF Vienna",
+    "name": "ORF Wien",
     "url": "https://wien.orf.at/stories/3381141/"
    },
-   "host_open": "Vienna’s cultural calendar may soon have fewer events. How do you feel about that?",
+   "host_open": "Vienna’s cultural calendar may get a little quieter. How does that look from Austria?",
    "img": "news_img/20261126-2.jpg",
    "img_from": "article"
   },
   {
-   "title": "Ukraine Warns of Power Grid Attack",
-   "gist": "Ukraine's president says Russia may be preparing a major strike on energy systems. Kyiv is asking partners for more air defence equipment.",
-   "summary": "President Volodymyr Zelenskyy said Russia may launch a major attack on Ukraine's energy infrastructure. He warned that logistics and other critical services could also be targeted. Russian missile and drone attacks have damaged Ukraine's power system during the war. Ukraine says it needs more air defence supplies, including Patriot interceptors. The United States envoy said Russian President Vladimir Putin had shown restraint by agreeing not to use nuclear weapons. Russia's latest attack plans were not independently confirmed.",
+   "title": "Russia Warns Ukraine’s Power Grid",
+   "gist": "Ukraine says Russia may launch another major strike on energy infrastructure. The warning comes as the country asks partners for more air-defence supplies.",
+   "summary": "Ukrainian President Volodymyr Zelenskyy said Russia was preparing a major attack on energy sites and other critical services. Russian strikes have already damaged Ukraine’s power network during the war. Ukraine is asking partners for more air-defence equipment, including interceptors for Patriot systems. US envoy Jared Kushner said talks with Russia had reached a deadlock over Ukrainian territory. Ukrainian and European leaders say Russia has not shown a willingness to compromise.",
    "words": [
     {
      "en": "power grid",
      "de": "Stromnetz"
     },
     {
-     "en": "air defence",
-     "de": "Luftverteidigung"
+     "en": "air-defence system",
+     "de": "Luftabwehrsystem"
     },
     {
-     "en": "interceptor",
-     "de": "Abfangrakete"
+     "en": "deadlock",
+     "de": "Stillstand"
     }
    ],
    "shows": [],
    "category": "world",
    "wiki": "Ukraine",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/122f7f187eea20d4d2b659692b4c4f1e"
+    "name": "AP News",
+    "url": "https://apnews.com/article/russia-ukraine-war-zelenskyy-power-122f7f187eea20d4d2b659692b4c4f1e"
    },
-   "host_open": "Winter power is vital for people across Ukraine. How do you feel about the warning?",
+   "host_open": "A winter power supply is vital for millions of people. How worried are you by this warning?",
    "img": "",
    "img_from": ""
   },
   {
-   "title": "New Strikes Reported in Gaza",
-   "gist": "Israeli strikes and gunfire killed people in Gaza, according to local authorities. The reports come amid continuing violence despite a ceasefire deal.",
-   "summary": "Israeli strikes and gunfire killed 10 people in Gaza, according to Palestinian health authorities. Israel said it had targeted Hamas figures and military sites. The deaths are part of continuing violence more than a year after a ceasefire deal was reached. Hamas and Israel have offered different accounts of responsibility for the fighting. The Associated Press said it could not independently verify some claims in its report. Civilians in Gaza remain at risk as the exchanges continue.",
+   "title": "Deadly Strikes Reported in Gaza",
+   "gist": "Hospital officials say Israeli strikes killed ten people in Gaza. Israel says one strike targeted a Hamas official and other militants.",
+   "summary": "Hospital officials in Gaza said ten people were killed in several strikes and a shooting overnight and on Thursday. They said the dead included a man and his wife in an apartment in Deir al-Balah. Israeli leaders said the military killed a Hamas official responsible for economic and education affairs. Israel’s military said one strike targeted three militants. Officials did not immediately comment on all the reported strikes and deaths. The attacks happened despite a ceasefire deal reached more than a year ago.",
    "words": [
     {
      "en": "airstrike",
@@ -128,284 +128,200 @@
     },
     {
      "en": "ceasefire",
-     "de": "Waffenruhe"
+     "de": "Waffenstillstand"
     },
     {
-     "en": "to verify",
-     "de": "überprüfen"
+     "en": "hospital officials",
+     "de": "Krankenhausvertreter"
     }
    ],
    "shows": [],
    "category": "world",
    "wiki": "Gaza Strip",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/522676f17532b878878ff7a4347d0e31"
+    "name": "AP News",
+    "url": "https://apnews.com/article/gaza-iran-israel-uae-hormuz-november-26-2026-522676f17532b878878ff7a4347d0e31"
    },
-   "host_open": "Another night of strikes has brought more loss to Gaza. How does this news make you feel?",
+   "host_open": "Families are grieving after another deadly night in Gaza. How do you feel about the latest reports?",
    "img": "",
    "img_from": ""
   },
   {
-   "title": "Ebola Cases Rise in Eastern Congo",
-   "gist": "The outbreak has passed 12,000 confirmed cases, official data says. Fighting is making it harder for health teams to respond.",
-   "summary": "Congo's health ministry reported more than 12,000 confirmed Ebola cases on Thursday. The outbreak is spreading in the country's east. Fighting between armed groups and government forces has disrupted efforts to contain the virus. Some response teams have had to leave areas because of security risks. Health workers are trying to find cases and limit further spread. The situation matters beyond the region because outbreaks can cross borders.",
+   "title": "Iranian Drones Kill Italians in Kuwait",
+   "gist": "Two Italian civilian workers were killed in a drone attack in Kuwait, according to Italy’s foreign ministry. Iran denied responsibility, and the incident adds to regional tensions.",
+   "summary": "Two Italian civilians were killed and two others injured in a drone attack in Kuwait. Italy said the workers were technicians maintaining radar systems for a defence contractor. Kuwait said its air defences had shot down several drones from Iran. Iran’s foreign minister offered condolences but denied that Iran was behind the attack. The incident comes amid wider conflict and repeated attacks in the Gulf region.",
    "words": [
     {
-     "en": "outbreak",
-     "de": "Ausbruch"
+     "en": "civilian worker",
+     "de": "Zivilbeschäftigter"
     },
     {
-     "en": "to contain a virus",
-     "de": "ein Virus eindämmen"
+     "en": "air defence",
+     "de": "Luftabwehr"
     },
     {
-     "en": "health worker",
-     "de": "Gesundheitskraft"
+     "en": "deny responsibility",
+     "de": "die Verantwortung abstreiten"
     }
    ],
    "shows": [],
    "category": "world",
-   "wiki": "Democratic Republic of the Congo",
+   "wiki": "Kuwait",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/0a0bc05d76d3278319472178a16be14b"
+    "name": "AP News",
+    "url": "https://apnews.com/article/gaza-iran-israel-uae-hormuz-november-26-2026-522676f17532b878878ff7a4347d0e31"
    },
-   "host_open": "Health teams are working under difficult and unsafe conditions. How do you feel about their challenge?",
+   "host_open": "Two workers lost their lives far from home. How does this news make you feel?",
    "img": "",
    "img_from": ""
   },
   {
-   "title": "EU Leaders Debate Budget and Ukraine Aid",
-   "gist": "Leaders met in Brussels to discuss the bloc’s next long-term budget. They also face a difficult question: how to cover Ukraine’s needs in 2027.",
-   "summary": "European Union leaders met in Brussels on Thursday and Friday. They discussed the EU budget for 2028 to 2034 and funding for Ukraine in 2027. The budget proposal is worth nearly €1.6 trillion. Member states disagree about its size and how money should be shared. Some governments want tighter spending, while others argue for more support for regions and Ukraine. Leaders are trying to narrow differences ahead of a planned decision in December.",
+   "title": "EU Leaders Clash Over Ukraine Loan",
+   "gist": "EU leaders are divided over a proposed €45 billion loan for Ukraine. Some governments want all member states to take part; others want to opt out.",
+   "summary": "EU leaders met in Brussels to discuss the bloc’s next long-term budget and support for Ukraine. The proposal includes a €45 billion loan for Ukraine in 2027. Germany argues that all EU members should back it. Slovakia, Hungary and Czechia want to opt out of the loan. Leaders are also divided over the size of the wider EU budget and how its money should be spent.",
    "words": [
     {
-     "en": "long-term budget",
-     "de": "mehrjähriger Haushalt"
+     "en": "loan",
+     "de": "Darlehen"
     },
     {
-     "en": "to narrow differences",
-     "de": "Unterschiede verringern"
+     "en": "member state",
+     "de": "Mitgliedstaat"
     },
     {
-     "en": "funding needs",
-     "de": "Finanzierungsbedarf"
+     "en": "opt out",
+     "de": "nicht teilnehmen"
     }
    ],
    "shows": [],
    "category": "europe",
    "wiki": "European Council",
    "source": {
-    "name": "Reuters via Investing.com",
-    "url": "https://www.investing.com/news/commodities-news/leaders-wrestle-over-eus-budget-ukraine-financing-as-le-pen-focuses-minds-5052559"
+    "name": "The Guardian",
+    "url": "https://www.theguardian.com/world/2026/nov/26/eu-leaders-braced-for-clashes-over-ukraine-aid-at-budget-talks"
    },
-   "host_open": "Brussels has a very large bill to divide. How do you see the debate?",
+   "host_open": "The EU budget meeting has a very large price tag. Did you expect this much disagreement?",
+   "img": "news_img/20261126-6.jpg",
+   "img_from": "article"
+  },
+  {
+   "title": "Spain Faces a Tight Election",
+   "gist": "Spain votes on Sunday in an early parliamentary election. Polls and campaign coverage suggest a possible shift towards a conservative coalition that could include the far right.",
+   "summary": "Spain is due to hold an early general election on Sunday, November 29. The campaign has focused in part on immigration and the role of the far-right Vox party. Vox says it wants policies to give Spanish citizens priority over foreign residents and immigrants. The party could seek to govern with the conservative People’s Party if the election results allow it. The outcome could change Spain’s government and its approach to migration.",
+   "words": [
+    {
+     "en": "early election",
+     "de": "vorgezogene Wahl"
+    },
+    {
+     "en": "coalition",
+     "de": "Koalition"
+    },
+    {
+     "en": "immigration",
+     "de": "Einwanderung"
+    }
+   ],
+   "shows": [],
+   "category": "europe",
+   "wiki": "Spain",
+   "source": {
+    "name": "AP News",
+    "url": "https://apnews.com/article/cb1d921d60bbcdb5b11ec2056f9050a7"
+   },
+   "host_open": "Spain’s ballot could reshape its government. Did that possibility surprise you?",
    "img": "",
    "img_from": ""
   },
   {
-   "title": "Spain’s De Cos Chosen for ECB Role",
-   "gist": "EU leaders selected Spain’s former central bank chief to lead the European Central Bank. Inflation and borrowing costs will be major challenges for the incoming president.",
-   "summary": "EU leaders chose Pablo Hernández de Cos to become the next president of the European Central Bank. He previously led Spain's central bank. He is set to succeed Christine Lagarde, who is leaving before the end of her term. The ECB sets monetary policy for countries that use the euro. Leaders face concerns about inflation, government debt and borrowing costs. De Cos will need to guide the bank through those pressures.",
+   "title": "Late Night Turns to Turkey Pardon",
+   "gist": "The White House’s annual turkey-pardon tradition became a late-night topic this week. Jimmy Kimmel and Seth Meyers covered the event in recent monologues.",
+   "summary": "The White House held its annual ceremony to pardon Thanksgiving turkeys. The event is a long-running seasonal tradition in US politics. Jimmy Kimmel discussed the ceremony in a monologue on November 24. Seth Meyers also joked about a question President Donald Trump asked while discussing the turkey. The ceremony itself is symbolic and does not change government policy.",
    "words": [
     {
-     "en": "central bank",
-     "de": "Zentralbank"
+     "en": "pardon",
+     "de": "Begnadigung"
     },
     {
-     "en": "borrowing costs",
-     "de": "Kreditkosten"
+     "en": "annual tradition",
+     "de": "jährliche Tradition"
     },
     {
-     "en": "to succeed",
-     "de": "nachfolgen"
+     "en": "symbolic",
+     "de": "symbolisch"
+    }
+   ],
+   "shows": [
+    "Kimmel",
+    "Seth Meyers"
+   ],
+   "category": "politics",
+   "wiki": "White House",
+   "source": {
+    "name": "TheWrap",
+    "url": "https://www.thewrap.com/culture-lifestyle/culture/trump-pardons-turkeys-jimmy-kimmel-monologue/"
+   },
+   "host_open": "The White House has a turkey tradition unlike any other. Did that surprise you?",
+   "img": "news_img/20261126-8.jpg",
+   "img_from": "article"
+  },
+  {
+   "title": "A Spanish Economist Tipped for ECB",
+   "gist": "EU diplomats say Spain’s Pablo Hernández de Cos is set to lead the European Central Bank. He is expected to succeed Christine Lagarde next year.",
+   "summary": "EU leaders and diplomats backed Spanish economist Pablo Hernández de Cos for the next ECB presidency. He is expected to succeed Christine Lagarde, who is due to leave the post early in February. The Netherlands had supported its own candidate, Klaas Knot, but signalled support for a consensus choice. The ECB sets interest rates for the euro area. The appointment still has to follow the formal EU process.",
+   "words": [
+    {
+     "en": "interest rate",
+     "de": "Zinssatz"
+    },
+    {
+     "en": "successor",
+     "de": "Nachfolger/Nachfolgerin"
+    },
+    {
+     "en": "euro area",
+     "de": "Eurozone"
     }
    ],
    "shows": [],
    "category": "economy",
    "wiki": "European Central Bank",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/d308b6cfbe6399b131255f2a678b10e4"
-   },
-   "host_open": "The next ECB chief will inherit a demanding job. What do you think will matter most?",
-   "img": "",
-   "img_from": ""
-  },
-  {
-   "title": "Serbia Calls Early Presidential Vote",
-   "gist": "Serbia will hold a presidential election on December 27. The vote follows a parliamentary result that reshaped the political landscape.",
-   "summary": "Serbia's parliament speaker called a presidential election for December 27. Former president Aleksandar Vučić resigned in September to try to become prime minister. That attempt failed. A student-led list won the most seats in October's parliamentary election. The new presidential vote will test how that result changes national politics. The authorities say voters should take part and choose a president with strong public support.",
-   "words": [
-    {
-     "en": "presidential election",
-     "de": "Präsidentschaftswahl"
-    },
-    {
-     "en": "to call an election",
-     "de": "eine Wahl ansetzen"
-    },
-    {
-     "en": "voter turnout",
-     "de": "Wahlbeteiligung"
-    }
-   ],
-   "shows": [],
-   "category": "europe",
-   "wiki": "National Assembly of Serbia",
-   "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/b069d30d098006f9d4ed21e6b82731c4"
-   },
-   "host_open": "Serbia has a new election date and a changed political balance. Did that surprise you?",
-   "img": "",
-   "img_from": ""
-  },
-  {
-   "title": "Thanksgiving Storm Delays Parade",
-   "gist": "Bad weather forced New York to postpone its famous Thanksgiving parade. Flooding and power cuts affected other parts of the United States too.",
-   "summary": "Severe weather disrupted Thanksgiving celebrations across the United States. New York postponed the Macy's Thanksgiving Day Parade for the first time in its history. Heavy rain and strong winds caused flooding in parts of the East Coast. Snow and power outages were also reported elsewhere. Organisers faced the problem of rearranging performances and travel plans. Officials urged people to follow local weather and safety advice.",
-   "words": [
-    {
-     "en": "to postpone",
-     "de": "verschieben"
-    },
-    {
-     "en": "power outage",
-     "de": "Stromausfall"
-    },
-    {
-     "en": "flood warning",
-     "de": "Hochwasserwarnung"
-    }
-   ],
-   "shows": [],
-   "category": "fun",
-   "wiki": "Macy's Thanksgiving Day Parade",
-   "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/e3a17dee62d5847e37edf5fa21ed0ec1"
-   },
-   "host_open": "Even the parade had to change its plans this year. Did that surprise you?",
-   "img": "news_img/20261126-9.jpg",
-   "img_from": "wikipedia"
-  },
-  {
-   "title": "Markets Rise as US Takes Holiday",
-   "gist": "European and Asian shares moved higher while US markets were closed for Thanksgiving. Investors are still watching technology stocks closely.",
-   "summary": "Shares rose in European and Asian markets on Thursday. US stock markets were closed for the Thanksgiving holiday. Investors were responding to a recent rebound in technology shares. Concerns about high valuations in artificial intelligence companies have unsettled markets this month. The latest move offered some relief but does not settle those concerns. Traders will watch how US markets react when they reopen.",
-   "words": [
-    {
-     "en": "share price",
-     "de": "Aktienkurs"
-    },
-    {
-     "en": "market rebound",
-     "de": "Markterholung"
-    },
-    {
-     "en": "valuation",
-     "de": "Bewertung"
-    }
-   ],
-   "shows": [],
-   "category": "economy",
-   "wiki": "Stock market",
-   "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/320cd8c9c286a7773797bf2f478ef314"
-   },
-   "host_open": "Investors got a holiday pause in the United States, but markets elsewhere kept moving. How do you read the rebound?",
-   "img": "",
-   "img_from": ""
-  },
-  {
-   "title": "Free Books Fill Bologna Street",
-   "gist": "A bookshop owner put nearly 10,000 books outside for people to take. The giveaway helped the shop avoid throwing them away before moving nearby.",
-   "summary": "A bookshop in Bologna gave away nearly 10,000 books before moving to a new location. Owner Davide Scilabra placed the books outside for free collection. The books covered subjects including art, languages, philosophy and mathematics. He said he wanted to keep them from being thrown away. The giveaway attracted readers and students. Almost all the books had been taken by Thursday, according to reports cited by ORF.",
-   "words": [
-    {
-     "en": "give away",
-     "de": "verschenken"
-    },
-    {
-     "en": "bookshop",
-     "de": "Buchhandlung"
-    },
-    {
-     "en": "to avoid waste",
-     "de": "Abfall vermeiden"
-    }
-   ],
-   "shows": [],
-   "category": "fun",
-   "wiki": "Bologna",
-   "source": {
     "name": "ORF",
-    "url": "https://orf.at/"
+    "url": "https://orf.at/stories/3449372/"
    },
-   "host_open": "A bookshop turned moving day into a gift for readers. What kind of book would you have picked?",
-   "img": "news_img/20261126-11.jpg",
-   "img_from": "wikipedia"
-  },
-  {
-   "title": "Vienna Opera Honours Welser-Möst",
-   "gist": "The Vienna State Opera named conductor Franz Welser-Möst an honorary member. The award recognises his long connection with the house.",
-   "summary": "The Vienna State Opera made conductor Franz Welser-Möst an honorary member. The ceremony took place after a performance of Ariadne auf Naxos. He first conducted at the opera house in 1987. He later served as its general music director from 2010 to 2014. The opera described honorary membership as its highest award. Welser-Möst called the house an important artistic home for him.",
-   "words": [
-    {
-     "en": "conductor",
-     "de": "Dirigent"
-    },
-    {
-     "en": "honorary member",
-     "de": "Ehrenmitglied"
-    },
-    {
-     "en": "performance",
-     "de": "Aufführung"
-    }
-   ],
-   "shows": [],
-   "category": "fun",
-   "wiki": "Vienna State Opera",
-   "source": {
-    "name": "ORF Vienna",
-    "url": "https://wien.orf.at/stories/3381182/"
-   },
-   "host_open": "A long musical partnership has earned a special honour. How does that feel as a cultural story from Vienna?",
-   "img": "news_img/20261126-12.jpg",
+   "host_open": "A new ECB chief could shape everyday borrowing costs. How does that look from Austria?",
+   "img": "news_img/20261126-9.jpg",
    "img_from": "article"
   },
   {
-   "title": "Italy Expands Nuclear Defence Spending",
-   "gist": "Britain plans to spend billions on nuclear deterrence, according to Austrian public radio’s evening news list. The decision raises questions about security and public spending.",
-   "summary": "Britain is planning billions of pounds in spending on nuclear deterrence, according to an item in ORF's evening news rundown. The report described the plans as part of the country's defence policy. Nuclear deterrence aims to discourage an attack by threatening a response. Supporters say the capability is needed in a more dangerous security environment. Critics often question its cost and risks. The available report summary did not give further details about the spending plan.",
+   "title": "Britain Reaches Davis Cup Semis",
+   "gist": "Great Britain beat Germany in a deciding doubles match to reach the Davis Cup semi-finals. It is the team’s first appearance at that stage since 2019.",
+   "summary": "Great Britain defeated Germany in a deciding doubles match at the Davis Cup. Henry Patten and Neal Skupski won the key match for the British team. The result sent Britain into the semi-finals for the first time since 2019. Germany had been aiming to continue its run in the competition. The Davis Cup is an international team tennis tournament.",
    "words": [
     {
-     "en": "nuclear deterrence",
-     "de": "nukleare Abschreckung"
+     "en": "deciding match",
+     "de": "entscheidendes Spiel"
     },
     {
-     "en": "defence spending",
-     "de": "Verteidigungsausgaben"
+     "en": "doubles",
+     "de": "Doppel"
     },
     {
-     "en": "to discourage",
-     "de": "abschrecken"
+     "en": "semi-final",
+     "de": "Halbfinale"
     }
    ],
    "shows": [],
-   "category": "world",
-   "wiki": "United Kingdom",
+   "category": "fun",
+   "wiki": "Davis Cup",
    "source": {
-    "name": "ORF Ö1",
-    "url": "https://oe1.orf.at/collection/658964"
+    "name": "BBC Sport",
+    "url": "https://www.bbc.com/sport/tennis"
    },
-   "host_open": "Nuclear deterrence brings security and cost questions together. How do you feel about that balance?",
-   "img": "",
-   "img_from": ""
+   "host_open": "One doubles match decided the tie. Did you see that result coming?",
+   "img": "news_img/20261126-10.png",
+   "img_from": "article"
   }
  ]
 }
