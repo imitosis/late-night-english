@@ -740,7 +740,10 @@ async function loadNews(){
  const d=today();
  const cached=LS.get('lne_news8',null);
  const done=(items,label)=>{items=items.map(normItem);NEWS=items;$('#newsDate').textContent=(label==='sample topics'?items.length+' sample topics':items.length+' stories '+(label==='today'?'today':label))+' · about '+Math.max(5,items.length*2)+' min';renderNews(items,'')};
- if(cached&&cached.date===d&&cached.items&&cached.items.length>=5){done(cached.items,'today');return}
+ if(cached&&cached.date===d&&cached.items&&cached.items.length>=5){done(cached.items,'today');
+  /* the morning file may have been refreshed since: check quietly and swap in the newer one */
+  if(!inClaude())fetch('https://raw.githubusercontent.com/imitosis/late-night-english/main/news.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.date===d&&j.items&&j.items.length>=5&&JSON.stringify(j.items.map(x=>x.title))!==JSON.stringify(cached.items.map(x=>x.title))){LS.set('lne_news8',j);done(j.items,'today')}}).catch(()=>{});
+  return}
  if(inClaude()){
   let v=null;if(DB){try{const s=await DB.doc('news/today').get();v=s&&(typeof s.data==='function'?s.data():(s.data??s))}catch(e){}}
   if(v&&v.items){done(v.items,v.date===d?'today':'from '+new Date(v.date).toLocaleDateString('en-GB'))}else{done(FALLBACK,'sample topics')}
@@ -748,7 +751,7 @@ async function loadNews(){
  }
  if(!cfg.kO){done(FALLBACK,'sample topics');$('#news').insertAdjacentHTML('beforeend','<p class="hint">Add your OpenAI key under Profile to get real news here every morning.</p>');return}
  /* 1) daily file prepared each morning on GitHub: instant */
- try{const r=await fetch('https://raw.githubusercontent.com/imitosis/late-night-english/main/news.json?d='+d,{cache:'no-store'});
+ try{const r=await fetch('https://raw.githubusercontent.com/imitosis/late-night-english/main/news.json?t='+Date.now(),{cache:'no-store'});
   if(r.ok){const j=await r.json();if(j&&j.date===d&&j.items&&j.items.length>=5){LS.set('lne_news8',j);done(j.items,'today');return}}}catch(e){}
  /* 2) fallback: search on the phone */
  NEWS=[];$('#newsDate').textContent='loading';
@@ -1029,7 +1032,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='66';
+const BUILD='67';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
