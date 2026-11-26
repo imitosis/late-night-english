@@ -2,77 +2,133 @@
  "date": "2026-11-26",
  "items": [
   {
-   "title": "Snow Disrupts Austrian Roads",
-   "gist": "Heavy snow brought traffic and public transport problems across Austria.",
-   "summary": "Heavy snow fell across much of Austria on Thursday. The A21 near Vienna was closed in both directions for a time. Roads in Tirol and other regions also saw closures, crashes and delays. Rail services and buses were affected in some areas. Weather forecasters expected more snow before conditions eased later. Officials urged people to drive carefully and allow extra time.",
+   "title": "Nehammer Denies Media Pressure",
+   "gist": "A former chancellor faced questions in a parliamentary inquiry. His account is contested, and the committee is also examining a recording linked to the case.",
+   "summary": "Former chancellor Karl Nehammer testified before a parliamentary inquiry into the Pilnacek case. The inquiry is examining claims that politicians tried to influence media coverage. Nehammer denied contacting ORF or the newspaper Kronen Zeitung to intervene. He said he spoke with the newspaper’s editor only after a witness raised the claim. The inquiry is also looking at a recording in which the late official Christian Pilnacek spoke of alleged political pressure. The parties in parliament disagree about the meaning of the evidence.",
    "words": [
+    {
+     "en": "to testify",
+     "de": "aussagen"
+    },
+    {
+     "en": "inquiry",
+     "de": "Untersuchungsausschuss"
+    },
+    {
+     "en": "to deny",
+     "de": "bestreiten"
+    }
+   ],
+   "shows": [],
+   "category": "politics",
+   "wiki": "Parliament of Austria",
+   "source": {
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449329/"
+   },
+   "host_open": "This inquiry has more twists than a courtroom drama, minus the popcorn. How does Nehammer’s testimony look to you?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Austria_Federal_Council_%28current_seat_distribution%29.svg/640px-Austria_Federal_Council_%28current_seat_distribution%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+   "title": "Universities Seek More Funding",
+   "gist": "Staff at Austria’s public universities want the government to reopen budget talks. They warn that the current plan may put teaching and research under pressure.",
+   "summary": "Staff at Austria’s 22 public universities have asked the government to renegotiate their budget for 2028 to 2030. They say the planned funding does not cover the universities’ needs. The government has agreed on about 16 billion euros for the period. The universities’ umbrella body says about 18 billion euros would be needed just to cover inflation. University leaders have warned that major staff cuts may follow. The staff representatives say teaching or research could suffer if the budget stays as planned.",
+   "words": [
+    {
+     "en": "to renegotiate",
+     "de": "neu verhandeln"
+    },
+    {
+     "en": "funding",
+     "de": "Finanzierung"
+    },
+    {
+     "en": "staff cuts",
+     "de": "Personalkürzungen"
+    }
+   ],
+   "shows": [],
+   "category": "politics",
+   "wiki": "University of Vienna",
+   "source": {
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449320/"
+   },
+   "host_open": "University budgets are not exactly light reading, but they shape campus life. Do you think the planned funding is enough?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Seal_of_the_University_of_Vienna.svg/640px-Seal_of_the_University_of_Vienna.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+   "title": "Donations Lose Buying Power",
+   "gist": "People in Austria gave more than a billion euros to charities last year. Inflation means those donations may support less work than before.",
+   "summary": "A report says people in Austria donated 1.08 billion euros in 2025. The Fundraising Association Austria says rising prices have reduced charities’ purchasing power. Its director estimates that organisations have lost about a quarter of their financial impact since 2023. Private donations make up most of the sector’s funding, the report says. Older people were more likely to donate than younger adults. Social and health services received the largest share of donations.",
+   "words": [
+    {
+     "en": "donation",
+     "de": "Spende"
+    },
+    {
+     "en": "purchasing power",
+     "de": "Kaufkraft"
+    },
+    {
+     "en": "charity",
+     "de": "gemeinnützige Organisation"
+    }
+   ],
+   "shows": [],
+   "category": "economy",
+   "wiki": "Austria",
+   "source": {
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449348/"
+   },
+   "host_open": "A billion euros sounds enormous until inflation takes a bite. Did the report’s figures surprise you?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/640px-Flag_of_Austria.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+   "title": "Snow Disrupts Austrian Travel",
+   "gist": "Heavy snow caused crashes, delays and road closures across Austria. The A21 near Vienna was shut in both directions as conditions worsened.",
+   "summary": "Heavy snowfall affected many parts of Austria on Thursday. The A21 motorway was closed in both directions between Steinhäusl and Vösendorf after vehicles became stuck. Traffic jams were reported in Vienna, and some local train services were delayed. Police, firefighters and road crews responded to crashes and other incidents. Forecasters warned that more snow was expected in several areas. Authorities urged drivers to slow down and allow extra travel time.",
+   "words": [
+    {
+     "en": "snowfall",
+     "de": "Schneefall"
+    },
     {
      "en": "road closure",
      "de": "Straßensperre"
     },
     {
-     "en": "black ice",
-     "de": "Glatteis"
-    },
-    {
-     "en": "snowplough",
-     "de": "Schneepflug"
-    }
-   ],
-   "shows": [],
-   "category": "world",
-   "wiki": "Vienna Outer Ring Road",
-   "source": {
-    "name": "ORF",
-    "url": "https://oesterreich.orf.at/stories/3381169/"
-   },
-   "host_open": "Austria’s first big snowfall arrived with a very busy traffic report. How has the weather affected your plans?",
-   "img": ""
-  },
-  {
-   "title": "Nehammer Denies Press Intervention",
-   "gist": "The former chancellor rejected claims that he tried to influence media coverage.",
-   "summary": "Former Austrian chancellor Karl Nehammer testified on Thursday before a parliamentary inquiry committee. The inquiry concerns the case of former justice official Christian Pilnacek. Nehammer denied trying to influence reporting by ORF or the newspaper Kronen Zeitung. The committee is examining possible political influence and the handling of information about the case. Nehammer gave his account, while committee members are continuing to question witnesses. The inquiry may add to debate about trust in public institutions.",
-   "words": [
-    {
-     "en": "inquiry committee",
-     "de": "Untersuchungsausschuss"
-    },
-    {
-     "en": "to deny a claim",
-     "de": "einen Vorwurf zurückweisen"
-    },
-    {
-     "en": "media coverage",
-     "de": "Medienberichterstattung"
+     "en": "delay",
+     "de": "Verspätung"
     }
    ],
    "shows": [],
    "category": "politics",
-   "wiki": "Austrian Parliament Building",
+   "wiki": "Vienna",
    "source": {
     "name": "ORF",
-    "url": "https://orf.at/stories/3449329/"
+    "url": "https://oesterreich.orf.at/stories/3381169/"
    },
-   "host_open": "A parliamentary hearing can make old questions feel very current. Did Nehammer’s denial surprise you?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Wien_-_Parlamentsgeb%C3%A4ude.JPG/640px-Wien_-_Parlamentsgeb%C3%A4ude.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "Austria got a sudden white blanket, and the roads got the hard part. How is the weather looking where you are?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Palais_Schwarzenberg_Wien_Sept_2020_1.jpg/640px-Palais_Schwarzenberg_Wien_Sept_2020_1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
    "title": "Israeli Strikes Kill Eight In Gaza",
-   "gist": "Health officials reported deaths after overnight Israeli strikes in Gaza.",
-   "summary": "At least eight people were killed in overnight Israeli strikes in Gaza, according to local health officials. Israel’s military said one strike targeted three militants. It did not immediately comment on another strike, according to the report. The strikes come despite a ceasefire deal between Israel and Hamas. Israeli fire and airstrikes have continued during the period since that deal. The deaths underline the danger facing civilians, while key details of the strikes remain disputed or unconfirmed.",
+   "gist": "Health officials in Gaza reported eight deaths in overnight Israeli strikes. Israel said one strike targeted a Hamas figure; the military’s account of another was not immediately clear.",
+   "summary": "Health officials said Israeli strikes killed eight Palestinians in Gaza overnight. The reported deaths were in Gaza City and Deir al-Balah. Officials said a man and his wife died when a residential apartment was hit. Israeli leaders said the military killed Khaled Abu Nada, a Hamas official responsible for economic and education affairs. The Israeli military said one strike targeted three militants, but did not immediately comment on another. The strikes came despite a ceasefire agreement reached more than a year ago.",
    "words": [
     {
-     "en": "overnight strike",
-     "de": "nächtlicher Angriff"
+     "en": "airstrike",
+     "de": "Luftangriff"
     },
     {
      "en": "ceasefire",
      "de": "Waffenruhe"
     },
     {
-     "en": "casualty",
-     "de": "Opfer"
+     "en": "health officials",
+     "de": "Gesundheitsbehörden"
     }
    ],
    "shows": [],
@@ -80,55 +136,27 @@
    "wiki": "Gaza Strip",
    "source": {
     "name": "Associated Press",
-    "url": "https://apnews.com/article/522676f17532b878878ff7a4347d0e31"
+    "url": "https://apnews.com/article/gaza-iran-israel-uae-hormuz-november-26-2026-522676f17532b878878ff7a4347d0e31"
    },
-   "host_open": "Reports from Gaza describe another deadly night. How are you feeling about the continued violence?",
+   "host_open": "More deaths have been reported despite the ceasefire, a painful reminder of how fragile it is. How are you feeling about the latest news?",
    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Gaza_Strip_in_Palestine.svg/640px-Gaza_Strip_in_Palestine.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "Ukraine Faces Fresh Russian Attacks",
-   "gist": "Both sides reported new attacks as the war continued overnight.",
-   "summary": "Russia and Ukraine reported fresh drone and missile attacks overnight into Thursday. Moscow reported an attack on an industrial area in southern Russia. Kyiv reported damage to civilian buildings, according to Reuters. The reports describe claims from both sides, and details may change as more information becomes available. The attacks came as Russia’s war against Ukraine continues. They add to concerns about the safety of civilians and infrastructure.",
+   "title": "EU Debates New Ukraine Loan",
+   "gist": "EU leaders are discussing a proposed 45-billion-euro loan for Ukraine. They are also divided over the bloc’s long-term budget and how to share the costs.",
+   "summary": "EU leaders met in Brussels to discuss a new loan for Ukraine and the bloc’s next long-term budget. The proposed loan is worth 45 billion euros. The European Commission’s plan would direct money to Ukraine’s economy and armed forces. Some governments oppose using EU funds for military support, while others argue that helping Ukraine is important for European security. The wider budget talks also reveal disagreements over farming, regional support and new spending priorities. Leaders may need more time before they reach a deal.",
    "words": [
-    {
-     "en": "drone attack",
-     "de": "Drohnenangriff"
-    },
-    {
-     "en": "civilian building",
-     "de": "ziviles Gebäude"
-    },
-    {
-     "en": "to report damage",
-     "de": "Schäden melden"
-    }
-   ],
-   "shows": [],
-   "category": "world",
-   "wiki": "Kyiv",
-   "source": {
-    "name": "AnewZ / Reuters",
-    "url": "https://anewz.tv/world/world-news/27277/russia-and-ukraine-exchange-drone-and-missile-strikes/news"
-   },
-   "host_open": "The overnight reports show how quickly the war can reach far from the front. How does this news look from Austria?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/%D0%91%D1%83%D0%B4%D0%B8%D0%BD%D0%BE%D0%BA_%D0%B7_%D1%85%D0%B8%D0%BC%D0%B5%D1%80%D0%B0%D0%BC%D0%B8%2C_%D1%81%D0%B5%D1%80%D0%BF%D0%B5%D0%BD%D1%8C_2019.jpg/640px-%D0%91%D1%83%D0%B4%D0%B8%D0%BD%D0%BE%D0%BA_%D0%B7_%D1%85%D0%B8%D0%BC%D0%B5%D1%80%D0%B0%D0%BC%D0%B8%2C_%D1%81%D0%B5%D1%80%D0%BF%D0%B5%D0%BD%D1%8C_2019.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-  },
-  {
-   "title": "EU Debates Major Ukraine Loan",
-   "gist": "European leaders are divided over a proposed loan and the bloc’s future budget.",
-   "summary": "EU leaders met in Brussels to discuss the bloc’s long-term budget. They also considered a new loan of about 45 billion euros for Ukraine. The money would help cover economic and military needs next year. Some member states oppose using EU funds for military aid. Supporters say backing Ukraine is part of Europe’s shared security. An agreement may take more talks, with diplomats expecting a decision later.",
-   "words": [
-    {
-     "en": "long-term budget",
-     "de": "langfristiger Haushalt"
-    },
     {
      "en": "loan",
      "de": "Kredit"
     },
     {
-     "en": "burden sharing",
-     "de": "Lastenteilung"
+     "en": "to share the costs",
+     "de": "die Kosten teilen"
+    },
+    {
+     "en": "long-term budget",
+     "de": "langfristiger Haushalt"
     }
    ],
    "shows": [],
@@ -136,55 +164,55 @@
    "wiki": "European Council",
    "source": {
     "name": "Associated Press",
-    "url": "https://apnews.com/article/f073925a2ed77232e0d7db404600985e"
+    "url": "https://apnews.com/article/europe-ukraine-budget-summit-loan-debt-f073925a2ed77232e0d7db404600985e"
    },
-   "host_open": "Europe’s budget talks now include a large question about shared responsibility. Does the proposed loan seem like the right approach?",
+   "host_open": "The EU’s budget table is crowded with competing priorities. Which issue do you think leaders will find hardest to agree on?",
    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Council_of_the_EU_and_European_Council.svg/640px-Council_of_the_EU_and_European_Council.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "Judge Blocks FCC Action Against ABC",
-   "gist": "A court ruling halted the regulator’s early review of ABC station licences.",
-   "summary": "A US judge blocked the Federal Communications Commission from pursuing early reviews of licences held by ABC-owned stations. The FCC had ordered the reviews after disputes involving the network and its programming. ABC argued that the action was retaliation for content it broadcast. The ruling is a setback for the regulator’s effort. The case sits within wider legal disputes between the Trump administration and news organisations. The government’s actions and ABC’s objections reflect opposing views about regulation and press freedom.",
+   "title": "Norway Checks Religious Memberships",
+   "gist": "Norway plans to send millions of text messages asking people to check their religious registration. The move follows reports that some people were listed without their knowledge.",
+   "summary": "Norway plans to send text messages to people registered as members of religious groups. The messages will begin next week and go to residents aged 15 and over. People will be able to check their membership through a link. The government says the checks should help prevent public grants being paid for incorrect registrations. Reports have described complaints from people who say they never joined the groups. Registered faith and outlook communities can receive state funding based on their membership numbers.",
    "words": [
     {
-     "en": "broadcast licence",
-     "de": "Rundfunklizenz"
+     "en": "membership",
+     "de": "Mitgliedschaft"
     },
     {
-     "en": "injunction",
-     "de": "einstweilige Verfügung"
+     "en": "to register",
+     "de": "registrieren"
     },
     {
-     "en": "press freedom",
-     "de": "Pressefreiheit"
+     "en": "public grant",
+     "de": "staatlicher Zuschuss"
     }
    ],
    "shows": [],
-   "category": "politics",
-   "wiki": "Federal Communications Commission",
+   "category": "europe",
+   "wiki": "Norway",
    "source": {
-    "name": "TIME",
-    "url": "https://time.com/article/2026/11/26/fcc-abc-disney-broadcast-license-early-review-judge-injunction/"
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449337/"
    },
-   "host_open": "A court has put a pause on a high-profile media dispute. Did the ruling surprise you?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Seal_of_the_Federal_Communications_Commission.svg/640px-Seal_of_the_Federal_Communications_Commission.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "A text message asking about religion is an unusual inbox arrival. Would you find that surprising?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/640px-Flag_of_Norway.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "Markets Rise During US Holiday",
-   "gist": "European and Asian share markets gained while US markets were closed.",
-   "summary": "Share prices rose in Europe and Asia on Thursday. US stock markets were closed for the Thanksgiving holiday. Buying of artificial-intelligence-linked shares helped lift some Asian markets. Investors remained cautious about the AI trade and possible new US tariffs. Germany, France and Britain all recorded gains in early trading. US markets were due to reopen on Friday for a shorter session.",
+   "title": "Global Stocks Rebound",
+   "gist": "European and Asian markets rose as investors bought technology shares. Caution about AI stocks and possible US tariffs remains in the background.",
+   "summary": "Stock markets in Europe and Asia rose on Thursday. US markets were closed for the Thanksgiving holiday. Buying of shares linked to artificial intelligence helped lift some Asian markets. Investors are still cautious about AI companies and are watching proposed US tariffs on several trading partners. Germany’s DAX and France’s CAC 40 both climbed in early trading. Oil prices also rose amid continuing tensions in the Middle East.",
    "words": [
     {
-     "en": "share price",
-     "de": "Aktienkurs"
+     "en": "to rebound",
+     "de": "sich erholen"
+    },
+    {
+     "en": "tariff",
+     "de": "Zoll"
     },
     {
      "en": "investor",
-     "de": "Anlegerin oder Anleger"
-    },
-    {
-     "en": "holiday-shortened session",
-     "de": "verkürzter Börsenhandelstag"
+     "de": "Anleger"
     }
    ],
    "shows": [],
@@ -192,38 +220,94 @@
    "wiki": "Frankfurt Stock Exchange",
    "source": {
     "name": "Associated Press",
-    "url": "https://apnews.com/article/320cd8c9c286a7773797bf2f478ef314"
+    "url": "https://apnews.com/article/stocks-markets-ai-oil-bonds-320cd8c9c286a7773797bf2f478ef314"
    },
-   "host_open": "With Wall Street taking a holiday, other markets still had a lively day. Did the gains surprise you?",
+   "host_open": "Markets found some lift while investors kept an eye on the risks. Did the rebound surprise you?",
    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Frankfurt_Am_Main-Neue_Boerse_von_Suedosten-20120222.jpg/640px-Frankfurt_Am_Main-Neue_Boerse_von_Suedosten-20120222.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "Thanksgiving Parade Moves To Saturday",
-   "gist": "New York postponed its famous parade because of dangerous weather.",
-   "summary": "New York’s Macy’s Thanksgiving Day Parade was moved from Thursday to Saturday. Organisers made the decision after consulting city officials about severe weather. Forecasters warned of strong winds, heavy rain and coastal flooding. The city said the conditions could make the large parade balloons unsafe. Some performers and groups confirmed they would still take part on Saturday. Organisers said they were working through the changes to the event.",
+   "title": "Smart Glasses Assist Surgeons",
+   "gist": "A hospital in Leipzig is testing a headset that overlays 3D anatomy with surgical information. Doctors say it can show important structures with great precision.",
+   "summary": "Surgeons at a university hospital in Leipzig are using Apple’s Vision Pro headset in research. The device overlays three-dimensional images of a patient’s anatomy with information used during an operation. It can help show important structures during procedures, including surgery around the eye socket. The hospital has used the technology in about 30 operations so far. The report says the application remains limited to research in Europe. The technology aims to support surgeons, not replace their medical judgement.",
    "words": [
     {
-     "en": "postpone",
-     "de": "verschieben"
+     "en": "to overlay",
+     "de": "überlagern"
     },
     {
-     "en": "strong winds",
-     "de": "starke Winde"
+     "en": "anatomy",
+     "de": "Anatomie"
     },
     {
-     "en": "parade route",
-     "de": "Paradenstrecke"
+     "en": "surgery",
+     "de": "Operation"
+    }
+   ],
+   "shows": [],
+   "category": "tech",
+   "wiki": "Apple Vision Pro",
+   "source": {
+    "name": "ORF",
+    "url": "https://on.orf.at/video/14348843/16193653/apple-datenbrille-unterstuetzt-chirurgen-bei-operationen"
+   },
+   "host_open": "A computer display in your field of vision is moving from science fiction to the operating room. Would that make you feel more confident or more cautious?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Apple_Vision_Pro_with_Solo_Knit_Band.jpg/640px-Apple_Vision_Pro_with_Solo_Knit_Band.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+   "title": "A Bookshop Gives Away 10,000 Books",
+   "gist": "A bookseller in Bologna put thousands of books outside for people to take. He wanted to save them from being thrown away during a move.",
+   "summary": "Bookseller Davide Scilabra offered nearly 10,000 books for free in Bologna. The books came from subjects including art, languages, philosophy and mathematics. He was moving his shop to a smaller, cheaper space. At first, he tried selling the books cheaply, but said many were taken without payment. He then decided to give the books away. The shop owner said they were still useful, and almost all had gone by the time of the report.",
+   "words": [
+    {
+     "en": "bookseller",
+     "de": "Buchhändler"
+    },
+    {
+     "en": "to give away",
+     "de": "verschenken"
+    },
+    {
+     "en": "to throw away",
+     "de": "wegwerfen"
     }
    ],
    "shows": [],
    "category": "fun",
-   "wiki": "Macy's Thanksgiving Day Parade",
+   "wiki": "Bologna",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/cdc870899c8dc2d32a0ac3d86119b3ba"
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449336/"
    },
-   "host_open": "Even the parade balloons have to wait for calmer weather. Would you still go on Saturday?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Macy%27s_Thanksgiving_Parade%2C_New_York_City%2C_2005_15.jpg/640px-Macy%27s_Thanksgiving_Parade%2C_New_York_City%2C_2005_15.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "Ten thousand books on the pavement sounds like a book lover’s dream. Which shelf would you head for first?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Torri_di_Bologna%2C_Bologna.jpg/640px-Torri_di_Bologna%2C_Bologna.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+   "title": "James Sets NBA Triple-Double Record",
+   "gist": "LeBron James became the oldest player in NBA history to record a triple-double. He did it in Philadelphia’s win over Miami.",
+   "summary": "LeBron James recorded a triple-double in the Philadelphia 76ers’ 111–104 win over the Miami Heat. He scored 25 points, took 10 rebounds and made 12 assists. At nearly 42, he became the oldest player in NBA history to achieve the mark. The 76ers were leading the Eastern Conference with 15 wins from 19 games, according to the report. In another game, Kevin Durant passed 33,000 career points. The record highlights how long top players can remain productive in the league.",
+   "words": [
+    {
+     "en": "triple-double",
+     "de": "Triple-Double"
+    },
+    {
+     "en": "rebound",
+     "de": "Rebound"
+    },
+    {
+     "en": "assist",
+     "de": "Assist"
+    }
+   ],
+   "shows": [],
+   "category": "fun",
+   "wiki": "National Basketball Association",
+   "source": {
+    "name": "ORF",
+    "url": "https://sport.orf.at/stories/3165442/"
+   },
+   "host_open": "At nearly 42, James is still filling every column on the stat sheet. Did that record surprise you?",
+   "img": "https://thumb.wikimedia.org/wikipedia/en/thumb/0/03/National_Basketball_Association_logo.svg/640px-National_Basketball_Association_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   }
  ]
 }
