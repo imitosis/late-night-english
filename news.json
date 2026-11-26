@@ -2,21 +2,21 @@
  "date": "2026-11-26",
  "items": [
   {
-   "title": "Snow Brings Austria to a Halt",
-   "gist": "A heavy November snowfall covered Vienna and disrupted travel across the country. Some roads closed, and officials warned that cold weather could keep the snow in place.",
-   "summary": "Vienna recorded 17 centimetres of snow at the Hohe Warte weather station on Thursday. ORF reported that the city had not seen this much November snow in more than 40 years. The A21 motorway was closed for several hours. Accidents and delays were also reported in Lower Austria, Carinthia and Tyrol. Weather experts said the snow may remain because freezing conditions are expected.",
+   "title": "Heavy Snow Disrupts Austria",
+   "gist": "A powerful snowfall blanketed much of the country, including Vienna. Roads and transport faced a difficult day.",
+   "summary": "Heavy snow fell across many parts of Austria on Thursday. Vienna recorded 17 centimetres at Hohe Warte, the most November snow there in more than 40 years. The A21 motorway was closed for several hours after vehicles became stuck. Accidents and delays were also reported in other regions. Forecasters said cold weather could keep the snow on the ground into next week.",
    "words": [
     {
      "en": "heavy snowfall",
      "de": "starker Schneefall"
     },
     {
-     "en": "road closure",
-     "de": "Straßensperre"
+     "en": "motorway closure",
+     "de": "Autobahnsperre"
     },
     {
-     "en": "freezing conditions",
-     "de": "Frostbedingungen"
+     "en": "road conditions",
+     "de": "Straßenverhältnisse"
     }
    ],
    "shows": [],
@@ -26,113 +26,113 @@
     "name": "ORF",
     "url": "https://oesterreich.orf.at/stories/3381265/"
    },
-   "host_open": "Vienna got a very early winter blanket, but the roads paid the price. How does that look from Austria?",
-   "img_from": "article",
-   "img": "news_img/20261126-0.jpg"
+   "host_open": "Vienna got a very wintry November surprise. How does that look from Austria?",
+   "img": "news_img/20261126-0.jpg",
+   "img_from": "article"
   },
   {
-   "title": "Calls for a New Prosecutor’s Office Plan",
-   "gist": "Legal experts have criticised a draft law on Austria’s planned federal public prosecutor’s office. The debate centres on how independent the office would be from politicians.",
-   "summary": "Austria is discussing a draft for a federal public prosecutor’s office. Legal experts say the proposal could give parliament influence over appointments. They also warn that parliament could oversee the office while investigations are still under way. Supporters of the draft argue that the new body needs democratic oversight. Critics say safeguards are needed to protect its independence. ORF reported calls for a fresh start to the proposal.",
+   "title": "Nehammer Denies Media Pressure",
+   "gist": "Former chancellor Karl Nehammer answered questions in a parliamentary inquiry. The hearing focused on claims linked to a secret recording.",
+   "summary": "Former Austrian chancellor Karl Nehammer appeared before a parliamentary inquiry on Thursday. The inquiry concerns Christian Pilnacek, a former senior justice official who died in 2023. A recording of Pilnacek had included claims of political pressure on investigations. Nehammer denied trying to influence the ORF or the newspaper Kronen Zeitung. He said he spoke to the newspaper's editor only after hearing a witness's claim. The inquiry is examining what happened and who knew about it.",
    "words": [
     {
-     "en": "draft law",
-     "de": "Gesetzentwurf"
+     "en": "parliamentary inquiry",
+     "de": "parlamentarischer Untersuchungsausschuss"
     },
     {
-     "en": "oversight",
-     "de": "Aufsicht"
+     "en": "to deny a claim",
+     "de": "einen Vorwurf bestreiten"
     },
     {
-     "en": "independence",
-     "de": "Unabhängigkeit"
+     "en": "recording",
+     "de": "Tonaufnahme"
     }
    ],
    "shows": [],
    "category": "politics",
-   "wiki": "Parliament of Austria",
+   "wiki": "Austrian Parliament Building",
    "source": {
     "name": "ORF",
-    "url": "https://orf.at/stories/3449375/"
+    "url": "https://orf.at/stories/3449329/"
    },
-   "host_open": "A new prosecutor’s office needs both independence and public trust. What matters most to you in this debate?",
-   "img_from": "article",
-   "img": "news_img/20261126-1.png"
+   "host_open": "A parliamentary hearing can bring old questions back into the room. What did you make of Nehammer’s answer?",
+   "img": "news_img/20261126-1.jpg",
+   "img_from": "wikipedia"
   },
   {
-   "title": "Universities Seek Budget Talks",
-   "gist": "Staff at Austria’s public universities want the government to reopen budget discussions. They say funding for the years ahead needs another look.",
-   "summary": "Employees at Austria’s 22 public universities held workplace meetings on Wednesday. They called for new talks on the universities’ budget for 2028 to 2030. The request comes as institutions plan their work for the coming years. University staff say funding must match their needs. The government has not yet announced a new negotiation timetable. The issue matters for research, teaching and university jobs.",
+   "title": "Vienna Cuts Culture Spending",
+   "gist": "Vienna plans to save €31 million from its cultural budget. Some major venues and festivals say the cuts leave little time to adjust.",
+   "summary": "Vienna's culture department must save €31 million in its 2027 budget. The cuts affect theatres, festivals and other cultural institutions. The city plans to end the Kultursommer and pause the Klima Biennale. Some theatres have criticised both the size of the cuts and the short notice. The city says it must reduce spending because of financial pressure. It says some cultural support and free entry at the Wien Museum will continue.",
    "words": [
     {
-     "en": "public university",
-     "de": "öffentliche Universität"
+     "en": "budget cut",
+     "de": "Budgetkürzung"
     },
     {
-     "en": "budget talks",
-     "de": "Budgetverhandlungen"
+     "en": "cultural venue",
+     "de": "Kulturstätte"
     },
     {
-     "en": "funding",
-     "de": "Finanzierung"
+     "en": "short notice",
+     "de": "kurzfristig"
     }
    ],
    "shows": [],
    "category": "politics",
-   "wiki": "University of Vienna",
+   "wiki": "Vienna",
    "source": {
-    "name": "ORF",
-    "url": "https://orf.at/"
+    "name": "ORF Vienna",
+    "url": "https://wien.orf.at/stories/3381141/"
    },
-   "host_open": "Universities are planning years ahead, while their budget still needs discussion. What do you think deserves priority?",
-   "img_from": "article",
-   "img": "news_img/20261126-2.png"
+   "host_open": "Vienna’s cultural calendar may soon have fewer events. How do you feel about that?",
+   "img": "news_img/20261126-2.jpg",
+   "img_from": "article"
   },
   {
-   "title": "Trump and NATO Chief Discuss Russia",
-   "gist": "Donald Trump and NATO Secretary-General Mark Rutte urged Russia not to widen the war in Ukraine. Their meeting comes as European leaders discuss Ukraine’s future funding.",
-   "summary": "Trump and Rutte met at Trump’s Mar-a-Lago residence in Florida. They called on Russia not to expand its war in Ukraine and said a peace solution was needed soon. The war continues to shape security debates across Europe. EU leaders are also discussing Ukraine’s financing needs for 2027. The meeting did not announce a new peace agreement. Russia’s position was not included in ORF’s report.",
+   "title": "Ukraine Warns of Power Grid Attack",
+   "gist": "Ukraine's president says Russia may be preparing a major strike on energy systems. Kyiv is asking partners for more air defence equipment.",
+   "summary": "President Volodymyr Zelenskyy said Russia may launch a major attack on Ukraine's energy infrastructure. He warned that logistics and other critical services could also be targeted. Russian missile and drone attacks have damaged Ukraine's power system during the war. Ukraine says it needs more air defence supplies, including Patriot interceptors. The United States envoy said Russian President Vladimir Putin had shown restraint by agreeing not to use nuclear weapons. Russia's latest attack plans were not independently confirmed.",
    "words": [
     {
-     "en": "widen the war",
-     "de": "den Krieg ausweiten"
+     "en": "power grid",
+     "de": "Stromnetz"
     },
     {
-     "en": "peace solution",
-     "de": "Friedenslösung"
+     "en": "air defence",
+     "de": "Luftverteidigung"
     },
     {
-     "en": "security debate",
-     "de": "Sicherheitsdebatte"
+     "en": "interceptor",
+     "de": "Abfangrakete"
     }
    ],
    "shows": [],
    "category": "world",
-   "wiki": "Mar-a-Lago",
+   "wiki": "Ukraine",
    "source": {
-    "name": "ORF",
-    "url": "https://orf.at/"
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/122f7f187eea20d4d2b659692b4c4f1e"
    },
-   "host_open": "Calls for peace are coming alongside continued fighting. How do you feel about that?",
-   "img_from": "article",
-   "img": "news_img/20261126-3.png"
+   "host_open": "Winter power is vital for people across Ukraine. How do you feel about the warning?",
+   "img": "",
+   "img_from": ""
   },
   {
-   "title": "Israeli Strikes Kill People in Gaza",
-   "gist": "Israeli strikes in Gaza killed ten people, according to an Associated Press report. The violence continues despite a ceasefire deal reached more than a year ago.",
-   "summary": "The Associated Press reported that Israeli strikes killed ten people in Gaza on Thursday. The report said Israeli fire and airstrikes have continued almost daily despite a ceasefire deal. The AP said it could not independently verify some claims in its coverage. The latest deaths add to the human cost of the conflict. The report also described wider regional tensions, including Iranian drone attacks in Kuwait. Further details about the victims and the circumstances were limited in the report.",
+   "title": "New Strikes Reported in Gaza",
+   "gist": "Israeli strikes and gunfire killed people in Gaza, according to local authorities. The reports come amid continuing violence despite a ceasefire deal.",
+   "summary": "Israeli strikes and gunfire killed 10 people in Gaza, according to Palestinian health authorities. Israel said it had targeted Hamas figures and military sites. The deaths are part of continuing violence more than a year after a ceasefire deal was reached. Hamas and Israel have offered different accounts of responsibility for the fighting. The Associated Press said it could not independently verify some claims in its report. Civilians in Gaza remain at risk as the exchanges continue.",
    "words": [
     {
      "en": "airstrike",
      "de": "Luftangriff"
     },
     {
-     "en": "ceasefire deal",
-     "de": "Waffenstillstandsabkommen"
+     "en": "ceasefire",
+     "de": "Waffenruhe"
     },
     {
-     "en": "verify a claim",
-     "de": "eine Behauptung überprüfen"
+     "en": "to verify",
+     "de": "überprüfen"
     }
    ],
    "shows": [],
@@ -142,55 +142,84 @@
     "name": "Associated Press",
     "url": "https://apnews.com/article/522676f17532b878878ff7a4347d0e31"
    },
-   "host_open": "More people have been killed despite the ceasefire agreement. How does this news make you feel?",
-   "img_from": "",
-   "img": ""
+   "host_open": "Another night of strikes has brought more loss to Gaza. How does this news make you feel?",
+   "img": "",
+   "img_from": ""
   },
   {
-   "title": "EU Leaders Clash Over Long-Term Budget",
-   "gist": "EU leaders are meeting in Brussels to discuss the bloc’s next seven-year budget. Disagreements remain over its size and how to fund Ukraine’s needs.",
-   "summary": "Leaders of the European Union met in Brussels on Thursday and Friday. They are discussing the long-term budget for 2028 to 2034. Ukraine’s financing needs for 2027 are also on the agenda. The EU Council president said he hoped to bring countries closer to agreement. Several governments object to parts of the proposed budget. The talks matter because the EU needs agreement from all member states on the plan.",
+   "title": "Ebola Cases Rise in Eastern Congo",
+   "gist": "The outbreak has passed 12,000 confirmed cases, official data says. Fighting is making it harder for health teams to respond.",
+   "summary": "Congo's health ministry reported more than 12,000 confirmed Ebola cases on Thursday. The outbreak is spreading in the country's east. Fighting between armed groups and government forces has disrupted efforts to contain the virus. Some response teams have had to leave areas because of security risks. Health workers are trying to find cases and limit further spread. The situation matters beyond the region because outbreaks can cross borders.",
+   "words": [
+    {
+     "en": "outbreak",
+     "de": "Ausbruch"
+    },
+    {
+     "en": "to contain a virus",
+     "de": "ein Virus eindämmen"
+    },
+    {
+     "en": "health worker",
+     "de": "Gesundheitskraft"
+    }
+   ],
+   "shows": [],
+   "category": "world",
+   "wiki": "Democratic Republic of the Congo",
+   "source": {
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/0a0bc05d76d3278319472178a16be14b"
+   },
+   "host_open": "Health teams are working under difficult and unsafe conditions. How do you feel about their challenge?",
+   "img": "",
+   "img_from": ""
+  },
+  {
+   "title": "EU Leaders Debate Budget and Ukraine Aid",
+   "gist": "Leaders met in Brussels to discuss the bloc’s next long-term budget. They also face a difficult question: how to cover Ukraine’s needs in 2027.",
+   "summary": "European Union leaders met in Brussels on Thursday and Friday. They discussed the EU budget for 2028 to 2034 and funding for Ukraine in 2027. The budget proposal is worth nearly €1.6 trillion. Member states disagree about its size and how money should be shared. Some governments want tighter spending, while others argue for more support for regions and Ukraine. Leaders are trying to narrow differences ahead of a planned decision in December.",
    "words": [
     {
      "en": "long-term budget",
-     "de": "langfristiger Haushalt"
+     "de": "mehrjähriger Haushalt"
     },
     {
-     "en": "member state",
-     "de": "Mitgliedstaat"
+     "en": "to narrow differences",
+     "de": "Unterschiede verringern"
     },
     {
-     "en": "reach an agreement",
-     "de": "eine Einigung erzielen"
+     "en": "funding needs",
+     "de": "Finanzierungsbedarf"
     }
    ],
    "shows": [],
    "category": "europe",
    "wiki": "European Council",
    "source": {
-    "name": "Euronews",
-    "url": "https://www.euronews.com/2026/11/26/eu-budget-and-ukraine-aid-headed-for-collision-at-turbulent-summit"
+    "name": "Reuters via Investing.com",
+    "url": "https://www.investing.com/news/commodities-news/leaders-wrestle-over-eus-budget-ukraine-financing-as-le-pen-focuses-minds-5052559"
    },
-   "host_open": "Europe’s next budget has to balance many competing priorities. What should leaders focus on first?",
-   "img_from": "article",
-   "img": "news_img/20261126-5.jpg"
+   "host_open": "Brussels has a very large bill to divide. How do you see the debate?",
+   "img": "",
+   "img_from": ""
   },
   {
-   "title": "Spain’s Former Central Bank Chief Chosen for ECB",
-   "gist": "EU leaders have chosen Spain’s former central bank head to lead the European Central Bank next. The institution faces difficult choices on inflation and government borrowing costs.",
-   "summary": "EU leaders selected Pablo Hernández de Cos as the next president of the European Central Bank. He previously led Spain’s central bank. He is set to succeed Christine Lagarde, according to the Associated Press. The ECB is dealing with inflation and concerns about government debt and borrowing costs. The report linked price pressures partly to the war in Iran. The appointment still needs to proceed through the relevant EU process.",
+   "title": "Spain’s De Cos Chosen for ECB Role",
+   "gist": "EU leaders selected Spain’s former central bank chief to lead the European Central Bank. Inflation and borrowing costs will be major challenges for the incoming president.",
+   "summary": "EU leaders chose Pablo Hernández de Cos to become the next president of the European Central Bank. He previously led Spain's central bank. He is set to succeed Christine Lagarde, who is leaving before the end of her term. The ECB sets monetary policy for countries that use the euro. Leaders face concerns about inflation, government debt and borrowing costs. De Cos will need to guide the bank through those pressures.",
    "words": [
     {
      "en": "central bank",
      "de": "Zentralbank"
     },
     {
-     "en": "inflation",
-     "de": "Inflation"
-    },
-    {
      "en": "borrowing costs",
      "de": "Kreditkosten"
+    },
+    {
+     "en": "to succeed",
+     "de": "nachfolgen"
     }
    ],
    "shows": [],
@@ -200,98 +229,183 @@
     "name": "Associated Press",
     "url": "https://apnews.com/article/d308b6cfbe6399b131255f2a678b10e4"
    },
-   "host_open": "A new ECB president will face tough choices on prices and debt. What do you think should be the main priority?",
-   "img_from": "",
-   "img": ""
+   "host_open": "The next ECB chief will inherit a demanding job. What do you think will matter most?",
+   "img": "",
+   "img_from": ""
   },
   {
-   "title": "Judge Blocks Early ABC License Review",
-   "gist": "A US judge has stopped the regulator from starting an early review of ABC’s broadcast licences. The network argued that the move threatened its freedom to report and speak.",
-   "summary": "A federal judge in Washington blocked the Federal Communications Commission from conducting an early review of ABC’s broadcast licences. ABC had argued that the move could chill its free-speech rights. The network welcomed the ruling as a First Amendment victory. The decision came after tensions between the government and the broadcaster. The ruling is about the regulator’s attempt to review licences early. It does not end wider disputes over media regulation.",
+   "title": "Serbia Calls Early Presidential Vote",
+   "gist": "Serbia will hold a presidential election on December 27. The vote follows a parliamentary result that reshaped the political landscape.",
+   "summary": "Serbia's parliament speaker called a presidential election for December 27. Former president Aleksandar Vučić resigned in September to try to become prime minister. That attempt failed. A student-led list won the most seats in October's parliamentary election. The new presidential vote will test how that result changes national politics. The authorities say voters should take part and choose a president with strong public support.",
    "words": [
     {
-     "en": "broadcast licence",
-     "de": "Sendelizenz"
+     "en": "presidential election",
+     "de": "Präsidentschaftswahl"
     },
     {
-     "en": "free-speech rights",
-     "de": "Recht auf freie Meinungsäußerung"
+     "en": "to call an election",
+     "de": "eine Wahl ansetzen"
     },
     {
-     "en": "regulator",
-     "de": "Aufsichtsbehörde"
+     "en": "voter turnout",
+     "de": "Wahlbeteiligung"
     }
    ],
    "shows": [],
-   "category": "politics",
-   "wiki": "Federal Communications Commission",
+   "category": "europe",
+   "wiki": "National Assembly of Serbia",
    "source": {
     "name": "Associated Press",
-    "url": "https://apnews.com/article/f04f6b2b1a17fc10f2da11e4fd83a9df"
+    "url": "https://apnews.com/article/b069d30d098006f9d4ed21e6b82731c4"
    },
-   "host_open": "A court has drawn a line in a dispute over media oversight. Did that surprise you?",
-   "img_from": "",
-   "img": ""
+   "host_open": "Serbia has a new election date and a changed political balance. Did that surprise you?",
+   "img": "",
+   "img_from": ""
   },
   {
-   "title": "ORF Approves Its 2027 Budget",
-   "gist": "The ORF supervisory board has approved the broadcaster’s budget for 2027. The plan includes measures to offset a loss of federal funding.",
-   "summary": "ORF’s supervisory board approved the broadcaster’s budget for 2027 on Thursday. ORF said it plans steps to make up for a financial shortfall from the federal government. One of the planned measures is a 40-million-euro package. The budget decision sets the broadcaster’s financial framework for next year. The report did not provide full details of all planned savings or measures. The funding question matters for Austria’s public broadcaster and its services.",
+   "title": "Thanksgiving Storm Delays Parade",
+   "gist": "Bad weather forced New York to postpone its famous Thanksgiving parade. Flooding and power cuts affected other parts of the United States too.",
+   "summary": "Severe weather disrupted Thanksgiving celebrations across the United States. New York postponed the Macy's Thanksgiving Day Parade for the first time in its history. Heavy rain and strong winds caused flooding in parts of the East Coast. Snow and power outages were also reported elsewhere. Organisers faced the problem of rearranging performances and travel plans. Officials urged people to follow local weather and safety advice.",
    "words": [
     {
-     "en": "supervisory board",
-     "de": "Stiftungsrat"
+     "en": "to postpone",
+     "de": "verschieben"
     },
     {
-     "en": "financial shortfall",
-     "de": "Finanzierungslücke"
+     "en": "power outage",
+     "de": "Stromausfall"
     },
     {
-     "en": "public broadcaster",
-     "de": "öffentlich-rechtlicher Sender"
+     "en": "flood warning",
+     "de": "Hochwasserwarnung"
+    }
+   ],
+   "shows": [],
+   "category": "fun",
+   "wiki": "Macy's Thanksgiving Day Parade",
+   "source": {
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/e3a17dee62d5847e37edf5fa21ed0ec1"
+   },
+   "host_open": "Even the parade had to change its plans this year. Did that surprise you?",
+   "img": "news_img/20261126-9.jpg",
+   "img_from": "wikipedia"
+  },
+  {
+   "title": "Markets Rise as US Takes Holiday",
+   "gist": "European and Asian shares moved higher while US markets were closed for Thanksgiving. Investors are still watching technology stocks closely.",
+   "summary": "Shares rose in European and Asian markets on Thursday. US stock markets were closed for the Thanksgiving holiday. Investors were responding to a recent rebound in technology shares. Concerns about high valuations in artificial intelligence companies have unsettled markets this month. The latest move offered some relief but does not settle those concerns. Traders will watch how US markets react when they reopen.",
+   "words": [
+    {
+     "en": "share price",
+     "de": "Aktienkurs"
+    },
+    {
+     "en": "market rebound",
+     "de": "Markterholung"
+    },
+    {
+     "en": "valuation",
+     "de": "Bewertung"
     }
    ],
    "shows": [],
    "category": "economy",
-   "wiki": "ORF",
+   "wiki": "Stock market",
    "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449374/"
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/320cd8c9c286a7773797bf2f478ef314"
    },
-   "host_open": "The ORF has set its budget for next year while facing a funding gap. How does that look from Austria?",
-   "img_from": "article",
-   "img": "news_img/20261126-8.png"
+   "host_open": "Investors got a holiday pause in the United States, but markets elsewhere kept moving. How do you read the rebound?",
+   "img": "",
+   "img_from": ""
   },
   {
-   "title": "Thanksgiving Turkey Becomes Political News",
-   "gist": "The annual turkey-pardon ceremony drew fresh attention in Washington. Late-night coverage focused on President Trump’s questions about choosing the turkey.",
-   "summary": "President Donald Trump took part in the annual Thanksgiving turkey-pardon ceremony. News coverage said he appeared confused about how to size up a turkey. The ceremony is a White House tradition before Thanksgiving. Seth Meyers discussed the moment in a recent segment, according to coverage of his show. The event is light-hearted, but it also provides a regular opportunity for public political jokes. The turkey was pardoned as part of the tradition.",
+   "title": "Free Books Fill Bologna Street",
+   "gist": "A bookshop owner put nearly 10,000 books outside for people to take. The giveaway helped the shop avoid throwing them away before moving nearby.",
+   "summary": "A bookshop in Bologna gave away nearly 10,000 books before moving to a new location. Owner Davide Scilabra placed the books outside for free collection. The books covered subjects including art, languages, philosophy and mathematics. He said he wanted to keep them from being thrown away. The giveaway attracted readers and students. Almost all the books had been taken by Thursday, according to reports cited by ORF.",
    "words": [
     {
-     "en": "turkey pardon",
-     "de": "Begnadigung eines Truthahns"
+     "en": "give away",
+     "de": "verschenken"
     },
     {
-     "en": "annual tradition",
-     "de": "jährliche Tradition"
+     "en": "bookshop",
+     "de": "Buchhandlung"
     },
     {
-     "en": "size up",
-     "de": "einschätzen"
+     "en": "to avoid waste",
+     "de": "Abfall vermeiden"
     }
    ],
-   "shows": [
-    "Seth Meyers"
-   ],
+   "shows": [],
    "category": "fun",
-   "wiki": "White House",
+   "wiki": "Bologna",
    "source": {
-    "name": "The Daily Beast",
-    "url": "https://www.thedailybeast.com/obsessed/trumps-late-night-nemesis-seth-meyers-roasts-his-bonkers-turkey-question"
+    "name": "ORF",
+    "url": "https://orf.at/"
    },
-   "host_open": "Even the Thanksgiving turkey ceremony became a sizing-up exercise. Did that surprise you?",
-   "img_from": "article",
-   "img": "news_img/20261126-9.jpg"
+   "host_open": "A bookshop turned moving day into a gift for readers. What kind of book would you have picked?",
+   "img": "news_img/20261126-11.jpg",
+   "img_from": "wikipedia"
+  },
+  {
+   "title": "Vienna Opera Honours Welser-Möst",
+   "gist": "The Vienna State Opera named conductor Franz Welser-Möst an honorary member. The award recognises his long connection with the house.",
+   "summary": "The Vienna State Opera made conductor Franz Welser-Möst an honorary member. The ceremony took place after a performance of Ariadne auf Naxos. He first conducted at the opera house in 1987. He later served as its general music director from 2010 to 2014. The opera described honorary membership as its highest award. Welser-Möst called the house an important artistic home for him.",
+   "words": [
+    {
+     "en": "conductor",
+     "de": "Dirigent"
+    },
+    {
+     "en": "honorary member",
+     "de": "Ehrenmitglied"
+    },
+    {
+     "en": "performance",
+     "de": "Aufführung"
+    }
+   ],
+   "shows": [],
+   "category": "fun",
+   "wiki": "Vienna State Opera",
+   "source": {
+    "name": "ORF Vienna",
+    "url": "https://wien.orf.at/stories/3381182/"
+   },
+   "host_open": "A long musical partnership has earned a special honour. How does that feel as a cultural story from Vienna?",
+   "img": "news_img/20261126-12.jpg",
+   "img_from": "article"
+  },
+  {
+   "title": "Italy Expands Nuclear Defence Spending",
+   "gist": "Britain plans to spend billions on nuclear deterrence, according to Austrian public radio’s evening news list. The decision raises questions about security and public spending.",
+   "summary": "Britain is planning billions of pounds in spending on nuclear deterrence, according to an item in ORF's evening news rundown. The report described the plans as part of the country's defence policy. Nuclear deterrence aims to discourage an attack by threatening a response. Supporters say the capability is needed in a more dangerous security environment. Critics often question its cost and risks. The available report summary did not give further details about the spending plan.",
+   "words": [
+    {
+     "en": "nuclear deterrence",
+     "de": "nukleare Abschreckung"
+    },
+    {
+     "en": "defence spending",
+     "de": "Verteidigungsausgaben"
+    },
+    {
+     "en": "to discourage",
+     "de": "abschrecken"
+    }
+   ],
+   "shows": [],
+   "category": "world",
+   "wiki": "United Kingdom",
+   "source": {
+    "name": "ORF Ö1",
+    "url": "https://oe1.orf.at/collection/658964"
+   },
+   "host_open": "Nuclear deterrence brings security and cost questions together. How do you feel about that balance?",
+   "img": "",
+   "img_from": ""
   }
  ]
 }
