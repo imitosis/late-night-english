@@ -797,6 +797,7 @@ Keep it light and fair to all political sides. But if the topic involves war, te
 YOU ARE ALSO HIS ENGLISH COACH. Check the guest's LAST answer: grammar, word choice, German-sounding phrasing (false friends, word order, tenses, missing articles, "I am here since..." type errors).
 The guest's text comes from speech recognition: ignore punctuation and capitals. But if a word looks like a mispronounced word that got misheard (e.g. "sink" for "think", "wery" for "very", "vine" for "wine"), treat it as a pronunciation slip and tease him about the sound.
 Phrases the guest is practising: ${targets().map(p=>'"'+p[0]+'"').join(', ')||'none'}. Now and then steer the chat so one of them would fit naturally, but never say them yourself and never ask him to use them. If he uses one, cheer for it in one quick in-character line.
+Always talk directly TO him as "you". Never call him "tonight's guest", "our guest" or "my guest", and never talk about him in the third person.
 Only correct when it really matters: a clear grammar or word mistake, or a phrase that sounds clearly un-English to a native speaker. Small stuff, minor style choices and speech-recognition glitches: let it go, no tip. Most answers should get NO correction; let the guest talk.
 If there is such a mistake (only the most useful one): open your reply by pointing it out IN CHARACTER with a quick, warm joke (a host teasing a guest he likes, never mean), say the correct version clearly, then carry on in the same reply. Never write ###NEXT###. If it was fine, just react to WHAT he said (the content), not how he said it. Do not comment on his phrasing.
 Conversation style: react to what the guest said like a real talk-show host: first share your own short take, a funny thought or a quick joke about the story (keep it original, never repeat jokes from real shows), then hand the mic back to him in the way the MOVE for this turn says (given below). Do NOT ask "What would you do?" and do not ask for his opinion unless the move says so. Opinion questions get boring fast.
@@ -886,7 +887,7 @@ function openWatch(v){watchV=v;watchCtx=null;Voice.stop();
  getRecap(v).then(r=>{if(watchV===v)watchCtx=r}).catch(()=>{})}
 $('#watchBack').onclick=()=>{$('#watchFrame').src='about:blank';document.body.classList.remove('talking');$('#watch').hidden=true;$('#home').hidden=false};
 $('#watchGo').onclick=async()=>{const v=watchV;$('#watchFrame').src='about:blank';$('#watch').hidden=true;
- if(!watchCtx){try{$('#watchPrep').textContent='Jimmy is catching up on the show …';watchCtx=await getRecap(v)}catch(e){watchCtx={}}}
+ if(!watchCtx){try{$('#watchPrep').textContent='Jimmy is catching up on the show …';watchCtx=await Promise.race([getRecap(v),new Promise(r=>setTimeout(()=>r(null),3500))])}catch(e){watchCtx=null}}
  const r=watchCtx||{};
  const g=`The guest has just watched this monologue on YouTube: "${v.title}" (${v.host}, ${v.show}). Description: ${v.desc}
 What it covered (from recaps – may be incomplete): topics: ${(r.topics||[]).join('; ')}. Jokes: ${(r.jokes||[]).join(' | ')}.
@@ -896,7 +897,7 @@ SHOW PLAN: 1) Ask ONE easy listening question (one at a time; if he's unsure, gi
 function startShow(t,g,opener,mode){
  topic=t;gist=g;hist=[];$('#chat').innerHTML='';
  document.body.classList.add('talking');$('#home').hidden=true;$('#summary').hidden=true;$('#talk').hidden=false;$('#talkTopic').textContent=t;scrollTo(0,0);
- if(opener){const G=['Goooood evening!!!','Goooood evening, everybody!','Hey hey hey, look who\'s here!','Ladies and gentlemen… my favorite guest!','Welcome back to the show!','Oh, there you are!'];const hr=new Date().getHours(),g0=hr<12?'Goooood morning!!!':hr<17?'Goooood afternoon!!!':G[Math.floor(Math.random()*G.length)];const o=`${Math.random()<.5?g0:G[Math.floor(Math.random()*G.length)].replace('Goooood evening',hr<17?(hr<12?'Goooood morning':'Goooood afternoon'):'Goooood evening')} ${opener}`;hist.push({r:'host',t:o});hostBubble(o);speak(o)}
+ if(opener){const G=['Goooood evening!!!','Goooood evening, everybody!','Hey hey hey, look who\'s here!','Look who\'s back!','Welcome back to the show!','Oh, there you are!'];const hr=new Date().getHours(),g0=hr<12?'Goooood morning!!!':hr<17?'Goooood afternoon!!!':G[Math.floor(Math.random()*G.length)];const o=`${Math.random()<.5?g0:G[Math.floor(Math.random()*G.length)].replace('Goooood evening',hr<17?(hr<12?'Goooood morning':'Goooood afternoon'):'Goooood evening')} ${opener}`;hist.push({r:'host',t:o});hostBubble(o);speak(o)}
  else if(mode==='watch')hostTurn('Open the show: big, fun late-night greeting that fits the time of day (vary it; do NOT say "my friend from Austria"), one quick quip that the guest just watched the other guy\'s monologue (friendly rivalry), then ask your FIRST easy listening question about it. No tip yet: write ###TIP### null.');
  else hostTurn('Open the show: greet the guest with a big, fun late-night style greeting that fits the time of day (vary it, e.g. "Goooood evening!!!"; do NOT say "my friend from Austria"), make a quick original quip about the topic, then ask how he feels about it. No tip yet: write ###TIP### null.');
 }
@@ -1032,7 +1033,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='70';
+const BUILD='71';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
