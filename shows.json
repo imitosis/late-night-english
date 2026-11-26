@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T21:29Z",
+ "updated": "2026-11-26T21:36Z",
  "items": [
   {
    "show": "The Tonight Show",
@@ -7,7 +7,28 @@
    "title": "Trump Celebrates Thanksgiving at Mar-a-Lago | The Tonight Show Starring Jimmy Fallon",
    "id": "C7og4Y1-OEA",
    "published": "2026-11-26T04:35:24+00:00",
-   "desc": "Jimmy addresses the latest news, like President Trump celebrating Thanksgiving at Mar-a-Lago, fewer Americans traveling for Thanksgiving due to gas prices and people drinking luxury water instead of alcohol.\n\nThe Tonight Show Starring Jimmy Fallon. Stream now on Peacock:"
+   "desc": "Jimmy addresses the latest news, like President Trump celebrating Thanksgiving at Mar-a-Lago, fewer Americans traveling for Thanksgiving due to gas prices and people drinking luxury water instead of alcohol.\n\nThe Tonight Show Starring Jimmy Fallon. Stream now on Peacock:",
+   "recap": {
+    "topics": [
+     "Trump’s Thanksgiving at Mar-a-Lago",
+     "Fewer Americans traveling because of high gas prices",
+     "Thanksgiving travel and the FAA",
+     "Drinksgiving and hometown bars",
+     "Families playing Grand Theft Auto together"
+    ],
+    "jokes": [
+     "Fallon joked that some people were hoping the FAA would disrupt Thanksgiving travel so they could skip family visits.",
+     "He called Thanksgiving a chance for families to gather and play Grand Theft Auto together.",
+     "He joked that Drinksgiving bars are full of people making pointed comments about someone’s weight-loss medication.",
+     "Fallon offered a mock guide to help moms act okay with their kids skipping Thanksgiving.",
+     "He quipped that Mar-a-Lago cooks one turkey normally, deep-fries another, and puts the last in a tanning bed."
+    ],
+    "questions": [
+     "What kind of prices were said to be keeping some Americans from traveling for Thanksgiving?",
+     "What video game did Fallon mention families playing together?",
+     "What did he joke Mar-a-Lago does to one of its turkeys?"
+    ]
+   }
   },
   {
    "show": "Late Night",
@@ -15,7 +36,26 @@
    "title": "Fox News Can't Defend Trump's Jensen Huang Scandal, Dems Promise to Probe NVIDIA Ties: A Closer Look",
    "id": "F3_TH6q8VFE",
    "published": "2026-11-26T02:00:25+00:00",
-   "desc": "Seth takes a closer look at Democrats promising to investigate Trump's pressure campaign to reinstate Jensen Huang as CEO of NVIDIA and Fox News having trouble defending him. \n\nLate Night with Seth Meyers. Stream now on Peacock:"
+   "desc": "Seth takes a closer look at Democrats promising to investigate Trump's pressure campaign to reinstate Jensen Huang as CEO of NVIDIA and Fox News having trouble defending him. \n\nLate Night with Seth Meyers. Stream now on Peacock:",
+   "recap": {
+    "topics": [
+     "Trump’s role in Jensen Huang’s return as NVIDIA CEO",
+     "Democrats’ plans to investigate the reinstatement",
+     "Fox News hosts’ attempts to address the scandal",
+     "Claims of special treatment and potential national-security concerns"
+    ],
+    "jokes": [
+     "Seth noted that a Fox host listed the scandal’s serious implications while delivering them in a dismissive tone.",
+     "He joked that the host’s rundown sounded so much like his own segment that someone must have leaked the script.",
+     "Seth compared sarcastically repeating troubling claims to a drunk driver confessing after nine tequila shots and blaming wild turkeys.",
+     "He mocked Fox’s call to ensure Huang got no special treatment, pointing out that Trump had already helped restore him."
+    ],
+    "questions": [
+     "Which Fox host did Seth say discussed the scandal in a dismissive tone?",
+     "What did Seth say Democrats might claim Trump was doing to the market?",
+     "What did Seth say had already happened when Fox called for no special treatment?"
+    ]
+   }
   },
   {
    "show": "Jimmy Kimmel Live!",
@@ -23,7 +63,28 @@
    "title": "Trump Calls Putin His FRIEND, Sleeps During President Xi’s Speech & Grand Theft Auto VI Mania!",
    "id": "UG84NoEtt9o",
    "published": "2026-11-20T04:35:31+00:00",
-   "desc": "Grand Theft Auto VI is out now and internet usage is at an all-time high, our announce Lou is super excited about it, Trump was in China today for his big summit where he referred to Putin as his friend and appeared to fall asleep during President Xi’s speech even though the White House forcefully denied it, people across America are panic buying in case all hell breaks loose, and This Week in Unnecessary Censorship."
+   "desc": "Grand Theft Auto VI is out now and internet usage is at an all-time high, our announce Lou is super excited about it, Trump was in China today for his big summit where he referred to Putin as his friend and appeared to fall asleep during President Xi’s speech even though the White House forcefully denied it, people across America are panic buying in case all hell breaks loose, and This Week in Unnecessary Censorship.",
+   "recap": {
+    "topics": [
+     "Grand Theft Auto VI launch excitement and people skipping work to play",
+     "Trump calling Putin his friend at the China summit",
+     "Trump appearing to doze during Xi’s speech and the White House denial",
+     "Panic buying and bomb-shelter purchases",
+     "This Week in Unnecessary Censorship"
+    ],
+    "jokes": [
+     "Kimmel compared the GTA craze to workers calling out and joked about a man getting ten days to play after his wife signed a contract.",
+     "He teased announcer Lou for gaming in a headset while Guillermo’s gaming experience stopped at Pac-Man and Mario Bros.",
+     "Kimmel joked that Trump’s summit with Putin and Xi looked like a gathering of movie villains.",
+     "He poked fun at the White House explanation that Trump was looking at papers while appearing to nod off.",
+     "The censorship segment made ordinary TV clips sound scandalous by adding bleeps."
+    ],
+    "questions": [
+     "Which new video game had Lou excited?",
+     "What did Trump call Putin?",
+     "What was the White House’s explanation for Trump appearing to doze during Xi’s speech?"
+    ]
+   }
   }
  ]
 }
