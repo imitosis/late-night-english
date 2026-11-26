@@ -115,17 +115,42 @@ import shutil
 shutil.rmtree("news_img", ignore_errors=True)
 os.makedirs("news_img", exist_ok=True)
 stamp = now.strftime("%Y%m%d")
+UA_WEB = {"User-Agent": "Mozilla/5.0 (compatible; late-night-english/1.0; link preview)", "Accept-Language": "en,de;q=0.8"}
+
+def preview_img(page):
+    """The article's own preview picture (og:image), like messengers show for links."""
+    if not page or not page.startswith("http"):
+        return ""
+    try:
+        with urllib.request.urlopen(urllib.request.Request(page, headers=UA_WEB), timeout=15) as r:
+            html = r.read(600000).decode("utf-8", "replace")
+        for pat in (r'<meta[^>]+property=["\']og:image(?::secure_url)?["\'][^>]+content=["\']([^"\']+)',
+                    r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:image',
+                    r'<meta[^>]+name=["\']twitter:image["\'][^>]+content=["\']([^"\']+)'):
+            m = re.search(pat, html, re.I)
+            if m:
+                return urllib.parse.urljoin(page, m.group(1).replace("&amp;", "&"))
+    except Exception as e:
+        print("Keine Vorschau:", page, e)
+    return ""
+
 for n, it in enumerate(items[:14]):
-    url = wiki_img(it.get("wiki", ""))
+    src = it.get("source") or {}
+    url = preview_img(src.get("url", "") if isinstance(src, dict) else "")
+    it["img_from"] = "article" if url else ""
+    if not url:
+        url = wiki_img(it.get("wiki", ""))
+        it["img_from"] = "wikipedia" if url else ""
     it["img"] = ""
     if not url:
         continue
     try:
         req2 = urllib.request.Request(url, headers={"User-Agent": "late-night-english/1.0 (https://github.com/imitosis/late-night-english)"})
         with urllib.request.urlopen(req2, timeout=20) as r:
-            data = r.read()
+            data = r.read(3000000)
         if len(data) > 2000:
-            fn = f"news_img/{stamp}-{n}.jpg"
+            ext = ".png" if data[:4] == b"\x89PNG" else ".webp" if data[8:12] == b"WEBP" else ".jpg"
+            fn = f"news_img/{stamp}-{n}{ext}"
             open(fn, "wb").write(data)
             it["img"] = fn
     except Exception as e:
