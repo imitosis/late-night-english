@@ -2,219 +2,217 @@
  "date": "2026-11-26",
  "items": [
   {
-   "title": "Vienna Plans New Heat System",
-   "gist": "A familiar power-station landmark is coming down as the site shifts toward renewable heat.",
-   "summary": "Vienna Energy plans to remove the tall chimney at the Donaustadt power station. The chimney will be taken apart in stages, not blown up. The site is set to gain geothermal energy, heat pumps and heat storage. City officials say the future system could supply 280,000 Vienna households. The project is part of a wider change to how the city produces heat.",
+   "title": "Snow Disrupts Austrian Roads",
+   "gist": "Heavy snow brought traffic and public transport problems across Austria.",
+   "summary": "Heavy snow fell across much of Austria on Thursday. The A21 near Vienna was closed in both directions for a time. Roads in Tirol and other regions also saw closures, crashes and delays. Rail services and buses were affected in some areas. Weather forecasters expected more snow before conditions eased later. Officials urged people to drive carefully and allow extra time.",
    "words": [
     {
-     "en": "chimney",
-     "de": "Schornstein"
+     "en": "road closure",
+     "de": "Straßensperre"
     },
     {
-     "en": "heat storage",
-     "de": "Wärmespeicher"
+     "en": "black ice",
+     "de": "Glatteis"
     },
     {
-     "en": "renewable energy",
-     "de": "erneuerbare Energie"
-    }
-   ],
-   "shows": [],
-   "category": "politics",
-   "wiki": "Donaustadt",
-   "source": {
-    "name": "wien.ORF.at",
-    "url": "https://wien.orf.at/stories/3381097/"
-   },
-   "host_open": "Vienna is changing its skyline for a new source of heat. How does that look from Austria?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Wien_-_Donaucity%2C_Ostansicht_%28b%29.JPG/640px-Wien_-_Donaucity%2C_Ostansicht_%28b%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-  },
-  {
-   "title": "Home Workers May Get Internet Costs",
-   "gist": "Austria’s top court says employers must cover the work-related cost of home internet.",
-   "summary": "Austria’s Supreme Court has ruled that employers must provide or pay for internet needed for regular remote work. The case began after a company policy offered laptops but excluded other costs. The court said an internet connection can count as a digital work tool. The amount owed may depend on the work-related share of the bill. Labour experts say employers should review their home-office agreements, while businesses have raised concerns about costs and tax rules.",
-   "words": [
-    {
-     "en": "Supreme Court",
-     "de": "Oberster Gerichtshof"
-    },
-    {
-     "en": "work-related costs",
-     "de": "berufsbedingte Kosten"
-    },
-    {
-     "en": "remote work",
-     "de": "Telearbeit"
-    }
-   ],
-   "shows": [],
-   "category": "politics",
-   "wiki": "Supreme Court of Austria",
-   "source": {
-    "name": "ORF.at",
-    "url": "https://orf.at/stories/3449200/"
-   },
-   "host_open": "Your home internet may now have a work-related price tag. Did that surprise you?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Wien_01_Justizpalast_a.jpg/640px-Wien_01_Justizpalast_a.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-  },
-  {
-   "title": "Ukraine War Reaches Libya",
-   "gist": "A Ukrainian drone strike on a Russian ship in Libya has reportedly killed two Libyan naval officers.",
-   "summary": "Two Libyan naval officers died after a Ukrainian drone attack on a Russian warship in Libya, according to reports. The attack opened a new setting for the war, far from Ukraine’s front lines. The Libyan officers’ deaths were reported after the strike. Ukraine has described its attack as a military success. Libya’s internationally recognised government said neither side has the right to conduct military operations on Libyan territory or in its waters.",
-   "words": [
-    {
-     "en": "naval officer",
-     "de": "Marineoffizier"
-    },
-    {
-     "en": "drone strike",
-     "de": "Drohnenangriff"
-    },
-    {
-     "en": "territorial waters",
-     "de": "Hoheitsgewässer"
+     "en": "snowplough",
+     "de": "Schneepflug"
     }
    ],
    "shows": [],
    "category": "world",
-   "wiki": "Libya",
+   "wiki": "Vienna Outer Ring Road",
    "source": {
-    "name": "Associated Press",
-    "url": "https://apnews.com/article/6995de4ee91278459742a359eeb7439e"
+    "name": "ORF",
+    "url": "https://oesterreich.orf.at/stories/3381169/"
    },
-   "host_open": "This conflict has reached far beyond its main front. How do you feel about that?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Libya.svg/640px-Flag_of_Libya.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "Austria’s first big snowfall arrived with a very busy traffic report. How has the weather affected your plans?",
+   "img": ""
   },
   {
-   "title": "Gaza Strike Kills Hamas Official",
-   "gist": "Gaza officials say an Israeli strike killed a senior Hamas security figure and members of his family.",
-   "summary": "A strike hit the Shati refugee camp in Gaza City on November 25, according to Gaza civil defence. It said the attack killed Colonel Mohammed Abu al-Ouf, a senior figure in Hamas’s internal security service. His wife and two daughters were also reported killed. The Israeli military said it targeted a Hamas member. The reported deaths come amid continuing violence despite a ceasefire agreement reached in 2025.",
+   "title": "Nehammer Denies Press Intervention",
+   "gist": "The former chancellor rejected claims that he tried to influence media coverage.",
+   "summary": "Former Austrian chancellor Karl Nehammer testified on Thursday before a parliamentary inquiry committee. The inquiry concerns the case of former justice official Christian Pilnacek. Nehammer denied trying to influence reporting by ORF or the newspaper Kronen Zeitung. The committee is examining possible political influence and the handling of information about the case. Nehammer gave his account, while committee members are continuing to question witnesses. The inquiry may add to debate about trust in public institutions.",
    "words": [
     {
-     "en": "refugee camp",
-     "de": "Flüchtlingslager"
+     "en": "inquiry committee",
+     "de": "Untersuchungsausschuss"
     },
     {
-     "en": "strike",
-     "de": "Luftangriff"
+     "en": "to deny a claim",
+     "de": "einen Vorwurf zurückweisen"
+    },
+    {
+     "en": "media coverage",
+     "de": "Medienberichterstattung"
+    }
+   ],
+   "shows": [],
+   "category": "politics",
+   "wiki": "Austrian Parliament Building",
+   "source": {
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449329/"
+   },
+   "host_open": "A parliamentary hearing can make old questions feel very current. Did Nehammer’s denial surprise you?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Wien_-_Parlamentsgeb%C3%A4ude.JPG/640px-Wien_-_Parlamentsgeb%C3%A4ude.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+   "title": "Israeli Strikes Kill Eight In Gaza",
+   "gist": "Health officials reported deaths after overnight Israeli strikes in Gaza.",
+   "summary": "At least eight people were killed in overnight Israeli strikes in Gaza, according to local health officials. Israel’s military said one strike targeted three militants. It did not immediately comment on another strike, according to the report. The strikes come despite a ceasefire deal between Israel and Hamas. Israeli fire and airstrikes have continued during the period since that deal. The deaths underline the danger facing civilians, while key details of the strikes remain disputed or unconfirmed.",
+   "words": [
+    {
+     "en": "overnight strike",
+     "de": "nächtlicher Angriff"
     },
     {
      "en": "ceasefire",
      "de": "Waffenruhe"
+    },
+    {
+     "en": "casualty",
+     "de": "Opfer"
     }
    ],
    "shows": [],
    "category": "world",
-   "wiki": "Shati refugee camp",
+   "wiki": "Gaza Strip",
    "source": {
-    "name": "AP News",
-    "url": "https://argus.yeomniverse.com/en/archive/2026-11-26/"
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/522676f17532b878878ff7a4347d0e31"
    },
-   "host_open": "Families have again been caught in the violence in Gaza. How does this news make you feel?",
-   "img": ""
+   "host_open": "Reports from Gaza describe another deadly night. How are you feeling about the continued violence?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Gaza_Strip_in_Palestine.svg/640px-Gaza_Strip_in_Palestine.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "Eurostar Trains Face Strike Disruption",
-   "gist": "An unexpected strike is disrupting trains through the Channel Tunnel in both directions.",
-   "summary": "Eurostar says an unexpected strike is affecting train services between France and Britain. The disruption is hitting journeys in both directions through the Channel Tunnel. The company has not given detailed information about the strike. Reports say pay negotiations are under way. Travellers are being urged to check their journeys as talks continue.",
+   "title": "Ukraine Faces Fresh Russian Attacks",
+   "gist": "Both sides reported new attacks as the war continued overnight.",
+   "summary": "Russia and Ukraine reported fresh drone and missile attacks overnight into Thursday. Moscow reported an attack on an industrial area in southern Russia. Kyiv reported damage to civilian buildings, according to Reuters. The reports describe claims from both sides, and details may change as more information becomes available. The attacks came as Russia’s war against Ukraine continues. They add to concerns about the safety of civilians and infrastructure.",
    "words": [
     {
-     "en": "disruption",
-     "de": "Beeinträchtigung"
+     "en": "drone attack",
+     "de": "Drohnenangriff"
     },
     {
-     "en": "pay negotiations",
-     "de": "Lohnverhandlungen"
+     "en": "civilian building",
+     "de": "ziviles Gebäude"
     },
     {
-     "en": "in both directions",
-     "de": "in beide Richtungen"
+     "en": "to report damage",
+     "de": "Schäden melden"
+    }
+   ],
+   "shows": [],
+   "category": "world",
+   "wiki": "Kyiv",
+   "source": {
+    "name": "AnewZ / Reuters",
+    "url": "https://anewz.tv/world/world-news/27277/russia-and-ukraine-exchange-drone-and-missile-strikes/news"
+   },
+   "host_open": "The overnight reports show how quickly the war can reach far from the front. How does this news look from Austria?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/%D0%91%D1%83%D0%B4%D0%B8%D0%BD%D0%BE%D0%BA_%D0%B7_%D1%85%D0%B8%D0%BC%D0%B5%D1%80%D0%B0%D0%BC%D0%B8%2C_%D1%81%D0%B5%D1%80%D0%BF%D0%B5%D0%BD%D1%8C_2019.jpg/640px-%D0%91%D1%83%D0%B4%D0%B8%D0%BD%D0%BE%D0%BA_%D0%B7_%D1%85%D0%B8%D0%BC%D0%B5%D1%80%D0%B0%D0%BC%D0%B8%2C_%D1%81%D0%B5%D1%80%D0%BF%D0%B5%D0%BD%D1%8C_2019.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+   "title": "EU Debates Major Ukraine Loan",
+   "gist": "European leaders are divided over a proposed loan and the bloc’s future budget.",
+   "summary": "EU leaders met in Brussels to discuss the bloc’s long-term budget. They also considered a new loan of about 45 billion euros for Ukraine. The money would help cover economic and military needs next year. Some member states oppose using EU funds for military aid. Supporters say backing Ukraine is part of Europe’s shared security. An agreement may take more talks, with diplomats expecting a decision later.",
+   "words": [
+    {
+     "en": "long-term budget",
+     "de": "langfristiger Haushalt"
+    },
+    {
+     "en": "loan",
+     "de": "Kredit"
+    },
+    {
+     "en": "burden sharing",
+     "de": "Lastenteilung"
     }
    ],
    "shows": [],
    "category": "europe",
-   "wiki": "Channel Tunnel",
-   "source": {
-    "name": "ORF.at",
-    "url": "https://www.orf.at/?href=http%3A%2F%2Fwww.orf.at%2Fticker%2F295401.html"
-   },
-   "host_open": "A tunnel can be open and still leave travellers stuck. Did that surprise you?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/TGV_TMST_3011-2_-_Sortie_Tunnel_sous_la_Manche_%C3%A0_Coquelles.jpg/640px-TGV_TMST_3011-2_-_Sortie_Tunnel_sous_la_Manche_%C3%A0_Coquelles.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-  },
-  {
-   "title": "Judge Rejects Ban on Partisan Ads",
-   "gist": "A US judge declined to extend a block on government ads that critics called political propaganda.",
-   "summary": "A federal judge in the United States declined to extend a temporary ban on taxpayer-funded government advertisements. Critics said the ads promoted partisan messages and President Donald Trump ahead of the midterm elections. The judge noted that the elections had already taken place. Democrats argued the ads could still harm their party during December runoffs and the 2028 election cycle. The decision leaves the ads unblocked for now.",
-   "words": [
-    {
-     "en": "temporary ban",
-     "de": "vorläufiges Verbot"
-    },
-    {
-     "en": "taxpayer-funded",
-     "de": "aus Steuermitteln finanziert"
-    },
-    {
-     "en": "runoff election",
-     "de": "Stichwahl"
-    }
-   ],
-   "shows": [
-    "Fallon"
-   ],
-   "category": "politics",
-   "wiki": "United States federal courts",
+   "wiki": "European Council",
    "source": {
     "name": "Associated Press",
-    "url": "https://apnews.com/article/fcc1b61e8e7134c01ca3e6dec7728442"
+    "url": "https://apnews.com/article/f073925a2ed77232e0d7db404600985e"
    },
-   "host_open": "The campaign season may be over, but the argument over ads is not. Did that surprise you?",
-   "img": ""
+   "host_open": "Europe’s budget talks now include a large question about shared responsibility. Does the proposed loan seem like the right approach?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Council_of_the_EU_and_European_Council.svg/640px-Council_of_the_EU_and_European_Council.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "A1 Plans 430 Net Job Cuts",
-   "gist": "Austria’s largest telecom company plans to reduce its workforce while investing in newer technologies.",
-   "summary": "A1 Austria plans a net reduction of 430 jobs in 2027. The plan involves 500 departures and 70 new hires in areas such as cloud services and cybersecurity. The company says it wants to cut costs by €300 million by 2030. It says some roles are linked to older technologies that are shrinking or have been switched off. A1 also says it will continue investing in networks and new technology.",
+   "title": "Judge Blocks FCC Action Against ABC",
+   "gist": "A court ruling halted the regulator’s early review of ABC station licences.",
+   "summary": "A US judge blocked the Federal Communications Commission from pursuing early reviews of licences held by ABC-owned stations. The FCC had ordered the reviews after disputes involving the network and its programming. ABC argued that the action was retaliation for content it broadcast. The ruling is a setback for the regulator’s effort. The case sits within wider legal disputes between the Trump administration and news organisations. The government’s actions and ABC’s objections reflect opposing views about regulation and press freedom.",
    "words": [
     {
-     "en": "net reduction",
-     "de": "Nettoabbau"
+     "en": "broadcast licence",
+     "de": "Rundfunklizenz"
     },
     {
-     "en": "workforce",
-     "de": "Belegschaft"
+     "en": "injunction",
+     "de": "einstweilige Verfügung"
     },
     {
-     "en": "cybersecurity",
-     "de": "Cybersicherheit"
+     "en": "press freedom",
+     "de": "Pressefreiheit"
+    }
+   ],
+   "shows": [],
+   "category": "politics",
+   "wiki": "Federal Communications Commission",
+   "source": {
+    "name": "TIME",
+    "url": "https://time.com/article/2026/11/26/fcc-abc-disney-broadcast-license-early-review-judge-injunction/"
+   },
+   "host_open": "A court has put a pause on a high-profile media dispute. Did the ruling surprise you?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Seal_of_the_Federal_Communications_Commission.svg/640px-Seal_of_the_Federal_Communications_Commission.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+   "title": "Markets Rise During US Holiday",
+   "gist": "European and Asian share markets gained while US markets were closed.",
+   "summary": "Share prices rose in Europe and Asia on Thursday. US stock markets were closed for the Thanksgiving holiday. Buying of artificial-intelligence-linked shares helped lift some Asian markets. Investors remained cautious about the AI trade and possible new US tariffs. Germany, France and Britain all recorded gains in early trading. US markets were due to reopen on Friday for a shorter session.",
+   "words": [
+    {
+     "en": "share price",
+     "de": "Aktienkurs"
+    },
+    {
+     "en": "investor",
+     "de": "Anlegerin oder Anleger"
+    },
+    {
+     "en": "holiday-shortened session",
+     "de": "verkürzter Börsenhandelstag"
     }
    ],
    "shows": [],
    "category": "economy",
-   "wiki": "A1 Telekom Austria",
+   "wiki": "Frankfurt Stock Exchange",
    "source": {
-    "name": "ORF.at",
-    "url": "https://orf.at/stories/3449227/"
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/320cd8c9c286a7773797bf2f478ef314"
    },
-   "host_open": "A1 is cutting some roles while hiring for newer fields. How does that look from Austria?",
-   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/A1_red_logo.png/640px-A1_red_logo.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   "host_open": "With Wall Street taking a holiday, other markets still had a lively day. Did the gains surprise you?",
+   "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Frankfurt_Am_Main-Neue_Boerse_von_Suedosten-20120222.jpg/640px-Frankfurt_Am_Main-Neue_Boerse_von_Suedosten-20120222.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
-   "title": "Thanksgiving Parade Postponed by Storm",
-   "gist": "For the first time, New York’s Macy’s parade has been moved because of dangerous weather.",
-   "summary": "Organisers have postponed New York’s Macy’s Thanksgiving Day Parade until Saturday. The decision was made because of severe weather forecasts. The parade was due to mark its 100th year. New York Mayor Zohran Mamdani said strong winds could break tree limbs and bring down power lines. Officials said rescheduling was the safer choice for spectators and participants.",
+   "title": "Thanksgiving Parade Moves To Saturday",
+   "gist": "New York postponed its famous parade because of dangerous weather.",
+   "summary": "New York’s Macy’s Thanksgiving Day Parade was moved from Thursday to Saturday. Organisers made the decision after consulting city officials about severe weather. Forecasters warned of strong winds, heavy rain and coastal flooding. The city said the conditions could make the large parade balloons unsafe. Some performers and groups confirmed they would still take part on Saturday. Organisers said they were working through the changes to the event.",
    "words": [
     {
      "en": "postpone",
      "de": "verschieben"
     },
     {
-     "en": "severe weather",
-     "de": "Unwetter"
+     "en": "strong winds",
+     "de": "starke Winde"
     },
     {
-     "en": "spectator",
-     "de": "Zuschauerin / Zuschauer"
+     "en": "parade route",
+     "de": "Paradenstrecke"
     }
    ],
    "shows": [],
@@ -224,7 +222,7 @@
     "name": "Associated Press",
     "url": "https://apnews.com/article/cdc870899c8dc2d32a0ac3d86119b3ba"
    },
-   "host_open": "Even the balloons need to wait for calmer weather. How does that look from Austria?",
+   "host_open": "Even the parade balloons have to wait for calmer weather. Would you still go on Saturday?",
    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Macy%27s_Thanksgiving_Parade%2C_New_York_City%2C_2005_15.jpg/640px-Macy%27s_Thanksgiving_Parade%2C_New_York_City%2C_2005_15.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   }
  ]
