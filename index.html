@@ -864,7 +864,7 @@ function nextMove(){const pool=MOVES.filter(m=>!lastMoves.includes(m[0]));const 
  if(hist.length<2)return MOVES[0][1];return m[1]+' (If the conversation clearly needs something else – he asked you a question, or he seems lost – answer him first and keep it simple.)'}
 let SHOWS=[],showSel=0,watchV=null,watchCtx=null;
 async function loadShows(){try{const r=await fetch('https://raw.githubusercontent.com/imitosis/late-night-english/main/shows.json?d='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();
- const seen=new Set();SHOWS=(j.items||[]).filter(x=>{if(seen.has(x.host))return false;seen.add(x.host);return true});renderLastNight()}catch(e){}}
+ const seen=new Set(),PRI=['Kimmel','Fallon','Meyers'],pr=x=>{const i=PRI.findIndex(p=>(x.host||'').includes(p));return i<0?9:i};SHOWS=(j.items||[]).filter(x=>{if(seen.has(x.host))return false;seen.add(x.host);return true}).sort((a,b)=>pr(a)-pr(b));renderLastNight()}catch(e){}}
 function ago(iso){const hrs=Math.round((Date.now()-Date.parse(iso))/36e5);return hrs<1?'just now':hrs<24?hrs+' h ago':Math.round(hrs/24)+' d ago'}
 function renderLastNight(){const el=$('#lastNight');if(!SHOWS.length){el.innerHTML='';return}const v=SHOWS[Math.min(showSel,SHOWS.length-1)];
  el.classList.add('lnbox');el.innerHTML=`<h2 class="sech">Last night on TV</h2>
@@ -1032,7 +1032,7 @@ function renderStats(){
  const last=st.days.slice().sort().pop();const gap=last?Math.round((new Date(today())-new Date(last))/864e5):null;
  $('#meTxt').textContent=(gap===null?'No practice yet – today is a great day for your first show.':gap===0?'Practised today. Nice!':gap===1?'Practised yesterday – keep your streak alive today.':`No practice for ${gap} days. One short show is enough.`)+` ${st.days.length} practice days, ${Object.keys(st.missions).length} missions in total.`;
 }
-const BUILD='68';
+const BUILD='69';
 /* home-screen apps are only resumed, never reloaded: look for a newer version and offer it */
 let updShown=false;
 async function checkUpdate(){if(updShown)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
