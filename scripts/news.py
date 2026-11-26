@@ -101,7 +101,11 @@ def wiki_img(title):
         with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "late-night-english/1.0"}), timeout=15) as r:
             j = json.load(r)
         t = (j.get("thumbnail") or {}).get("source", "")
-        return re.sub(r"/(\d+)px-", "/640px-", t) if t else ""
+        orig = (j.get("originalimage") or {}).get("source", "")
+        # only real photos – no flags, logos, seals, maps or charts (those are SVG/PNG)
+        if not t or not re.search(r"\.jpe?g", orig or t, re.I):
+            return ""
+        return t.split("?")[0]
     except Exception as e:
         print("Kein Bild für", title, e)
         return ""
