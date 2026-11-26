@@ -25,7 +25,7 @@ jobs:
         run: |
           git config user.name "news-bot"
           git config user.email "news-bot@users.noreply.github.com"
-          git add news.json
+          git add -A news.json news_img
           git diff --cached --quiet || git commit -m "Nachrichten vom $(date +%F)"
           git pull --rebase -q || true
           git push

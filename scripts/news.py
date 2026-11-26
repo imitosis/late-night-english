@@ -110,8 +110,26 @@ def wiki_img(title):
         print("Kein Bild für", title, e)
         return ""
 
-for it in items[:14]:
-    it["img"] = wiki_img(it.get("wiki", ""))
+# download the photos into the repo, so the app loads them from its own address (no hotlinking problems)
+import shutil
+shutil.rmtree("news_img", ignore_errors=True)
+os.makedirs("news_img", exist_ok=True)
+stamp = now.strftime("%Y%m%d")
+for n, it in enumerate(items[:14]):
+    url = wiki_img(it.get("wiki", ""))
+    it["img"] = ""
+    if not url:
+        continue
+    try:
+        req2 = urllib.request.Request(url, headers={"User-Agent": "late-night-english/1.0 (https://github.com/imitosis/late-night-english)"})
+        with urllib.request.urlopen(req2, timeout=20) as r:
+            data = r.read()
+        if len(data) > 2000:
+            fn = f"news_img/{stamp}-{n}.jpg"
+            open(fn, "wb").write(data)
+            it["img"] = fn
+    except Exception as e:
+        print("Bild nicht geladen:", url, e)
 
 json.dump({"date": now.strftime("%Y-%m-%d"), "items": items[:14]},
           open("news.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
