@@ -22,7 +22,7 @@ body = {
     "reasoning": {"effort": "low"},
     "max_output_tokens": 32000,
     "tools": [{"type": "web_search"}],
-    "max_tool_calls": 6,
+    "max_tool_calls": 10,
 }
 req = urllib.request.Request(
     "https://api.openai.com/v1/responses",
