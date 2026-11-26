@@ -55,6 +55,7 @@ for name, host, handle, cid, marks in SHOWS:
     print(f"{name}: newest titles:", [e.findtext("a:title", "", NS) for e in entries[:6]])
     marked = [e for e in entries if any(m in (e.findtext("a:title", "", NS) or "").lower() for m in marks)]
     def score(t):
+        t = re.sub(r"\s*\|\s*(The Tonight Show|Late Night|Jimmy Kimmel Live)[^|]*$", "", t)  # the channel's own suffix
         lo = t.lower()
         sc = 3 * len(re.findall(r"\b(trump|musk|putin|xi|biden|vance|congress|president|white house|maga|election|senate|government|shutdown)\b", lo))
         sc += min(3, t.count(","))
