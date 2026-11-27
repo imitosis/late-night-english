@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27T10:33Z",
+ "updated": "2026-11-27T14:35Z",
  "items": [
   {
    "show": "The Tonight Show",
@@ -24,27 +24,23 @@
   {
    "show": "Late Night",
    "host": "Seth Meyers",
-   "title": "Fox News Can't Defend Trump's Jensen Huang Scandal, Dems Promise to Probe NVIDIA Ties: A Closer Look",
-   "id": "F3_TH6q8VFE",
-   "published": "2026-11-26T02:00:25+00:00",
-   "desc": "Seth takes a closer look at Democrats promising to investigate Trump's pressure campaign to reinstate Jensen Huang as CEO of NVIDIA and Fox News having trouble defending him. \n\nLate Night with Seth Meyers. Stream now on Peacock:",
+   "title": "President Trump and First Lady Melania Trump Celebrate Thanksgiving in Mar-a-Lago",
+   "id": "grHsXteqKxQ",
+   "published": "2026-11-27T02:00:04+00:00",
+   "desc": "Seth addresses Trump's Thanksgiving plans and more in his monologue for Thursday, November 26, before inviting his children Ashe, Axel and Adelaide for an interview.\n\nLate Night with Seth Meyers. Stream now on Peacock:",
    "recap": {
     "topics": [
-     "Trump’s role in Jensen Huang’s return as NVIDIA CEO",
-     "Democrats’ plans to investigate the reinstatement",
-     "Fox News hosts’ attempts to address the scandal",
-     "Claims of special treatment and potential national-security concerns"
+     "Trump and Melania’s Thanksgiving trip to Mar-a-Lago",
+     "A joke about the couple awkwardly running into each other",
+     "Seth’s interview with his children Ashe, Axel and Adelaide"
     ],
     "jokes": [
-     "Seth noted that a Fox host listed the scandal’s serious implications while delivering them in a dismissive tone.",
-     "He joked that the host’s rundown sounded so much like his own segment that someone must have leaked the script.",
-     "Seth compared sarcastically repeating troubling claims to a drunk driver confessing after nine tequila shots and blaming wild turkeys.",
-     "He mocked Fox’s call to ensure Huang got no special treatment, pointing out that Trump had already helped restore him."
+     "Meyers joked that Trump and Melania traveling to Mar-a-Lago for Thanksgiving must have been awkward when they ran into each other."
     ],
     "questions": [
-     "Which Fox host did Seth say discussed the scandal in a dismissive tone?",
-     "What did Seth say Democrats might claim Trump was doing to the market?",
-     "What did Seth say had already happened when Fox called for no special treatment?"
+     "Where did Trump and Melania travel for Thanksgiving?",
+     "What did Meyers joke happened when the couple arrived?",
+     "Which of Seth’s children joined him for an interview?"
     ]
    }
   },
