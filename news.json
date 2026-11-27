@@ -1,109 +1,109 @@
 {
- "date": "2026-11-26",
+ "date": "2026-11-27",
  "items": [
   {
-   "title": "Snow Brings Austria to a Standstill",
-   "gist": "A heavy November snowfall disrupted roads, trains and flights across Austria. The snow may stay for days, while colder weather brings new risks.",
-   "summary": "Snow fell across much of Austria on Thursday. The A21 motorway near Vienna was closed in both directions for several hours after vehicles got stuck. Emergency services dealt with hundreds of calls, and flights at Vienna Airport were delayed by de-icing. Several other roads and rail lines were also affected. Forecasters said the snow could remain as temperatures drop.",
+   "title": "Vienna Sees Rare November Snow",
+   "gist": "A heavy snowfall turned Vienna’s streets white and disrupted travel across Austria. The snow was striking, but the road and rail delays were serious.",
+   "summary": "Vienna recorded its heaviest November snowfall in more than 40 years. The Hohe Warte weather station measured 17 centimetres on Thursday. Snow and icy roads caused crashes and delays in several regions. The A21 motorway was closed for hours after vehicles became stuck. Vienna Airport also reported some delays while planes were de-iced. Forecasters expected cold weather to keep snow on the ground.",
    "words": [
     {
      "en": "snowfall",
      "de": "Schneefall"
     },
     {
-     "en": "road closure",
-     "de": "Straßensperre"
+     "en": "to become stuck",
+     "de": "stecken bleiben"
     },
     {
-     "en": "de-icing",
-     "de": "Enteisung"
-    }
-   ],
-   "shows": [],
-   "category": "fun",
-   "wiki": "Vienna",
-   "source": {
-    "name": "ORF",
-    "url": "https://oesterreich.orf.at/stories/3381265/"
-   },
-   "host_open": "Austria woke up to a very white commute. How did the snow affect your day?",
-   "img": "news_img/20261126-0.jpg",
-   "img_from": "article"
-  },
-  {
-   "title": "Experts Criticise Prosecutor Plan",
-   "gist": "Legal experts say Austria’s proposed federal prosecution office needs a fresh start. They warn the current draft could leave prosecutors exposed to political pressure.",
-   "summary": "Legal experts criticised the government’s latest plan for a federal prosecution office. They say it does not provide enough independence from political influence. One concern is that parliament could have an ongoing role in overseeing the office, including during investigations. The government needs a two-thirds majority in parliament to pass the measure. The Greens say they will not negotiate until a substantially revised draft is presented.",
-   "words": [
-    {
-     "en": "prosecutor",
-     "de": "Staatsanwalt/Staatsanwältin"
-    },
-    {
-     "en": "independence",
-     "de": "Unabhängigkeit"
-    },
-    {
-     "en": "draft law",
-     "de": "Gesetzentwurf"
-    }
-   ],
-   "shows": [],
-   "category": "politics",
-   "wiki": "Austrian Parliament Building",
-   "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449375/"
-   },
-   "host_open": "A watchdog needs room to do its job. Does this debate surprise you?",
-   "img": "news_img/20261126-1.png",
-   "img_from": "article"
-  },
-  {
-   "title": "Vienna Plans Major Culture Cuts",
-   "gist": "Vienna says it must save €31 million from its culture budget. The cuts could affect theatres, festivals and popular summer events.",
-   "summary": "Vienna’s culture department must save €31 million in its 2027 budget. The city says the cuts are part of efforts to reduce its debt. Subsidies for several theatres and festivals will fall, and the Kultursommer will be stopped. The Klima Biennale will also be paused. Some arts organisations say the scale and short notice of the cuts make it hard to respond.",
-   "words": [
-    {
-     "en": "subsidy",
-     "de": "Förderung"
-    },
-    {
-     "en": "budget cut",
-     "de": "Budgetkürzung"
-    },
-    {
-     "en": "arts organisation",
-     "de": "Kulturinstitution"
+     "en": "to de-ice",
+     "de": "enteisen"
     }
    ],
    "shows": [],
    "category": "politics",
    "wiki": "Vienna",
    "source": {
-    "name": "ORF Wien",
-    "url": "https://wien.orf.at/stories/3381141/"
+    "name": "ORF",
+    "url": "https://oesterreich.orf.at/stories/3381265"
    },
-   "host_open": "Vienna’s cultural calendar may get a little quieter. How does that look from Austria?",
-   "img": "news_img/20261126-2.jpg",
+   "host_open": "Vienna got a winter postcard, along with a traffic headache. What was your experience of the snow?",
+   "img": "news_img/20261127-0.jpg",
    "img_from": "article"
   },
   {
-   "title": "Russia Warns Ukraine’s Power Grid",
-   "gist": "Ukraine says Russia may launch another major strike on energy infrastructure. The warning comes as the country asks partners for more air-defence supplies.",
-   "summary": "Ukrainian President Volodymyr Zelenskyy said Russia was preparing a major attack on energy sites and other critical services. Russian strikes have already damaged Ukraine’s power network during the war. Ukraine is asking partners for more air-defence equipment, including interceptors for Patriot systems. US envoy Jared Kushner said talks with Russia had reached a deadlock over Ukrainian territory. Ukrainian and European leaders say Russia has not shown a willingness to compromise.",
+   "title": "ORF Approves A Loss-Making Budget",
+   "gist": "Austria’s public broadcaster has approved a budget that plans a large loss next year. Managers say they must save money, while critics warn about the impact on staff and programmes.",
+   "summary": "The ORF supervisory board approved its 2027 budget on Thursday. The plan expects the broadcaster to have a loss of more than 30 million euros. The ORF says it will receive 93 million euros less each year after a government funding change. It plans to reduce its workforce by 350 to 380 full-time jobs by the end of 2029. The ORF says it wants viewers to feel as little effect as possible on programmes. Political critics disagree about how the broadcaster should make savings.",
+   "words": [
+    {
+     "en": "supervisory board",
+     "de": "Aufsichtsrat"
+    },
+    {
+     "en": "budget deficit",
+     "de": "Haushaltsdefizit"
+    },
+    {
+     "en": "workforce",
+     "de": "Belegschaft"
+    }
+   ],
+   "shows": [],
+   "category": "politics",
+   "wiki": "Austrian Broadcasting Corporation",
+   "source": {
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449374/"
+   },
+   "host_open": "A public broadcaster’s budget is also a debate about what viewers get. How does this look from Austria?",
+   "img": "news_img/20261127-1.jpg",
+   "img_from": "wikipedia"
+  },
+  {
+   "title": "Austrian Donations Reach €1.08 Billion",
+   "gist": "People in Austria gave more than a billion euros to charities last year. But organisations say rising costs mean each donated euro now does less.",
+   "summary": "A report says people in Austria donated 1.08 billion euros in 2025. Private donations make up about 80 percent of funds for charitable work. The report says inflation has cut charities’ financial impact by about a quarter since 2023. Charity leaders say some households are reconsidering regular monthly gifts. Social and health services received the largest share of donations. The figures show both continued generosity and growing pressure on charities.",
+   "words": [
+    {
+     "en": "donation",
+     "de": "Spende"
+    },
+    {
+     "en": "rising costs",
+     "de": "steigende Kosten"
+    },
+    {
+     "en": "charity",
+     "de": "gemeinnützige Organisation"
+    }
+   ],
+   "shows": [],
+   "category": "economy",
+   "wiki": "",
+   "source": {
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449348/"
+   },
+   "host_open": "A billion euros is a generous total, but costs keep climbing. Do you think people will keep giving?",
+   "img": "",
+   "img_from": ""
+  },
+  {
+   "title": "Ukraine Warns Of Winter Energy Attacks",
+   "gist": "Ukraine says Russia may again target energy and transport systems as winter deepens. The warning comes while peace talks remain stuck over territory.",
+   "summary": "Ukrainian President Volodymyr Zelenskyy said Russia was preparing a major attack on energy infrastructure and other critical services. He urged partners to provide more air-defence weapons. US envoy Jared Kushner said talks with Russia had reached a deadlock over Ukrainian territory. Kushner also said Russian President Vladimir Putin had said he did not intend to use nuclear weapons. Ukrainian and European leaders say Moscow is still refusing to make compromises. Russia has not publicly confirmed the attack plans described by Zelenskyy.",
    "words": [
     {
      "en": "power grid",
      "de": "Stromnetz"
     },
     {
-     "en": "air-defence system",
-     "de": "Luftabwehrsystem"
+     "en": "air defence",
+     "de": "Luftverteidigung"
     },
     {
      "en": "deadlock",
-     "de": "Stillstand"
+     "de": "Sackgasse"
     }
    ],
    "shows": [],
@@ -113,214 +113,300 @@
     "name": "AP News",
     "url": "https://apnews.com/article/russia-ukraine-war-zelenskyy-power-122f7f187eea20d4d2b659692b4c4f1e"
    },
-   "host_open": "A winter power supply is vital for millions of people. How worried are you by this warning?",
+   "host_open": "For Ukrainians, a cold season makes power security especially important. How does this warning make you feel?",
    "img": "",
    "img_from": ""
   },
   {
-   "title": "Deadly Strikes Reported in Gaza",
-   "gist": "Hospital officials say Israeli strikes killed ten people in Gaza. Israel says one strike targeted a Hamas official and other militants.",
-   "summary": "Hospital officials in Gaza said ten people were killed in several strikes and a shooting overnight and on Thursday. They said the dead included a man and his wife in an apartment in Deir al-Balah. Israeli leaders said the military killed a Hamas official responsible for economic and education affairs. Israel’s military said one strike targeted three militants. Officials did not immediately comment on all the reported strikes and deaths. The attacks happened despite a ceasefire deal reached more than a year ago.",
+   "title": "Israeli Strikes Kill Ten In Gaza",
+   "gist": "Hospital officials in Gaza say Israeli strikes killed ten people. Israel says one strike targeted a Hamas official, while the military did not immediately comment on all reported attacks.",
+   "summary": "Hospital officials said ten Palestinians were killed in several Israeli strikes and a shooting on Thursday. They said casualties included a man and his wife in an apartment in Deir al-Balah. Israel’s prime minister and defence minister said the military killed Hamas official Khaled Abu Nada. The Israeli military said one strike targeted three militants. It did not immediately respond to questions about other reported strikes. The deaths come despite a ceasefire agreement, as near-daily Israeli fire has continued.",
    "words": [
     {
      "en": "airstrike",
      "de": "Luftangriff"
     },
     {
+     "en": "casualty",
+     "de": "Opfer"
+    },
+    {
      "en": "ceasefire",
-     "de": "Waffenstillstand"
-    },
-    {
-     "en": "hospital officials",
-     "de": "Krankenhausvertreter"
+     "de": "Waffenruhe"
     }
    ],
    "shows": [],
    "category": "world",
-   "wiki": "Gaza Strip",
+   "wiki": "Deir al-Balah",
    "source": {
     "name": "AP News",
     "url": "https://apnews.com/article/gaza-iran-israel-uae-hormuz-november-26-2026-522676f17532b878878ff7a4347d0e31"
    },
-   "host_open": "Families are grieving after another deadly night in Gaza. How do you feel about the latest reports?",
+   "host_open": "Reports of more deaths in Gaza are deeply troubling. How do you feel about the latest developments?",
    "img": "",
    "img_from": ""
   },
   {
-   "title": "Iranian Drones Kill Italians in Kuwait",
-   "gist": "Two Italian civilian workers were killed in a drone attack in Kuwait, according to Italy’s foreign ministry. Iran denied responsibility, and the incident adds to regional tensions.",
-   "summary": "Two Italian civilians were killed and two others injured in a drone attack in Kuwait. Italy said the workers were technicians maintaining radar systems for a defence contractor. Kuwait said its air defences had shot down several drones from Iran. Iran’s foreign minister offered condolences but denied that Iran was behind the attack. The incident comes amid wider conflict and repeated attacks in the Gulf region.",
+   "title": "Storm Leaves Hundreds Of Thousands Without Power",
+   "gist": "A powerful storm disrupted Thanksgiving across parts of the United States. Hundreds of thousands of customers lost electricity, and airports reported delays.",
+   "summary": "About 820,000 US electricity customers were without power on Thursday afternoon, according to the outage tracker PowerOutage.us. Virginia, Maryland and Pennsylvania were among the hardest-hit states. A strong storm brought high winds and heavy rain to the East Coast. The National Weather Service had warned people about possible severe impacts. Flooding was reported in parts of Virginia. Airports in the Washington area saw delays and cancellations.",
    "words": [
     {
-     "en": "civilian worker",
-     "de": "Zivilbeschäftigter"
+     "en": "power outage",
+     "de": "Stromausfall"
     },
     {
-     "en": "air defence",
-     "de": "Luftabwehr"
+     "en": "high winds",
+     "de": "starke Winde"
     },
     {
-     "en": "deny responsibility",
-     "de": "die Verantwortung abstreiten"
+     "en": "cancellation",
+     "de": "Ausfall"
     }
    ],
    "shows": [],
    "category": "world",
-   "wiki": "Kuwait",
+   "wiki": "Virginia",
    "source": {
-    "name": "AP News",
-    "url": "https://apnews.com/article/gaza-iran-israel-uae-hormuz-november-26-2026-522676f17532b878878ff7a4347d0e31"
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449359/"
    },
-   "host_open": "Two workers lost their lives far from home. How does this news make you feel?",
+   "host_open": "A holiday meal is less cosy when the lights go out. Did that surprise you?",
    "img": "",
    "img_from": ""
   },
   {
-   "title": "EU Leaders Clash Over Ukraine Loan",
-   "gist": "EU leaders are divided over a proposed €45 billion loan for Ukraine. Some governments want all member states to take part; others want to opt out.",
-   "summary": "EU leaders met in Brussels to discuss the bloc’s next long-term budget and support for Ukraine. The proposal includes a €45 billion loan for Ukraine in 2027. Germany argues that all EU members should back it. Slovakia, Hungary and Czechia want to opt out of the loan. Leaders are also divided over the size of the wider EU budget and how its money should be spent.",
+   "title": "Italy Sets Limits In Some School Classes",
+   "gist": "Italy’s parliament has approved a limit on pupils with weak Italian-language skills in each class. The opposition says schools need more resources, not a quota.",
+   "summary": "Italy’s parliament approved a law on school integration on Thursday. It sets a limit of 30 percent for pupils of foreign origin who do not speak enough Italian. The law also bans face-covering burkas in schools and requires parents to learn Italian. The government says the measures will support integration. Opposition leader Elly Schlein says schools need more investment, not limits that keep foreign children apart. The Senate had already approved the package.",
    "words": [
     {
-     "en": "loan",
-     "de": "Darlehen"
+     "en": "quota",
+     "de": "Quote"
     },
     {
-     "en": "member state",
-     "de": "Mitgliedstaat"
+     "en": "language skills",
+     "de": "Sprachkenntnisse"
     },
     {
-     "en": "opt out",
-     "de": "nicht teilnehmen"
+     "en": "integration",
+     "de": "Integration"
     }
    ],
    "shows": [],
    "category": "europe",
-   "wiki": "European Council",
+   "wiki": "Italy",
    "source": {
-    "name": "The Guardian",
-    "url": "https://www.theguardian.com/world/2026/nov/26/eu-leaders-braced-for-clashes-over-ukraine-aid-at-budget-talks"
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449377/"
    },
-   "host_open": "The EU budget meeting has a very large price tag. Did you expect this much disagreement?",
-   "img": "news_img/20261126-6.jpg",
+   "host_open": "A classroom can bring different languages together, but rules can divide opinion. What do you think?",
+   "img": "",
+   "img_from": ""
+  },
+  {
+   "title": "Estonia Rejects Russian Border Accusations",
+   "gist": "Russia has accused Estonia of hostile actions after the country closed a road border crossing. Estonia rejects the allegations and says Russia is the source of Europe’s security threats.",
+   "summary": "Russia’s foreign ministry said Estonia’s border closure was one of several hostile actions. Moscow also accused Estonia of letting Ukraine use its airspace for attacks. Estonia’s foreign ministry said the country has never allowed its territory to be used for another state’s military operations. Russia also alleged that Estonia was trying to block Russian ships. There is no official naval blockade, according to the report. The dispute adds to tension between Russia and NATO member Estonia.",
+   "words": [
+    {
+     "en": "border crossing",
+     "de": "Grenzübergang"
+    },
+    {
+     "en": "allegation",
+     "de": "Vorwurf"
+    },
+    {
+     "en": "naval blockade",
+     "de": "Seeblockade"
+    }
+   ],
+   "shows": [],
+   "category": "europe",
+   "wiki": "Estonia",
+   "source": {
+    "name": "TIME",
+    "url": "https://time.com/article/2026/11/24/russia-estonia-conflict-open-war-border-nato-ukraine-eu/"
+   },
+   "host_open": "A border dispute can quickly become a wider security concern. How does this look from Austria?",
+   "img": "news_img/20261127-7.jpg",
    "img_from": "article"
   },
   {
-   "title": "Spain Faces a Tight Election",
-   "gist": "Spain votes on Sunday in an early parliamentary election. Polls and campaign coverage suggest a possible shift towards a conservative coalition that could include the far right.",
-   "summary": "Spain is due to hold an early general election on Sunday, November 29. The campaign has focused in part on immigration and the role of the far-right Vox party. Vox says it wants policies to give Spanish citizens priority over foreign residents and immigrants. The party could seek to govern with the conservative People’s Party if the election results allow it. The outcome could change Spain’s government and its approach to migration.",
+   "title": "Irish Court Blocks BAWAG Bank Deal",
+   "gist": "An Irish court has rejected BAWAG’s planned takeover of Permanent TSB. The judge said minority shareholders did not get a separate vote required by law.",
+   "summary": "Ireland’s High Court rejected BAWAG’s planned purchase of Permanent TSB, an Irish bank. The proposed deal was worth about 1.6 billion euros. The court said minority shareholders should have had a separate vote. The bank’s shareholders had already approved the deal in a wider vote. The judge said the court had to refuse approval because the legal requirement was not met. BAWAG said it was reviewing the decision, and it was not yet clear whether another vote could happen.",
    "words": [
     {
-     "en": "early election",
-     "de": "vorgezogene Wahl"
+     "en": "takeover",
+     "de": "Übernahme"
     },
     {
-     "en": "coalition",
-     "de": "Koalition"
+     "en": "minority shareholder",
+     "de": "Minderheitsaktionär"
     },
     {
-     "en": "immigration",
-     "de": "Einwanderung"
+     "en": "court ruling",
+     "de": "Gerichtsentscheidung"
     }
    ],
    "shows": [],
-   "category": "europe",
-   "wiki": "Spain",
+   "category": "economy",
+   "wiki": "BAWAG Group",
    "source": {
-    "name": "AP News",
-    "url": "https://apnews.com/article/cb1d921d60bbcdb5b11ec2056f9050a7"
+    "name": "ORF",
+    "url": "https://orf.at/stories/3449372/"
    },
-   "host_open": "Spain’s ballot could reshape its government. Did that possibility surprise you?",
-   "img": "",
-   "img_from": ""
+   "host_open": "A cross-border bank deal has hit a legal roadblock. Did that surprise you?",
+   "img": "news_img/20261127-8.jpg",
+   "img_from": "article"
   },
   {
-   "title": "Late Night Turns to Turkey Pardon",
-   "gist": "The White House’s annual turkey-pardon tradition became a late-night topic this week. Jimmy Kimmel and Seth Meyers covered the event in recent monologues.",
-   "summary": "The White House held its annual ceremony to pardon Thanksgiving turkeys. The event is a long-running seasonal tradition in US politics. Jimmy Kimmel discussed the ceremony in a monologue on November 24. Seth Meyers also joked about a question President Donald Trump asked while discussing the turkey. The ceremony itself is symbolic and does not change government policy.",
+   "title": "Water Supplies Shrink Around The World",
+   "gist": "A new study says the amount of water available worldwide has fallen sharply. Researchers link the change to hotter years and changes in how land stores water.",
+   "summary": "A study reported a strong decline in water available around the world. Researchers examined changes in water held on land, including soil moisture and groundwater. They link the decline to a run of very hot years. The findings point to growing pressure on water supplies. The report says some regions are affected more than others. The research highlights a challenge for communities, farms and ecosystems.",
    "words": [
     {
-     "en": "pardon",
-     "de": "Begnadigung"
+     "en": "water supply",
+     "de": "Wasserversorgung"
     },
     {
-     "en": "annual tradition",
-     "de": "jährliche Tradition"
+     "en": "groundwater",
+     "de": "Grundwasser"
     },
     {
-     "en": "symbolic",
-     "de": "symbolisch"
+     "en": "soil moisture",
+     "de": "Bodenfeuchtigkeit"
+    }
+   ],
+   "shows": [],
+   "category": "tech",
+   "wiki": "Water scarcity",
+   "source": {
+    "name": "ORF Science",
+    "url": "https://science.orf.at/stories/3238365"
+   },
+   "host_open": "Water is easy to take for granted until supplies fall. How does that make you feel?",
+   "img": "news_img/20261127-9.jpg",
+   "img_from": "article"
+  },
+  {
+   "title": "Salzburg Keeps Europa League Hopes Alive",
+   "gist": "Salzburg beat Ararat 2–0 at home in the Europa League. The win keeps the Austrian side in the race to reach the knockout stage.",
+   "summary": "Red Bull Salzburg beat Armenian club Ararat 2–0 on Thursday. Bartosz Mazurek scored shortly after half-time. An own goal by Ararat’s Carlier made it 2–0 three minutes later. Salzburg had created many chances but struggled to score before the break. Salzburg coach Danny Röhl said his team needed to be more direct. The result gave Salzburg seven points and kept its hopes of advancing alive.",
+   "words": [
+    {
+     "en": "knockout stage",
+     "de": "K.-o.-Phase"
+    },
+    {
+     "en": "own goal",
+     "de": "Eigentor"
+    },
+    {
+     "en": "to advance",
+     "de": "weiterkommen"
+    }
+   ],
+   "shows": [],
+   "category": "fun",
+   "wiki": "Red Bull Arena (Salzburg)",
+   "source": {
+    "name": "ORF Sport",
+    "url": "https://sport.orf.at/stories/3165464/"
+   },
+   "host_open": "Two quick goals after the break made for a lively finish. Did that result surprise you?",
+   "img": "news_img/20261127-10.jpg",
+   "img_from": "article"
+  },
+  {
+   "title": "Innsbruck Welcomes A Big-Air Comeback",
+   "gist": "The Air & Style snowboarding event has returned to Innsbruck under a new name. Olympic champion Anna Gasser is taking part in the final season of her career.",
+   "summary": "A new event called Airdrenaline has brought big-air snowboarding back to Innsbruck’s Bergisel hill. Anna Gasser is competing there for the first time. The two-time Olympic champion has said the 2026–27 season will be her last in the World Cup. Gasser qualified for Saturday’s final in fourth place. Freeskiers are also taking part at Bergisel for the first time. The event returned after years away from Innsbruck and has a history that includes a fatal crowd disaster in 1999.",
+   "words": [
+    {
+     "en": "big air",
+     "de": "Big Air"
+    },
+    {
+     "en": "to qualify",
+     "de": "sich qualifizieren"
+    },
+    {
+     "en": "final season",
+     "de": "letzte Saison"
+    }
+   ],
+   "shows": [],
+   "category": "fun",
+   "wiki": "Bergisel Ski Jump",
+   "source": {
+    "name": "ORF Sport",
+    "url": "https://sport.orf.at/stories/3165371/"
+   },
+   "host_open": "A famous snowboarding event is back on a dramatic Innsbruck hill. Are you excited for the contest?",
+   "img": "news_img/20261127-11.jpg",
+   "img_from": "article"
+  },
+  {
+   "title": "Seth Meyers Jokes About A Turkey Question",
+   "gist": "A Thanksgiving turkey question became a topic in the latest late-night coverage. The news report says the president also spoke about a White House ballroom project.",
+   "summary": "The Daily Beast reported that Seth Meyers joked about a question Donald Trump asked about a Thanksgiving turkey. The report said Trump used a turkey-pardoning event to discuss how large a bird was. It also said he spoke about his planned White House ballroom. Trump made a separate remark about Illinois Governor JB Pritzker at the event. The White House was contacted for comment by the publication. The underlying story came from a holiday event, not a policy announcement.",
+   "words": [
+    {
+     "en": "turkey pardon",
+     "de": "Begnadigung eines Truthahns"
+    },
+    {
+     "en": "ballroom",
+     "de": "Ballsaal"
+    },
+    {
+     "en": "to comment",
+     "de": "Stellung nehmen"
     }
    ],
    "shows": [
-    "Kimmel",
     "Seth Meyers"
    ],
    "category": "politics",
    "wiki": "White House",
    "source": {
-    "name": "TheWrap",
-    "url": "https://www.thewrap.com/culture-lifestyle/culture/trump-pardons-turkeys-jimmy-kimmel-monologue/"
+    "name": "The Daily Beast",
+    "url": "https://www.thedailybeast.com/obsessed/trumps-late-night-nemesis-seth-meyers-roasts-his-bonkers-turkey-question"
    },
-   "host_open": "The White House has a turkey tradition unlike any other. Did that surprise you?",
-   "img": "news_img/20261126-8.jpg",
+   "host_open": "Thanksgiving brought an unusually memorable turkey question. Did that surprise you?",
+   "img": "news_img/20261127-12.jpg",
    "img_from": "article"
   },
   {
-   "title": "A Spanish Economist Tipped for ECB",
-   "gist": "EU diplomats say Spain’s Pablo Hernández de Cos is set to lead the European Central Bank. He is expected to succeed Christine Lagarde next year.",
-   "summary": "EU leaders and diplomats backed Spanish economist Pablo Hernández de Cos for the next ECB presidency. He is expected to succeed Christine Lagarde, who is due to leave the post early in February. The Netherlands had supported its own candidate, Klaas Knot, but signalled support for a consensus choice. The ECB sets interest rates for the euro area. The appointment still has to follow the formal EU process.",
+   "title": "Judge Blocks FCC Action Against ABC",
+   "gist": "A federal judge has stopped an early review of broadcast licences held by ABC stations. The administration’s regulator says it was acting within its authority; ABC says the action was retaliatory.",
+   "summary": "A judge issued an injunction blocking the Federal Communications Commission from moving ahead with early reviews of eight ABC station licences. ABC had sued the FCC, arguing that the action was retaliation for its broadcasts. The regulator had raised concerns about possible violations of communications rules. The judge’s decision temporarily prevents those reviews from proceeding. The ruling is part of wider legal disputes between the administration and news organisations. The case does not settle all outstanding claims between the sides.",
    "words": [
     {
-     "en": "interest rate",
-     "de": "Zinssatz"
+     "en": "injunction",
+     "de": "einstweilige Verfügung"
     },
     {
-     "en": "successor",
-     "de": "Nachfolger/Nachfolgerin"
+     "en": "broadcast licence",
+     "de": "Sendelizenz"
     },
     {
-     "en": "euro area",
-     "de": "Eurozone"
+     "en": "retaliation",
+     "de": "Vergeltung"
     }
    ],
    "shows": [],
-   "category": "economy",
-   "wiki": "European Central Bank",
+   "category": "politics",
+   "wiki": "Federal Communications Commission",
    "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449372/"
+    "name": "TIME",
+    "url": "https://time.com/article/2026/11/26/fcc-abc-disney-broadcast-license-early-review-judge-injunction/"
    },
-   "host_open": "A new ECB chief could shape everyday borrowing costs. How does that look from Austria?",
-   "img": "news_img/20261126-9.jpg",
-   "img_from": "article"
-  },
-  {
-   "title": "Britain Reaches Davis Cup Semis",
-   "gist": "Great Britain beat Germany in a deciding doubles match to reach the Davis Cup semi-finals. It is the team’s first appearance at that stage since 2019.",
-   "summary": "Great Britain defeated Germany in a deciding doubles match at the Davis Cup. Henry Patten and Neal Skupski won the key match for the British team. The result sent Britain into the semi-finals for the first time since 2019. Germany had been aiming to continue its run in the competition. The Davis Cup is an international team tennis tournament.",
-   "words": [
-    {
-     "en": "deciding match",
-     "de": "entscheidendes Spiel"
-    },
-    {
-     "en": "doubles",
-     "de": "Doppel"
-    },
-    {
-     "en": "semi-final",
-     "de": "Halbfinale"
-    }
-   ],
-   "shows": [],
-   "category": "fun",
-   "wiki": "Davis Cup",
-   "source": {
-    "name": "BBC Sport",
-    "url": "https://www.bbc.com/sport/tennis"
-   },
-   "host_open": "One doubles match decided the tie. Did you see that result coming?",
-   "img": "news_img/20261126-10.png",
+   "host_open": "A court ruling has paused a regulator’s action against a broadcaster. How do you feel about that?",
+   "img": "news_img/20261127-13.jpg",
    "img_from": "article"
   }
  ]
