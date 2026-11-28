@@ -1,46 +1,28 @@
 {
- "updated": "2026-11-27T14:35Z",
+ "updated": "2026-11-28T06:35Z",
  "items": [
-  {
-   "show": "The Tonight Show",
-   "host": "Jimmy Fallon",
-   "title": "Justin Timberlake: FutureSex / LoveSound, SexyBack, Summer Love, My Love | The Tonight Show",
-   "id": "-da6-tmRXaM",
-   "published": "2026-11-27T04:49:07+00:00",
-   "desc": "Musical guest Justin Timberlake performs a medley of \"FutureSex / LoveSound,\" \"SexyBack,\" \"Summer Love\" and \"My Love\" for The Tonight Show.\n\nThe Tonight Show Starring Jimmy Fallon. Stream now on Peacock:",
-   "recap": {
-    "topics": [
-     "No reliable news coverage or recap found; based on the supplied description, this is a Justin Timberlake musical performance on The Tonight Show.",
-     "A medley of four songs: “FutureSex / LoveSound,” “SexyBack,” “Summer Love” and “My Love.”"
-    ],
-    "jokes": [],
-    "questions": [
-     "Which artist performs in the segment?",
-     "What late-night show is the performance on?",
-     "Which four songs are listed in the medley?"
-    ]
-   }
-  },
   {
    "show": "Late Night",
    "host": "Seth Meyers",
-   "title": "President Trump and First Lady Melania Trump Celebrate Thanksgiving in Mar-a-Lago",
-   "id": "grHsXteqKxQ",
-   "published": "2026-11-27T02:00:04+00:00",
-   "desc": "Seth addresses Trump's Thanksgiving plans and more in his monologue for Thursday, November 26, before inviting his children Ashe, Axel and Adelaide for an interview.\n\nLate Night with Seth Meyers. Stream now on Peacock:",
+   "title": "Trump Posts Photo with \"Friend\" Putin, NVIDIA Reinstates Jensen: Late Night's News of the Week",
+   "id": "QKTI2zNOj9A",
+   "published": "2026-11-27T15:00:15+00:00",
+   "desc": "All the news and jokes you missed from the week of November 23.\n\nLate Night with Seth Meyers. Stream now on Peacock:",
    "recap": {
     "topics": [
-     "Trump and Melania’s Thanksgiving trip to Mar-a-Lago",
-     "A joke about the couple awkwardly running into each other",
-     "Seth’s interview with his children Ashe, Axel and Adelaide"
+     "Trump’s Putin friendship photo and summit comments",
+     "Trump’s intervention in NVIDIA’s reinstatement of Jensen Huang",
+     "Melania Trump’s new series on Amazon Prime",
+     "Trump’s praise for chief of staff Stephen Miller",
+     "The White House press secretary’s briefing"
     ],
     "jokes": [
-     "Meyers joked that Trump and Melania traveling to Mar-a-Lago for Thanksgiving must have been awkward when they ran into each other."
+     "I couldn’t verify the segment’s specific punchlines; these topics are drawn from the title and related coverage."
     ],
     "questions": [
-     "Where did Trump and Melania travel for Thanksgiving?",
-     "What did Meyers joke happened when the couple arrived?",
-     "Which of Seth’s children joined him for an interview?"
+     "What word did Trump use to describe Putin?",
+     "Which NVIDIA executive was reinstated?",
+     "Who did Trump praise as his new chief of staff?"
     ]
    }
   },
