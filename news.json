@@ -1,413 +1,353 @@
 {
- "date": "2026-11-27",
+ "date": "2026-11-28",
  "items": [
   {
-   "title": "Vienna Sees Rare November Snow",
-   "gist": "A heavy snowfall turned Vienna’s streets white and disrupted travel across Austria. The snow was striking, but the road and rail delays were serious.",
-   "summary": "Vienna recorded its heaviest November snowfall in more than 40 years. The Hohe Warte weather station measured 17 centimetres on Thursday. Snow and icy roads caused crashes and delays in several regions. The A21 motorway was closed for hours after vehicles became stuck. Vienna Airport also reported some delays while planes were de-iced. Forecasters expected cold weather to keep snow on the ground.",
+   "title": "Austria weighs military service reform",
+   "gist": "Talks on changing military service have made some progress. But the government has not yet reached a deal.",
+   "summary": "Austria’s governing parties held talks on reforming military service. The Ö1 evening news reported some optimism after the negotiations. The parties have not announced a final agreement. The debate concerns how Austria should organise its armed forces and service system. The latest report did not give details of a settled plan.",
    "words": [
     {
-     "en": "snowfall",
-     "de": "Schneefall"
+     "en": "military service",
+     "de": "Wehrdienst"
     },
     {
-     "en": "to become stuck",
-     "de": "stecken bleiben"
+     "en": "reform",
+     "de": "Reform"
     },
     {
-     "en": "to de-ice",
-     "de": "enteisen"
+     "en": "to reach an agreement",
+     "de": "eine Einigung erzielen"
     }
    ],
    "shows": [],
    "category": "politics",
-   "wiki": "Vienna",
+   "wiki": "Austrian Armed Forces",
    "source": {
     "name": "ORF",
-    "url": "https://oesterreich.orf.at/stories/3381265"
+    "url": "https://oe1.orf.at/journalbeitraege"
    },
-   "host_open": "Vienna got a winter postcard, along with a traffic headache. What was your experience of the snow?",
-   "img": "news_img/20261127-0.jpg",
-   "img_from": "article"
+   "host_open": "Austria is still working out what service should look like. How do you feel about the debate?",
+   "img": "",
+   "img_from": ""
   },
   {
-   "title": "ORF Approves A Loss-Making Budget",
-   "gist": "Austria’s public broadcaster has approved a budget that plans a large loss next year. Managers say they must save money, while critics warn about the impact on staff and programmes.",
-   "summary": "The ORF supervisory board approved its 2027 budget on Thursday. The plan expects the broadcaster to have a loss of more than 30 million euros. The ORF says it will receive 93 million euros less each year after a government funding change. It plans to reduce its workforce by 350 to 380 full-time jobs by the end of 2029. The ORF says it wants viewers to feel as little effect as possible on programmes. Political critics disagree about how the broadcaster should make savings.",
+   "title": "Austria plans higher truck tolls",
+   "gist": "Using Austrian motorways will cost freight firms more next year. The increase is linked partly to road costs and emissions.",
+   "summary": "Austria has published its truck toll rules for 2027. The increase will range from three to 3.6 percent, depending on the vehicle. Infrastructure and CO2 charges will rise by 3.6 percent. Charges for noise and air pollution will stay unchanged. Transport groups say Austria already has the EU’s highest tolls, while the Chamber of Labour has argued for higher charges to limit transit traffic.",
    "words": [
     {
-     "en": "supervisory board",
-     "de": "Aufsichtsrat"
+     "en": "truck toll",
+     "de": "Lkw-Maut"
     },
     {
-     "en": "budget deficit",
-     "de": "Haushaltsdefizit"
+     "en": "freight company",
+     "de": "Frächterunternehmen"
     },
     {
-     "en": "workforce",
-     "de": "Belegschaft"
-    }
-   ],
-   "shows": [],
-   "category": "politics",
-   "wiki": "Austrian Broadcasting Corporation",
-   "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449374/"
-   },
-   "host_open": "A public broadcaster’s budget is also a debate about what viewers get. How does this look from Austria?",
-   "img": "news_img/20261127-1.jpg",
-   "img_from": "wikipedia"
-  },
-  {
-   "title": "Austrian Donations Reach €1.08 Billion",
-   "gist": "People in Austria gave more than a billion euros to charities last year. But organisations say rising costs mean each donated euro now does less.",
-   "summary": "A report says people in Austria donated 1.08 billion euros in 2025. Private donations make up about 80 percent of funds for charitable work. The report says inflation has cut charities’ financial impact by about a quarter since 2023. Charity leaders say some households are reconsidering regular monthly gifts. Social and health services received the largest share of donations. The figures show both continued generosity and growing pressure on charities.",
-   "words": [
-    {
-     "en": "donation",
-     "de": "Spende"
-    },
-    {
-     "en": "rising costs",
-     "de": "steigende Kosten"
-    },
-    {
-     "en": "charity",
-     "de": "gemeinnützige Organisation"
+     "en": "emissions",
+     "de": "Emissionen"
     }
    ],
    "shows": [],
    "category": "economy",
-   "wiki": "",
+   "wiki": "Austria",
    "source": {
     "name": "ORF",
-    "url": "https://orf.at/stories/3449348/"
+    "url": "https://orf.at/"
    },
-   "host_open": "A billion euros is a generous total, but costs keep climbing. Do you think people will keep giving?",
+   "host_open": "The motorway bill for trucks is heading up. How does that look from Austria?",
    "img": "",
    "img_from": ""
   },
   {
-   "title": "Ukraine Warns Of Winter Energy Attacks",
-   "gist": "Ukraine says Russia may again target energy and transport systems as winter deepens. The warning comes while peace talks remain stuck over territory.",
-   "summary": "Ukrainian President Volodymyr Zelenskyy said Russia was preparing a major attack on energy infrastructure and other critical services. He urged partners to provide more air-defence weapons. US envoy Jared Kushner said talks with Russia had reached a deadlock over Ukrainian territory. Kushner also said Russian President Vladimir Putin had said he did not intend to use nuclear weapons. Ukrainian and European leaders say Moscow is still refusing to make compromises. Russia has not publicly confirmed the attack plans described by Zelenskyy.",
+   "title": "Austria pension costs keep rising",
+   "gist": "State support for Austria’s pension system is forecast to grow in coming years. The increase is expected to be slower than before.",
+   "summary": "Austria’s Pension Commission released a medium-term forecast. Federal support for the statutory pension system is expected to rise through 2031. The forecast says spending will reach about 27 billion euros by then. The increase is expected to be slower than in earlier years. The figures matter for future budget planning and debate over pensions.",
    "words": [
     {
-     "en": "power grid",
-     "de": "Stromnetz"
+     "en": "pension system",
+     "de": "Pensionssystem"
     },
     {
-     "en": "air defence",
-     "de": "Luftverteidigung"
+     "en": "forecast",
+     "de": "Prognose"
     },
     {
-     "en": "deadlock",
-     "de": "Sackgasse"
+     "en": "state support",
+     "de": "staatlicher Zuschuss"
+    }
+   ],
+   "shows": [],
+   "category": "economy",
+   "wiki": "Austria",
+   "source": {
+    "name": "ORF",
+    "url": "https://oe1.orf.at/journalbeitraege"
+   },
+   "host_open": "Pension forecasts are a reminder that budgets have long memories. What did you make of the figures?",
+   "img": "",
+   "img_from": ""
+  },
+  {
+   "title": "Germany passes its 2027 budget",
+   "gist": "The Bundestag has approved the federal spending plan for next year. Opposition parties criticised both the budget and how it was prepared.",
+   "summary": "Germany’s Bundestag approved the 2027 federal budget on Friday. The governing coalition of the CDU, CSU and SPD backed it. The vote was 317 in favour and 260 against. Finance Minister Lars Klingbeil described the budget as challenging and said further savings would be needed in 2028. Opposition members criticised the plan and the late changes made during its preparation.",
+   "words": [
+    {
+     "en": "federal budget",
+     "de": "Bundeshaushalt"
+    },
+    {
+     "en": "to approve",
+     "de": "verabschieden"
+    },
+    {
+     "en": "savings",
+     "de": "Einsparungen"
+    }
+   ],
+   "shows": [],
+   "category": "europe",
+   "wiki": "Bundestag",
+   "source": {
+    "name": "ORF",
+    "url": "https://orf.at/"
+   },
+   "host_open": "Germany’s budget cleared parliament after a difficult debate. Did that surprise you?",
+   "img": "",
+   "img_from": ""
+  },
+  {
+   "title": "EU budget talks end without a deal",
+   "gist": "A summit on the next EU budget ended early without agreement. Leaders now face more negotiations over how the bloc should spend its money.",
+   "summary": "An EU summit on the bloc’s budget ended early without a deal. The talks concerned the EU’s long-term spending plans. Austria’s Chancellor Christian Stocker called for careful spending. The budget debate involves competing demands from member states and different policy priorities. The summit’s early end means negotiations will have to continue.",
+   "words": [
+    {
+     "en": "budget talks",
+     "de": "Budgetverhandlungen"
+    },
+    {
+     "en": "member state",
+     "de": "Mitgliedstaat"
+    },
+    {
+     "en": "to end without a deal",
+     "de": "ohne Einigung enden"
+    }
+   ],
+   "shows": [],
+   "category": "europe",
+   "wiki": "European Union",
+   "source": {
+    "name": "ORF",
+    "url": "https://orf.at/"
+   },
+   "host_open": "The EU budget meeting ended before the numbers did. How does that look from Austria?",
+   "img": "",
+   "img_from": ""
+  },
+  {
+   "title": "Zelenskyy urges US pressure on Russia",
+   "gist": "Ukraine’s president called for stronger US pressure on Moscow. He also questioned Donald Trump’s description of Vladimir Putin as a friend.",
+   "summary": "Ukrainian President Volodymyr Zelenskyy urged the United States to put pressure on Russia. In a BBC interview, he questioned Trump’s description of Putin as a friend. The remarks come as Russia continues attacks on Ukraine. Kyiv says stronger pressure is needed to help end the war on acceptable terms. Moscow has not agreed to Ukraine’s demands for ending the conflict.",
+   "words": [
+    {
+     "en": "to put pressure on",
+     "de": "Druck ausüben auf"
+    },
+    {
+     "en": "to question a claim",
+     "de": "eine Aussage infrage stellen"
+    },
+    {
+     "en": "to end the war",
+     "de": "den Krieg beenden"
     }
    ],
    "shows": [],
    "category": "world",
-   "wiki": "Ukraine",
+   "wiki": "Kyiv",
    "source": {
-    "name": "AP News",
-    "url": "https://apnews.com/article/russia-ukraine-war-zelenskyy-power-122f7f187eea20d4d2b659692b4c4f1e"
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/d891149b4cbd6521b83096a32bd5e53d"
    },
-   "host_open": "For Ukrainians, a cold season makes power security especially important. How does this warning make you feel?",
+   "host_open": "Diplomacy is hard to separate from trust in wartime. How did Zelenskyy’s message strike you?",
+   "img": "news_img/20261128-5.jpg",
+   "img_from": "wikipedia"
+  },
+  {
+   "title": "Israeli strikes kill people in Gaza",
+   "gist": "Reports say Israeli attacks killed people in Gaza this week. The violence continues despite a ceasefire agreement reached last year.",
+   "summary": "Israeli strikes killed people in Gaza, according to reports published this week. The attacks took place despite a ceasefire between Israel and Hamas that began in October 2025. Gaza’s Health Ministry reported the deaths. Israel has said it targets Hamas and has accused the group of operating within civilian areas. The continued violence raises concern about the durability of the ceasefire and the safety of civilians.",
+   "words": [
+    {
+     "en": "ceasefire",
+     "de": "Waffenruhe"
+    },
+    {
+     "en": "civilian",
+     "de": "Zivilist/in"
+    },
+    {
+     "en": "strike",
+     "de": "Angriff"
+    }
+   ],
+   "shows": [],
+   "category": "world",
+   "wiki": "Gaza Strip",
+   "source": {
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/522676f17532b878878ff7a4347d0e31"
+   },
+   "host_open": "The ceasefire has not ended the danger for people in Gaza. How are you feeling about the latest reports?",
    "img": "",
    "img_from": ""
   },
   {
-   "title": "Israeli Strikes Kill Ten In Gaza",
-   "gist": "Hospital officials in Gaza say Israeli strikes killed ten people. Israel says one strike targeted a Hamas official, while the military did not immediately comment on all reported attacks.",
-   "summary": "Hospital officials said ten Palestinians were killed in several Israeli strikes and a shooting on Thursday. They said casualties included a man and his wife in an apartment in Deir al-Balah. Israel’s prime minister and defence minister said the military killed Hamas official Khaled Abu Nada. The Israeli military said one strike targeted three militants. It did not immediately respond to questions about other reported strikes. The deaths come despite a ceasefire agreement, as near-daily Israeli fire has continued.",
+   "title": "Houthi reports deaths after Yemen strikes",
+   "gist": "The Houthi movement says Saudi airstrikes killed at least eleven people in Yemen. The reported toll and circumstances have not been independently confirmed in the available account.",
+   "summary": "Houthi officials said Saudi aircraft struck a building in Yemen’s Taiz province. Their news agency reported at least eleven deaths, many of them children. The group said some people were still missing and rescue work was difficult. The reported account came from media controlled by the Houthis. The claims could not be independently confirmed in the available report.",
    "words": [
     {
      "en": "airstrike",
      "de": "Luftangriff"
     },
     {
-     "en": "casualty",
-     "de": "Opfer"
+     "en": "missing person",
+     "de": "vermisste Person"
     },
     {
-     "en": "ceasefire",
-     "de": "Waffenruhe"
+     "en": "to confirm independently",
+     "de": "unabhängig bestätigen"
     }
    ],
    "shows": [],
    "category": "world",
-   "wiki": "Deir al-Balah",
-   "source": {
-    "name": "AP News",
-    "url": "https://apnews.com/article/gaza-iran-israel-uae-hormuz-november-26-2026-522676f17532b878878ff7a4347d0e31"
-   },
-   "host_open": "Reports of more deaths in Gaza are deeply troubling. How do you feel about the latest developments?",
-   "img": "",
-   "img_from": ""
-  },
-  {
-   "title": "Storm Leaves Hundreds Of Thousands Without Power",
-   "gist": "A powerful storm disrupted Thanksgiving across parts of the United States. Hundreds of thousands of customers lost electricity, and airports reported delays.",
-   "summary": "About 820,000 US electricity customers were without power on Thursday afternoon, according to the outage tracker PowerOutage.us. Virginia, Maryland and Pennsylvania were among the hardest-hit states. A strong storm brought high winds and heavy rain to the East Coast. The National Weather Service had warned people about possible severe impacts. Flooding was reported in parts of Virginia. Airports in the Washington area saw delays and cancellations.",
-   "words": [
-    {
-     "en": "power outage",
-     "de": "Stromausfall"
-    },
-    {
-     "en": "high winds",
-     "de": "starke Winde"
-    },
-    {
-     "en": "cancellation",
-     "de": "Ausfall"
-    }
-   ],
-   "shows": [],
-   "category": "world",
-   "wiki": "Virginia",
+   "wiki": "Yemen",
    "source": {
     "name": "ORF",
-    "url": "https://orf.at/stories/3449359/"
+    "url": "https://orf.at/"
    },
-   "host_open": "A holiday meal is less cosy when the lights go out. Did that surprise you?",
+   "host_open": "Reports of children among the dead are deeply troubling. How are you processing the news?",
    "img": "",
    "img_from": ""
   },
   {
-   "title": "Italy Sets Limits In Some School Classes",
-   "gist": "Italy’s parliament has approved a limit on pupils with weak Italian-language skills in each class. The opposition says schools need more resources, not a quota.",
-   "summary": "Italy’s parliament approved a law on school integration on Thursday. It sets a limit of 30 percent for pupils of foreign origin who do not speak enough Italian. The law also bans face-covering burkas in schools and requires parents to learn Italian. The government says the measures will support integration. Opposition leader Elly Schlein says schools need more investment, not limits that keep foreign children apart. The Senate had already approved the package.",
+   "title": "Foodora sale agreed to avoid competition concerns",
+   "gist": "Delivery Hero plans to sell foodora’s business in Austria and other countries. The buyer is a New York investment firm, with a loan from Uber to fund the purchase.",
+   "summary": "Delivery Hero agreed to sell businesses in 14 countries, including foodora in Austria. The buyer is investment firm SSW Partners, based in New York. The agreed price is 1.4 billion euros. Uber will provide a loan covering the full purchase price. The companies expect the deal to close in the second half of 2027, subject to the remaining steps.",
    "words": [
     {
-     "en": "quota",
-     "de": "Quote"
+     "en": "to sell a business",
+     "de": "ein Geschäft verkaufen"
     },
     {
-     "en": "language skills",
-     "de": "Sprachkenntnisse"
+     "en": "investment firm",
+     "de": "Investmentfirma"
     },
     {
-     "en": "integration",
-     "de": "Integration"
-    }
-   ],
-   "shows": [],
-   "category": "europe",
-   "wiki": "Italy",
-   "source": {
-    "name": "ORF",
-    "url": "https://orf.at/stories/3449377/"
-   },
-   "host_open": "A classroom can bring different languages together, but rules can divide opinion. What do you think?",
-   "img": "",
-   "img_from": ""
-  },
-  {
-   "title": "Estonia Rejects Russian Border Accusations",
-   "gist": "Russia has accused Estonia of hostile actions after the country closed a road border crossing. Estonia rejects the allegations and says Russia is the source of Europe’s security threats.",
-   "summary": "Russia’s foreign ministry said Estonia’s border closure was one of several hostile actions. Moscow also accused Estonia of letting Ukraine use its airspace for attacks. Estonia’s foreign ministry said the country has never allowed its territory to be used for another state’s military operations. Russia also alleged that Estonia was trying to block Russian ships. There is no official naval blockade, according to the report. The dispute adds to tension between Russia and NATO member Estonia.",
-   "words": [
-    {
-     "en": "border crossing",
-     "de": "Grenzübergang"
-    },
-    {
-     "en": "allegation",
-     "de": "Vorwurf"
-    },
-    {
-     "en": "naval blockade",
-     "de": "Seeblockade"
-    }
-   ],
-   "shows": [],
-   "category": "europe",
-   "wiki": "Estonia",
-   "source": {
-    "name": "TIME",
-    "url": "https://time.com/article/2026/11/24/russia-estonia-conflict-open-war-border-nato-ukraine-eu/"
-   },
-   "host_open": "A border dispute can quickly become a wider security concern. How does this look from Austria?",
-   "img": "news_img/20261127-7.jpg",
-   "img_from": "article"
-  },
-  {
-   "title": "Irish Court Blocks BAWAG Bank Deal",
-   "gist": "An Irish court has rejected BAWAG’s planned takeover of Permanent TSB. The judge said minority shareholders did not get a separate vote required by law.",
-   "summary": "Ireland’s High Court rejected BAWAG’s planned purchase of Permanent TSB, an Irish bank. The proposed deal was worth about 1.6 billion euros. The court said minority shareholders should have had a separate vote. The bank’s shareholders had already approved the deal in a wider vote. The judge said the court had to refuse approval because the legal requirement was not met. BAWAG said it was reviewing the decision, and it was not yet clear whether another vote could happen.",
-   "words": [
-    {
-     "en": "takeover",
-     "de": "Übernahme"
-    },
-    {
-     "en": "minority shareholder",
-     "de": "Minderheitsaktionär"
-    },
-    {
-     "en": "court ruling",
-     "de": "Gerichtsentscheidung"
+     "en": "purchase price",
+     "de": "Kaufpreis"
     }
    ],
    "shows": [],
    "category": "economy",
-   "wiki": "BAWAG Group",
+   "wiki": "Foodora",
    "source": {
     "name": "ORF",
-    "url": "https://orf.at/stories/3449372/"
+    "url": "https://orf.at/"
    },
-   "host_open": "A cross-border bank deal has hit a legal roadblock. Did that surprise you?",
-   "img": "news_img/20261127-8.jpg",
-   "img_from": "article"
+   "host_open": "Food delivery is changing hands across several countries. Did that surprise you?",
+   "img": "news_img/20261128-8.jpg",
+   "img_from": "wikipedia"
   },
   {
-   "title": "Water Supplies Shrink Around The World",
-   "gist": "A new study says the amount of water available worldwide has fallen sharply. Researchers link the change to hotter years and changes in how land stores water.",
-   "summary": "A study reported a strong decline in water available around the world. Researchers examined changes in water held on land, including soil moisture and groundwater. They link the decline to a run of very hot years. The findings point to growing pressure on water supplies. The report says some regions are affected more than others. The research highlights a challenge for communities, farms and ecosystems.",
+   "title": "Austria’s army bars some electric cars",
+   "gist": "Austria’s military plans to ban cars made by Chinese companies and Tesla from its sites. The decision was reported by ORF television.",
+   "summary": "Austria’s armed forces plan to prohibit cars made by Chinese companies and Tesla from military sites. ORF reported the planned restriction on Friday. The report did not provide full details of how the rule will be applied. The decision concerns vehicles from companies with links to China and the US. The military has not published a full explanation in the available report.",
    "words": [
     {
-     "en": "water supply",
-     "de": "Wasserversorgung"
+     "en": "armed forces",
+     "de": "Streitkräfte"
     },
     {
-     "en": "groundwater",
-     "de": "Grundwasser"
+     "en": "to prohibit",
+     "de": "verbieten"
     },
     {
-     "en": "soil moisture",
-     "de": "Bodenfeuchtigkeit"
+     "en": "vehicle",
+     "de": "Fahrzeug"
     }
    ],
    "shows": [],
    "category": "tech",
-   "wiki": "Water scarcity",
+   "wiki": "Austrian Armed Forces",
    "source": {
-    "name": "ORF Science",
-    "url": "https://science.orf.at/stories/3238365"
+    "name": "ORF",
+    "url": "https://on.orf.at/video/14349222/aktuell-nach-eins-vom-27112026"
    },
-   "host_open": "Water is easy to take for granted until supplies fall. How does that make you feel?",
-   "img": "news_img/20261127-9.jpg",
+   "host_open": "A car park can become a security question surprisingly quickly. What do you think of that rule?",
+   "img": "news_img/20261128-9.jpg",
    "img_from": "article"
   },
   {
-   "title": "Salzburg Keeps Europa League Hopes Alive",
-   "gist": "Salzburg beat Ararat 2–0 at home in the Europa League. The win keeps the Austrian side in the race to reach the knockout stage.",
-   "summary": "Red Bull Salzburg beat Armenian club Ararat 2–0 on Thursday. Bartosz Mazurek scored shortly after half-time. An own goal by Ararat’s Carlier made it 2–0 three minutes later. Salzburg had created many chances but struggled to score before the break. Salzburg coach Danny Röhl said his team needed to be more direct. The result gave Salzburg seven points and kept its hopes of advancing alive.",
+   "title": "New fly species found in Vienna",
+   "gist": "Researchers have discovered a previously unknown fly species at Vienna’s Natural History Museum. The find adds a small but notable piece to the record of local biodiversity.",
+   "summary": "A new species of fly was discovered at the Natural History Museum in Vienna. ORF included the finding in its Friday evening news list. The discovery was made by researchers studying specimens and species. The available report did not give the fly’s scientific name or detailed habitat. New species records help scientists understand biodiversity and how it is documented.",
    "words": [
     {
-     "en": "knockout stage",
-     "de": "K.-o.-Phase"
+     "en": "species",
+     "de": "Art"
     },
     {
-     "en": "own goal",
-     "de": "Eigentor"
+     "en": "specimen",
+     "de": "Exemplar"
     },
     {
-     "en": "to advance",
-     "de": "weiterkommen"
+     "en": "biodiversity",
+     "de": "Artenvielfalt"
     }
    ],
    "shows": [],
    "category": "fun",
-   "wiki": "Red Bull Arena (Salzburg)",
+   "wiki": "Natural History Museum, Vienna",
    "source": {
-    "name": "ORF Sport",
-    "url": "https://sport.orf.at/stories/3165464/"
+    "name": "ORF",
+    "url": "https://oe1.orf.at/journalbeitraege"
    },
-   "host_open": "Two quick goals after the break made for a lively finish. Did that result surprise you?",
-   "img": "news_img/20261127-10.jpg",
-   "img_from": "article"
+   "host_open": "Even a museum collection can still hold surprises. Did you expect a new species to turn up in Vienna?",
+   "img": "news_img/20261128-10.jpg",
+   "img_from": "wikipedia"
   },
   {
-   "title": "Innsbruck Welcomes A Big-Air Comeback",
-   "gist": "The Air & Style snowboarding event has returned to Innsbruck under a new name. Olympic champion Anna Gasser is taking part in the final season of her career.",
-   "summary": "A new event called Airdrenaline has brought big-air snowboarding back to Innsbruck’s Bergisel hill. Anna Gasser is competing there for the first time. The two-time Olympic champion has said the 2026–27 season will be her last in the World Cup. Gasser qualified for Saturday’s final in fourth place. Freeskiers are also taking part at Bergisel for the first time. The event returned after years away from Innsbruck and has a history that includes a fatal crowd disaster in 1999.",
+   "title": "Thanksgiving parade goes ahead in New York",
+   "gist": "Organisers say the postponed 100th Macy’s Thanksgiving parade will still take place. The revised show includes LL Cool J and Gloria Gaynor.",
+   "summary": "The organisers of New York’s Macy’s Thanksgiving Day Parade said the event would go ahead after being postponed. The parade is marking its 100th edition. Executive producer Will Coss said the organisers would deliver the show they had planned. The revised lineup includes LL Cool J and Gloria Gaynor. The original lineup included other performers, including Jimmy Fallon and The Roots.",
    "words": [
     {
-     "en": "big air",
-     "de": "Big Air"
+     "en": "parade",
+     "de": "Parade"
     },
     {
-     "en": "to qualify",
-     "de": "sich qualifizieren"
+     "en": "postponed",
+     "de": "verschoben"
     },
     {
-     "en": "final season",
-     "de": "letzte Saison"
+     "en": "lineup",
+     "de": "Programm"
     }
    ],
    "shows": [],
    "category": "fun",
-   "wiki": "Bergisel Ski Jump",
+   "wiki": "Macy's Thanksgiving Day Parade",
    "source": {
-    "name": "ORF Sport",
-    "url": "https://sport.orf.at/stories/3165371/"
+    "name": "Associated Press",
+    "url": "https://apnews.com/article/ba6b05f16873b2b8966de38d5be8444d"
    },
-   "host_open": "A famous snowboarding event is back on a dramatic Innsbruck hill. Are you excited for the contest?",
-   "img": "news_img/20261127-11.jpg",
-   "img_from": "article"
-  },
-  {
-   "title": "Seth Meyers Jokes About A Turkey Question",
-   "gist": "A Thanksgiving turkey question became a topic in the latest late-night coverage. The news report says the president also spoke about a White House ballroom project.",
-   "summary": "The Daily Beast reported that Seth Meyers joked about a question Donald Trump asked about a Thanksgiving turkey. The report said Trump used a turkey-pardoning event to discuss how large a bird was. It also said he spoke about his planned White House ballroom. Trump made a separate remark about Illinois Governor JB Pritzker at the event. The White House was contacted for comment by the publication. The underlying story came from a holiday event, not a policy announcement.",
-   "words": [
-    {
-     "en": "turkey pardon",
-     "de": "Begnadigung eines Truthahns"
-    },
-    {
-     "en": "ballroom",
-     "de": "Ballsaal"
-    },
-    {
-     "en": "to comment",
-     "de": "Stellung nehmen"
-    }
-   ],
-   "shows": [
-    "Seth Meyers"
-   ],
-   "category": "politics",
-   "wiki": "White House",
-   "source": {
-    "name": "The Daily Beast",
-    "url": "https://www.thedailybeast.com/obsessed/trumps-late-night-nemesis-seth-meyers-roasts-his-bonkers-turkey-question"
-   },
-   "host_open": "Thanksgiving brought an unusually memorable turkey question. Did that surprise you?",
-   "img": "news_img/20261127-12.jpg",
-   "img_from": "article"
-  },
-  {
-   "title": "Judge Blocks FCC Action Against ABC",
-   "gist": "A federal judge has stopped an early review of broadcast licences held by ABC stations. The administration’s regulator says it was acting within its authority; ABC says the action was retaliatory.",
-   "summary": "A judge issued an injunction blocking the Federal Communications Commission from moving ahead with early reviews of eight ABC station licences. ABC had sued the FCC, arguing that the action was retaliation for its broadcasts. The regulator had raised concerns about possible violations of communications rules. The judge’s decision temporarily prevents those reviews from proceeding. The ruling is part of wider legal disputes between the administration and news organisations. The case does not settle all outstanding claims between the sides.",
-   "words": [
-    {
-     "en": "injunction",
-     "de": "einstweilige Verfügung"
-    },
-    {
-     "en": "broadcast licence",
-     "de": "Sendelizenz"
-    },
-    {
-     "en": "retaliation",
-     "de": "Vergeltung"
-    }
-   ],
-   "shows": [],
-   "category": "politics",
-   "wiki": "Federal Communications Commission",
-   "source": {
-    "name": "TIME",
-    "url": "https://time.com/article/2026/11/26/fcc-abc-disney-broadcast-license-early-review-judge-injunction/"
-   },
-   "host_open": "A court ruling has paused a regulator’s action against a broadcaster. How do you feel about that?",
-   "img": "news_img/20261127-13.jpg",
-   "img_from": "article"
+   "host_open": "A century-old parade has had to adjust its plans. Did the new lineup catch your eye?",
+   "img": "news_img/20261128-11.jpg",
+   "img_from": "wikipedia"
   }
  ]
 }
