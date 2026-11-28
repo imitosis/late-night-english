@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-28T06:35Z",
+ "updated": "2026-11-28T08:32Z",
  "items": [
   {
    "show": "Late Night",
@@ -23,6 +23,25 @@
      "What word did Trump use to describe Putin?",
      "Which NVIDIA executive was reinstated?",
      "Who did Trump praise as his new chief of staff?"
+    ]
+   }
+  },
+  {
+   "show": "The Tonight Show",
+   "host": "Jimmy Fallon",
+   "title": "Justin Timberlake: FutureSex / LoveSound, SexyBack, Summer Love, My Love | The Tonight Show",
+   "id": "-da6-tmRXaM",
+   "published": "2026-11-27T04:49:07+00:00",
+   "desc": "Musical guest Justin Timberlake performs a medley of \"FutureSex / LoveSound,\" \"SexyBack,\" \"Summer Love\" and \"My Love\" for The Tonight Show.\n\nThe Tonight Show Starring Jimmy Fallon. Stream now on Peacock:",
+   "recap": {
+    "topics": [
+     "No jokes identified; this is a musical performance"
+    ],
+    "jokes": [],
+    "questions": [
+     "Who performs the medley?",
+     "Which song comes after “FutureSex / LoveSound”?",
+     "What are the four songs named in the description?"
     ]
    }
   },
